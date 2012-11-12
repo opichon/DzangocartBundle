@@ -1,5 +1,5 @@
 {
-	"name": "dzangocart/bundle",
+	"name": "dzangocart/dzangocart-bundle",
 	"description": "Symfony 2 bundle for dzangocart",
 	"type": "symfony-bundle",
 	"keywords": ["dzangocart", "symfony", "bundle"],
@@ -10,8 +10,9 @@
 	},
 	"autoload": {
 		"psr-0": {
-			"Dzangocart\\Bundle\\DzangocarBundle": ""
+			"Dzangocart\\Bundle\\DzangocartBundle": ""
 		}
-	}
+	},
+	"target-dir": "Dzangocart/Bundle/DzangocartBundle"
 }
 
