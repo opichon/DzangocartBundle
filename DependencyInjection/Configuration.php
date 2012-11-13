@@ -32,7 +32,18 @@ class Configuration implements ConfigurationInterface
                 ->end()
                 ->scalarNode('test_code')
                     ->defaultValue('')
-                ->end()                
+                ->end()
+                ->arrayNode('add_to_cart')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->scalarNode('label')
+                            ->defaultValue('Add to cart')
+                        ->end()
+                        ->scalarNode('title')
+                            ->defaultValue('Shopping cart')
+                        ->end()
+                    ->end()
+                ->end()
             ->end();
         
         return $treeBuilder;

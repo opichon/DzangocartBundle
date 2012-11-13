@@ -4,7 +4,10 @@ services:
         arguments: 
           - %dzangocart.url%
           - %dzangocart.test_code%
-          - %dzangocart.secret_key%
+          - %dzangocart.secret_key%        
+        calls:
+            - [ setAddToCartLabel, [ %dzangocart.add_to_cart.label% ] ]
+            - [ setAddToCartTitle, [ %dzangocart.add_to_cart.title% ] ]
           
     twig.extension.dzangocart:
         class: Dzangocart\Bundle\DzangocartBundle\Twig\Extension\DzangocartExtension

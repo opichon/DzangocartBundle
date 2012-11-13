@@ -35,10 +35,12 @@ class DzangocartExtension extends \Twig_Extension
                                 $checkout = false, $label = null, $html_options = array())
     {
         if (!$label) {
-            $label = 'Add to cart';
+            $label = $this->dzangocart->getAddToCartLabel();
         }
 
-        $html_options = array_merge(array('title' => 'Shopping cart'), $html_options);
+        $html_options = array_merge(array('title' => $this->dzangocart->getAddToCartTitle()), 
+                                    $html_options);
+        
         $html_options['class'] = array_key_exists('class', $html_options) ?
                                     'dzangocart ' . $html_options['class'] :
                                     'dzangocart';        
