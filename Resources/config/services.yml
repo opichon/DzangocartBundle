@@ -1,2 +1,7 @@
-## YAML Template.
----
+services:
+    dzangocart:
+        class: Dzangocart\Bundle\DzangocartBundle\Service\Dzangocart
+        arguments: 
+          - %dzangocart.url%
+          - %dzangocart.test_code%
+          - %dzangocart.secret_key%
