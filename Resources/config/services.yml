@@ -5,3 +5,11 @@ services:
           - %dzangocart.url%
           - %dzangocart.test_code%
           - %dzangocart.secret_key%
+          
+    twig.extension.dzangocart:
+        class: Dzangocart\Bundle\DzangocartBundle\Twig\Extension\DzangocartExtension
+        arguments:    
+          - "@service_container"
+          - "@dzangocart"
+        tags:
+            - { name: twig.extension }
