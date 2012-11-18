@@ -1,0 +1,3 @@
+_signup:
+    resource: "@DzangocartBundle/Controller/SignupController.php"
+    type:     annotation
