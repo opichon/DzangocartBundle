@@ -9,17 +9,19 @@ use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-use Porot\Bundle\UserBundle\Model\UserQuery;
-
 /**
  * @Route("/")
  * @Template
  */
 class OrderController extends Controller
 {
+	/**
+	 * @Route("/", name="orders")
+	 * @Template()
+	 */
 	public function indexAction(Request $request)
 	{
-		$orders = $this->get('dzangocart')->getORders();
+		$orders = $this->get('dzangocart')->getOrders();
 
 		return array(
 			'orders' => $orders

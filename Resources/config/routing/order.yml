@@ -1,0 +1,3 @@
+_dzangocart_order:
+    resource: "@DzangocartBundle/Controller/OrderController.php"
+    type: annotation
