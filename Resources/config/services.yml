@@ -1,5 +1,8 @@
 services:
     dzangocart:
+        class: Dzangocart\Client\Client
+
+    dzangocart2:
         class: Dzangocart\Bundle\DzangocartBundle\Service\Dzangocart
         arguments: 
           - %dzangocart.url%
@@ -8,7 +11,7 @@ services:
         calls:
             - [ setAddToCartLabel, [ %dzangocart.add_to_cart.label% ] ]
             - [ setAddToCartTitle, [ %dzangocart.add_to_cart.title% ] ]
-          
+
     twig.extension.dzangocart:
         class: Dzangocart\Bundle\DzangocartBundle\Twig\Extension\DzangocartExtension
         arguments:    
