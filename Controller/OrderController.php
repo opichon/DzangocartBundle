@@ -9,8 +9,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-use Dzangocart\Client\DzangocartClient;
-
 /**
  * @Route("/")
  * @Template
@@ -38,8 +36,7 @@ class OrderController extends Controller
             $view = $this->renderView('DzangocartBundle:Order:index.json.twig', $data);
 
             return new Response($view, 200, array('Content-Type' => 'application/json'));
-        }
-        else {
+        } else {
             return array(
                 'config' => $this->container->getParameter('dzangocart.config'),
                 'class' => get_class($command),
@@ -48,7 +45,6 @@ class OrderController extends Controller
                 'baseUrl' => $client->getBaseUrl(),
                 'data' => print_r($data, true)
             );
-
 
         }
 

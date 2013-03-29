@@ -19,7 +19,7 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('dzangocart');
-        
+
         $rootNode
             ->children()
                 ->scalarNode('base_url')
@@ -49,7 +49,7 @@ class Configuration implements ConfigurationInterface
                     ->end()
                 ->end()
             ->end();
-        
+
         return $treeBuilder;
     }
 }
