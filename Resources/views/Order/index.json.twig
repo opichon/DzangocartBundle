@@ -1,0 +1,26 @@
+{% trans_default_domain "dzangocart" %}
+
+{% spaceless %}
+{
+	"sEcho": "{{ app.request.sEcho }}",
+	"iTotalRecords": {{ total }},
+	"iTotalDisplayRecords": {{ totalDisplay }},
+	"aaData" : [
+		{% for order in list %}
+			{
+				"DT_RowId": "{{ 'u_' ~ user.id }}",
+				"DT_RowClass": "{{ 'user' }}",
+				"id": {{ user.id }},
+				"0": "",
+				"1": "{{ user.profile.name }}",
+				"2": "{{ user.username }}",
+				"3": "{{ user.profile.mail }}",
+				"4": "",
+				"5": "{{ user.createdAt|localizeddate('medium', 'short', app.request.locale, null, 'dd.MM.yyyy HH:mm') }}",
+				"6": "{{ user.lastLogin ? user.lastLogin|localizeddate('medium', 'short', app.request.locale, null, 'dd.MM.yyyy HH:mm') : '' }}",
+				"7": ""
+			}{% if not loop.last %},{% endif %}
+		{% endfor %}
+	]
+}
+{% endspaceless %}

@@ -1,23 +1,24 @@
 {
-	"name": "dzangocart/dzangocart-bundle",
-	"description": "Symfony 2 bundle for dzangocart",
-	"type": "symfony-bundle",
-	"keywords": ["dzangocart", "symfony", "bundle"],
-	"license": "MIT",
-	"require": {
-		"symfony/symfony": ">=2.1,<2.3-dev",
-		"dzangocart/client": "dev-develop"
-	},
-	"autoload": {
-		"psr-0": {
-			"Dzangocart\\Bundle\\DzangocartBundle": ""
-		}
-	},
-	"target-dir": "Dzangocart/Bundle/DzangocartBundle",
-	"extra": {
-		"branch-alias": {
-			"dev-master": "1.0.x-dev"
-		}
-	}
+    "name": "dzangocart/dzangocart-bundle",
+    "description": "Symfony 2 bundle for dzangocart",
+    "type": "symfony-bundle",
+    "keywords": ["dzangocart", "symfony", "bundle"],
+    "license": "MIT",
+    "require": {
+        "symfony/symfony": ">=2.1,<2.3-dev",
+        "dzangocart/client": "dev-develop",
+        "uam/datatables-bundle": "dev-master@dev"
+    },
+    "autoload": {
+        "psr-0": {
+            "Dzangocart\\Bundle\\DzangocartBundle": ""
+        }
+    },
+    "target-dir": "Dzangocart/Bundle/DzangocartBundle",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
 }
 

@@ -22,13 +22,20 @@ class DzangocartExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
         
-        $container->setParameter('dzangocart.url',          $config['url']);
+        $container->setParameter(
+            'dzangocart.config', 
+            $config
+        );
+
+
+/*        $container->setParameter('dzangocart.url',          $config['url']);
         $container->setParameter('dzangocart.secret_key',   $config['secret_key']);
         $container->setParameter('dzangocart.test_code',    $config['test_code']);
         
         $container->setParameter('dzangocart.add_to_cart.label',    $config['add_to_cart']['label']);
         $container->setParameter('dzangocart.add_to_cart.title',    $config['add_to_cart']['title']);
-        
+*/
+
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
     }

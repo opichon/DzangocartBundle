@@ -1,5 +1,67 @@
 {% extends "DzangocartBundle::layout.html.twig" %}
 
-{% block content %}
-Orders
+{% trans_default_domain "dzangocart" %}
+
+{% block dzangocart_page_title %}{% trans %}dzangocart.orders.page_title{% endtrans %}{% endblock %}
+{% block dzangocart_content %}
+<table class="table table-condensed">
+    <thead>
+        <tr>
+            <th class="check"><input type="checkbox" id="checkall" /></th>
+            <th class="date">{% trans %}dzangocart.orders.date{% endtrans %}</th>
+            <th class="order_no">{% trans %}dzangocart.orders.number{% endtrans %}</th>
+            <th class="customer">{% trans %}dzangocart.orders.customer{% endtrans %}</th>
+            <th class="currency">{% trans %}dzangocart.orders.currency{% endtrans %}</th>
+            <th class="net">{% trans %}dzangocart.orders.net{% endtrans %}</th>
+            <th class="tax">{% trans %}dzangocart.orders.tax{% endtrans %}</th>
+            <th class="gross">{% trans %}dzangocart.orders.gross{% endtrans %}</th>
+            <th class="amount_paid">{% trans %}dzangocart.orders.paid{% endtrans %}</th>
+            <th class="affiliate">{% trans %}dzangocart.orders.affiliate{% endtrans %}</th>
+            <th class="demo">{% trans %}dzangocart.orders.test{% endtrans %}</th>
+            <th class="actions">{% trans %}dzangocart.orders.actions{% endtrans %}</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+<pre>{{ config|json_encode }}</pre>
+<pre>{{ class }}</pre>
+<pre>{{ config2|json_encode }}</pre>
+<pre>{{ baseUrl }}</pre>
+<pre>{{ token }}</pre>
+<pre>{{ data }}</pre>
+{% endblock %}
+
+{% block head_style %}
+    {{ parent() }}
+    {% stylesheets filter="cssrewrite" output="css/*.css"
+        'bundles/uamdatatables/css/jquery.dataTables_bootstrap.css'
+        'bundles/porotcore/css/table.css'
+        'bundles/porotuser/css/useradmin.css'
+    %}
+        <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+    {% endstylesheets %}
+{% endblock head_style %}
+
+{% block head_script %}
+    {{ parent() }}
+    <script>
+    dzangocart.orders = {
+        dataTables: {
+            sAjaxSource: "{{ path('dzangocart_orders') }}"
+        }
+    };
+    </script>
+{% endblock head_script %}
+
+{% block foot_script %}
+    {{ parent() }}
+    {% javascripts
+        'bundles/porotcore/js/vendor/handlebars.js'
+        'bundles/uamdatatables/js/jquery.dataTables.min.js'
+        'bundles/uamdatatables/js/jquery.dataTables_bootstrap.js'
+        'bundles/dzangocart/js/scripts/orders.js'
+    %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endblock %}

@@ -1,0 +1,14 @@
+dzangocart:
+    orders:
+        page_title: Commandes
+        date:       Date
+        number:     n˚
+        customer:   Client
+        currency:   Dev
+        net:        HT
+        tax:        TVA
+        gross:      TTC
+        paid:       Payé
+        affiliate:  Affilié
+        test:       Demo
+        actions:    Actions

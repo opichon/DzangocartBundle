@@ -22,7 +22,11 @@ class Configuration implements ConfigurationInterface
         
         $rootNode
             ->children()
-                ->scalarNode('url')
+                ->scalarNode('base_url')
+                    ->isRequired()
+                    ->cannotBeEmpty()
+                ->end()
+                ->scalarNode('token')
                     ->isRequired()
                     ->cannotBeEmpty()
                 ->end()
