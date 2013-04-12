@@ -15,7 +15,7 @@
             <th class="net">{% trans %}dzangocart.orders.net{% endtrans %}</th>
             <th class="tax">{% trans %}dzangocart.orders.tax{% endtrans %}</th>
             <th class="gross">{% trans %}dzangocart.orders.gross{% endtrans %}</th>
-            <th class="amount_paid">{% trans %}dzangocart.orders.paid{% endtrans %}</th>
+            <th class="paid">{% trans %}dzangocart.orders.paid{% endtrans %}</th>
             <th class="affiliate">{% trans %}dzangocart.orders.affiliate{% endtrans %}</th>
             <th class="demo">{% trans %}dzangocart.orders.test{% endtrans %}</th>
             <th class="actions">{% trans %}dzangocart.orders.actions{% endtrans %}</th>
@@ -36,8 +36,7 @@
     {{ parent() }}
     {% stylesheets filter="cssrewrite" output="css/*.css"
         'bundles/uamdatatables/css/jquery.dataTables_bootstrap.css'
-        'bundles/porotcore/css/table.css'
-        'bundles/porotuser/css/useradmin.css'
+        'bundles/dzangocart/css/orders.css'
     %}
         <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
     {% endstylesheets %}

@@ -18,10 +18,10 @@
 				"4": "{{ order.getCurrency }}",
 				"5": "",
 				"6": "",
-				"7": "",
-				"8": "",
-				"9": "",
-				"10": "",
+				"7": "{{ order.getAmount }}",
+				"8": "{{ order.getAmountPaid }}",
+				"9": "{{ order.affiliate }}",
+				"10": "{{ order.isTest }}",
 				"11": ""
 			}{% if not loop.last %},{% endif %}
 		{% endfor %}
