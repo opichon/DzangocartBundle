@@ -1,0 +1,3 @@
+_dzangocart_sale:
+    resource: "@DzangocartBundle/Controller/SaleController.php"
+    type: annotation

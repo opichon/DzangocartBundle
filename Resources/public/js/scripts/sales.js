@@ -1,5 +1,5 @@
 (function($) {
-	$.fn.purchases = function(method) {
+	$.fn.sales = function(method) {
 
 		var settings,
 			table;
@@ -9,7 +9,7 @@
 		var methods = {
 			init: function(options) {
 
-				settings = $.extend(true, {}, this.purchases.defaults, options);
+				settings = $.extend(true, {}, this.sales.defaults, options);
 
 				return this.each(function() {
 					var $this = $(this);
@@ -30,16 +30,17 @@
 			return methods.init.apply(this, arguments);
 		}
 		else {
-			$.error('Method ' +  method + ' does not exist in jQuery.purchases.');
+			$.error('Method ' +  method + ' does not exist in jQuery.sales.');
 		}
 	};
 
-	$.fn.purchases.defaults = {
+	$.fn.sales.defaults = {
 		dataTables: {
 			aoColumnDefs: [
-				{ bSortable: false, aTargets: [0, 11] },
+				{ bSortable: false, aTargets: [0, 13] },
 				{ bVisible: false, aTargets: [0] },
-				{ sClass: 'actions', aTargets: [11] }
+				{ sClass: 'number', aTargets: [5, 7, 8, 9] },
+				{ sClass: 'actions', aTargets: [13] }
 			],
 			asStripeClasses: [],
 			bAutoWidth: false,
@@ -55,5 +56,5 @@
 })(jQuery);
 
 $(document).ready(function() {
-	$('.dzangocart.purchases').purchases(dzangocart.purchases);
+	$('.dzangocart.sales').sales(dzangocart.sales);
 });

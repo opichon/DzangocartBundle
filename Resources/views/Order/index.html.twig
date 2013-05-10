@@ -2,23 +2,26 @@
 
 {% trans_default_domain "dzangocart" %}
 
-{% block dzangocart_page_title %}{% trans %}dzangocart.purchases.page_title{% endtrans %}{% endblock %}
+{% block page_class %}{{ parent() }} orders{% endblock %}
+
+{% block dzangocart_page_title %}{% trans %}dzangocart.orders.page_title{% endtrans %}{% endblock %}
+
 {% block dzangocart_content %}
 <table class="table table-condensed">
     <thead>
         <tr>
             <th class="check"><input type="checkbox" id="checkall" /></th>
-            <th class="date">{% trans %}dzangocart.purchases.date{% endtrans %}</th>
-            <th class="order_no">{% trans %}dzangocart.purchases.number{% endtrans %}</th>
-            <th class="customer">{% trans %}dzangocart.purchases.customer{% endtrans %}</th>
-            <th class="currency">{% trans %}dzangocart.purchases.currency{% endtrans %}</th>
-            <th class="net">{% trans %}dzangocart.purchases.net{% endtrans %}</th>
-            <th class="tax">{% trans %}dzangocart.purchases.tax{% endtrans %}</th>
-            <th class="gross">{% trans %}dzangocart.purchases.gross{% endtrans %}</th>
-            <th class="paid">{% trans %}dzangocart.purchases.paid{% endtrans %}</th>
-            <th class="affiliate">{% trans %}dzangocart.purchases.affiliate{% endtrans %}</th>
-            <th class="demo">{% trans %}dzangocart.purchases.test{% endtrans %}</th>
-            <th class="actions">{% trans %}dzangocart.purchases.actions{% endtrans %}</th>
+            <th class="date">{% trans %}dzangocart.orders.date{% endtrans %}</th>
+            <th class="order_no">{% trans %}dzangocart.orders.number{% endtrans %}</th>
+            <th class="customer">{% trans %}dzangocart.orders.customer{% endtrans %}</th>
+            <th class="currency">{% trans %}dzangocart.orders.currency{% endtrans %}</th>
+            <th class="net">{% trans %}dzangocart.orders.net{% endtrans %}</th>
+            <th class="tax">{% trans %}dzangocart.orders.tax{% endtrans %}</th>
+            <th class="gross">{% trans %}dzangocart.orders.gross{% endtrans %}</th>
+            <th class="paid">{% trans %}dzangocart.orders.paid{% endtrans %}</th>
+            <th class="affiliate">{% trans %}dzangocart.orders.affiliate{% endtrans %}</th>
+            <th class="demo">{% trans %}dzangocart.orders.test{% endtrans %}</th>
+            <th class="actions">{% trans %}dzangocart.orders.actions{% endtrans %}</th>
         </tr>
     </thead>
     <tbody>
@@ -36,7 +39,8 @@
     {{ parent() }}
     {% stylesheets filter="cssrewrite" output="css/*.css"
         'bundles/uamdatatables/css/jquery.dataTables_bootstrap.css'
-        'bundles/dzangocart/css/purchases.css'
+        'bundles/dzangocart/css/dzangocart.css'
+        'bundles/dzangocart/css/orders.css'
     %}
         <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
     {% endstylesheets %}
@@ -45,9 +49,9 @@
 {% block head_script %}
     {{ parent() }}
     <script>
-    dzangocart.purchases = {
+    dzangocart.orders = {
         dataTables: {
-            sAjaxSource: "{{ path('dzangocart_purchases') }}"
+            sAjaxSource: "{{ path('dzangocart_orders') }}"
         }
     };
     </script>
@@ -59,7 +63,7 @@
         'bundles/porotcore/js/vendor/handlebars.js'
         'bundles/uamdatatables/js/jquery.dataTables.min.js'
         'bundles/uamdatatables/js/jquery.dataTables_bootstrap.js'
-        'bundles/dzangocart/js/scripts/purchases.js'
+        'bundles/dzangocart/js/scripts/orders.js'
     %}
         <script src="{{ asset_url }}"></script>
     {% endjavascripts %}

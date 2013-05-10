@@ -12,5 +12,14 @@ dzangocart:
         affiliate:  Affiliate
         test:       Demo
         actions:    Actions
-    purchases:
-        page_title: Purchases
+    sales:
+        currency:   Ccy
+        customer:   Customer
+        date:       Date
+        gross:      Gross
+        item:       Product/service
+        net:        Net
+        order_no:   Order
+        page_title: Sales
+        quantity:   Qty
+        tax:        Tax

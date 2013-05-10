@@ -2,40 +2,9 @@
     width: 8em;
 }
 
-.orders table.table th.order_no {
-    width: 4em;
-}
-
-.orders table.table th.client {
-
-}
-
-.orders table.table th.ccy {
-    width: 4em;
-}
-
-.orders table.table th.net {
-    width: 8em;
-}
-
-.orders table.table th.tax {
-    width: 5em;
-}
-
-.orders table.table th.gross {
-    width: 8em;
-}
 
 .orders table.table th.paid {
     width: 8em;
-}
-
-.orders table.table th.affiliate {
-    width: 4em;
-}
-
-.orders table.table th.demo {
-    width: 4em;
 }
 
 .orders table.table th.actions {

@@ -12,3 +12,18 @@ dzangocart:
         affiliate:  Affilié
         test:       Demo
         actions:    Actions
+    sales:
+        actions:    Actions
+        affiliate:  Affilié
+        currency:   Dev
+        customer:   Client
+        date:       Date
+        gross:      TTC
+        item:       Produit/service
+        net:        HT
+        order_no:   Comm.
+        page_title: Ventes
+        paid:       Payé
+        quantity:   Qté
+        tax:        TVA
+        test:       Demo

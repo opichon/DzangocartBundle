@@ -39,6 +39,7 @@
 			aoColumnDefs: [
 				{ bSortable: false, aTargets: [0, 11] },
 				{ bVisible: false, aTargets: [0] },
+				{ sClass: 'number', aTargets: [5, 6, 7, 8] },
 				{ sClass: 'actions', aTargets: [11] }
 			],
 			asStripeClasses: [],
