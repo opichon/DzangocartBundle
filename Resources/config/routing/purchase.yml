@@ -1,0 +1,3 @@
+_dzangocart_purchase:
+    resource: "@DzangocartBundle/Controller/PurchaseController.php"
+    type: annotation

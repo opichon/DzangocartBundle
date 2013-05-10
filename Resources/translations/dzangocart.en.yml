@@ -12,3 +12,5 @@ dzangocart:
         affiliate:  Affiliate
         test:       Demo
         actions:    Actions
+    purchases:
+        page_title: Purchases
