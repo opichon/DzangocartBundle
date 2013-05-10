@@ -1,3 +1,9 @@
+.dzangocart table.table th,
+.dzangocart table.table td {
+    border-top: none;
+    border-bottom: 1px solid #ddd;
+}
+
 .dzangocart table.table th.date {
     width: 8em;
 }
