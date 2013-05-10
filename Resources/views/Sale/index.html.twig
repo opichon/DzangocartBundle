@@ -29,13 +29,11 @@
     <tbody>
     </tbody>
 </table>
-<pre>{{ data }}</pre>
 {% endblock %}
 
 {% block head_style %}
     {{ parent() }}
     {% stylesheets filter="cssrewrite" output="css/*.css"
-        'bundles/uamdatatables/css/jquery.dataTables_bootstrap.css'
         'bundles/dzangocart/css/dzangocart.css'
         'bundles/dzangocart/css/sales.css'
     %}

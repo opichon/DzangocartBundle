@@ -21,14 +21,6 @@ class OrderController extends Controller
      */
     public function indexAction(Request $request)
     {
-
-        $client = $this->get('dzangocart');
-        $command = $client
-            ->getCommand('getOrders');
-
-        $data = $this->get('dzangocart')
-            ->getOrders();
-
         if ($request->isXmlHttpRequest() || $request->getRequestFormat() == 'json') {
             $data = $this->get('dzangocart')
                 ->getOrders(array(
@@ -40,12 +32,10 @@ class OrderController extends Controller
 
             return new Response($view, 200, array('Content-Type' => 'application/json'));
         } else {
+            $data = $this->get('dzangocart')
+                ->getOrders();
+
             return array(
-                'config' => $this->container->getParameter('dzangocart.config'),
-                'class' => get_class($command),
-                'config2' => $client->getConfig()->toArray(),
-                'token' => $command->getClient()->getConfig('token'),
-                'baseUrl' => $client->getBaseUrl(),
                 'data' => print_r($data, true)
             );
 
