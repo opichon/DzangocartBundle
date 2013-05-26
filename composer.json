@@ -13,7 +13,7 @@
     "require": {
         "symfony/symfony": ">=2.1,<2.3-dev",
         "dzangocart/client": "0.1.*",
-        "uam/datatables-bundle": "1.0.*"
+        "uam/datatables-bundle": "*"
     },
     "autoload": {
         "psr-0": {
