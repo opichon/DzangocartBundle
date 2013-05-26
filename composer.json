@@ -1,13 +1,19 @@
 {
     "name": "dzangocart/dzangocart-bundle",
     "description": "Symfony 2 bundle for dzangocart",
+    "authors": [
+        {
+            "name": "Olivier Pichon",
+            "email": "ofpichon@gmail.com"
+        }
+    ],
     "type": "symfony-bundle",
     "keywords": ["dzangocart", "symfony", "bundle"],
     "license": "MIT",
     "require": {
         "symfony/symfony": ">=2.1,<2.3-dev",
-        "dzangocart/client": "0.1.*@dev",
-        "uam/datatables-bundle": "dev-master@dev"
+        "dzangocart/client": "0.1.*",
+        "uam/datatables-bundle": "1.0.*"
     },
     "autoload": {
         "psr-0": {
