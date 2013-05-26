@@ -12,7 +12,7 @@
     "license": "MIT",
     "require": {
         "symfony/symfony": ">=2.1,<2.3-dev",
-        "dzangocart/client": "0.1.*",
+        "dzangocart/client": "0.1.*@dev",
         "uam/datatables-bundle": "*"
     },
     "autoload": {
@@ -23,7 +23,7 @@
     "target-dir": "Dzangocart/Bundle/DzangocartBundle",
     "extra": {
         "branch-alias": {
-            "dev-master": "0.1.x-dev"
+            "dev-master": "0.2.x-dev"
         }
     }
 }
