@@ -31,7 +31,8 @@ class OrderController extends Controller
             $view = $this->renderView('DzangocartBundle:Order:index.json.twig', $data);
 
             return new Response($view, 200, array('Content-Type' => 'application/json'));
-        } else {
+        }
+        else {
             $data = $this->get('dzangocart')
                 ->getOrders();
 

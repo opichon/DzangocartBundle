@@ -3,7 +3,7 @@ services:
         class:          Dzangocart\Client\DzangocartClient
         factory_class:  Dzangocart\Client\DzangocartClient
         factory_method: factory
-        arguments:     ["%dzangocart.config%"]
+        arguments:      ["%dzangocart.config%"]
 
 #    dzangocart2:
 #        class: Dzangocart\Bundle\DzangocartBundle\Service\Dzangocart
