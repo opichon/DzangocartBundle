@@ -20,11 +20,6 @@
             "Dzangocart\\Bundle\\DzangocartBundle": ""
         }
     },
-    "target-dir": "Dzangocart/Bundle/DzangocartBundle",
-    "extra": {
-        "branch-alias": {
-            "dev-master": "0.1.x-dev"
-        }
-    }
+    "target-dir": "Dzangocart/Bundle/DzangocartBundle"
 }
 
