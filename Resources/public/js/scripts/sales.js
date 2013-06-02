@@ -12,14 +12,46 @@
 				return this.each(function() {
 					var $this = $( this );
 
-					table = $('table.table', this).dataTable( $.extend( true, {}, settings.dataTables, {
+					table = $( "table.table", this ).dataTable( $.extend( true, {}, settings.dataTables, {
+						fnDrawCallback: function() {
+							$( this ).show();
+						},
+ 						fnServerParams: function( data ) {
+							$( ".filters :checkbox", $this ).each(function() {
+								data.push({
+									name: $( this ).attr( "name" ),
+									value: $( this ).is( ":checked" ) ? 1 : 0
+								});
+							});
+
+							$( ".filters .date input", $this ).each(function() {
+								data.push({
+									name: $( this ).attr( "name" ),
+									value: $( this ).val()
+								});
+							});
+						},
+						fnStateLoadParams: function( oSettings, oData ) {
+							$( ".filters :checkbox" ).each(function() {
+								$( this ).attr( "checked", oData[ $( this ).attr( "name" ) ] );
+							});							
+						},
+						fnStateSaveParams: function( oSettings, oData ) {
+							$( ".filters :checkbox" ).each(function() {
+								oData[ $( this ).attr( "name" ) ] = $( this ).is( ":checked" );
+							});
+						}
 					} ) );
+
+					$( ".filters input", $this ).change(function() {
+						table.fnDraw();
+					});
 				});
 			}
 		};
 
 		if ( methods[ method ] ) {
-			return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ));
+			return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ) );
 		}
 		else if ( typeof method === "object" || !method ) {
 			return methods.init.apply( this, arguments );
@@ -51,5 +83,7 @@
 } ( window.jQuery );
 
 $( document ).ready(function() {
-	$( ".dzangocart.sales" ).sales( dzangocart.sales );
+	if ( typeof dzangocart != 'undefined' ) {
+		$( ".dzangocart.sales" ).sales( dzangocart.sales );
+	}
 });

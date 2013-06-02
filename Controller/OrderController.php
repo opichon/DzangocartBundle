@@ -53,9 +53,7 @@ class OrderController extends Controller
                 'form' => $form->createView(),
                 'config' => $dzangocart_config
             );
-
         }
-
     }
 
     protected function getFilters(ParameterBag $query)

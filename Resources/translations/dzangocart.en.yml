@@ -21,6 +21,11 @@ dzangocart:
         currency:       Ccy
         customer:       Customer
         date:           Date
+        filters:
+            date_from:  From
+            date_to:    To
+            period:     Period
+            test:       Include test orders
         gross:          Gross
         item:           Product/service
         net:            Net

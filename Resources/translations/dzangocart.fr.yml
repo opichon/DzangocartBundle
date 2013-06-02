@@ -23,6 +23,11 @@ dzangocart:
         currency:       Dev.
         customer:       Client
         date:           Date
+        filters:
+            date_from:  Du
+            date_to:    Au
+            period:     Période
+            test:       Inclure les commandes de démonstration
         gross:          TTC
         item:           Produit/service
         net:            HT
