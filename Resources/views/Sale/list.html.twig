@@ -1,0 +1,29 @@
+{% trans_default_domain "dzangocart" %}
+
+<div class="dzangocart sales">
+	{% block filters %}
+	{% include "DzangocartBundle:Sale:filters.html.twig" with { form: form } %}
+	{% endblock %}
+	<table class="table table-condensed">
+		<thead>
+			<tr>
+				<th class="check"><input type="checkbox" id="checkall" /></th>
+				<th class="datetime">{% trans %}dzangocart.sales.date{% endtrans %}</th>
+				<th class="order_no">{% trans %}dzangocart.sales.order_no{% endtrans %}</th>
+				<th class="customer">{% trans %}dzangocart.sales.customer{% endtrans %}</th>
+				<th class="item">{% trans %}dzangocart.sales.item{% endtrans %}</th>
+				<th class="quantity">{% trans %}dzangocart.sales.quantity{% endtrans %}</th>
+				<th class="currency">{% trans %}dzangocart.sales.currency{% endtrans %}</th>
+				<th class="net">{% trans %}dzangocart.sales.net{% endtrans %}</th>
+				<th class="tax">{% trans %}dzangocart.sales.tax{% endtrans %}</th>
+				<th class="gross">{% trans %}dzangocart.sales.gross{% endtrans %}</th>
+				<th class="paid">{% trans %}dzangocart.sales.paid{% endtrans %}</th>
+				<th class="affiliate">{% trans %}dzangocart.sales.affiliate{% endtrans %}</th>
+				<th class="demo">{% trans %}dzangocart.sales.test{% endtrans %}</th>
+				<th class="actions">{% trans %}dzangocart.sales.actions{% endtrans %}</th>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+</div>
