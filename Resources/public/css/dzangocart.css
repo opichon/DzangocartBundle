@@ -1,3 +1,7 @@
+.dzangocart table.table {
+    display: none;
+}
+
 .dzangocart table.table th,
 .dzangocart table.table td {
     border-top: none;
@@ -39,4 +43,22 @@
 .dzangocart table.table td.number {
     text-align: right;
     padding-right: 5px;
+}
+
+
+.dzangocart .filters .control-group {
+    margin-bottom: 0;
+}
+
+.dzangocart .filters .control-group label {
+    margin-bottom: 0;
+}
+
+.dzangocart .filters .date {
+    float: left;
+    margin-right: 0.5em;
+}
+
+.dzangocart .filters .test {
+    clear: both;
 }
