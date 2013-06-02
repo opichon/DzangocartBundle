@@ -47,7 +47,7 @@ class OrderFilterType extends AbstractType
             )
         ));
 
-        $builder->add('include_test_orders', 'checkbox', array(
+        $builder->add('test', 'checkbox', array(
             'label' => 'dzangocart.orders.filters.test',
             'label_render' => true,
             'widget_checkbox_label' => 'widget',

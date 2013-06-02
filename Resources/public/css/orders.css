@@ -1,4 +1,4 @@
-.groups table.table {
+.orders table.table {
     display: none;
 }
 
@@ -6,6 +6,9 @@
     width: 8em;
 }
 
+.orders table.table th.currency {
+    width: 3em;
+}
 
 .orders table.table th.paid {
     width: 8em;

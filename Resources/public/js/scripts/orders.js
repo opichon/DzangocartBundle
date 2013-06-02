@@ -7,7 +7,7 @@
 		var methods = {
 			init: function( options ) {
 
-				settings = $.extend( true, {}, this.orders.defaults, options) ;
+				settings = $.extend( true, {}, this.orders.defaults, options );
 
 				return this.each(function() {
 					var $this = $( this );
@@ -43,12 +43,9 @@
 						}
 					} ) );
 
-					$( ".filters input" ).change(function() {
+					$( ".filters input", $this ).change(function() {
 						table.fnDraw();
 					});
-
-					$( "input.period" ).daterangepicker();
-
 				});
 			}
 		};
@@ -87,5 +84,7 @@
 } ( window.jQuery );
 
 $( document ).ready(function() {
-	$( ".dzangocart.orders" ).orders( dzangocart.orders );
+	if ( typeof dzangocart != 'undefined' ) {
+		$( ".dzangocart.orders" ).orders( dzangocart.orders || {} );
+	}
 });

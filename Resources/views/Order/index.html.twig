@@ -2,38 +2,12 @@
 
 {% trans_default_domain "dzangocart" %}
 
-{% block page_class %}{{ parent() }} orders{% endblock %}
+{% block page_class %}{% endblock %}
 
 {% block dzangocart_page_title %}{% trans %}dzangocart.orders.page_title{% endtrans %}{% endblock %}
 
 {% block dzangocart_content %}
-{% block filters %}
-<div class="filters clearfix">
-    <form action="#" method="post" class="form">
-        {{ form_widget(form) }}
-    </form>
-</div>
-{% endblock %}
-<table class="table table-condensed">
-    <thead>
-        <tr>
-            <th class="check"><input type="checkbox" id="checkall" /></th>
-            <th class="date">{% trans %}dzangocart.orders.date{% endtrans %}</th>
-            <th class="order_no">{% trans %}dzangocart.orders.number{% endtrans %}</th>
-            <th class="customer">{% trans %}dzangocart.orders.customer{% endtrans %}</th>
-            <th class="currency">{% trans %}dzangocart.orders.currency{% endtrans %}</th>
-            <th class="net">{% trans %}dzangocart.orders.net{% endtrans %}</th>
-            <th class="tax">{% trans %}dzangocart.orders.tax{% endtrans %}</th>
-            <th class="gross">{% trans %}dzangocart.orders.gross{% endtrans %}</th>
-            <th class="paid">{% trans %}dzangocart.orders.paid{% endtrans %}</th>
-            <th class="affiliate">{% trans %}dzangocart.orders.affiliate{% endtrans %}</th>
-            <th class="demo">{% trans %}dzangocart.orders.test{% endtrans %}</th>
-            <th class="actions">{% trans %}dzangocart.orders.actions{% endtrans %}</th>
-        </tr>
-    </thead>
-    <tbody>
-    </tbody>
-</table>
+{% include "DzangocartBundle:Order:list.html.twig" %}
 {% endblock %}
 
 {% block head_style %}
@@ -41,7 +15,6 @@
     {% stylesheets filter="cssrewrite" output="css/*.css"
         'bundles/uamdatatables/css/jquery.dataTables_bootstrap.css'
         'bundles/dzangocart/css/dzangocart.css'
-        'bundles/dzangocart/js/vendor/bootstrap-daterangepicker/daterangepicker.css'
         'bundles/dzangocart/css/orders.css'
     %}
         <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
@@ -53,8 +26,6 @@
     {% javascripts
         'bundles/uamdatatables/js/jquery.dataTables.min.js'
         'bundles/uamdatatables/js/jquery.dataTables_bootstrap.js'
-        'bundles/dzangocart/js/vendor/bootstrap-daterangepicker/moment.js'
-        'bundles/dzangocart/js/vendor/bootstrap-daterangepicker/daterangepicker.js'
         'bundles/dzangocart/js/scripts/orders.js'
     %}
         <script src="{{ asset_url }}"></script>
