@@ -1,18 +1,18 @@
-(function($) {
-	$.fn.orders = function(method) {
+!function( $ ) {
+	$.fn.orders = function( method ) {
 
 		var settings,
 			table;
 
 		var methods = {
-			init: function(options) {
+			init: function( options ) {
 
-				settings = $.extend(true, {}, this.orders.defaults, options);
+				settings = $.extend( true, {}, this.orders.defaults, options) ;
 
 				return this.each(function() {
-					var $this = $(this);
+					var $this = $( this );
 
-					table = $('table.table', this).dataTable($.extend(true, {}, settings.dataTables, {
+					table = $( 'table.table', this ).dataTable( $.extend( true, {}, settings.dataTables, {
 						fnDrawCallback: function() {
 							$( this ).show();
 						},
@@ -41,7 +41,7 @@
 								oData[ $( this ).attr( "name" ) ] = $( this ).is( ":checked" );
 							});
 						}
-					}));
+					} ) );
 
 					$( ".filters input" ).change(function() {
 						table.fnDraw();
@@ -53,24 +53,25 @@
 			}
 		};
 
-		if (methods[method]) {
-			return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
+		if ( methods[ method ] ) {
+			return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ) );
 		}
-		else if (typeof method === 'object' || !method) {
-			return methods.init.apply(this, arguments);
+		else if ( typeof method === "object" || !method)  {
+			return methods.init.apply( this, arguments );
 		}
 		else {
-			$.error('Method ' +  method + ' does not exist in jQuery.orders.');
+			$.error( "Method " +  method + " does not exist in jQuery.orders." );
 		}
 	};
 
 	$.fn.orders.defaults = {
 		dataTables: {
+			aaSorting: [ [ 1, 'asc' ] ],
 			aoColumnDefs: [
-				{ bSortable: false, aTargets: [0, 11] },
-				{ bVisible: false, aTargets: [0] },
-				{ sClass: 'number', aTargets: [5, 6, 7, 8] },
-				{ sClass: 'actions', aTargets: [11] }
+				{ bSortable: false, aTargets: [ 0, 11 ] },
+				{ bVisible: false, aTargets: [ 0 ] },
+				{ sClass: "number", aTargets: [ 5, 6, 7, 8 ] },
+				{ sClass: "actions", aTargets: [ 11 ] }
 			],
 			asStripeClasses: [],
 			bAutoWidth: false,
@@ -79,12 +80,12 @@
 			bServerSide: true,
 			bSortable: true,
 			oLanguage: {
-				sUrl: '/bundles/uamdatatables/lang/' + porot.lang + '.txt'
+				sUrl: "/bundles/uamdatatables/lang/" + porot.lang + ".txt"
 			}
 		}
 	};
-})(jQuery);
+} ( window.jQuery );
 
-$(document).ready(function() {
-	$('.dzangocart.orders').orders(dzangocart.orders);
+$( document ).ready(function() {
+	$( ".dzangocart.orders" ).orders( dzangocart.orders );
 });

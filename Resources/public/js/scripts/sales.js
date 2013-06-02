@@ -1,46 +1,41 @@
-(function($) {
-	$.fn.sales = function(method) {
+!function($) {
+	$.fn.sales = function( method ) {
 
 		var settings,
 			table;
-//		var source = $('#actions-template').html().replace(/_id_/, '{{id}}');
-//		var template = Handlebars.compile(source);
 
 		var methods = {
-			init: function(options) {
+			init: function( options ) {
 
-				settings = $.extend(true, {}, this.sales.defaults, options);
+				settings = $.extend( true, {}, this.sales.defaults, options );
 
 				return this.each(function() {
-					var $this = $(this);
+					var $this = $( this );
 
-					table = $('table.table', this).dataTable($.extend(true, {}, settings.dataTables, {
-//						fnCreatedRow: function(row, data, index) {
-//							$('td.actions', row).html(template(data));
-//						}
-					}));
+					table = $('table.table', this).dataTable( $.extend( true, {}, settings.dataTables, {
+					} ) );
 				});
 			}
 		};
 
-		if (methods[method]) {
-			return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
+		if ( methods[ method ] ) {
+			return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ));
 		}
-		else if (typeof method === 'object' || !method) {
-			return methods.init.apply(this, arguments);
+		else if ( typeof method === "object" || !method ) {
+			return methods.init.apply( this, arguments );
 		}
 		else {
-			$.error('Method ' +  method + ' does not exist in jQuery.sales.');
+			$.error( "Method " +  method + " does not exist in jQuery.sales." );
 		}
 	};
 
 	$.fn.sales.defaults = {
 		dataTables: {
 			aoColumnDefs: [
-				{ bSortable: false, aTargets: [0, 13] },
-				{ bVisible: false, aTargets: [0] },
-				{ sClass: 'number', aTargets: [5, 7, 8, 9] },
-				{ sClass: 'actions', aTargets: [13] }
+				{ bSortable: false, aTargets: [ 0, 13 ] },
+				{ bVisible: false, aTargets: [ 0 ] },
+				{ sClass: "number", aTargets: [ 5, 7, 8, 9 ] },
+				{ sClass: "actions", aTargets: [ 13 ] }
 			],
 			asStripeClasses: [],
 			bAutoWidth: false,
@@ -49,12 +44,12 @@
 			bServerSide: true,
 			bSortable: true,
 			oLanguage: {
-				sUrl: '/bundles/uamdatatables/lang/' + porot.lang + '.txt'
+				sUrl: "/bundles/uamdatatables/lang/" + porot.lang + ".txt"
 			}
 		}
 	};
-})(jQuery);
+} ( window.jQuery );
 
-$(document).ready(function() {
-	$('.dzangocart.sales').sales(dzangocart.sales);
+$( document ).ready(function() {
+	$( ".dzangocart.sales" ).sales( dzangocart.sales );
 });

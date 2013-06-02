@@ -41,8 +41,6 @@ class OrderController extends Controller
             return new Response($view, 200, array('Content-Type' => 'application/json'));
         }
         else {
-            $dzangocart_config = $this->container->getParameter('dzangocart.config');
-
             $form = $this->createForm(
                 new OrderFilterType(array(
                     'date_format' => $dzangocart_config['date_format']
