@@ -1,4 +1,4 @@
-!function($) {
+!function( $ ) {
 	$.fn.sales = function( method ) {
 
 		var settings,
