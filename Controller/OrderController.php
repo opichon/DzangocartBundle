@@ -92,8 +92,17 @@ class OrderController extends Controller
             $index = $query->get('iSortCol_' . $i);
 
             if (array_key_exists($index, $columns)) {
-                $sort_by[] = $columns[$index];
-                $sort_by[] = $query->get('sSortDir_' . $i, 'asc');
+                
+                $column = $columns[$index];
+                
+                if (!is_array($column)) {
+                    $column = array($column);
+                }
+
+                foreach ($column as $c) {
+                    $sort_by[] = $c;
+                    $sort_by[] = $query->get('sSortDir_' . $i, 'asc');
+                }
             }
         }
 
