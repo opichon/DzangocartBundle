@@ -1,25 +1,30 @@
 dzangocart:
     orders:
-        page_title: Orders
-        date:       Date
-        number:     '#'
-        customer:   Customer
-        currency:   Ccy
-        net:        Net
-        tax:        Tax
-        gross:      Gross
-        paid:       Paid
-        affiliate:  Affiliate
-        test:       Demo
-        actions:    Actions
+        actions:        Actions
+        affiliate:      Affiliate
+        customer:       Customer
+        currency:       Ccy
+        date:           Date
+        filters:
+            date_from:  From
+            date_to:    To
+            period:     Period
+            test:       Include test orders
+        gross:          Gross
+        net:            Net
+        number:         '#'
+        page_title:     Orders
+        paid:           Paid
+        tax:            Tax
+        test:           Demo
     sales:
-        currency:   Ccy
-        customer:   Customer
-        date:       Date
-        gross:      Gross
-        item:       Product/service
-        net:        Net
-        order_no:   Order
-        page_title: Sales
-        quantity:   Qty
-        tax:        Tax
+        currency:       Ccy
+        customer:       Customer
+        date:           Date
+        gross:          Gross
+        item:           Product/service
+        net:            Net
+        order_no:       Order
+        page_title:     Sales
+        quantity:       Qty
+        tax:            Tax

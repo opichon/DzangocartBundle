@@ -1,29 +1,34 @@
 dzangocart:
     orders:
-        page_title: Commandes
-        date:       Date
-        number:     n˚
-        customer:   Client
-        currency:   Dev
-        net:        HT
-        tax:        TVA
-        gross:      TTC
-        paid:       Payé
-        affiliate:  Affilié
-        test:       Demo
-        actions:    Actions
+        actions:        Actions
+        affiliate:      Affilié
+        currency:       Dev.
+        customer:       Client
+        date:           Date
+        gross:          TTC
+        filters:
+            date_from:  Du
+            date_to:    Au
+            period:     Période
+            test:       Inclure les commandes de démonstration
+        net:            HT
+        number:         n˚
+        page_title:     Commandes
+        paid:           Payé
+        tax:            TVA
+        test:           Demo
     sales:
-        actions:    Actions
-        affiliate:  Affilié
-        currency:   Dev
-        customer:   Client
-        date:       Date
-        gross:      TTC
-        item:       Produit/service
-        net:        HT
-        order_no:   Comm.
-        page_title: Ventes
-        paid:       Payé
-        quantity:   Qté
-        tax:        TVA
-        test:       Demo
+        actions:        Actions
+        affiliate:      Affilié
+        currency:       Dev.
+        customer:       Client
+        date:           Date
+        gross:          TTC
+        item:           Produit/service
+        net:            HT
+        order_no:       Comm.
+        page_title:     Ventes
+        paid:           Payé
+        quantity:       Qté
+        tax:            TVA
+        test:           Demo

@@ -3,8 +3,6 @@
 
 		var settings,
 			table;
-//		var source = $('#actions-template').html().replace(/_id_/, '{{id}}');
-//		var template = Handlebars.compile(source);
 
 		var methods = {
 			init: function(options) {
@@ -15,10 +13,42 @@
 					var $this = $(this);
 
 					table = $('table.table', this).dataTable($.extend(true, {}, settings.dataTables, {
-//						fnCreatedRow: function(row, data, index) {
-//							$('td.actions', row).html(template(data));
-//						}
+						fnDrawCallback: function() {
+							$( this ).show();
+						},
+ 						fnServerParams: function( data ) {
+							$( ".filters :checkbox", $this ).each(function() {
+								data.push({
+									name: $( this ).attr( "name" ),
+									value: $( this ).is( ":checked" ) ? 1 : 0
+								});
+							});
+
+							$( ".filters .date input", $this ).each(function() {
+								data.push({
+									name: $( this ).attr( "name" ),
+									value: $( this ).val()
+								});
+							});
+						},
+						fnStateLoadParams: function( oSettings, oData ) {
+							$( ".filters :checkbox" ).each(function() {
+								$( this ).attr( "checked", oData[ $( this ).attr( "name" ) ] );
+							});							
+						},
+						fnStateSaveParams: function( oSettings, oData ) {
+							$( ".filters :checkbox" ).each(function() {
+								oData[ $( this ).attr( "name" ) ] = $( this ).is( ":checked" );
+							});
+						}
 					}));
+
+					$( ".filters input" ).change(function() {
+						table.fnDraw();
+					});
+
+					$( "input.period" ).daterangepicker();
+
 				});
 			}
 		};

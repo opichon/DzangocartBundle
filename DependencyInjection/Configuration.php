@@ -48,6 +48,12 @@ class Configuration implements ConfigurationInterface
                         ->end()
                     ->end()
                 ->end()
+                ->scalarNode('date_format')
+                    ->defaultValue('dd/MM/yyyy')
+                ->end()
+                ->scalarNode('datetime_format')
+                    ->defaultValue('dd/MM/yyyy HH:mm')
+                ->end()
             ->end();
 
         return $treeBuilder;

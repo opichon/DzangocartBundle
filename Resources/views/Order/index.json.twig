@@ -8,11 +8,11 @@
 	"aaData" : [
 		{% for order in list %}
 			{
-				"DT_RowId": "{{ 'u_' ~ order.getOrderId }}",
-				"DT_RowClass": "{{ 'user' }}",
+				"DT_RowId": "{{ 'o_' ~ order.getOrderId }}",
+				"DT_RowClass": "{{ order.isTest ? 'test' : '' }}",
 				"id": {{ order.getOrderId }},
 				"0": "",
-				"1": "{{ order.getDate|localizeddate('medium', 'short', app.request.locale, null, 'dd.MM.yyyy HH:mm') }}",
+				"1": "{{ order.getDate|localizeddate('medium', 'short', app.request.locale, null, datetime_format) }}",
 				"2": "{{ order.getOrderId }}",
 				"3": "{{ order.getCustomer.getName }}",
 				"4": "{{ order.getCurrency }}",

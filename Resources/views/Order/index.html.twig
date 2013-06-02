@@ -7,6 +7,13 @@
 {% block dzangocart_page_title %}{% trans %}dzangocart.orders.page_title{% endtrans %}{% endblock %}
 
 {% block dzangocart_content %}
+{% block filters %}
+<div class="filters clearfix">
+    <form action="#" method="post" class="form">
+        {{ form_widget(form) }}
+    </form>
+</div>
+{% endblock %}
 <table class="table table-condensed">
     <thead>
         <tr>
@@ -34,14 +41,24 @@
     {% stylesheets filter="cssrewrite" output="css/*.css"
         'bundles/uamdatatables/css/jquery.dataTables_bootstrap.css'
         'bundles/dzangocart/css/dzangocart.css'
+        'bundles/dzangocart/js/vendor/bootstrap-daterangepicker/daterangepicker.css'
         'bundles/dzangocart/css/orders.css'
     %}
         <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
     {% endstylesheets %}
 {% endblock head_style %}
 
-{% block head_script %}
+{% block foot_script %}
     {{ parent() }}
+    {% javascripts
+        'bundles/uamdatatables/js/jquery.dataTables.min.js'
+        'bundles/uamdatatables/js/jquery.dataTables_bootstrap.js'
+        'bundles/dzangocart/js/vendor/bootstrap-daterangepicker/moment.js'
+        'bundles/dzangocart/js/vendor/bootstrap-daterangepicker/daterangepicker.js'
+        'bundles/dzangocart/js/scripts/orders.js'
+    %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
     <script>
     dzangocart.orders = {
         dataTables: {
@@ -49,16 +66,4 @@
         }
     };
     </script>
-{% endblock head_script %}
-
-{% block foot_script %}
-    {{ parent() }}
-    {% javascripts
-        'bundles/porotcore/js/vendor/handlebars.js'
-        'bundles/uamdatatables/js/jquery.dataTables.min.js'
-        'bundles/uamdatatables/js/jquery.dataTables_bootstrap.js'
-        'bundles/dzangocart/js/scripts/orders.js'
-    %}
-        <script src="{{ asset_url }}"></script>
-    {% endjavascripts %}
 {% endblock %}

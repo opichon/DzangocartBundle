@@ -1,3 +1,7 @@
+.groups table.table {
+    display: none;
+}
+
 .orders table.table th.date {
     width: 8em;
 }
@@ -9,4 +13,21 @@
 
 .orders table.table th.actions {
     width: 5em;
+}
+
+.filters .control-group {
+    margin-bottom: 0;
+}
+
+.filters .control-group label {
+    margin-bottom: 0;
+}
+
+.filters .date {
+    float: left;
+    margin-right: 0.5em;
+}
+
+.filters .test {
+    clear: both;
 }
