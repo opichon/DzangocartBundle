@@ -124,14 +124,15 @@ class SaleController extends Controller
     {
         return array(
             1 => 'cart.DATE',
-            2 => 'cart.ID',
+            2 => 'item.ORDER_ID',
             3 => array('user_profile.SURNAME', 'user_profile.GIVEN_NAMES'),
-            4 => 'cart.CURRENCY_ID',
-            5 => 'cart.AMOUNT_EXCL',
-            6 => 'cart.TAX_AMOUNT',
-            7 => 'cart.AMOUNT_INCL',
-            9 => 'cart.AFFILIATE_ID',
-            10 => 'cart.TEST'
+            4 => 'item.NAME',
+            6 => 'cart.CURRENCY_ID',
+            7 => 'item.AMOUNT_EXCL',
+            8 => 'item.TAX_AMOUNT',
+            9 => 'item.AMOUNT_INCL',
+            11 => 'cart.AFFILIATE_ID',
+            11 => 'cart.TEST'
         );
     }
 }

@@ -64,7 +64,7 @@
 	$.fn.sales.defaults = {
 		dataTables: {
 			aoColumnDefs: [
-				{ bSortable: false, aTargets: [ 0, 13 ] },
+				{ bSortable: false, aTargets: [ 0, 5, 10, 13 ] },
 				{ bVisible: false, aTargets: [ 0 ] },
 				{ sClass: "number", aTargets: [ 5, 7, 8, 9 ] },
 				{ sClass: "actions", aTargets: [ 13 ] }
