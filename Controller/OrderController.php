@@ -56,6 +56,24 @@ class OrderController extends Controller
         }
     }
 
+    /**
+     * @Route("/{id}", name="dzangocart_order")
+     * @Template()
+     */
+    public function showAction(Request $request, $id)
+    {
+        $params = array(
+            'id' => $id
+        );
+
+        $order = $this->get('dzangocart')
+            ->getOrder($params);
+
+        return array(
+            'order' => $order
+        );
+    }
+
     protected function getFilters(ParameterBag $query)
     {
         $filters = array();

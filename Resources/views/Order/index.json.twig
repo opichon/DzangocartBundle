@@ -22,7 +22,7 @@
 				"8": "{{ order.getAmountPaid|currency(order.getCurrency, app.request.locale) }}",
 				"9": "{{ order.affiliate }}",
 				"10": "{{ order.isTest }}",
-				"11": ""
+				"11": "{% include 'DzangocartBundle:Order:actions.html.twig' %}"
 			}{% if not loop.last %},{% endif %}
 		{% endfor %}
 	]
