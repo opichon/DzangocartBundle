@@ -1,1 +1,32 @@
-{{ order|json_encode }}
+<div class="customer">
+    <div>{{ order.customer.salutation }} {{ order.customer.given_names }} {{ order.customer.surname }}</div?
+    <div></div>
+</div>
+
+<table class="table items">
+    <thead>
+
+    </thead>    
+    <tbody>
+        {% for item in order.items %}
+            <tr>
+                <td>
+                    {{ loop.index }}
+                </td>
+                <td>
+                    {{ item.name }}
+                </td>
+                <td>
+                    {{ item.quantity }}
+                </td>
+                <td>
+                    {{ item.price_excl }}
+                </td>
+                <td>
+                    {{ item.amount_excl }}
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<pre>{{ data }}</pre>

@@ -70,7 +70,8 @@ class OrderController extends Controller
             ->getOrder($params);
 
         return array(
-            'order' => $order
+            'order' => $order,
+            'data' => print_r($order, true)
         );
     }
 
