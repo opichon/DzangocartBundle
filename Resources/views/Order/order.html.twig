@@ -1,32 +1,55 @@
-<div class="customer">
-    <div>{{ order.customer.salutation }} {{ order.customer.given_names }} {{ order.customer.surname }}</div?
-    <div></div>
+{% trans_default_domain "dzangocart" %}
+
+<div class="order">
+	<div class="customer">
+		<address>
+			<strong>{{ order.customer.name }}</strong><br />
+			{% if order.customer.corporate %}
+				<strong>{{ order.customer.company }}</strong><br/>
+			{% endif %}
+			{{ order.customer.billingAddress.format|nl2br }}
+		</address>
+	</div>
+	<table class="table items">
+		<thead>
+			<tr>
+				<th class="rank">{% trans %}dzangocart.order.items.rank{% endtrans %}</th>
+				<th class="description">{% trans %}dzangocart.order.items.description{% endtrans %}</th>
+				<th class="quantity">{% trans %}dzangocart.order.items.quantity{% endtrans %}</th>
+				<th class="price">{% trans %}dzangocart.order.items.price_excl{% endtrans %}</th>
+				<th class="amount">{% trans %}dzangocart.order.items.amount_excl{% endtrans %}</th>
+			</tr>
+		</thead>
+		<tfoot>
+			<tr>
+				<th colspan="4">{% trans %}dzangocart.order.amount_excl{% endtrans %}</th>
+				<td class="amount">{{ order.amountExcl|currency(order.getCurrency, app.request.locale) }}</td>
+			</tr>
+			<tr>
+				<th colspan="4">{% trans %}dzangocart.order.amount_incl{% endtrans %}</th>
+				<td class="amount">{{ order.amountIncl|currency(order.getCurrency, app.request.locale) }}</td>
+			</tr>
+		</tfoot>
+		<tbody>
+			{% for item in order.items %}
+				<tr>
+					<td>
+					   {{ loop.index }}
+					</td>
+					<td>
+						{{ item.name }}
+						</td>
+					<td>
+						{{ item.quantity }}
+					</td>
+					<td>
+						{{ item.priceExcl|currency(order.getCurrency, app.request.locale) }}
+					</td>
+					<td>
+						{{ item.amountExcl|currency(order.getCurrency, app.request.locale) }}
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
 </div>
-
-<table class="table items">
-    <thead>
-
-    </thead>    
-    <tbody>
-        {% for item in order.items %}
-            <tr>
-                <td>
-                    {{ loop.index }}
-                </td>
-                <td>
-                    {{ item.name }}
-                </td>
-                <td>
-                    {{ item.quantity }}
-                </td>
-                <td>
-                    {{ item.price_excl }}
-                </td>
-                <td>
-                    {{ item.amount_excl }}
-                </td>
-            </tr>
-        {% endfor %}
-    </tbody>
-</table>
-<pre>{{ data }}</pre>

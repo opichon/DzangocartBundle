@@ -1,4 +1,18 @@
 dzangocart:
+    order:
+        amount_excl:        Total HT
+        amount_incl:        Total TTC
+        amount_tax:         TVA
+        items:
+            amount_excl:    Total HT
+            amount_incl:    Total TTC
+            description:    Produit/service
+            price_excl:     Prix HT
+            price_incl:     Prix TTC
+            quantity:       Qté
+            rank:           '#'
+        page_title:         Commande n˚ %order_id%
+
     orders:
         actions:        Actions
         affiliate:      Affilié
