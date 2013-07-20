@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\ParameterBag;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-use Dzangocart\Bundle\DzangocartBundle\Form\Type\SaleFilterType;
+use Dzangocart\Bundle\DzangocartBundle\Form\Type\SipsFilterType;
 
 /**
  * @Route("/")
@@ -28,7 +28,7 @@ class SipsController extends Controller
 
         if ($request->isXmlHttpRequest() || $request->getRequestFormat() == 'json') {
 
-            $params = $this->getFilters($request->query);
+            $params = $this->getFilters($request->query, $dzangocart_config['sips']);
             $params['sort_by'] = $this->getSortOrder($request->query);
 
             $data = $this->get('dzangocart')
@@ -42,7 +42,7 @@ class SipsController extends Controller
         }
         else {
             $form = $this->createForm(
-                new SaleFilterType(array(
+                new SipsFilterType(array(
                     'date_format' => $dzangocart_config['date_format']
                 )),
                 null,
@@ -56,7 +56,7 @@ class SipsController extends Controller
         }
     }
 
-    protected function getFilters(ParameterBag $query)
+    protected function getFilters(ParameterBag $query, $config)
     {
         $filters = array();
 
@@ -64,7 +64,7 @@ class SipsController extends Controller
         $filters['limit'] = $query->get('iDisplayLength');
         $filters['offset'] = $query->get('iDisplayStart');
 
-        $_filters = $query->get('filters');
+        $_filters = $query->get('sips_filters');
 
         if ($_filters) {
             foreach ($date_fields = array('date_from', 'date_to') as $field) {
@@ -75,7 +75,9 @@ class SipsController extends Controller
             }
         }
 
-        $filters['test'] = @$_filters['test'] ? true : false;
+        if (!@$_filters['test']) {
+            $filters['merchant_id'] = $config['merchant_id'];
+        }
 
         return $filters;
     }

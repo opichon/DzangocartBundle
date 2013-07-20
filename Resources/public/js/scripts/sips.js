@@ -15,7 +15,7 @@
 					table = $( "table.table", this ).dataTable( $.extend( true, {}, settings.dataTables, {
 						fnDrawCallback: function() {
 							$( this ).show();
-						} /*,
+						},
  						fnServerParams: function( data ) {
 							$( ".filters :checkbox", $this ).each(function() {
 								data.push({
@@ -40,7 +40,7 @@
 							$( ".filters :checkbox" ).each(function() {
 								oData[ $( this ).attr( "name" ) ] = $( this ).is( ":checked" );
 							});
-						} */
+						}
 					} ) );
 
 					$( ".filters input", $this ).change(function() {

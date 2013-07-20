@@ -60,16 +60,13 @@ class OrderFilterType extends AbstractType
 
     public function getName()
     {
-        return 'filters';
+        return 'orders_filters';
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'name'       => 'filters',
             'translation_domain' => 'dzangocart',
-//            'show_legend' => false,
-//            'checkbox_label' => 'widget'
         ));
     }
 }

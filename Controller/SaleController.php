@@ -64,7 +64,7 @@ class SaleController extends Controller
         $filters['limit'] = $query->get('iDisplayLength');
         $filters['offset'] = $query->get('iDisplayStart');
 
-        $_filters = $query->get('filters');
+        $_filters = $query->get('sales_filters');
 
         foreach ($date_fields = array('date_from', 'date_to') as $field) {
             $value = $_filters[$field];

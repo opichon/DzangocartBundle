@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class SaleFilterType extends AbstractType
+class SipsFilterType extends AbstractType
 {
     protected $options = array();
 
@@ -28,7 +28,7 @@ class SaleFilterType extends AbstractType
                 'placeholder' => strtolower($this->getDateFormat()),
             ),
             'format' => $this->getDateFormat(),
-            'label' => 'dzangocart.sales.filters.date_from',
+            'label' => 'dzangocart.orders.filters.date_from',
             'widget' => 'single_text',
             'widget_control_group_attr' => array(
                 'class' => 'date'
@@ -40,7 +40,7 @@ class SaleFilterType extends AbstractType
                 'placeholder' => strtolower($this->getDateFormat()),
             ),
             'format' => $this->getDateFormat(),
-            'label' => 'dzangocart.sales.filters.date_to',
+            'label' => 'dzangocart.orders.filters.date_to',
             'widget' => 'single_text',
             'widget_control_group_attr' => array(
                 'class' => 'date'
@@ -48,7 +48,7 @@ class SaleFilterType extends AbstractType
         ));
 
         $builder->add('test', 'checkbox', array(
-            'label' => 'dzangocart.sales.filters.test',
+            'label' => 'dzangocart.orders.filters.test',
             'label_render' => true,
             'widget_checkbox_label' => 'widget',
             'widget_control_group_attr' => array(
@@ -60,7 +60,7 @@ class SaleFilterType extends AbstractType
 
     public function getName()
     {
-        return 'sales_filters';
+        return 'sips_filters';
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
