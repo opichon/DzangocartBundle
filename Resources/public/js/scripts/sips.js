@@ -1,5 +1,5 @@
 !function( $ ) {
-	$.fn.sales = function( method ) {
+	$.fn.sips = function( method ) {
 
 		var settings,
 			table;
@@ -7,7 +7,7 @@
 		var methods = {
 			init: function( options ) {
 
-				settings = $.extend( true, {}, this.sales.defaults, options );
+				settings = $.extend( true, {}, this.sips.defaults, options );
 
 				return this.each(function() {
 					var $this = $( this );
@@ -15,7 +15,7 @@
 					table = $( "table.table", this ).dataTable( $.extend( true, {}, settings.dataTables, {
 						fnDrawCallback: function() {
 							$( this ).show();
-						},
+						} /*,
  						fnServerParams: function( data ) {
 							$( ".filters :checkbox", $this ).each(function() {
 								data.push({
@@ -40,7 +40,7 @@
 							$( ".filters :checkbox" ).each(function() {
 								oData[ $( this ).attr( "name" ) ] = $( this ).is( ":checked" );
 							});
-						}
+						} */
 					} ) );
 
 					$( ".filters input", $this ).change(function() {
@@ -57,17 +57,17 @@
 			return methods.init.apply( this, arguments );
 		}
 		else {
-			$.error( "Method " +  method + " does not exist in jQuery.sales." );
+			$.error( "Method " +  method + " does not exist in jQuery.sips." );
 		}
 	};
 
-	$.fn.sales.defaults = {
+	$.fn.sips.defaults = {
 		dataTables: {
 			aoColumnDefs: [
-				{ bSortable: false, aTargets: [ 0, 5, 10, 13 ] },
+				{ bSortable: false, aTargets: [ 0, 12 ] },
 				{ bVisible: false, aTargets: [ 0 ] },
-				{ sClass: "number", aTargets: [ 5, 7, 8, 9 ] },
-				{ sClass: "actions", aTargets: [ 13 ] }
+				{ sClass: "number", aTargets: [ 4 ] },
+				{ sClass: "actions", aTargets: [ 12 ] }
 			],
 			asStripeClasses: [],
 			bAutoWidth: false,
@@ -84,6 +84,6 @@
 
 $( document ).ready(function() {
 	if ( typeof dzangocart != 'undefined' ) {
-		$( ".dzangocart.sales" ).sales( dzangocart.sales );
+		$( ".dzangocart.sips" ).sips( dzangocart.sips );
 	}
 });

@@ -77,7 +77,7 @@
 			bServerSide: true,
 			bSortable: true,
 			oLanguage: {
-				sUrl: "/bundles/uamdatatables/lang/" + porot.lang + ".txt"
+				sUrl: "/bundles/uamdatatables/lang/" + dzangocart.lang + ".txt"
 			}
 		}
 	};

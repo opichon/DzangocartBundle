@@ -1,0 +1,3 @@
+_dzangocart_sips:
+    resource: "@DzangocartBundle/Controller/SipsController.php"
+    type: annotation

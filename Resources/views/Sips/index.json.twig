@@ -1,0 +1,30 @@
+{% trans_default_domain "dzangocart" %}
+
+{% spaceless %}
+{
+    "sEcho": "{{ app.request.query.all.sEcho }}",
+    "iTotalRecords": 0,
+    "iTotalDisplayRecords": 0,
+    "aaData" : [
+        {% for s in list %}
+            {
+                "DT_RowId": "{{ 'u_' ~ s.id }}",
+                "DT_RowClass": "{{ 'sips' }}",
+                "0": "",
+                "1": "{{ s.payment_date }}",
+                "2": "{{ s.payment_time }}",
+                "3": "{{ s.order_id }}",
+                "4": "{{ s.amount }}",
+                "5": "{{ s.currency_code }}",
+                "6": "{{ s.payment_means }}",
+                "7": "{{ s.card_number }}",
+                "8": "{{ s.transaction_id }}",
+                "9": "{{ s.response_code }}",
+                "10": "{{ s.bank_response_code }}",
+                "11": "{{ s.cvv_response_code }}",
+                "12": ""
+            }{% if not loop.last %},{% endif %}
+        {% endfor %}
+    ]
+}
+{% endspaceless %}

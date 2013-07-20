@@ -1,4 +1,5 @@
 dzangocart:
+
     order:
         amount_excl:        Total HT
         amount_incl:        Total TTC
@@ -31,8 +32,10 @@ dzangocart:
         paid:           Payé
         tax:            TVA
         test:           Demo
+
     sales:
-        actions:        Actions
+        actions:
+            title:      Actions
         affiliate:      Affilié
         currency:       Dev.
         customer:       Client
@@ -51,3 +54,21 @@ dzangocart:
         quantity:       Qté
         tax:            TVA
         test:           Demo
+
+    sips:
+        actions:
+            title:      Actions
+        amount:         Montant
+        card_number:    Carte n˚
+        currency:       Dev.
+        date:           Date
+        order_id:       Commande
+        page_title:     Transactions SIPS
+        payment_means:  Paiement par
+        response_code:
+            bank:       Banque
+            code:       Code
+            cvv:        CVV
+            title:      Code réponse
+        time:           Heure
+        transaction_id: Transaction n˚

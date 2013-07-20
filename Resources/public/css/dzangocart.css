@@ -8,6 +8,10 @@
     border-bottom: 1px solid #ddd;
 }
 
+.dzangocart table.table .center {
+    text-align: center;
+}
+
 .dzangocart table.table th.datetime {
     width: 8em;
 }

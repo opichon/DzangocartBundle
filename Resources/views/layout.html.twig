@@ -17,6 +17,8 @@
 {% block head_script %}
     {{ parent() }}
     <script>
-    var dzangocart = {}
+    var dzangocart = {
+    	lang: "{{ app.request.locale }}"
+    }
     </script>
 {% endblock head_script %}

@@ -1,4 +1,19 @@
 dzangocart:
+
+    order:
+        amount_excl:        Gross amount
+        amount_incl:        Net amount
+        amount_tax:         VAT
+        items:
+            amount_excl:    Gross amount
+            amount_incl:    Net amount
+            description:    Item
+            price_excl:     Gross price
+            price_incl:     Net price
+            quantity:       Qty
+            rank:           '#'
+        page_title:         Order n˚ %order_id%
+
     orders:
         actions:        Actions
         affiliate:      Affiliate
@@ -17,7 +32,11 @@ dzangocart:
         paid:           Paid
         tax:            Tax
         test:           Demo
+
     sales:
+        actions:
+            title:      Actions
+        affiliate:      Affiliate
         currency:       Ccy
         customer:       Customer
         date:           Date
@@ -31,5 +50,25 @@ dzangocart:
         net:            Net
         order_no:       Order
         page_title:     Sales
+        paid:           Paid
         quantity:       Qty
         tax:            Tax
+        test:           Test
+
+    sips:
+        actions:
+            title:      Actions
+        amount:         Amount
+        card_number:    Card no.
+        currency:       Ccy
+        date:           Date
+        order_id:       Order
+        page_title:     Sips transactions
+        payment_means:  Payment by
+        response_code:
+            bank:       Bank
+            code:       Code
+            cvv:        CVV
+            title:      Response code
+        time:           Time
+        transaction_id: Transaction id
