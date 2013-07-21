@@ -1,0 +1,24 @@
+{% trans_default_domain "dzangocart" %}
+
+<div class="dzangocart payments">
+	{% block filters %}
+	{% include "DzangocartBundle:DirectPayment:filters.html.twig" with { form: form } %}
+	{% endblock %}
+	<table class="table table-condensed">
+		<thead>
+			<tr>
+				<th class="check"><input type="checkbox" id="checkall" /></th>
+				<th class="date">{% trans %}dzangocart.direct_payments.date{% endtrans %}</th>
+				<th class="order_id">{% trans %}dzangocart.direct_payments.order_id{% endtrans %}</th>
+				<th class="amount">{% trans %}dzangocart.direct_payments.amount{% endtrans %}</th>
+				<th class="bank">{% trans %}dzangocart.direct_payments.bank{% endtrans %}</th>
+				<th class="type">{% trans %}dzangocart.direct_payments.type{% endtrans %}</th>
+				<th class="cheque_no">{% trans %}dzangocart.direct_payments.cheque_number{% endtrans %}</th>
+				<th class="test">{% trans %}dzangocart.direct_payments.test{% endtrans %}</th>
+				<th class="actions">{% trans %}dzangocart.direct_payments.actions.title{% endtrans %}</th>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+</div>

@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class SipsFilterType extends AbstractType
+class DirectPaymentFilterType extends AbstractType
 {
     protected $options = array();
 
@@ -28,7 +28,7 @@ class SipsFilterType extends AbstractType
                 'placeholder' => strtolower($this->getDateFormat()),
             ),
             'format' => $this->getDateFormat(),
-            'label' => 'dzangocart.sips.filters.date_from',
+            'label' => 'dzangocart.direct_payments.filters.date_from',
             'widget' => 'single_text',
             'widget_control_group_attr' => array(
                 'class' => 'date'
@@ -40,7 +40,7 @@ class SipsFilterType extends AbstractType
                 'placeholder' => strtolower($this->getDateFormat()),
             ),
             'format' => $this->getDateFormat(),
-            'label' => 'dzangocart.sips.filters.date_to',
+            'label' => 'dzangocart.direct_payments.filters.date_to',
             'widget' => 'single_text',
             'widget_control_group_attr' => array(
                 'class' => 'date'
@@ -48,7 +48,7 @@ class SipsFilterType extends AbstractType
         ));
 
         $builder->add('test', 'checkbox', array(
-            'label' => 'dzangocart.sips.filters.test',
+            'label' => 'dzangocart.direct_payments.filters.test',
             'label_render' => true,
             'widget_checkbox_label' => 'widget',
             'widget_control_group_attr' => array(
@@ -60,7 +60,7 @@ class SipsFilterType extends AbstractType
 
     public function getName()
     {
-        return 'sips_filters';
+        return 'direct_payments_filters';
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

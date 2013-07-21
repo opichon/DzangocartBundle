@@ -1,5 +1,25 @@
 dzangocart:
 
+    direct_payments:
+        actions:
+            title:          Actions
+        amount:             Montant
+        bank:               Banque
+        cheque_number:      Chèque n˚
+        date:               Date
+        filters:
+            date_from:      Du
+            date_to:        Au
+            period:         Période
+            test:           Inclure les commandes de démonstration
+        order_id:           Comm.
+        page_title:         Paiements directs
+        pay_by:
+            cheque:         Chèque
+            wire_transfer:  Virement
+        test:               Demo
+        type:               Paiement par
+
     order:
         amount_excl:        Total HT
         amount_incl:        Total TTC
@@ -27,7 +47,7 @@ dzangocart:
             period:     Période
             test:       Inclure les commandes de démonstration
         net:            HT
-        number:         n˚
+        order_id:       n˚
         page_title:     Commandes
         paid:           Payé
         tax:            TVA
@@ -48,7 +68,7 @@ dzangocart:
         gross:          TTC
         item:           Produit/service
         net:            HT
-        order_no:       Comm.
+        order_id:       Comm.
         page_title:     Ventes
         paid:           Payé
         quantity:       Qté
@@ -62,6 +82,11 @@ dzangocart:
         card_number:    Carte n˚
         currency:       Dev.
         date:           Date
+        filters:
+            date_from:  Du
+            date_to:    Au
+            period:     Période
+            test:       Inclure les commandes de démonstration
         order_id:       Commande
         page_title:     Transactions SIPS
         payment_means:  Paiement par

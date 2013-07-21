@@ -10,16 +10,16 @@ use Symfony\Component\HttpFoundation\ParameterBag;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-use Dzangocart\Bundle\DzangocartBundle\Form\Type\SipsFilterType;
+use Dzangocart\Bundle\DzangocartBundle\Form\Type\DirectPaymentFilterType;
 
 /**
  * @Route("/")
  * @Template
  */
-class SipsController extends Controller
+class DirectPaymentController extends Controller
 {
     /**
-     * @Route("/", name="dzangocart_sips")
+     * @Route("/", name="dzangocart_direct_payments")
      * @Template()
      */
     public function indexAction(Request $request)
@@ -32,17 +32,17 @@ class SipsController extends Controller
             $params['sort_by'] = $this->getSortOrder($request->query);
 
             $data = $this->get('dzangocart')
-                ->getSips($params);
+                ->getDirectPayments($params);
 
             $data['datetime_format'] = $dzangocart_config['datetime_format'];
 
-            $view = $this->renderView('DzangocartBundle:Sips:index.json.twig', $data);
+            $view = $this->renderView('DzangocartBundle:DirectPayment:index.json.twig', $data);
 
             return new Response($view, 200, array('Content-Type' => 'application/json'));
         }
         else {
             $form = $this->createForm(
-                new SipsFilterType(array(
+                new DirectPaymentFilterType(array(
                     'date_format' => $dzangocart_config['date_format']
                 )),
                 null,
@@ -63,7 +63,7 @@ class SipsController extends Controller
         $filters['limit'] = $query->get('iDisplayLength');
         $filters['offset'] = $query->get('iDisplayStart');
 
-        $_filters = $query->get('sips_filters');
+        $_filters = $query->get('direct_payments_filters');
 
         if ($_filters) {
             foreach ($date_fields = array('date_from', 'date_to') as $field) {
@@ -74,10 +74,8 @@ class SipsController extends Controller
             }
         }
 
-        if (!@$_filters['test']) {
-            $filters['merchant_id'] = $config['sips']['merchant_id'];
-        }
-
+        $filters['test'] = @$_filters['test'] ? true : false;
+        
         return $filters;
     }
 

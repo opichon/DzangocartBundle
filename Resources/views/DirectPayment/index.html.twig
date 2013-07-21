@@ -1,0 +1,40 @@
+{% extends "DzangocartBundle::layout.html.twig" %}
+
+{% trans_default_domain "dzangocart" %}
+
+{% block page_class %}{% endblock %}
+
+{% block dzangocart_page_title %}{% trans %}dzangocart.direct_payments.page_title{% endtrans %}{% endblock %}
+
+{% block dzangocart_content %}
+{% include "DzangocartBundle:DirectPayment:list.html.twig" %}
+{% endblock %}
+
+{% block head_style %}
+    {{ parent() }}
+    {% stylesheets filter="cssrewrite" output="css/*.css"
+        'bundles/uamdatatables/css/jquery.dataTables_bootstrap.css'
+        'bundles/dzangocart/css/dzangocart.css'
+        'bundles/dzangocart/css/payments.css'
+    %}
+        <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+    {% endstylesheets %}
+{% endblock head_style %}
+
+{% block foot_script %}
+    {{ parent() }}
+    {% javascripts
+        'bundles/uamdatatables/js/jquery.dataTables.js'
+        'bundles/uamdatatables/js/jquery.dataTables_bootstrap.js'
+        'bundles/dzangocart/js/scripts/payments.js'
+    %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    <script>
+    dzangocart.payments = {
+        dataTables: {
+            sAjaxSource: "{{ path('dzangocart_direct_payments') }}"
+        }
+    };
+    </script>
+{% endblock %}

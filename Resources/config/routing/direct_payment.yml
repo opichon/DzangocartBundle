@@ -1,0 +1,3 @@
+_dzangocart_direct_payment:
+    resource: "@DzangocartBundle/Controller/DirectPaymentController.php"
+    type: annotation

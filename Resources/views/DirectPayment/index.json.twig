@@ -1,0 +1,27 @@
+{% trans_default_domain "dzangocart" %}
+
+{% set payment_types = { 1: 'dzangocart.direct_payments.pay_by.wire_transfer', 2: 'dzangocart.direct_payments.pay_by.cheque' } %}
+{% spaceless %}
+{
+    "sEcho": "{{ app.request.query.all.sEcho }}",
+    "iTotalRecords": 0,
+    "iTotalDisplayRecords": 0,
+    "aaData" : [
+        {% for payment in data %}
+            {
+                "DT_RowId": "{{ 'p_' ~ payment.id }}",
+                "DT_RowClass": "{{ 'payment' }}",
+                "0": "",
+                "1": "{{ payment.date|localizeddate('medium', 'none', app.request.locale, null, 'dd.MM.yyyy') }}",
+                "2": "{{ payment.order_id }}",
+                "3": "{{ payment.amount|currency(payment.currency_id, app.request.locale) }}",
+                "4": "{{ payment.bank }}",
+                "5": "{{ payment_types[payment.type]|trans }}",
+                "6": "{{ payment.cheque_number }}",
+                "7": "{{ payment.test }}",
+                "8": ""
+            }{% if not loop.last %},{% endif %}
+        {% endfor %}
+    ]
+}
+{% endspaceless %}

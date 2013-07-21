@@ -12,12 +12,20 @@
     text-align: center;
 }
 
+.dzangocart table.table th.date {
+    width: 6em;
+}
+
 .dzangocart table.table th.datetime {
     width: 8em;
 }
 
-.dzangocart table.table th.order_no {
+.dzangocart table.table th.order_id {
     width: 4em;
+}
+
+.dzangocart table.table th.amount  {
+    width: 8em;
 }
 
 .dzangocart table.table th.ccy {

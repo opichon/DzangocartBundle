@@ -1,5 +1,25 @@
 dzangocart:
 
+    direct_payments:
+        action:
+            title:          Actions
+        amount:             Amount
+        bank:               Bank
+        cheque_number:      Cheque no.
+        date:               Date
+        filters:
+            date_from:      From
+            date_to:        To
+            period:         Period
+            test:           Include test orders
+        order_id:           Order no.
+        page_title:         Direct payments
+        pay_by:
+            cheque:         Cheque
+            wire_transfer:  Wire transfer
+        test:               Demo
+        type:               Payment by
+
     order:
         amount_excl:        Gross amount
         amount_incl:        Net amount
@@ -27,7 +47,7 @@ dzangocart:
             test:       Include test orders
         gross:          Gross
         net:            Net
-        number:         '#'
+        order_id:       '#'
         page_title:     Orders
         paid:           Paid
         tax:            Tax
@@ -48,7 +68,7 @@ dzangocart:
         gross:          Gross
         item:           Product/service
         net:            Net
-        order_no:       Order
+        order_id:       Order no.
         page_title:     Sales
         paid:           Paid
         quantity:       Qty
@@ -62,7 +82,12 @@ dzangocart:
         card_number:    Card no.
         currency:       Ccy
         date:           Date
-        order_id:       Order
+        filters:
+            date_from:  From
+            date_to:    To
+            period:     Period
+            test:       Include test transactions
+        order_id:       Order no.
         page_title:     Sips transactions
         payment_means:  Payment by
         response_code:
