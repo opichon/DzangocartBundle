@@ -2,23 +2,36 @@
 
 <div class="dzangocart orders">
 	{% block filters %}
-	{% include "DzangocartBundle:Order:filters.html.twig" with { form: form } %}
+		{% include "DzangocartBundle:Order:filters.html.twig" %}
 	{% endblock %}
-
 	<table class="table table-condensed">
 		<thead>
+			<tr class="filters">
+				<th class="check"></th>
+				<th class="datetime">{{ form_widget(form.date_range) }}</th>
+				<th class="order_id">{{ form_widget(form.id) }}</th>
+				<th class="customer">{{ form_widget(form.customer) }}</th>
+				<th class="ccy"></th>
+				<th class="center net"></th>
+				<th class="center tax"></th>
+				<th class="center gross"></th>
+				<th class="center paid"></th>
+				<th class="affiliate"></th>
+				<th class="center demo"></th>
+				<th class="actions"></th>
+			</tr>
 			<tr>
 				<th class="check"><input type="checkbox" id="checkall" /></th>
 				<th class="datetime">{% trans %}dzangocart.orders.date{% endtrans %}</th>
 				<th class="order_id">{% trans %}dzangocart.orders.order_id{% endtrans %}</th>
 				<th class="customer">{% trans %}dzangocart.orders.customer{% endtrans %}</th>
 				<th class="ccy">{% trans %}dzangocart.orders.currency{% endtrans %}</th>
-				<th class="net">{% trans %}dzangocart.orders.net{% endtrans %}</th>
-				<th class="tax">{% trans %}dzangocart.orders.tax{% endtrans %}</th>
-				<th class="gross">{% trans %}dzangocart.orders.gross{% endtrans %}</th>
-				<th class="paid">{% trans %}dzangocart.orders.paid{% endtrans %}</th>
+				<th class="center net">{% trans %}dzangocart.orders.net{% endtrans %}</th>
+				<th class="center tax">{% trans %}dzangocart.orders.tax{% endtrans %}</th>
+				<th class="center gross">{% trans %}dzangocart.orders.gross{% endtrans %}</th>
+				<th class="center paid">{% trans %}dzangocart.orders.paid{% endtrans %}</th>
 				<th class="affiliate">{% trans %}dzangocart.orders.affiliate{% endtrans %}</th>
-				<th class="demo">{% trans %}dzangocart.orders.test{% endtrans %}</th>
+				<th class="center demo">{% trans %}dzangocart.orders.test{% endtrans %}</th>
 				<th class="actions">{% trans %}dzangocart.orders.actions{% endtrans %}</th>
 			</tr>
 		</thead>

@@ -24,7 +24,7 @@
 								});
 							});
 
-							$( ".filters .date input", $this ).each(function() {
+							$( ".filters input", $this ).each(function() {
 								data.push({
 									name: $( this ).attr( "name" ),
 									value: $( this ).val()
@@ -46,6 +46,17 @@
 					$( ".filters input", $this ).change(function() {
 						table.fnDraw();
 					});
+
+					$( ".filters .daterange", $this ).daterangepicker(
+						{
+							format: settings.date_format
+						},
+						function( start, end ) {
+							$( "#filters_date_from" ).val( start.format( settings.date_format ) );
+							$( "#filters_date_to" ).val( end.format( settings.date_format ) );
+							table.fnDraw();
+						}
+					);
 				});
 			}
 		};
@@ -78,7 +89,8 @@
 			bSortable: true,
 			oLanguage: {
 				sUrl: "/bundles/uamdatatables/lang/" + dzangocart.lang + ".txt"
-			}
+			},
+			sDom: "<'row-fluid'<'span6'l>r>t<'row-fluid'<'span6'i><'span6'p>>",
 		}
 	};
 } ( window.jQuery );

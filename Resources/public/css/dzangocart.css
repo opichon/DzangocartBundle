@@ -58,6 +58,10 @@
 }
 
 
+.dzangocart div.filters {
+    display: none;
+}
+
 .dzangocart .filters .control-group {
     margin-bottom: 0;
 }

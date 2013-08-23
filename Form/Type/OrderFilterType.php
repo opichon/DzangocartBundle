@@ -34,6 +34,7 @@ class OrderFilterType extends AbstractType
                 'class' => 'date'
             )
         ));
+
         $builder->add('date_to', 'date', array(
             'attr' => array(
                 'class' => 'date',
@@ -47,6 +48,12 @@ class OrderFilterType extends AbstractType
             )
         ));
 
+        $builder->add('date_range', 'text', array(
+            'attr' => array(
+                'class' => 'input-block-level daterange'
+            )
+        ));
+
         $builder->add('test', 'checkbox', array(
             'label' => 'dzangocart.orders.filters.test',
             'label_render' => true,
@@ -56,11 +63,25 @@ class OrderFilterType extends AbstractType
             ),
             'widget_type' => 'inline'
         ));
+
+        $builder->add('customer', 'text', array(
+            'label_render' => false,
+            'attr' => array(
+                'class' => 'input-block-level'
+            )
+        ));
+
+        $builder->add('id', 'text', array(
+            'label_render' => false,
+            'attr' => array(
+                'class' => 'input-block-level'
+            )
+        ));
     }
 
     public function getName()
     {
-        return 'orders_filters';
+        return 'filters';
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

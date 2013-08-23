@@ -45,7 +45,10 @@ class OrderController extends Controller
                 new OrderFilterType(array(
                     'date_format' => $dzangocart_config['date_format']
                 )),
-                null,
+                array(
+//                    'date_from' => new \DateTime('2013-08-01'),
+//                    'date_to' => new \DateTime('2013-08-31')
+                ),
                 array()
             );
 
@@ -83,7 +86,7 @@ class OrderController extends Controller
         $filters['limit'] = $query->get('iDisplayLength');
         $filters['offset'] = $query->get('iDisplayStart');
 
-        $_filters = $query->get('orders_filters');
+        $_filters = $query->get('filters');
 
         foreach ($date_fields = array('date_from', 'date_to') as $field) {
             $value = $_filters[$field];
@@ -93,11 +96,11 @@ class OrderController extends Controller
         }
 
         $filters['test'] = @$_filters['test'] ? true : false;
-
+/*
         if (array_key_exists('customer', $_filters)) {
             $filters['customer'] = $_filters['customer'];
         }
-
+*/
         return $filters;
     }
 
