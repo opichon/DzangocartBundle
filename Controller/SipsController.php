@@ -2,6 +2,8 @@
 
 namespace Dzangocart\Bundle\DzangocartBundle\Controller;
 
+use \DateTime;
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
@@ -45,12 +47,16 @@ class SipsController extends Controller
                 new SipsFilterType(array(
                     'date_format' => $dzangocart_config['date_format']
                 )),
-                null,
+                array(
+                    'date_from' => (new DateTime())->modify('first day of this month'),
+                    'date_to' => new DateTime()
+                ),
                 array()
             );
 
             return array(
-                'form' => $form->createView()
+                'form' => $form->createView(),
+                'config' => $dzangocart_config
             );
         }
     }
@@ -63,7 +69,7 @@ class SipsController extends Controller
         $filters['limit'] = $query->get('iDisplayLength');
         $filters['offset'] = $query->get('iDisplayStart');
 
-        $_filters = $query->get('sips_filters');
+        $_filters = $query->get('filters');
 
         if ($_filters) {
             foreach ($date_fields = array('date_from', 'date_to') as $field) {

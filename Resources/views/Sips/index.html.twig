@@ -14,6 +14,7 @@
     {{ parent() }}
     {% stylesheets filter="cssrewrite" output="css/*.css"
         'bundles/uamdatatables/css/jquery.dataTables_bootstrap.css'
+        'bundles/dzangocart/js/vendor/bootstrap-daterangepicker/daterangepicker-bs2.css'
         'bundles/dzangocart/css/dzangocart.css'
         'bundles/dzangocart/css/sips.css'
     %}
@@ -26,6 +27,9 @@
     {% javascripts
         'bundles/uamdatatables/js/jquery.dataTables.js'
         'bundles/uamdatatables/js/jquery.dataTables_bootstrap.js'
+        'bundles/dzangocart/js/vendor/moment/moment.js'
+        'bundles/dzangocart/js/vendor/moment/lang/fr.js'
+        'bundles/dzangocart/js/vendor/bootstrap-daterangepicker/daterangepicker.js'
         'bundles/dzangocart/js/scripts/sips.js'
     %}
         <script src="{{ asset_url }}"></script>
@@ -34,6 +38,9 @@
     dzangocart.sips = {
         dataTables: {
             sAjaxSource: "{{ path('dzangocart_sips') }}"
+        },
+        daterangepicker: {
+            format: "{{ config.date_format|upper }}"
         }
     };
     </script>

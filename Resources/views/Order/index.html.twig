@@ -39,7 +39,9 @@
         dataTables: {
             sAjaxSource: "{{ path('dzangocart_orders') }}"
         },
-        date_format: "{{ config.date_format|upper }}"
+        daterangepicker: {
+            format: "{{ config.date_format|upper }}"
+        }
     };
     </script>
 {% endblock %}

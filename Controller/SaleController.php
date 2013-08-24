@@ -2,6 +2,8 @@
 
 namespace Dzangocart\Bundle\DzangocartBundle\Controller;
 
+use \DateTime;
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
@@ -45,7 +47,10 @@ class SaleController extends Controller
                 new SaleFilterType(array(
                     'date_format' => $dzangocart_config['date_format']
                 )),
-                null,
+                array(
+                    'date_from' => (new DateTime())->modify('first day of this month'),
+                    'date_to' => new DateTime()
+                ),
                 array()
             );
 
@@ -64,7 +69,7 @@ class SaleController extends Controller
         $filters['limit'] = $query->get('iDisplayLength');
         $filters['offset'] = $query->get('iDisplayStart');
 
-        $_filters = $query->get('sales_filters');
+        $_filters = $query->get('filters');
 
         foreach ($date_fields = array('date_from', 'date_to') as $field) {
             $value = $_filters[$field];

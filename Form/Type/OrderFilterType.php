@@ -48,7 +48,7 @@ class OrderFilterType extends AbstractType
 
         $builder->add('date_range', 'text', array(
             'attr' => array(
-                'class' => 'input-block-level daterange'
+                'class' => 'input-xlarge daterange'
             ),
             'label' => 'dzangocart.orders.filters.period'
         ));

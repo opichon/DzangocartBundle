@@ -58,13 +58,12 @@
 					moment.lang( dzangocart.locale );
 
 					$( "#filters_date_range", $this ).daterangepicker(
-						{
-							format: settings.date_format,
-							startDate: $( "#filters_date_from" ).val(),
-							endDate: $( "#filters_date_to" ).val(),
-							minDate: moment('2009-01-01'),
-							maxDate: moment()
-						},
+						$.extend( true, {}, settings.daterangepicker,
+							{
+								startDate: $( "#filters_date_from" ).val(),
+								endDate: $( "#filters_date_to" ).val()
+							}
+						),
 						function( start, end ) {
 							$( "#filters_date_from" ).val( start.format( settings.date_format ) );
 							$( "#filters_date_to" ).val( end.format( settings.date_format ) );
@@ -106,6 +105,10 @@
 				sUrl: "/bundles/uamdatatables/lang/" + dzangocart.locale + ".txt"
 			},
 			sCookiePrefix: "dzangocart_"
+		},
+		daterangepicker: {
+			minDate: moment('2009-01-01'),
+			maxDate: moment()
 		}
 	};
 } ( window.jQuery );

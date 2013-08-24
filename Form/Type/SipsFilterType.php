@@ -24,7 +24,6 @@ class SipsFilterType extends AbstractType
     {
         $builder->add('date_from', 'date', array(
             'attr' => array(
-                'class' => 'date',
                 'placeholder' => strtolower($this->getDateFormat()),
             ),
             'format' => $this->getDateFormat(),
@@ -34,9 +33,9 @@ class SipsFilterType extends AbstractType
                 'class' => 'date'
             )
         ));
+
         $builder->add('date_to', 'date', array(
             'attr' => array(
-                'class' => 'date',
                 'placeholder' => strtolower($this->getDateFormat()),
             ),
             'format' => $this->getDateFormat(),
@@ -45,6 +44,13 @@ class SipsFilterType extends AbstractType
             'widget_control_group_attr' => array(
                 'class' => 'date'
             )
+        ));
+
+        $builder->add('date_range', 'text', array(
+            'attr' => array(
+                'class' => 'input-xlarge daterange'
+            ),
+            'label' => 'dzangocart.sips.filters.period'
         ));
 
         $builder->add('test', 'checkbox', array(
@@ -60,7 +66,7 @@ class SipsFilterType extends AbstractType
 
     public function getName()
     {
-        return 'sips_filters';
+        return 'filters';
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

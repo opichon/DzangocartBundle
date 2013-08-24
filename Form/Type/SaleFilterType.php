@@ -24,7 +24,6 @@ class SaleFilterType extends AbstractType
     {
         $builder->add('date_from', 'date', array(
             'attr' => array(
-                'class' => 'date',
                 'placeholder' => strtolower($this->getDateFormat()),
             ),
             'format' => $this->getDateFormat(),
@@ -36,7 +35,6 @@ class SaleFilterType extends AbstractType
         ));
         $builder->add('date_to', 'date', array(
             'attr' => array(
-                'class' => 'date',
                 'placeholder' => strtolower($this->getDateFormat()),
             ),
             'format' => $this->getDateFormat(),
@@ -45,6 +43,13 @@ class SaleFilterType extends AbstractType
             'widget_control_group_attr' => array(
                 'class' => 'date'
             )
+        ));
+
+        $builder->add('date_range', 'text', array(
+            'attr' => array(
+                'class' => 'input-xlarge daterange'
+            ),
+            'label' => 'dzangocart.sales.filters.period'
         ));
 
         $builder->add('test', 'checkbox', array(
@@ -60,7 +65,7 @@ class SaleFilterType extends AbstractType
 
     public function getName()
     {
-        return 'sales_filters';
+        return 'filters';
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

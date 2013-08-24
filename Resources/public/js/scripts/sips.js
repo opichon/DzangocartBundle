@@ -34,11 +34,19 @@
 						fnStateLoadParams: function( oSettings, oData ) {
 							$( ".filters :checkbox" ).each(function() {
 								$( this ).attr( "checked", oData[ $( this ).attr( "name" ) ] );
-							});							
+							});
+
+							$( ".filters input" ).each(function() {
+								$( this ).val( oData[ $( this ).attr( "name" ) ] );
+							});
 						},
 						fnStateSaveParams: function( oSettings, oData ) {
 							$( ".filters :checkbox" ).each(function() {
 								oData[ $( this ).attr( "name" ) ] = $( this ).is( ":checked" );
+							});
+
+							$( ".filters input" ).each(function() {
+								oData[ $( this ).attr( "name" ) ] = $( this ).val();
 							});
 						}
 					} ) );
@@ -46,6 +54,22 @@
 					$( ".filters input", $this ).change(function() {
 						table.fnDraw();
 					});
+
+					moment.lang( dzangocart.locale );
+
+					$( "#filters_date_range", $this ).daterangepicker(
+						$.extend( true, {}, settings.daterangepicker,
+							{
+								startDate: $( "#filters_date_from" ).val(),
+								endDate: $( "#filters_date_to" ).val()
+							}
+						),
+						function( start, end ) {
+							$( "#filters_date_from" ).val( start.format( settings.date_format ) );
+							$( "#filters_date_to" ).val( end.format( settings.date_format ) );
+							table.fnDraw();
+						}
+					).data( "daterangepicker" ).updateInputText();
 				});
 			}
 		};
@@ -75,9 +99,15 @@
 			bProcessing: true,
 			bServerSide: true,
 			bSortable: true,
+			bStateSAVE: true,
 			oLanguage: {
-				sUrl: "/bundles/uamdatatables/lang/" + dzangocart.lang + ".txt"
-			}
+				sUrl: "/bundles/uamdatatables/lang/" + dzangocart.locale + ".txt"
+			},
+			sCookiePrefix: "dzangocart_"
+		},
+		daterangepicker: {
+			minDate: moment('2009-01-01'),
+			maxDate: moment()
 		}
 	};
 } ( window.jQuery );
