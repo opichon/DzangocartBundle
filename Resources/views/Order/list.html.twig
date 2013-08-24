@@ -4,22 +4,8 @@
 	{% block filters %}
 		{% include "DzangocartBundle:Order:filters.html.twig" %}
 	{% endblock %}
-	<table class="table table-condensed">
+	<table class="table table-condensed" id="orders">
 		<thead>
-			<tr class="filters">
-				<th class="check"></th>
-				<th class="datetime">{{ form_widget(form.date_range) }}</th>
-				<th class="order_id">{{ form_widget(form.id) }}</th>
-				<th class="customer">{{ form_widget(form.customer) }}</th>
-				<th class="ccy"></th>
-				<th class="center net"></th>
-				<th class="center tax"></th>
-				<th class="center gross"></th>
-				<th class="center paid"></th>
-				<th class="affiliate"></th>
-				<th class="center demo"></th>
-				<th class="actions"></th>
-			</tr>
 			<tr>
 				<th class="check"><input type="checkbox" id="checkall" /></th>
 				<th class="datetime">{% trans %}dzangocart.orders.date{% endtrans %}</th>

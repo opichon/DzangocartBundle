@@ -2,6 +2,8 @@
 
 namespace Dzangocart\Bundle\DzangocartBundle\Controller;
 
+use \DateTime;
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
@@ -46,8 +48,8 @@ class OrderController extends Controller
                     'date_format' => $dzangocart_config['date_format']
                 )),
                 array(
-//                    'date_from' => new \DateTime('2013-08-01'),
-//                    'date_to' => new \DateTime('2013-08-31')
+                    'date_from' => (new DateTime())->modify('first day of this month'),
+                    'date_to' => new DateTime()
                 ),
                 array()
             );

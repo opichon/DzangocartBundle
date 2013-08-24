@@ -24,7 +24,6 @@ class OrderFilterType extends AbstractType
     {
         $builder->add('date_from', 'date', array(
             'attr' => array(
-                'class' => 'date',
                 'placeholder' => strtolower($this->getDateFormat()),
             ),
             'format' => $this->getDateFormat(),
@@ -37,7 +36,6 @@ class OrderFilterType extends AbstractType
 
         $builder->add('date_to', 'date', array(
             'attr' => array(
-                'class' => 'date',
                 'placeholder' => strtolower($this->getDateFormat()),
             ),
             'format' => $this->getDateFormat(),
@@ -51,7 +49,8 @@ class OrderFilterType extends AbstractType
         $builder->add('date_range', 'text', array(
             'attr' => array(
                 'class' => 'input-block-level daterange'
-            )
+            ),
+            'label' => 'dzangocart.orders.filters.period'
         ));
 
         $builder->add('test', 'checkbox', array(
@@ -62,20 +61,6 @@ class OrderFilterType extends AbstractType
                 'class' => 'test'
             ),
             'widget_type' => 'inline'
-        ));
-
-        $builder->add('customer', 'text', array(
-            'label_render' => false,
-            'attr' => array(
-                'class' => 'input-block-level'
-            )
-        ));
-
-        $builder->add('id', 'text', array(
-            'label_render' => false,
-            'attr' => array(
-                'class' => 'input-block-level'
-            )
         ));
     }
 

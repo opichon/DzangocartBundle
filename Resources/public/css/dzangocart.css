@@ -1,80 +1,117 @@
 .dzangocart table.table {
-    display: none;
+	display: none;
 }
 
 .dzangocart table.table th,
 .dzangocart table.table td {
-    border-top: none;
-    border-bottom: 1px solid #ddd;
+	border-top: none;
+	border-bottom: 1px solid #ddd;
+}
+
+table.table thead th {
+	vertical-align: bottom;
+	background-color: #f1f6e0!important;
+	border-bottom: 1px solid #ddd;
+	padding: 0.5em 0.2em;
+	font-weight: normal;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .dzangocart table.table .center {
-    text-align: center;
+	text-align: center;
 }
 
 .dzangocart table.table th.date {
-    width: 6em;
+	width: 6em;
 }
 
 .dzangocart table.table th.datetime {
-    width: 8em;
+	width: 8em;
 }
 
 .dzangocart table.table th.order_id {
-    width: 4em;
+	width: 4em;
 }
 
 .dzangocart table.table th.amount  {
-    width: 8em;
+	width: 8em;
 }
 
 .dzangocart table.table th.ccy {
-    width: 4em;
+	width: 4em;
 }
 
 .dzangocart table.table th.net {
-    width: 8em;
+	width: 8em;
 }
 
 .dzangocart table.table th.tax {
-    width: 5em;
+	width: 5em;
 }
 
 .dzangocart table.table th.gross {
-    width: 8em;
+	width: 8em;
 }
 
 .dzangocart table.table th.affiliate {
-    width: 4em;
+	width: 4em;
 }
 
 .dzangocart table.table th.demo {
-    width: 4em;
+	width: 4em;
 }
 
 .dzangocart table.table td.number {
-    text-align: right;
-    padding-right: 5px;
+	text-align: right;
+	padding-right: 5px;
 }
 
+.table tr.disabled td,
+.table tr.disabled a {
+	background-color: #eee;
+	color: #aaa;
+}
 
-.dzangocart div.filters {
-    display: none;
+.table tbody tr:hover td,
+.table tbody tr:hover td a,
+.table tbody tr:hover th {
+	color: #535353;
+	background-color: #FFF6BF !important;
+}
+
+.dataTables_processing {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 250px;
+	height: 30px;
+	margin-left: -125px;
+	margin-top: -15px;
+	padding: 14px 0 2px 0;
+	border: 1px solid #e2b709;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	text-align: center;
+	color: #999;
+	font-size: 14px;
+	background-color: #ffe57e;
+	-moz-box-shadow: 0px 5px 90px #888;
+	-webkit-box-shadow: 0px 5px 90px #888;  
+	box-shadow: 0px 5px 90px #888;
+	box-sizing:; border-box;
 }
 
 .dzangocart .filters .control-group {
-    margin-bottom: 0;
+	margin-bottom: 0;
 }
 
 .dzangocart .filters .control-group label {
-    margin-bottom: 0;
+	margin-bottom: 0;
 }
 
 .dzangocart .filters .date {
-    float: left;
-    margin-right: 0.5em;
-}
-
-.dzangocart .filters .test {
-    clear: both;
+	display: none;
 }
