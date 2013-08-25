@@ -44,14 +44,11 @@ class OrderController extends Controller
         }
         else {
             $form = $this->createForm(
-                new OrderFilterType(array(
-                    'date_format' => $dzangocart_config['date_format']
-                )),
+                new OrderFilterType(),
                 array(
                     'date_from' => (new DateTime())->modify('first day of this month'),
                     'date_to' => new DateTime()
-                ),
-                array()
+                )
             );
 
             return array(

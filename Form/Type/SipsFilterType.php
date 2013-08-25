@@ -8,47 +8,35 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class SipsFilterType extends AbstractType
 {
-    protected $options = array();
-
-    public function __construct(array $options = array())
-    {
-        $this->options = $options;
-    }
-
-    public function getDateFormat()
-    {
-        return @$this->options['date_format'];
-    }
-
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('date_from', 'date', array(
-            'attr' => array(
-                'placeholder' => strtolower($this->getDateFormat()),
-            ),
-            'format' => $this->getDateFormat(),
+            'format' => 'yyyy-MM-dd',
             'label' => 'dzangocart.sips.filters.date_from',
             'widget' => 'single_text',
             'widget_control_group_attr' => array(
                 'class' => 'date'
+            ),
+            'attr' => array(
+                'class' => 'date_from'
             )
         ));
 
         $builder->add('date_to', 'date', array(
-            'attr' => array(
-                'placeholder' => strtolower($this->getDateFormat()),
-            ),
-            'format' => $this->getDateFormat(),
+            'format' => 'yyyy-MM-dd',
             'label' => 'dzangocart.sips.filters.date_to',
             'widget' => 'single_text',
             'widget_control_group_attr' => array(
                 'class' => 'date'
+            ),
+            'attr' => array(
+                'class' => 'date_to'
             )
         ));
 
         $builder->add('date_range', 'text', array(
             'attr' => array(
-                'class' => 'input-xlarge daterange'
+                'class' => 'input-xlarge period'
             ),
             'label' => 'dzangocart.sips.filters.period'
         ));

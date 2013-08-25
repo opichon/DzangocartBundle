@@ -32,44 +32,44 @@
 							});
 						},
 						fnStateLoadParams: function( oSettings, oData ) {
-							$( ".filters :checkbox" ).each(function() {
+							$( ".filters :checkbox", $this ).each(function() {
 								$( this ).attr( "checked", oData[ $( this ).attr( "name" ) ] );
 							});
 
-							$( ".filters input" ).each(function() {
+							$( ".filters input", $this ).each(function() {
 								$( this ).val( oData[ $( this ).attr( "name" ) ] );
 							});
 						},
 						fnStateSaveParams: function( oSettings, oData ) {
-							$( ".filters :checkbox" ).each(function() {
+							$( ".filters :checkbox", $this ).each(function() {
 								oData[ $( this ).attr( "name" ) ] = $( this ).is( ":checked" );
 							});
 
-							$( ".filters input" ).each(function() {
+							$( ".filters input", $this ).each(function() {
 								oData[ $( this ).attr( "name" ) ] = $( this ).val();
 							});
 						}
 					} ) );
 
-					$( ".filters input", $this ).change(function() {
-						table.fnDraw();
-					});
-
 					moment.lang( dzangocart.locale );
 
-					$( "#filters_date_range", $this ).daterangepicker(
+					$( ".filters .period", this ).daterangepicker(
 						$.extend( true, {}, settings.daterangepicker,
 							{
-								startDate: $( "#filters_date_from" ).val(),
-								endDate: $( "#filters_date_to" ).val()
+								startDate: moment( $( ".filters .date_from", $this ).val(), "YYYY-MM-DD" ),
+								endDate: moment( $( ".filters .date_to", $this ).val(), "YYYY-MM-DD" )
 							}
 						),
 						function( start, end ) {
-							$( "#filters_date_from" ).val( start.format( settings.date_format ) );
-							$( "#filters_date_to" ).val( end.format( settings.date_format ) );
+							$( ".filters .date_from", $this ).val( start.format( "YYYY-MM-DD" ) );
+							$( ".filters .date_to", $this ).val( end.format( "YYYY-MM-DD" ) );
 							table.fnDraw();
 						}
 					).data( "daterangepicker" ).updateInputText();
+					
+					$( ".filters input", $this ).change(function() {
+						table.fnDraw();
+					});
 				});
 			}
 		};

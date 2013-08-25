@@ -23,31 +23,31 @@ class SaleFilterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('date_from', 'date', array(
-            'attr' => array(
-                'placeholder' => strtolower($this->getDateFormat()),
-            ),
-            'format' => $this->getDateFormat(),
+            'format' => 'yyyy-MM-dd',
             'label' => 'dzangocart.sales.filters.date_from',
             'widget' => 'single_text',
             'widget_control_group_attr' => array(
                 'class' => 'date'
+            ),
+            'attr' => array(
+                'class' => 'date_from'
             )
         ));
         $builder->add('date_to', 'date', array(
-            'attr' => array(
-                'placeholder' => strtolower($this->getDateFormat()),
-            ),
-            'format' => $this->getDateFormat(),
+            'format' => 'yyyy-MM-dd',
             'label' => 'dzangocart.sales.filters.date_to',
             'widget' => 'single_text',
             'widget_control_group_attr' => array(
                 'class' => 'date'
+            ),
+            'attr' => array(
+                'class' => 'date_to'
             )
         ));
 
         $builder->add('date_range', 'text', array(
             'attr' => array(
-                'class' => 'input-xlarge daterange'
+                'class' => 'input-xlarge period'
             ),
             'label' => 'dzangocart.sales.filters.period'
         ));

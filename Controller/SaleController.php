@@ -44,9 +44,7 @@ class SaleController extends Controller
         }
         else {
             $form = $this->createForm(
-                new SaleFilterType(array(
-                    'date_format' => $dzangocart_config['date_format']
-                )),
+                new SaleFilterType(),
                 array(
                     'date_from' => (new DateTime())->modify('first day of this month'),
                     'date_to' => new DateTime()
