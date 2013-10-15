@@ -23,10 +23,12 @@ dzangocart:
     order:
         amount_excl:        Total HT
         amount_incl:        Total TTC
-        amount_outstanding: Reste dû
+        amount_outstanding: Solde dû
         amount_paid:        Déjà réglé
         amount_tax:         TVA
         date:               Date : %date%
+        details:            Détails
+        invoice:            Facture
         items:
             amount_excl:    Total HT
             amount_incl:    Total TTC

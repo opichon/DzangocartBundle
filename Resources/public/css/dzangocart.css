@@ -82,6 +82,16 @@ table.table thead th {
 	background-color: #FFF6BF !important;
 }
 
+.table tr.unpaid td {
+	color: #D8000C;
+  	background-color: #FFBABA;
+}
+
+.table tr.test td {
+	color: #888;
+	background-color: #eee;
+}
+
 .dataTables_processing {
 	position: absolute;
 	top: 50%;

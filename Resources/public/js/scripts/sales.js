@@ -16,7 +16,7 @@
 						fnDrawCallback: function() {
 							$( this ).show();
 						},
- 						fnServerParams: function( data ) {
+						fnServerParams: function( data ) {
 							$( ".filters :checkbox", $this ).each(function() {
 								data.push({
 									name: $( this ).attr( "name" ),
@@ -66,7 +66,7 @@
 							table.fnDraw();
 						}
 					).data( "daterangepicker" ).updateInputText();
-					
+
 					$( ".filters input", $this ).change(function() {
 						table.fnDraw();
 					});
@@ -91,6 +91,7 @@
 				{ bSortable: false, aTargets: [ 0, 5, 10, 13 ] },
 				{ bVisible: false, aTargets: [ 0 ] },
 				{ sClass: "number", aTargets: [ 5, 7, 8, 9 ] },
+				{ sClass: "center", aTargets: [ 10, 12 ] },
 				{ sClass: "actions", aTargets: [ 13 ] }
 			],
 			asStripeClasses: [],

@@ -23,8 +23,8 @@ dzangocart:
     order:
         amount_excl:        Gross amount
         amount_incl:        Net amount
-        amount_outstanding: Amount outstanding
-        amount_paid:        Amount paid
+        amount_outstanding: Outstanding balance
+        amount_paid:        Amount already paid
         amount_tax:         VAT
         date:               Date: %date%
         items:

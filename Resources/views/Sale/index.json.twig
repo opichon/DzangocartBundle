@@ -9,7 +9,7 @@
         {% for sale in results %}
             {
                 "DT_RowId": "{{ 'u_' ~ sale.id }}",
-                "DT_RowClass": "{{ 'user' }}",
+                "DT_RowClass": "{{ sale.isTest ? 'test' : '' }}{% if not sale.paid %} unpaid{% endif %}",
                 "id": {{ sale.id() }},
                 "0": "",
                 "1": "{{ sale.date|localizeddate('medium', 'short', app.request.locale, null, 'dd.MM.yyyy HH:mm') }}",
@@ -21,10 +21,10 @@
                 "7": "{{ sale.amountExcl }}",
                 "8": "{{ sale.amountTax }}",
                 "9": "{{ sale.amountIncl }}",
-                "10": "{{ sale.paid }}",
+                "10": "<i class='icon-{{ sale.paid ? 'thumbs-up-alt' : 'warning-sign' }}' />",
                 "11": "{{ sale.affiliate }}",
-                "12": "{{ sale.test }}",
-                "13": ""
+                "12": "{% if sale.isTest %}<i class='icon-asterisk' />{% endif %}",
+                "13": "{%- include 'DzangocartBundle:Sale:actions.html.twig' -%}"
             }{% if not loop.last %},{% endif %}
         {% endfor %}
     ]

@@ -16,7 +16,7 @@
 						fnDrawCallback: function() {
 							$( this ).show();
 						},
- 						fnServerParams: function( data ) {
+						fnServerParams: function( data ) {
 							$( ".filters :checkbox", $this ).each(function() {
 								data.push({
 									name: $( this ).attr( "name" ),
