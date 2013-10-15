@@ -5,7 +5,7 @@ namespace Dzangocart\Bundle\DzangocartBundle\DependencyInjection;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
-use Symfony\Component\DependencyInjection\Loader;
+use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
 /**
  * This is the class that loads and manages your bundle configuration
@@ -35,7 +35,7 @@ class DzangocartExtension extends Extension
         $container->setParameter('dzangocart.add_to_cart.title',    $config['add_to_cart']['title']);
 */
 
-        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
     }
 }

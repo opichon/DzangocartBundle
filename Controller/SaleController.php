@@ -41,8 +41,7 @@ class SaleController extends Controller
             $view = $this->renderView('DzangocartBundle:Sale:index.json.twig', $data);
 
             return new Response($view, 200, array('Content-Type' => 'application/json'));
-        }
-        else {
+        } else {
             $form = $this->createForm(
                 new SaleFilterType(),
                 array(
@@ -97,9 +96,9 @@ class SaleController extends Controller
             $index = $query->get('iSortCol_' . $i);
 
             if (array_key_exists($index, $columns)) {
-                
+
                 $column = $columns[$index];
-                
+
                 if (!is_array($column)) {
                     $column = array($column);
                 }

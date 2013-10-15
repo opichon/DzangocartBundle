@@ -2,13 +2,19 @@
 
 {% trans_default_domain "dzangocart" %}
 
-{% block page_class %}{% endblock %}
-
 {% block dzangocart_page_title %}{% trans with { '%order_id%': order.orderId } %}dzangocart.order.page_title{% endtrans %}{% endblock %}
+
+{% block dzangocart_page_nav %}
+<div class="pull-right">
+{% include "DzangocartBundle:Order:toolbar.html.twig" %}
+</div>
+{% endblock %}
 
 {% block dzangocart_content %}
 {% include "DzangocartBundle:Order:order.html.twig" %}
+{% if 'dev' == app.environment %}
 <pre>{{ data }}</pre>
+{% endif %}
 {% endblock %}
 
 {% block head_style %}

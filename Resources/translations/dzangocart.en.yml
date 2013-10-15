@@ -23,7 +23,10 @@ dzangocart:
     order:
         amount_excl:        Gross amount
         amount_incl:        Net amount
+        amount_outstanding: Amount outstanding
+        amount_paid:        Amount paid
         amount_tax:         VAT
+        date:               Date: %date%
         items:
             amount_excl:    Gross amount
             amount_incl:    Net amount
@@ -33,6 +36,10 @@ dzangocart:
             quantity:       Qty
             rank:           '#'
         page_title:         Order n˚ %order_id%
+        taxes:
+            rate:           Rate
+            tax:            Amount
+            title:          VAT
 
     orders:
         actions:        Actions

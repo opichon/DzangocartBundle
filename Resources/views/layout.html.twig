@@ -13,6 +13,7 @@
 </head>
 <body>
     <div class="container-fluid">
+        {% block dzangocart_page_nav %}{% endblock %}
         <h1>{% block dzangocart_page_title %}{% endblock %}</h1>
         {% block dzangocart_content %}
         {% endblock %}
@@ -27,4 +28,3 @@
     {% endblock foot_script %}
 </body>
 </html>
-

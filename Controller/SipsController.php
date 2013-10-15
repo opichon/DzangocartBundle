@@ -41,8 +41,7 @@ class SipsController extends Controller
             $view = $this->renderView('DzangocartBundle:Sips:index.json.twig', $data);
 
             return new Response($view, 200, array('Content-Type' => 'application/json'));
-        }
-        else {
+        } else {
             $form = $this->createForm(
                 new SipsFilterType(),
                 array(
@@ -96,9 +95,9 @@ class SipsController extends Controller
             $index = $query->get('iSortCol_' . $i);
 
             if (array_key_exists($index, $columns)) {
-                
+
                 $column = $columns[$index];
-                
+
                 if (!is_array($column)) {
                     $column = array($column);
                 }

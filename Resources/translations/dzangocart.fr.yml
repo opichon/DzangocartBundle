@@ -23,7 +23,10 @@ dzangocart:
     order:
         amount_excl:        Total HT
         amount_incl:        Total TTC
+        amount_outstanding: Reste dû
+        amount_paid:        Déjà réglé
         amount_tax:         TVA
+        date:               Date : %date%
         items:
             amount_excl:    Total HT
             amount_incl:    Total TTC
@@ -33,6 +36,10 @@ dzangocart:
             quantity:       Qté
             rank:           '#'
         page_title:         Commande n˚ %order_id%
+        taxes:
+            rate:           Taux
+            tax:            Montant
+            title:          TVA
 
     orders:
         actions:        Actions

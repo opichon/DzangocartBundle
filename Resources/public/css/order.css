@@ -1,0 +1,25 @@
+.dzangocart .items table.table {
+	display: table;
+}
+
+.dzangocart .items th.quantity {
+	text-align: center;
+}
+
+.dzangocart .items th.price {
+	text-align: center;
+}
+
+.dzangocart .items th.amount {
+	text-align: center;
+}
+
+.dzangocart .taxes table.table {
+	display: table;
+	width: auto;
+}
+
+.dzangocart .taxes th.rate,
+.dzangocart .taxes th.amount {
+	text-align: center;
+}
