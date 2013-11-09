@@ -2,10 +2,10 @@
 
 namespace Dzangocart\Bundle\DzangocartBundle\DependencyInjection;
 
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
-use Symfony\Component\HttpKernel\DependencyInjection\Extension;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
+use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 /**
  * This is the class that loads and manages your bundle configuration
@@ -26,14 +26,6 @@ class DzangocartExtension extends Extension
             'dzangocart.config',
             $config
         );
-
-/*        $container->setParameter('dzangocart.url',          $config['url']);
-        $container->setParameter('dzangocart.secret_key',   $config['secret_key']);
-        $container->setParameter('dzangocart.test_code',    $config['test_code']);
-
-        $container->setParameter('dzangocart.add_to_cart.label',    $config['add_to_cart']['label']);
-        $container->setParameter('dzangocart.add_to_cart.title',    $config['add_to_cart']['title']);
-*/
 
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');

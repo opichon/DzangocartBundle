@@ -22,11 +22,7 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-                ->scalarNode('base_url')
-                    ->isRequired()
-                    ->cannotBeEmpty()
-                ->end()
-                ->scalarNode('token')
+                ->scalarNode('cart_url')
                     ->isRequired()
                     ->cannotBeEmpty()
                 ->end()
@@ -60,6 +56,15 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('datetime_format')
                     ->defaultValue('dd/MM/yyyy HH:mm')
                 ->end()
+                ->scalarNode('api_url')
+                    ->isRequired()
+                    ->cannotBeEmpty()
+                ->end()
+                ->scalarNode('token')
+                    ->isRequired()
+                    ->cannotBeEmpty()
+                ->end()
+
             ->end();
 
         return $treeBuilder;
