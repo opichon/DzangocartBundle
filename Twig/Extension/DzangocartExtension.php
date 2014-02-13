@@ -6,8 +6,6 @@ use \Twig_Function_Method;
 
 use Dzangocart\Client\DzangocartClient;
 
-use Symfony\Component\DependencyInjection\ContainerInterface;
-
 class DzangocartExtension extends Twig_Extension
 {
     protected $dzangocart;
