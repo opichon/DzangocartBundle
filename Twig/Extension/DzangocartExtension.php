@@ -26,11 +26,13 @@ class DzangocartExtension extends Twig_Extension
     public function getFunctions()
     {
         return array(
-            'add_to_cart' => new Twig_Function_Method($this, 'add_to_cart', array('is_safe' => array('html'))),
+            'dzangocart_link' => new Twig_Function_Method($this, 'dzangocartLink', array('is_safe' => array('html'))),
+            'dzangocart_url' => new Twig_Function_Method($this, 'dzangocartUrl', array('is_safe' => array('html'))),
+            'dzangocart_js' => new Twig_Function_Method($this, 'dzangocartJs', array('is_safe' => array('html'))),
         );
     }
 
-    public function add_to_cart(
+    public function dzangocartLink(
         $product,
         $price,
         $quantity = 1,
@@ -54,7 +56,7 @@ class DzangocartExtension extends Twig_Extension
             ? 'dzangocart ' . $html_options['class']
             : 'dzangocart';
 
-        $html_options['href'] = $this->getCartUrl(
+        $html_options['href'] = $this->dzangocartUrl(
             $product,
             $price,
             $quantity,
@@ -74,7 +76,7 @@ class DzangocartExtension extends Twig_Extension
         return '<a' . $attributes . '>' . $label . '</a>';
     }
 
-    protected function getCartUrl(
+    public function dzangocartUrl(
         $product,
         $price,
         $quantity = 1,
@@ -103,10 +105,18 @@ class DzangocartExtension extends Twig_Extension
         return $url . http_build_query($params);
     }
 
+    public function dzangocartJs()
+    {
+        return sprintf(
+            '<script src="%s/cart/js/" type="text/javascript"></script>',
+            $this->dzangocart->getConfig('cart_url')
+        );
+    }
+
     protected function setCustomerData($customer_data)
     {
         if (!empty($customer_data)) {
-            $data = DzangocartClient::encode(
+            $data = $this->dzangocart->encode(
                 $customer_data,
                 $this->dzangocart->getConfig('secret_key'),
                 3600
