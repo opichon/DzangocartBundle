@@ -59,7 +59,22 @@ class Configuration implements ConfigurationInterface
                     ->isRequired()
                     ->cannotBeEmpty()
                 ->end()
-
+                ->arrayNode('om_classes')
+                    ->children()
+                        ->scalarNode('order')
+                            ->defaultValue('Dzangocart\OM\Order')
+                        ->end()
+                        ->scalarNode('sale')
+                            ->defaultValue('Dzangocart\OM\Sale')
+                        ->end()
+                        ->scalarNode('customer')
+                            ->defaultValue('Dzangocart\OM\Customer')
+                        ->end()
+                        ->scalarNode('address')
+                            ->defaultValue('Dzangocart\OM\Address')
+                        ->end()
+                    ->end()
+                ->end()
             ->end();
 
         return $treeBuilder;
