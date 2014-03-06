@@ -64,7 +64,7 @@ class Configuration implements ConfigurationInterface
                         ->scalarNode('order')
                             ->defaultValue('Dzangocart\OM\Order')
                         ->end()
-                        ->scalarNode('sale')
+                        ->variableNode('sale')
                             ->defaultValue('Dzangocart\OM\Sale')
                         ->end()
                         ->scalarNode('customer')
