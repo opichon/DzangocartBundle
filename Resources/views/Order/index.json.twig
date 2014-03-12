@@ -9,7 +9,7 @@
 		{% for order in list %}
 			{
 				"DT_RowId": "{{ 'o_' ~ order.getOrderId }}",
-				"DT_RowClass": "{{ order.isTest ? 'test' : '' }}{% if not order.paid %} unpaid{% endif %}",
+				"DT_RowClass": "{{ order.isTest ? 'test' : '' }}{% if not order.paid %} unpaid{% endif %}{% if order.credit %} credit{% endif %}",
 				"id": {{ order.getOrderId }},
 				"0": "",
 				"1": "{{ order.getDate|localizeddate('medium', 'short', app.request.locale, null, datetime_format) }}",
@@ -18,7 +18,7 @@
 				"4": "{{ order.getCurrency }}",
 				"5": "{{ order.getAmountExcl|currency(order.getCurrency, app.request.locale) }}",
 				"6": "{{ order.getTaxAmount|currency(order.getCurrency, app.request.locale) }}",
-				"7": "{{ order.getAmount|currency(order.getCurrency, app.request.locale) }}",
+				"7": "{{ order.getAmountIncl|currency(order.getCurrency, app.request.locale) }}",
 				"8": "{{ order.getAmountPaid|currency(order.getCurrency, app.request.locale) }}",
 				"9": "{{ order.affiliate }}",
 				"10": "{% if order.isTest %}<i class='icon-asterisk' />{% endif %}",
