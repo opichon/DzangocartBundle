@@ -26,9 +26,9 @@ class SaleFilterType extends AbstractType
             'format' => 'yyyy-MM-dd',
             'label' => 'dzangocart.sales.filters.date_from',
             'widget' => 'single_text',
-            'widget_control_group_attr' => array(
-                'class' => 'date'
-            ),
+//            'widget_control_group_attr' => array(
+//                'class' => 'date'
+//            ),
             'attr' => array(
                 'class' => 'date_from'
             )
@@ -37,9 +37,9 @@ class SaleFilterType extends AbstractType
             'format' => 'yyyy-MM-dd',
             'label' => 'dzangocart.sales.filters.date_to',
             'widget' => 'single_text',
-            'widget_control_group_attr' => array(
-                'class' => 'date'
-            ),
+//            'widget_control_group_attr' => array(
+//                'class' => 'date'
+//            ),
             'attr' => array(
                 'class' => 'date_to'
             )
@@ -54,12 +54,11 @@ class SaleFilterType extends AbstractType
 
         $builder->add('test', 'checkbox', array(
             'label' => 'dzangocart.sales.filters.test',
-            'label_render' => true,
-            'widget_checkbox_label' => 'widget',
-            'widget_control_group_attr' => array(
-                'class' => 'test'
-            ),
-            'widget_type' => 'inline'
+//            'widget_checkbox_label' => 'widget',
+//            'widget_control_group_attr' => array(
+ //               'class' => 'test'
+//            ),
+//            'widget_type' => 'inline'
         ));
     }
 
