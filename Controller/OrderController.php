@@ -22,7 +22,7 @@ class OrderController extends Controller
 {
     /**
      * @Route("/", name="dzangocart_orders")
-     * @Template()
+     * @Template("DzangocartBundle:Order:index.html.twig")
      */
     public function indexAction(Request $request)
     {
