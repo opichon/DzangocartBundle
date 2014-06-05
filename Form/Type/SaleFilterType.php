@@ -26,40 +26,43 @@ class SaleFilterType extends AbstractType
             'format' => 'yyyy-MM-dd',
             'label' => 'dzangocart.sales.filters.date_from',
             'widget' => 'single_text',
-            'widget_control_group_attr' => array(
-                'class' => 'date'
-            ),
+//            'widget_control_group_attr' => array(
+//                'class' => 'date'
+//            ),
             'attr' => array(
-                'class' => 'date_from'
+                'class' => 'date_from form-control'
             )
         ));
         $builder->add('date_to', 'date', array(
             'format' => 'yyyy-MM-dd',
             'label' => 'dzangocart.sales.filters.date_to',
             'widget' => 'single_text',
-            'widget_control_group_attr' => array(
-                'class' => 'date'
-            ),
+//            'widget_control_group_attr' => array(
+//                'class' => 'date'
+//            ),
             'attr' => array(
-                'class' => 'date_to'
+                'class' => 'date_to form-control'
             )
         ));
 
         $builder->add('date_range', 'text', array(
             'attr' => array(
-                'class' => 'input-xlarge period'
+                'class' => 'input-xlarge period form-control'
             ),
             'label' => 'dzangocart.sales.filters.period'
         ));
 
         $builder->add('test', 'checkbox', array(
             'label' => 'dzangocart.sales.filters.test',
-            'label_render' => true,
-            'widget_checkbox_label' => 'widget',
-            'widget_control_group_attr' => array(
-                'class' => 'test'
+//            'label_render' => true,
+//            'widget_checkbox_label' => 'widget',
+//            'widget_control_group_attr' => array(
+//                'class' => 'test'
+//            ),
+//            'widget_type' => 'inline'
+            'attr' => array(
+                'class' => 'checkbox'
             ),
-            'widget_type' => 'inline'
         ));
     }
 
