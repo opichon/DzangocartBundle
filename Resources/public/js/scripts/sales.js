@@ -24,7 +24,7 @@
 								});
 							});
 
-							$( ".filters .date input", $this ).each(function() {
+							$( ".filters input", $this ).each(function() {
 								data.push({
 									name: $( this ).attr( "name" ),
 									value: $( this ).val()
