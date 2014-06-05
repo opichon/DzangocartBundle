@@ -10,7 +10,7 @@
 {% include "DzangocartBundle:DirectPayment:list.html.twig" %}
 {% endblock %}
 
-{% block head_style %}
+{% block dzangocart_head_style %}
     {{ parent() }}
     {% stylesheets filter="cssrewrite" output="css/*.css"
         'bundles/uamdatatables/css/jquery.dataTables_bootstrap.css'
@@ -20,9 +20,9 @@
     %}
         <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
     {% endstylesheets %}
-{% endblock head_style %}
+{% endblock %}
 
-{% block foot_script %}
+{% block dzangocart_foot_script %}
     {{ parent() }}
     {% javascripts
         'bundles/uamdatatables/js/jquery.dataTables.js'
