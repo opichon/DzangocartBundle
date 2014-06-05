@@ -3,8 +3,8 @@
 {% spaceless %}
 {
     "sEcho": "{{ app.request.query.all.sEcho }}",
-    "iTotalRecords": {{ totalCount }},
-    "iTotalDisplayRecords": {{ count }},
+    "iTotalRecords": 100,
+    "iTotalDisplayRecords": 10,
     "aaData" : [
         {% for sale in results %}
             {
@@ -14,7 +14,7 @@
                 "0": "",
                 "1": "{{ sale.date|localizeddate('medium', 'short', app.request.locale, null, 'dd.MM.yyyy HH:mm') }}",
                 "2": "{{ sale.orderId }}",
-                "3": "{{ sale.customer.name }}",
+                "3": "",
                 "4": "{{ sale.name|raw }}",
                 "5": "{{ sale.quantity }}",
                 "6": "{{ sale.currency }}",
