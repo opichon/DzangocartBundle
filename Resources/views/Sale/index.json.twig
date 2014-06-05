@@ -3,8 +3,8 @@
 {% spaceless %}
 {
     "sEcho": "{{ app.request.query.all.sEcho }}",
-    "iTotalRecords": 100,
-    "iTotalDisplayRecords": 10,
+    "iTotalRecords": {{ meta['count_total'] }},
+    "iTotalDisplayRecords": {{ meta['count_filtered'] }},
     "aaData" : [
         {% for sale in results %}
             {
