@@ -3,8 +3,8 @@
 {% spaceless %}
 {
 	"sEcho": "{{ app.request.query.all.sEcho }}",
-	"iTotalRecords": {{ total }},
-	"iTotalDisplayRecords": {{ totalDisplay }},
+	"iTotalRecords": {{ meta['count_total'] }},
+	"iTotalDisplayRecords": {{ meta['count_filtered'] }},
 	"aaData" : [
 		{% for order in list %}
 			{
@@ -14,7 +14,7 @@
 				"0": "",
 				"1": "{{ order.getDate|localizeddate('medium', 'short', app.request.locale, null, datetime_format) }}",
 				"2": "{{ order.getOrderId }}",
-				"3": "{{ order.getCustomer.getName }}",
+				"3": "{{ order.CustomerFullName }}",
 				"4": "{{ order.getCurrency }}",
 				"5": "{{ order.getAmountExcl|currency(order.getCurrency, app.request.locale) }}",
 				"6": "{{ order.getTaxAmount|currency(order.getCurrency, app.request.locale) }}",
