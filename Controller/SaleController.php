@@ -62,9 +62,9 @@ class SaleController extends Controller
     {
         $filters = array();
 
-        $filters['search'] = $query->get('sSearch');
-        $filters['limit'] = $query->get('iDisplayLength');
-        $filters['offset'] = $query->get('iDisplayStart');
+        $filters['search'] = $query->get('search');
+        $filters['limit'] = $query->get('recordsTotal');
+        $filters['offset'] = $query->get('recordsFiltered');
 
         $_filters = $query->get('filters');
 
@@ -77,9 +77,9 @@ class SaleController extends Controller
 
         $filters['test'] = @$_filters['test'] ? true : false;
 
-        if (array_key_exists('customer', $_filters)) {
-            $filters['customer'] = $_filters['customer'];
-        }
+//        if (array_key_exists('customer', $_filters)) {
+//            $filters['customer'] = $_filters['customer'];
+//        }
 
         return $filters;
     }

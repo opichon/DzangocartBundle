@@ -16,7 +16,7 @@
 						drawCallback: function() {
 							$( this ).show();
 						},
-						fnServerParams: function( data ) {
+						serverParams: function( data ) {
 							$( ".filters :checkbox", $this ).each(function() {
 								data.columns.push({
 									name: $( this ).attr( "name" ),
@@ -105,7 +105,7 @@
 				url: "/bundles/uamdatatables/lang/" + dzangocart.locale + ".txt"
 			},
             //[removed in datatable 1.10]
-			//sCookiePrefix: "dzangocart_" 
+			//sCookiePrefix: "dzangocart_"
 		},
 		daterangepicker: {
 			minDate: moment('2009-01-01'),

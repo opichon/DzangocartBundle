@@ -2,10 +2,10 @@
 
 {% spaceless %}
 {
-    "sEcho": "{{ app.request.query.all.sEcho }}",
-    "iTotalRecords": {{ meta['count_total'] }},
-    "iTotalDisplayRecords": {{ meta['count_filtered'] }},
-    "aaData" : [
+    "draw": "{{ app.request.query.all.sEcho }}",
+    "recordsTotal": {{ meta['count_total'] }},
+    "recordsFiltered": {{ meta['count_filtered'] }},
+    "data" : [
         {% for sale in results %}
             {
                 "DT_RowId": "{{ 'u_' ~ sale.id }}",
