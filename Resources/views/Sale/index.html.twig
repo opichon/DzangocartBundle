@@ -13,7 +13,7 @@
 {% block dzangocart_head_style %}
     {{ parent() }}
     {% stylesheets filter="cssrewrite" output="css/*.css"
-        'bundles/uamdatatables/css/jquery.dataTables_bootstrap.css'
+        'bundles/dzangocart/vendor/datatables-bootstrap3/BS3/assets/css/datatables.css'
         'bundles/dzangocart/js/vendor/bootstrap-daterangepicker/daterangepicker-bs2.css'
         'bundles/dzangocart/css/dzangocart.css'
         'bundles/dzangocart/css/sales.css'
@@ -25,8 +25,8 @@
 {% block dzangocart_foot_script %}
     {{ parent() }}
     {% javascripts
-        'bundles/uamdatatables/js/jquery.dataTables.min.js'
-        'bundles/uamdatatables/js/jquery.dataTables_bootstrap.js'
+        'bundles/dzangocart/vendor/datatables/media/js/jquery.dataTables.min.js'
+        'bundles/dzangocart/vendor/datatables-bootstrap3/BS3/assets/js/datatables.min.js'
         'bundles/dzangocart/js/vendor/moment/moment.js'
         'bundles/dzangocart/js/vendor/moment/lang/fr.js'
         'bundles/dzangocart/js/vendor/bootstrap-daterangepicker/daterangepicker.js'
