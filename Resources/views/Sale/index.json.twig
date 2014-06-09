@@ -2,7 +2,7 @@
 
 {% spaceless %}
 {
-    "draw": "{{ app.request.query.all.sEcho }}",
+    "draw": "{{ meta['draw'] }}",
     "recordsTotal": {{ meta['count_total'] }},
     "recordsFiltered": {{ meta['count_filtered'] }},
     "data" : [
