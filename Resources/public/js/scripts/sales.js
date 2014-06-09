@@ -87,9 +87,9 @@
 
 	$.fn.sales.defaults = {
 		dataTables: {
-			columnsDefs: [
-				{ orderable: false, targets: [ 0, 5, 10, 13 ] },
+			columnDefs: [
 				{ visible: false, targets: [ 0 ] },
+				{ orderable: false, targets: [ 0, 5, 10, 13 ] },
 				{ className: "number", targets: [ 5, 7, 8, 9 ] },
 				{ className: "center", targets: [ 10, 12 ] },
 				{ className: "actions", targets: [ 13 ] }
