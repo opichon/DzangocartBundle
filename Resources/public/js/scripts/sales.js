@@ -13,25 +13,25 @@
 					var $this = $( this );
 
 					table = $( "table.table", this ).dataTable( $.extend( true, {}, settings.dataTables, {
-						fnDrawCallback: function() {
+						drawCallback: function() {
 							$( this ).show();
 						},
 						fnServerParams: function( data ) {
 							$( ".filters :checkbox", $this ).each(function() {
-								data.push({
+								data.columns.push({
 									name: $( this ).attr( "name" ),
 									value: $( this ).is( ":checked" ) ? 1 : 0
 								});
 							});
 
 							$( ".filters input", $this ).each(function() {
-								data.push({
+								data.columns.push({
 									name: $( this ).attr( "name" ),
 									value: $( this ).val()
 								});
 							});
 						},
-						fnStateLoadParams: function( oSettings, oData ) {
+						stateLoadParams: function( oSettings, oData ) {
 							$( ".filters :checkbox", $this ).each(function() {
 								$( this ).attr( "checked", oData[ $( this ).attr( "name" ) ] );
 							});
@@ -40,7 +40,7 @@
 								$( this ).val( oData[ $( this ).attr( "name" ) ] );
 							});
 						},
-						fnStateSaveParams: function( oSettings, oData ) {
+						stateSaveParams: function( oSettings, oData ) {
 							$( ".filters :checkbox", $this ).each(function() {
 								oData[ $( this ).attr( "name" ) ] = $( this ).is( ":checked" );
 							});
@@ -63,12 +63,12 @@
 						function( start, end ) {
 							$( ".filters .date_from", $this ).val( start.format( "YYYY-MM-DD" ) );
 							$( ".filters .date_to", $this ).val( end.format( "YYYY-MM-DD" ) );
-							table.fnDraw();
+							table.draw();
 						}
 					).data( "daterangepicker" ).updateInputText();
 
 					$( ".filters input", $this ).change(function() {
-						table.fnDraw();
+						table.draw();
 					});
 				});
 			}
@@ -87,24 +87,25 @@
 
 	$.fn.sales.defaults = {
 		dataTables: {
-			aoColumnDefs: [
-				{ bSortable: false, aTargets: [ 0, 5, 10, 13 ] },
-				{ bVisible: false, aTargets: [ 0 ] },
-				{ sClass: "number", aTargets: [ 5, 7, 8, 9 ] },
-				{ sClass: "center", aTargets: [ 10, 12 ] },
-				{ sClass: "actions", aTargets: [ 13 ] }
+			columns: [
+				{ orderable: false, targets: [ 0, 5, 10, 13 ] },
+				{ visible: false, targets: [ 0 ] },
+				{ className: "number", targets: [ 5, 7, 8, 9 ] },
+				{ className: "center", targets: [ 10, 12 ] },
+				{ className: "actions", targets: [ 13 ] }
 			],
-			asStripeClasses: [],
-			bAutoWidth: false,
-			bPaginate: true,
-			bProcessing: true,
-			bServerSide: true,
-			bSortable: true,
-			bStateSave: true,
-			oLanguage: {
-				sUrl: "/bundles/uamdatatables/lang/" + dzangocart.locale + ".txt"
+			stripeClasses: [],
+			autoWidth: false,
+			paging: true,
+			processing: true,
+			serverSide: true,
+			orderable: true,
+			stateSave: true,
+			language: {
+				url: "/bundles/uamdatatables/lang/" + dzangocart.locale + ".txt"
 			},
-			sCookiePrefix: "dzangocart_"
+            //[removed in datatable 1.10]
+			//sCookiePrefix: "dzangocart_" 
 		},
 		daterangepicker: {
 			minDate: moment('2009-01-01'),
