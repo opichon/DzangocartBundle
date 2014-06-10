@@ -25,6 +25,13 @@
 				"BS3/assets/images/sort_desc_disabled.png",
 				"BS3/assets/js/datatables.js"
 			]
+		},
+		"momentjs": {
+			"main": [
+				"moment.js",
+				"min/moment-with-langs.js",
+				"min/moment-with-langs.min.js"
+			]
 		}
 	}
 }
