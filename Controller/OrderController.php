@@ -14,10 +14,6 @@ use Symfony\Component\HttpFoundation\ParameterBag;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-/**
- * @Route("/order")
- * @Template
- */
 class OrderController extends Controller
 {
     /**
@@ -58,7 +54,7 @@ class OrderController extends Controller
     }
 
     /**
-     * @Route("/{id}", name="dzangocart_order")
+     * @Route("/{id}", name="dzangocart_order", requirements={"id": "\d+"})
      * @Template()
      */
     public function showAction(Request $request, $id)
