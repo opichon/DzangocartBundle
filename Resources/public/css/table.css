@@ -1,0 +1,112 @@
+table.table {
+	display: none;
+}
+
+table.table th,
+table.table td {
+	border-top: none;
+	border-bottom: 1px solid #ddd;
+}
+
+table.table thead th,
+table.table thead .sorting {
+	vertical-align: bottom;
+	background-color: #f1f6e0;
+	font-weight: normal;
+}
+
+table.table .center {
+	text-align: center;
+}
+
+table.table th.date {
+	width: 6em;
+}
+
+table.table th.datetime {
+	width: 9em;
+}
+
+table.table th.order_id {
+	width: 4em;
+}
+
+table.table th.amount  {
+	width: 8em;
+}
+
+table.table th.ccy {
+	width: 4em;
+}
+
+table.table th.net {
+	width: 8em;
+}
+
+table.table th.tax {
+	width: 5em;
+}
+
+table.table th.gross {
+	width: 8em;
+}
+
+table.table th.affiliate {
+	width: 4em;
+}
+
+table.table th.demo {
+	width: 4em;
+}
+
+table.table td.number,
+table.table td.price,
+table.table td.amount {
+	text-align: right;
+	padding-right: 10px;
+}
+
+.table tr.disabled td,
+.table tr.disabled a {
+	background-color: #eee;
+	color: #aaa;
+}
+
+.table tr.unpaid td {
+	color: #D8000C;
+  	background-color: #FFBABA;
+}
+
+.table tr.test td {
+	color: #888;
+	background-color: #eee;
+}
+
+.table-hover > tbody > tr:hover > td,
+.table-hover > tbody > tr:hover > th {
+	color: #535353;
+	background-color: #FFF6BF;
+}
+
+.dataTables_processing {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 250px;
+	height: 50px;
+	margin-left: -125px;
+	margin-top: -15px;
+	padding: 14px 0 2px 0;
+	border: 1px solid #e2b709;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	text-align: center;
+	color: #999;
+	font-size: 14px;
+	background-color: #ffe57e;
+	-moz-box-shadow: 0px 5px 90px #888;
+	-webkit-box-shadow: 0px 5px 90px #888;
+	box-shadow: 0px 5px 90px #888;
+	box-sizing: border-box;
+}

@@ -10,7 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class CatalogueController extends Controller
 {
     /**
-     * @Route("/", name="catalogue")
+     * @Route("/catalogue", name="dzangocart_catalogue")
      * @Template("DzangocartBundle:Catalogue:index.html.twig")
      */
     public function indexAction()

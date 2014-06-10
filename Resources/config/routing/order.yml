@@ -1,3 +1,4 @@
-_dzangocart_order:
+_dzangocart_admin_order:
     resource: "@DzangocartBundle/Controller/OrderController.php"
     type: annotation
+    prefix: /order

@@ -1,0 +1,8 @@
+_dzangocart_admin_order:
+    resource: "@DzangocartBundle/Resources/config/routing/order.yml"
+
+dzangocart_admin_sale:
+    resource: "@DzangocartBundle/Resources/config/routing/sale.yml"
+
+dzangocart_admin_catalogue:
+    resource: "@DzangocartBundle/Resources/config/routing/catalogue.yml"

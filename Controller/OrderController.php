@@ -2,7 +2,9 @@
 
 namespace Dzangocart\Bundle\DzangocartBundle\Controller;
 
-use \DateTime;
+use DateTime;
+
+use Dzangocart\Bundle\DzangocartBundle\Form\Type\OrderFilterType;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -12,12 +14,6 @@ use Symfony\Component\HttpFoundation\ParameterBag;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-use Dzangocart\Bundle\DzangocartBundle\Form\Type\OrderFilterType;
-
-/**
- * @Route("/")
- * @Template
- */
 class OrderController extends Controller
 {
     /**
@@ -58,7 +54,7 @@ class OrderController extends Controller
     }
 
     /**
-     * @Route("/{id}", name="dzangocart_order")
+     * @Route("/{id}", name="dzangocart_order", requirements={"id": "\d+"})
      * @Template()
      */
     public function showAction(Request $request, $id)

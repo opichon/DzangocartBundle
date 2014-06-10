@@ -1,3 +1,4 @@
-_dzangocart_sale:
+_dzangocart_admin_sale:
     resource: "@DzangocartBundle/Controller/SaleController.php"
     type: annotation
+    prefix: /sale
