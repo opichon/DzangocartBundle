@@ -94,7 +94,7 @@
 			processing: true,
 			serverSide: true,
 			orderable: true,
-			stateSave: true,
+			stateSave: false,
 			language: {
 				url: "/bundles/uamdatatables/lang/" + dzangocart.locale + ".txt"
 			},
