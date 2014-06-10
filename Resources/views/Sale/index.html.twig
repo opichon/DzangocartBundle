@@ -38,7 +38,7 @@
     <script>
     dzangocart.sales = {
         dataTables: {
-            ajax: "{{ path('dzangocart_sales') }}"
+            ajax: "{{ path('dzangocart_sales', { _format: 'json' }) }}"
         },
         daterangepicker: {
             format: "{{ config.date_format|upper }}"
