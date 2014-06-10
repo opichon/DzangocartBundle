@@ -3,3 +3,6 @@ _dzangocart_admin_order:
 
 dzangocart_admin_sale:
     resource: "@DzangocartBundle/Resources/config/routing/sale.yml"
+
+dzangocart_admin_catalogue:
+    resource: "@DzangocartBundle/Resources/config/routing/catalogue.yml"
