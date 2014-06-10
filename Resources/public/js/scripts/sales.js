@@ -16,21 +16,15 @@
 						drawCallback: function() {
 							$( this ).show();
 						},
-						serverParams: function( data ) {
-							$( ".filters :checkbox", $this ).each(function() {
-								data.columns.push({
-									name: $( this ).attr( "name" ),
-									value: $( this ).is( ":checked" ) ? 1 : 0
-								});
-							});
+                        serverParams: function( data ) {
+                            $( ".filters :checkbox", $this ).each(function() {
+                                data[$( this ).attr( "name" )] = $( this ).is( ":checked" ) ? 1 : 0;
+                            });
 
-							$( ".filters input", $this ).each(function() {
-								data.columns.push({
-									name: $( this ).attr( "name" ),
-									value: $( this ).val()
-								});
-							});
-						},
+                            $( ".filters input", $this ).each(function() {
+                                data[$( this ).attr( "name" )] = $( this ).val();
+                            });
+                        },
 						stateLoadParams: function( oSettings, oData ) {
 							$( ".filters :checkbox", $this ).each(function() {
 								$( this ).attr( "checked", oData[ $( this ).attr( "name" ) ] );
