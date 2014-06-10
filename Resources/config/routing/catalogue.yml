@@ -1,0 +1,3 @@
+dzangocart_admin_catalogue:
+    resource: "@DzangocartBundle/Controller/CatalogueController.php"
+    type: annotation
