@@ -59,8 +59,8 @@ class SaleController extends Controller
         $filters = array();
 
         $filters['search'] = $query->get('search');
-        $filters['limit'] = $query->get('recordsTotal');
-        $filters['offset'] = $query->get('recordsFiltered');
+        $filters['length'] = $query->get('length');
+        $filters['offset'] = $query->get('start');
 
         $_filters = $query->get('filters');
 
@@ -86,10 +86,10 @@ class SaleController extends Controller
 
         $columns = $this->getSortColumns();
 
-        $n = $query->get('iSortingCols');
+        $n = $query->get('sortingCols');
 
         for ($i = 0; $i < $n; $i++) {
-            $index = $query->get('iSortCol_' . $i);
+            $index = $query->get('sortCol_' . $i);
 
             if (array_key_exists($index, $columns)) {
 
@@ -101,7 +101,7 @@ class SaleController extends Controller
 
                 foreach ($column as $c) {
                     $sort_by[] = $c;
-                    $sort_by[] = $query->get('sSortDir_' . $i, 'asc');
+                    $sort_by[] = $query->get('sortDir_' . $i, 'asc');
                 }
             }
         }
