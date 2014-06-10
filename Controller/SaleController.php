@@ -73,9 +73,9 @@ class SaleController extends Controller
 
         $filters['test'] = @$_filters['test'] ? true : false;
 
-//        if (array_key_exists('customer', $_filters)) {
-//            $filters['customer'] = $_filters['customer'];
-//        }
+        if (array_key_exists('customer', $_filters)) {
+            $filters['customer'] = $_filters['customer'];
+        }
 
         return $filters;
     }
