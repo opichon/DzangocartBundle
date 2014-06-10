@@ -14,7 +14,7 @@
     {{ parent() }}
     {% stylesheets filter="cssrewrite" output="css/*.css"
         'bundles/dzangocart/vendor/datatables-bootstrap3/BS3/assets/css/datatables.css'
-        'bundles/dzangocart/js/vendor/bootstrap-daterangepicker/daterangepicker-bs2.css'
+        'bundles/dzangocart/vendor/bootstrap-daterangepicker/daterangepicker-bs3.css'
         'bundles/dzangocart/css/dzangocart.css'
         'bundles/dzangocart/css/table.css'
         'bundles/dzangocart/css/sales.css'
@@ -28,9 +28,9 @@
     {% javascripts
         'bundles/dzangocart/vendor/datatables/media/js/jquery.dataTables.min.js'
         'bundles/dzangocart/vendor/datatables-bootstrap3/BS3/assets/js/datatables.min.js'
-        'bundles/dzangocart/js/vendor/moment/moment.js'
-        'bundles/dzangocart/js/vendor/moment/lang/fr.js'
-        'bundles/dzangocart/js/vendor/bootstrap-daterangepicker/daterangepicker.js'
+        'bundles/dzangocart/vendor/momentjs/moment.js'
+        'bundles/dzangocart/vendor/momentjs/min/moment-with-langs.js'
+        'bundles/dzangocart/vendor/bootstrap-daterangepicker/daterangepicker.js'
         'bundles/dzangocart/js/scripts/sales.js'
     %}
         <script src="{{ asset_url }}"></script>
