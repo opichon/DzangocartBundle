@@ -60,7 +60,7 @@ class SaleController extends Controller
 
         $filters['search'] = $query->get('search');
         $filters['length'] = $query->get('length');
-        $filters['offset'] = $query->get('start');
+        $filters['start'] = $query->get('start');
 
         $_filters = $query->get('filters');
 
