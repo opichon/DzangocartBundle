@@ -12,8 +12,8 @@
 				return this.each(function() {
 					var $this = $( this );
 
-					table = $( "table.table", this ).dataTable( $.extend( true, {}, settings.dataTables, {
-						drawCallback: function() {
+					table = $( "table.table", this ).DataTable( $.extend( true, {}, settings.dataTables, {
+                        drawCallback: function() {
 							$( this ).show();
 						},
                         serverParams: function( data ) {
