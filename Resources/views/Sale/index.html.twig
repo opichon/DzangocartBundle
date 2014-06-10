@@ -1,4 +1,4 @@
-{% extends "DzangocartBundle::layout.html.twig" %}
+{% extends "DzangocartBundle::admin.html.twig" %}
 
 {% trans_default_domain "dzangocart" %}
 
@@ -7,7 +7,7 @@
 {% block dzangocart_page_title %}{% trans %}dzangocart.sales.page_title{% endtrans %}{% endblock %}
 
 {% block dzangocart_content %}
-{% include "DzangocartBundle:Sale:list.html.twig" %}
+{% include "DzangocartBundle:Sale:sales.html.twig" %}
 {% endblock %}
 
 {% block dzangocart_head_style %}
@@ -37,7 +37,7 @@
     <script>
     dzangocart.sales = {
         dataTables: {
-            ajax: "{{ path('dzangocart_sales') }}"
+            ajax: "{{ path('dzangocart_sales', { _format: 'json' }) }}"
         },
         daterangepicker: {
             format: "{{ config.date_format|upper }}"
