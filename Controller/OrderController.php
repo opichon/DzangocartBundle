@@ -78,8 +78,11 @@ class OrderController extends Controller
     protected function getFilters(ParameterBag $query)
     {
         $filters = array();
+        $search_params = array();
 
-        $filters['search'] = $query->get('search');
+        $search_params = $query->get('search');
+
+        $filters['search'] = $search_params['value'];
         $filters['limit'] = $query->get('length');
         $filters['offset'] = $query->get('start');
 
@@ -93,11 +96,10 @@ class OrderController extends Controller
         }
 
         $filters['test'] = @$_filters['test'] ? true : false;
-/*
+
         if (array_key_exists('customer', $_filters)) {
             $filters['customer'] = $_filters['customer'];
         }
-*/
 
         return $filters;
     }
