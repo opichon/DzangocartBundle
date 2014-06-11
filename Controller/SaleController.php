@@ -59,8 +59,8 @@ class SaleController extends Controller
         $filters = array();
 
         $filters['search'] = $query->get('search');
-        $filters['length'] = $query->get('length');
-        $filters['start'] = $query->get('start');
+        $filters['limit'] = $query->get('length');
+        $filters['offset'] = $query->get('start');
 
         $_filters = $query->get('filters');
 
