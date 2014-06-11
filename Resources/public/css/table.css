@@ -9,7 +9,11 @@ table.table td {
 }
 
 table.table thead th,
-table.table thead .sorting {
+table.table thead .sorting,
+table.table thead .sorting_asc,
+table.table thead .sorting_desc,
+table.table thead .sorting_asc_disabled,
+table.table thead .sorting_desc_disabled {
 	vertical-align: bottom;
 	background-color: #f1f6e0;
 	font-weight: normal;
