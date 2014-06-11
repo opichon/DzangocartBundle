@@ -11,7 +11,7 @@ class CatalogueController extends Controller
 {
     /**
      * @Route("/", name="dzangocart_catalogue")
-     * @Template("DzangocartBundle:Catalogue:index.html.twig")
+     * @Template()
      */
     public function indexAction()
     {
