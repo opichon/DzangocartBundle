@@ -12,41 +12,35 @@
 				return this.each(function() {
 					var $this = $( this );
 
-					table = $( 'table.table', this ).dataTable( $.extend( true, {}, settings.dataTables, {
-						fnDrawCallback: function() {
+					table = $( 'table.table', this ).DataTable( $.extend( true, {}, settings.dataTables, {
+						drawCallback: function() {
 							$( this ).show();
 						},
-						fnServerParams: function( data ) {
+						serverParams: function( data ) {
 							$( ".filters :checkbox", $this ).each(function() {
-								data.push({
-									name: $( this ).attr( "name" ),
-									value: $( this ).is( ":checked" ) ? 1 : 0
-								});
+                                data[$( this ).attr( "name" )] = $( this ).is( ":checked" ) ? 1 : 0;
 							});
 
 							$( ".filters input", $this ).each(function() {
-								data.push({
-									name: $( this ).attr( "name" ),
-									value: $( this ).val()
-								});
+                                data[$( this ).attr( "name" )] = $( this ).val();
 							});
 						},
-						fnStateLoadParams: function( oSettings, oData ) {
+						stateLoadParams: function( settings, data ) {
 							$( ".filters :checkbox", $this ).each(function() {
-								$( this ).attr( "checked", oData[ $( this ).attr( "name" ) ] );
+								$( this ).attr( "checked", data[ $( this ).attr( "name" ) ] );
 							});
 
 							$( ".filters input", $this ).each(function() {
-								$( this ).val( oData[ $( this ).attr( "name" ) ] );
+								$( this ).val( data[ $( this ).attr( "name" ) ] );
 							});
 						},
-						fnStateSaveParams: function( oSettings, oData ) {
+						stateSaveParams: function( settings, data ) {
 							$( ".filters :checkbox", $this ).each(function() {
-								oData[ $( this ).attr( "name" ) ] = $( this ).is( ":checked" );
+								data[ $( this ).attr( "name" ) ] = $( this ).is( ":checked" );
 							});
 
 							$( ".filters input", $this ).each(function() {
-								oData[ $( this ).attr( "name" ) ] = $( this ).val();
+								data[ $( this ).attr( "name" ) ] = $( this ).val();
 							});
 						}
 					} ) );
@@ -63,12 +57,12 @@
 						function( start, end ) {
 							$( ".filters .date_from", $this ).val( start.format( "YYYY-MM-DD" ) );
 							$( ".filters .date_to", $this ).val( end.format( "YYYY-MM-DD" ) );
-							table.fnDraw();
+							table.draw();
 						}
 					).data( "daterangepicker" ).updateInputText();
 
 					$( ".filters input", $this ).change(function() {
-						table.fnDraw();
+						table.draw();
 					});
 				});
 			}
@@ -87,24 +81,25 @@
 
 	$.fn.orders.defaults = {
 		dataTables: {
-			aaSorting: [ [ 1, 'asc' ] ],
-			aoColumnDefs: [
-				{ bSortable: false, aTargets: [ 0, 11 ] },
-				{ bVisible: false, aTargets: [ 0 ] },
-				{ sClass: "number", aTargets: [ 5, 6, 7, 8 ] },
-				{ sClass: "actions", aTargets: [ 11 ] }
+			order: [ [ 1, 'asc' ] ],
+			columnDefs: [
+				{ orderable: false, targets: [ 0, 11 ] },
+				{ visible: false, targets: [ 0 ] },
+				{ className: "number", targets: [ 5, 6, 7, 8 ] },
+				{ className: "actions", targets: [ 11 ] }
 			],
-			asStripeClasses: [],
-			bAutoWidth: false,
-			bPaginate: true,
-			bProcessing: true,
-			bServerSide: true,
-			bSortable: true,
-			bStateSave: true,
-			oLanguage: {
-				sUrl: "/bundles/uamdatatables/lang/" + dzangocart.locale + ".txt"
+			stripeClasses: [],
+			autoWidth: false,
+			paging: true,
+			processing: true,
+			serverSide: true,
+			orderable: true,
+			stateSave: false,
+			language: {
+				url: "/bundles/uamdatatables/lang/" + dzangocart.locale + ".txt"
 			},
-			sCookiePrefix: "dzangocart_"
+            //[removed in datatable 1.10]
+			//sCookiePrefix: "dzangocart_"
 		},
 		daterangepicker: {
 			minDate: moment('2009-01-01'),
