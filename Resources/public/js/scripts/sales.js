@@ -25,22 +25,22 @@
                                 data[$( this ).attr( "name" )] = $( this ).val();
                             });
                         },
-						stateLoadParams: function( oSettings, oData ) {
+						stateLoadParams: function( settings, data ) {
 							$( ".filters :checkbox", $this ).each(function() {
-								$( this ).attr( "checked", oData[ $( this ).attr( "name" ) ] );
+								$( this ).attr( "checked", data[ $( this ).attr( "name" ) ] );
 							});
 
 							$( ".filters input", $this ).each(function() {
-								$( this ).val( oData[ $( this ).attr( "name" ) ] );
+								$( this ).val( data[ $( this ).attr( "name" ) ] );
 							});
 						},
-						stateSaveParams: function( oSettings, oData ) {
+						stateSaveParams: function( settings, data ) {
 							$( ".filters :checkbox", $this ).each(function() {
-								oData[ $( this ).attr( "name" ) ] = $( this ).is( ":checked" );
+								data[ $( this ).attr( "name" ) ] = $( this ).is( ":checked" );
 							});
 
 							$( ".filters input", $this ).each(function() {
-								oData[ $( this ).attr( "name" ) ] = $( this ).val();
+								data[ $( this ).attr( "name" ) ] = $( this ).val();
 							});
 						}
 					} ) );
