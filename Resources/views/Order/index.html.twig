@@ -16,6 +16,7 @@
         'bundles/uamdatatables/css/jquery.dataTables_bootstrap.css'
         'bundles/dzangocart/js/vendor/bootstrap-daterangepicker/daterangepicker-bs2.css'
         'bundles/dzangocart/css/dzangocart.css'
+        'bundles/dzangocart/css/table.css'
         'bundles/dzangocart/css/orders.css'
     %}
         <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
@@ -37,7 +38,7 @@
     <script>
     dzangocart.orders = {
         dataTables: {
-            sAjaxSource: "{{ path('dzangocart_orders') }}"
+            sAjaxSource: "{{ path('dzangocart_orders', { _format: 'json' }) }}"
         },
         date_format: "{{ config.date_format }}",
         daterangepicker: {
