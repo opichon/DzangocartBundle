@@ -1,5 +1,9 @@
 {% extends "DzangocartBundle::admin.html.twig" %}
 
+{% trans_default_domain "dzangocart" %}
+
+{% block dzangocart_page_title %}{% trans %}dzangocart.catalogue.page_title{% endtrans %}{% endblock %}
+
 {% block dzangocart_content %}
     Catalogue Page
 {% endblock %}

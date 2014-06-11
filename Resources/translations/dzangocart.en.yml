@@ -1,5 +1,8 @@
 dzangocart:
 
+    catalogue:
+        page_title:        Catalogue
+
     direct_payments:
         action:
             title:          Actions
