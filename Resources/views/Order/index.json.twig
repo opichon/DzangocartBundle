@@ -2,10 +2,10 @@
 
 {% spaceless %}
 {
-	"sEcho": "{{ app.request.query.all.sEcho }}",
-	"iTotalRecords": {{ meta['count_total'] }},
-	"iTotalDisplayRecords": {{ meta['count_filtered'] }},
-	"aaData" : [
+	"draw": "{{ meta['draw'] }}",
+	"recordsTotal": {{ meta['count_total'] }},
+	"recordsFiltered": {{ meta['count_filtered'] }},
+	"data" : [
 		{% for order in list %}
 			{
 				"DT_RowId": "{{ 'o_' ~ order.getOrderId }}",

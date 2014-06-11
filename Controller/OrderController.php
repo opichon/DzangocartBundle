@@ -79,9 +79,9 @@ class OrderController extends Controller
     {
         $filters = array();
 
-        $filters['search'] = $query->get('sSearch');
-        $filters['limit'] = $query->get('iDisplayLength');
-        $filters['offset'] = $query->get('iDisplayStart');
+        $filters['search'] = $query->get('search');
+        $filters['limit'] = $query->get('length');
+        $filters['offset'] = $query->get('start');
 
         $_filters = $query->get('filters');
 
@@ -108,10 +108,10 @@ class OrderController extends Controller
 
         $columns = $this->getSortColumns();
 
-        $n = $query->get('iSortingCols');
+        $n = $query->get('sortingCols');
 
         for ($i = 0; $i < $n; $i++) {
-            $index = $query->get('iSortCol_' . $i);
+            $index = $query->get('sortCol_' . $i);
 
             if (array_key_exists($index, $columns)) {
 
@@ -123,7 +123,7 @@ class OrderController extends Controller
 
                 foreach ($column as $c) {
                     $sort_by[] = $c;
-                    $sort_by[] = $query->get('sSortDir_' . $i, 'asc');
+                    $sort_by[] = $query->get('sortDir_' . $i, 'asc');
                 }
             }
         }
