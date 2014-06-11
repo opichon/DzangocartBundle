@@ -48,7 +48,7 @@
 				</tr>
 			</tfoot>
 			<tbody>
-{#				{% for item in order.items %}
+				{% for item in order.items %}
 					<tr>
 						<td>
 					   		{{ loop.index }}
@@ -66,7 +66,7 @@
 							{{ item.amountExcl|currency(order.getCurrency, app.request.locale) }}
 						</td>
 					</tr>
-				{% endfor %}#}
+				{% endfor %}
 			</tbody>
 		</table>
 	</section>
