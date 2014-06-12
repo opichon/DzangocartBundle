@@ -9,13 +9,6 @@ gulp.task("bower-files", function() {
 		.pipe(gulp.dest("../public/vendor"));
 });
 
-gulp.task("compress", function() {
-	gulp.src(["../public/vendor/**/*.js", "!../public/vendor/**/*min.js"])
-		.pipe(uglify())
-		.pipe(rename({suffix: ".min"}))
-		.pipe(gulp.dest("../public/vendor"));
-});
-
 gulp.task("minify", function() {
 	gulp.src(["../public/vendor/**/*.js", "!../public/vendor/**/*min.js"])
 		.pipe(jsmin())
