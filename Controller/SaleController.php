@@ -24,7 +24,30 @@ class SaleController extends Controller
     {
         $dzangocart_config = $this->container->getParameter('dzangocart.config');
 
+        $form = $this->createForm(
+            new SaleFilterType(),
+            array(
+                'date_from' => (new DateTime())->modify('first day of this month'),
+                'date_to' => new DateTime()
+            ),
+            array()
+        );
+
+        return array(
+            'form' => $form->createView(),
+            'config' => $dzangocart_config
+        );
+    }
+
+    /**
+     * @Route("/list", name="dzangocart_sales_list", defaults={"_format": "json"})
+     * @Template()
+     */
+    public function listAction(Request $request)
+    {
         if ($request->isXmlHttpRequest() || $request->getRequestFormat() == 'json') {
+
+            $dzangocart_config = $this->container->getParameter('dzangocart.config');
 
             $params = $this->getFilters($request->query);
             $params['sort_by'] = $this->getSortOrder($request->query);
@@ -34,23 +57,7 @@ class SaleController extends Controller
 
             $data['datetime_format'] = $dzangocart_config['datetime_format'];
 
-            $view = $this->renderView('DzangocartBundle:Sale:index.json.twig', $data);
-
-            return new Response($view, 200, array('Content-Type' => 'application/json'));
-        } else {
-            $form = $this->createForm(
-                new SaleFilterType(),
-                array(
-                    'date_from' => (new DateTime())->modify('first day of this month'),
-                    'date_to' => new DateTime()
-                ),
-                array()
-            );
-
-            return array(
-                'form' => $form->createView(),
-                'config' => $dzangocart_config
-            );
+            return $data;
         }
     }
 
