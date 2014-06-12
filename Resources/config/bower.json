@@ -1,5 +1,5 @@
 {
-  "name": "uam/user-admin-bundle",
+  "name": "dzangocart/dzangocart-bundle",
   "dependencies": {
     "bootstrap": "~3.1",
     "bootstrap-daterangepicker": "~1.3",
