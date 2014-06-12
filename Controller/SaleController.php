@@ -40,25 +40,22 @@ class SaleController extends Controller
     }
 
     /**
-     * @Route("/list", name="dzangocart_sales_list", defaults={"_format": "json"})
+     * @Route("/list", name="dzangocart_sales_list", requirements={"_format": "json"}, defaults={"_format": "json"})
      * @Template()
      */
     public function listAction(Request $request)
     {
-        if ($request->isXmlHttpRequest() || $request->getRequestFormat() == 'json') {
+        $dzangocart_config = $this->container->getParameter('dzangocart.config');
 
-            $dzangocart_config = $this->container->getParameter('dzangocart.config');
+        $params = $this->getFilters($request->query);
+        $params['sort_by'] = $this->getSortOrder($request->query);
 
-            $params = $this->getFilters($request->query);
-            $params['sort_by'] = $this->getSortOrder($request->query);
+        $data = $this->get('dzangocart')
+            ->getSales($params);
 
-            $data = $this->get('dzangocart')
-                ->getSales($params);
+        $data['datetime_format'] = $dzangocart_config['datetime_format'];
 
-            $data['datetime_format'] = $dzangocart_config['datetime_format'];
-
-            return $data;
-        }
+        return $data;
     }
 
     protected function getFilters(ParameterBag $query)
