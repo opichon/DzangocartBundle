@@ -5,5 +5,7 @@
 {% block dzangocart_page_title %}{% trans %}dzangocart.catalogue.page_title{% endtrans %}{% endblock %}
 
 {% block dzangocart_content %}
-    Catalogue Page
+	{% spaceless %}
+		{{ catalogue|json_encode() }}
+	{% endspaceless %}
 {% endblock %}
