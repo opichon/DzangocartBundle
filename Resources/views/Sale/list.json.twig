@@ -21,9 +21,9 @@
                 "7": "{{ sale.amountExcl|currency(sale.currency, app.request.locale) }}",
                 "8": "{{ sale.amountTax|currency(sale.currency, app.request.locale) }}",
                 "9": "{{ sale.amountIncl|currency(sale.currency, app.request.locale) }}",
-                "10": "<i class='icon-{{ sale.paid ? 'thumbs-up-alt' : 'warning-sign' }}' />",
+                "10": "<i class='fa fa-{{ sale.paid ? 'thumbs-o-up' : 'exclamation-triangle' }}' />",
                 "11": "{{ sale.affiliate }}",
-                "12": "{% if sale.isTest %}<i class='icon-asterisk' />{% endif %}",
+                "12": "{% if sale.isTest %}<i class="fa fa-asterisk"></i>{% endif %}",
                 "13": "{%- include 'DzangocartBundle:Sale:actions.html.twig' -%}"
             }{% if not loop.last %},{% endif %}
         {% endfor %}
