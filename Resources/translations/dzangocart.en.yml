@@ -45,7 +45,7 @@ dzangocart:
             title:          VAT
 
     orders:
-        actions:        Actions
+        actions:        Show Order
         affiliate:      Affiliate
         customer:       Customer
         currency:       Ccy
