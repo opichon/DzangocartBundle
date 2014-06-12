@@ -6,6 +6,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class CatalogueController extends Controller
 {
@@ -13,8 +15,13 @@ class CatalogueController extends Controller
      * @Route("/", name="dzangocart_catalogue")
      * @Template()
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        return array();
+        $dzangocart_config = $this->container->getParameter('dzangocart.config');
+
+        $catalogue = $this->get('dzangocart')
+            ->getCatalogue();
+
+        return array('catalogue' => $catalogue);
     }
 }
