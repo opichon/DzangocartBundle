@@ -1,115 +1,116 @@
 !function( $ ) {
-	$.fn.orders = function( method ) {
+    $.fn.orders = function( method ) {
 
-		var settings,
-			table;
+        var settings,
+            table;
 
-		var methods = {
-			init: function( options ) {
+        var methods = {
+            init: function( options ) {
 
-				settings = $.extend( true, {}, this.orders.defaults, options );
+                settings = $.extend( true, {}, this.orders.defaults, options );
 
-				return this.each(function() {
-					var $this = $( this );
+                return this.each(function() {
+                    var $this = $( this );
 
-					table = $( 'table.table', this ).DataTable( $.extend( true, {}, settings.dataTables, {
-						drawCallback: function() {
-							$( this ).show();
-						},
-						serverParams: function( data ) {
-							$( ".filters :checkbox", $this ).each(function() {
+                    table = $( 'table.table', this ).DataTable( $.extend( true, {}, settings.dataTables, {
+                        drawCallback: function() {
+                            $( this ).show();
+                        },
+                        serverParams: function( data ) {
+                            $( ".filters :checkbox", $this ).each(function() {
                                 data[$( this ).attr( "name" )] = $( this ).is( ":checked" ) ? 1 : 0;
-							});
+                            });
 
-							$( ".filters input", $this ).each(function() {
+                            $( ".filters input", $this ).each(function() {
                                 data[$( this ).attr( "name" )] = $( this ).val();
-							});
-						},
-						stateLoadParams: function( settings, data ) {
-							$( ".filters :checkbox", $this ).each(function() {
-								$( this ).attr( "checked", data[ $( this ).attr( "name" ) ] );
-							});
+                            });
+                        },
+                        stateLoadParams: function( settings, data ) {
+                            $( ".filters :checkbox", $this ).each(function() {
+                                $( this ).attr( "checked", data[ $( this ).attr( "name" ) ] );
+                            });
 
-							$( ".filters input", $this ).each(function() {
-								$( this ).val( data[ $( this ).attr( "name" ) ] );
-							});
-						},
-						stateSaveParams: function( settings, data ) {
-							$( ".filters :checkbox", $this ).each(function() {
-								data[ $( this ).attr( "name" ) ] = $( this ).is( ":checked" );
-							});
+                            $( ".filters input", $this ).each(function() {
+                                $( this ).val( data[ $( this ).attr( "name" ) ] );
+                            });
+                        },
+                        stateSaveParams: function( settings, data ) {
+                            $( ".filters :checkbox", $this ).each(function() {
+                                data[ $( this ).attr( "name" ) ] = $( this ).is( ":checked" );
+                            });
 
-							$( ".filters input", $this ).each(function() {
-								data[ $( this ).attr( "name" ) ] = $( this ).val();
-							});
-						}
-					} ) );
+                            $( ".filters input", $this ).each(function() {
+                                data[ $( this ).attr( "name" ) ] = $( this ).val();
+                            });
+                        }
+                    } ) );
 
-					moment.lang( dzangocart.locale );
+                    moment.lang( dzangocart.locale );
 
-					$( ".filters .period", this ).daterangepicker(
-						$.extend( true, {}, settings.daterangepicker,
-							{
-								startDate: moment( $( ".filters .date_from", $this ).val(), "YYYY-MM-DD" ),
-								endDate: moment( $( ".filters .date_to", $this ).val(), "YYYY-MM-DD" )
-							}
-						),
-						function( start, end ) {
-							$( ".filters .date_from", $this ).val( start.format( "YYYY-MM-DD" ) );
-							$( ".filters .date_to", $this ).val( end.format( "YYYY-MM-DD" ) );
-							table.draw();
-						}
-					).data( "daterangepicker" ).updateInputText();
+                    $( ".filters .period", this ).daterangepicker(
+                        $.extend( true, {}, settings.daterangepicker,
+                            {
+                                startDate: moment( $( ".filters .date_from", $this ).val(), "YYYY-MM-DD" ),
+                                endDate: moment( $( ".filters .date_to", $this ).val(), "YYYY-MM-DD" )
+                            }
+                        ),
+                        function( start, end ) {
+                            $( ".filters .date_from", $this ).val( start.format( "YYYY-MM-DD" ) );
+                            $( ".filters .date_to", $this ).val( end.format( "YYYY-MM-DD" ) );
+                            table.draw();
+                        }
+                    ).data( "daterangepicker" ).updateInputText();
 
-					$( ".filters input", $this ).change(function() {
-						table.draw();
-					});
-				});
-			}
-		};
+                    $( ".filters input", $this ).change(function() {
+                        table.draw();
+                    });
+                });
+            }
+        };
 
-		if ( methods[ method ] ) {
-			return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ) );
-		}
-		else if ( typeof method === "object" || !method)  {
-			return methods.init.apply( this, arguments );
-		}
-		else {
-			$.error( "Method " +  method + " does not exist in jQuery.orders." );
-		}
+        if ( methods[ method ] ) {
+            return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ) );
+        }
+        else if ( typeof method === "object" || !method)  {
+            return methods.init.apply( this, arguments );
+        }
+        else {
+            $.error( "Method " +  method + " does not exist in jQuery.orders." );
+        }
 	};
 
-	$.fn.orders.defaults = {
-		dataTables: {
-			order: [ [ 1, 'asc' ] ],
-			columnDefs: [
-				{ orderable: false, targets: [ 0, 11 ] },
-				{ visible: false, targets: [ 0 ] },
-				{ className: "number", targets: [ 5, 6, 7, 8 ] },
-				{ className: "actions", targets: [ 11 ] }
-			],
-			stripeClasses: [],
-			autoWidth: false,
-			paging: true,
-			processing: true,
-			serverSide: true,
-			orderable: true,
-			stateSave: false,
-			language: {
-				url: "/bundles/uamdatatables/lang/" + dzangocart.locale + ".txt"
-			},
+    $.fn.orders.defaults = {
+        dataTables: {
+            order: [ [ 1, 'asc' ] ],
+            columnDefs: [
+                { orderable: false, targets: [ 0, 11 ] },
+                { visible: false, targets: [ 0 ] },
+                { className: "number", targets: [ 5, 6, 7, 8 ] },
+                { className: "actions", targets: [ 11 ] }
+            ],
+            stripeClasses: [],
+            autoWidth: false,
+            paging: true,
+            processing: true,
+            serverSide: true,
+            orderable: true,
+            stateSave: false,
+            searching: false,
+            language: {
+                url: "/bundles/uamdatatables/lang/" + dzangocart.locale + ".txt"
+            },
             //[removed in datatable 1.10]
-			//sCookiePrefix: "dzangocart_"
-		},
-		daterangepicker: {
-			minDate: moment('2009-01-01'),
-			maxDate: moment()
-		}
-	};
+            //sCookiePrefix: "dzangocart_"
+        },
+        daterangepicker: {
+            minDate: moment('2009-01-01'),
+            maxDate: moment()
+        }
+    };
 } ( window.jQuery );
 
 $( document ).ready(function() {
-	if ( typeof dzangocart != 'undefined' ) {
-		$( ".dzangocart.orders" ).orders( dzangocart.orders || {} );
-	}
+    if ( typeof dzangocart != 'undefined' ) {
+        $( ".dzangocart.orders" ).orders( dzangocart.orders || {} );
+    }
 });

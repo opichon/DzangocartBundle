@@ -78,11 +78,7 @@ class OrderController extends Controller
     protected function getFilters(ParameterBag $query)
     {
         $filters = array();
-        $search_params = array();
 
-        $search_params = $query->get('search');
-
-        $filters['search'] = $search_params['value'];
         $filters['limit'] = $query->get('length');
         $filters['offset'] = $query->get('start');
 
