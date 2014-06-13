@@ -1,7 +1,11 @@
 dzangocart:
 
     catalogue:
+        code:              Code
+        fixed_price:       Fixed Price
+        name:              Name
         page_title:        Catalogue
+        price_included:    Price Included
 
     direct_payments:
         actions:

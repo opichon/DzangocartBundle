@@ -4,8 +4,31 @@
 
 {% block dzangocart_page_title %}{% trans %}dzangocart.catalogue.page_title{% endtrans %}{% endblock %}
 
+{% block body_class %}catalogue{% endblock %}
+
 {% block dzangocart_content %}
-	{% spaceless %}
-		{{ catalogue|json_encode() }}
-	{% endspaceless %}
+    <table class="table treetable">
+        <thead>
+            <tr>
+                <th class="name">{% trans %}dzangocart.catalogue.name{% endtrans %}</th>
+                <th class="code">{% trans %}dzangocart.catalogue.code{% endtrans %}</th>
+                <th class="price">{% trans %}dzangocart.catalogue.price_included{% endtrans %}</th>
+                <th class="price">{% trans %}dzangocart.catalogue.fixed_price{% endtrans %}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% include "DzangocartBundle:Catalogue:catalogue.html.twig" %}
+        </tbody>
+    </table>
+
+{% endblock %}
+
+{% block dzangocart_head_style %}
+	{{ parent() }}
+	{% include "DzangocartBundle:Catalogue:catalogue_head_style.html.twig" %}
+{% endblock %}
+
+{% block dzangocart_foot_script %}
+	{{ parent() }}
+	{% include "DzangocartBundle:Catalogue:catalogue_foot_script.html.twig" %}
 {% endblock %}
