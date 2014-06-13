@@ -6,6 +6,18 @@
 	margin-bottom: 0;
 }
 
-.dzangocart .filters .date {
+.dzangocart .filters .date_from {
 	display: none;
+}
+
+.dzangocart .filters .date_to {
+	display: none;
+}
+
+label[for="filters_date_from"] {
+    display: none;
+}
+
+label[for="filters_date_to"] {
+    display: none;
 }
