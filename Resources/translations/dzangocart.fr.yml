@@ -6,6 +6,7 @@ dzangocart:
         name:              Name
         page_title:        Catalogue
         price_included:    Price Included
+        tax_included:      Tax Included
 
     direct_payments:
         actions:

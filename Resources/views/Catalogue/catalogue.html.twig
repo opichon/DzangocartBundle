@@ -1,3 +1,18 @@
-{% for child in catalogue %}
-    {{ child.name}}
+{% for key, value in catalogue %}
+    {% if value.categories is defined %}
+        <tr data-tt-id="{{ value.name }}">
+            <td>{{ value.name }}</td>
+            <td class="number">{{ value.code }}</td>
+            <td>{{ value.taxIncluded }}</td>
+            <td>{{ value.fixedPrice }}</td>
+        </tr>
+        {% include "DzangocartBundle:Catalogue:catalogue.html.twig" with { 'catalogue': value.categories } %}
+    {% else %}
+        <tr data-tt-id="{{ value.name }}" data-tt-parent-id="{{ value.code }}" >
+            <td>{{ value.name }}</td>
+            <td class="number">{{ value.code }}</td>
+            <td>{{ value.taxIncluded }}</td>
+            <td>{{ value.fixedPrice }}</td>
+        </tr>
+    {% endif %}
 {% endfor %}
