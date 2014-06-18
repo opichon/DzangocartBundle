@@ -12,39 +12,10 @@
 
 {% block dzangocart_head_style %}
     {{ parent() }}
-    {% stylesheets filter="cssrewrite" output="css/*.css"
-        'bundles/dzangocart/vendor/datatables-bootstrap3/BS3/assets/css/datatables.css'
-        'bundles/dzangocart/vendor/bootstrap-daterangepicker/daterangepicker-bs3.css'
-        'bundles/dzangocart/css/dzangocart.css'
-        'bundles/dzangocart/css/table.css'
-        'bundles/dzangocart/css/orders.css'
-    %}
-        <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
-    {% endstylesheets %}
+    {% include "DzangocartBundle:Order:orders_head_style.html.twig" %}
 {% endblock %}
 
 {% block dzangocart_foot_script %}
     {{ parent() }}
-    {% javascripts
-        'bundles/dzangocart/vendor/datatables/media/js/jquery.dataTables.min.js'
-        'bundles/dzangocart/vendor/datatables-bootstrap3/BS3/assets/js/datatables.min.js'
-        'bundles/dzangocart/vendor/momentjs/moment.js'
-        'bundles/dzangocart/vendor/momentjs/min/moment-with-langs.js'
-        'bundles/dzangocart/vendor/bootstrap-daterangepicker/daterangepicker.js'
-        'bundles/dzangocart/js/scripts/ajax.js'
-        'bundles/dzangocart/js/scripts/orders.js'
-    %}
-        <script src="{{ asset_url }}"></script>
-    {% endjavascripts %}
-    <script>
-    dzangocart.orders = {
-        dataTables: {
-            ajax: "{{ path('dzangocart_orders', { _format: 'json' }) }}"
-        },
-        date_format: "{{ config.date_format }}",
-        daterangepicker: {
-            format: "{{ config.date_format|upper }}"
-        }
-    };
-    </script>
+    {% include "DzangocartBundle:Order:orders_foot_script.html.twig" %}
 {% endblock %}

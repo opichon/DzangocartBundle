@@ -1,0 +1,21 @@
+{% javascripts
+	'bundles/dzangocart/vendor/datatables/media/js/jquery.dataTables.min.js'
+	'bundles/dzangocart/vendor/datatables-bootstrap3/BS3/assets/js/datatables.min.js'
+	'bundles/dzangocart/vendor/momentjs/min/moment-with-langs.js'
+	'bundles/dzangocart/vendor/bootstrap-daterangepicker/daterangepicker.js'
+	'bundles/dzangocart/js/ajax.js'
+	'bundles/dzangocart/js/orders.js'
+%}
+	<script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+<script>
+dzangocart.orders = {
+	dataTables: {
+		ajax: "{{ path('dzangocart_orders') }}"
+	},
+	date_format: "{{ config.date_format }}",
+	daterangepicker: {
+		format: "{{ config.date_format|upper }}"
+	}
+};
+</script>

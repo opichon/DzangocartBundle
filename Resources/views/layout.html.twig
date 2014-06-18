@@ -5,13 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
 	{% block dzangocart_head_style %}{% endblock %}
-	{% block dzangocart_head_script %}
-	<script>
-	var dzangocart = {
-		locale = "{{ app.request.locale }}";
-	}
-	</script>
-	{% endblock %}
+	{% include "DzangocartBundle::head_script.html.twig" %}
 </head>
 <body>
 	{% block dzangocart_page_nav %}{% endblock %}
