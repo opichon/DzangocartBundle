@@ -1,9 +1,12 @@
-{% for id, item in catalogue %}
-	<tr data-tt-id="{{ id }}" {% if item.parent_id != 0 %} data-tt-parent-id="{{ item.parent_id }}" {% endif %}>
+{% for item in catalogue %}
+	<tr data-tt-id="{{ item.id }}" {% if parent_id is defined %} data-tt-parent-id="{{ parent_id }}" {% endif %}>
 		<td>{{ item.name }}</td>
 		<td>{{ item.code }}</td>
 		<td>{{ item.pcode }}</td>
 		<td>{{ item.price }}</td>
-		<td>{{ item.tax_included ? '<i class="fa fa-check">' : '<i class="fa fa-times">' }}</td>
+		<td>{{ item.taxIncluded ? '<i class="fa fa-check">' : '<i class="fa fa-times">' }}</td>
 	</tr>
+	{% if item.categories is defined %}
+		{% include "DzangocartBundle:Catalogue:catalogue.html.twig" with { 'catalogue': item.categories, 'parent_id': item.id }%}
+	{% endif %}
 {% endfor %}
