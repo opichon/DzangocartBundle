@@ -1,5 +1,5 @@
 !function( $ ) {
-    $.fn.sales = function( method ) {
+    $.fn.orders = function( method ) {
 
         var settings,
             table;
@@ -7,12 +7,12 @@
         var methods = {
             init: function( options ) {
 
-                settings = $.extend( true, {}, this.sales.defaults, options );
+                settings = $.extend( true, {}, this.orders.defaults, options );
 
                 return this.each(function() {
                     var $this = $( this );
 
-                    table = $( "table.table", this ).DataTable( $.extend( true, {}, settings.dataTables, {
+                    table = $( 'table.table', this ).DataTable( $.extend( true, {}, settings.dataTables, {
                         drawCallback: function() {
                             $( this ).show();
                         },
@@ -71,22 +71,22 @@
         if ( methods[ method ] ) {
             return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ) );
         }
-        else if ( typeof method === "object" || !method ) {
+        else if ( typeof method === "object" || !method)  {
             return methods.init.apply( this, arguments );
         }
         else {
-            $.error( "Method " +  method + " does not exist in jQuery.sales." );
+            $.error( "Method " +  method + " does not exist in jQuery.orders." );
         }
 	};
 
-    $.fn.sales.defaults = {
+    $.fn.orders.defaults = {
         dataTables: {
+            order: [ [ 1, 'asc' ] ],
             columnDefs: [
-                { visible: false, targets: [ 0 ] },
-                { orderable: false, targets: [ 0, 5, 10, 13 ] },
-                { className: "number", targets: [ 5, 7, 8, 9 ] },
-                { className: "center", targets: [ 10, 12 ] },
-                { className: "actions", targets: [ 13 ] }
+                { className: "number", targets: [ 5, 6, 7, 8 ] },
+                { className: "actions", targets: [ 11 ] },
+                { orderable: false, targets: [ 0, 11 ] },
+                { visible: false, targets: [ 0 ] }
             ],
             stripeClasses: [],
             autoWidth: false,
@@ -95,12 +95,7 @@
             serverSide: true,
             orderable: true,
             stateSave: false,
-            searching: false,
-            language: {
-                url: "/bundles/uamdatatables/lang/" + dzangocart.locale + ".txt"
-            }
-            //[removed in datatable 1.10]
-            //sCookiePrefix: "dzangocart_"
+            searching: false
         },
         daterangepicker: {
             minDate: moment('2009-01-01'),
@@ -111,6 +106,6 @@
 
 $( document ).ready(function() {
     if ( typeof dzangocart != 'undefined' ) {
-        $( ".dzangocart.sales" ).sales( dzangocart.sales );
+        $( ".dzangocart.orders" ).orders( dzangocart.orders || {} );
     }
 });

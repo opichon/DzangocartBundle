@@ -4,14 +4,19 @@
 	'bundles/dzangocart/vendor/momentjs/min/moment-with-langs.js'
 	'bundles/dzangocart/vendor/bootstrap-daterangepicker/daterangepicker.js'
 	'bundles/dzangocart/js/ajax.js'
-	'bundles/dzangocart/js/orders.js'
+	'bundles/dzangocart/js/order/orders.js'
 %}
 	<script src="{{ asset_url }}"></script>
 {% endjavascripts %}
 <script>
 dzangocart.orders = {
 	dataTables: {
-		ajax: "{{ path('dzangocart_orders') }}"
+		ajax: {
+			url: "{{ path('dzangocart_orders') }}"
+		},
+		language: {
+			url: "/bundles/dzangocart/datatables/" + dzangocart.locale + ".json"
+		}
 	},
 	date_format: "{{ config.date_format }}",
 	daterangepicker: {
