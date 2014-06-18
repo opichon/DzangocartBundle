@@ -54,45 +54,46 @@ dzangocart:
             title:          TVA
 
     orders:
-        actions:        Actions
-        affiliate:      Affilié
-        currency:       Dev.
-        customer:       Client
-        date:           Date
-        gross:          TTC
+        actions:
+            show:           Afficher la commande
+        affiliate:          Affilié
+        currency:           Dev.
+        customer:           Client
+        date:               Date
+        gross:              TTC
         filters:
-            date_from:  Du
-            date_to:    Au
-            period:     Période
-            test:       Inclure les commandes de démonstration
-        net:            HT
-        order_id:       n˚
-        page_title:     Commandes
-        paid:           Payé
-        tax:            TVA
-        test:           Demo
+            date_from:      Du
+            date_to:        Au
+            period:         Période
+            test:           Inclure les commandes de démonstration
+        net:                HT
+        order_id:           n˚
+        page_title:         Commandes
+        paid:               Payé
+        tax:                TVA
+        test:               Demo
 
     sales:
         actions:
-            title:      Actions
-        affiliate:      Affilié
-        currency:       Dev.
-        customer:       Client
-        date:           Date
+            show:           Afficher la commande
+        affiliate:          Affilié
+        currency:           Dev.
+        customer:           Client
+        date:               Date
         filters:
-            date_from:  Du
-            date_to:    Au
-            period:     Période
-            test:       Inclure les commandes de démonstration
-        gross:          TTC
-        item:           Produit/service
-        net:            HT
-        order_id:       Comm.
-        page_title:     Ventes
-        paid:           Payé
-        quantity:       Qté
-        tax:            TVA
-        test:           Demo
+            date_from:      Du
+            date_to:        Au
+            period:         Période
+            test:           Inclure les commandes de démonstration
+        gross:              TTC
+        item:               Produit/service
+        net:                HT
+        order_id:           Comm.
+        page_title:         Ventes
+        paid:               Payé
+        quantity:           Qté
+        tax:                TVA
+        test:               Demo
 
     sips:
         actions:

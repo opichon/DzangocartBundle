@@ -54,45 +54,45 @@ dzangocart:
 
     orders:
         actions:
-            title:      Actions
-        affiliate:      Affiliate
-        customer:       Customer
-        currency:       Ccy
-        date:           Date
+            show:           Show order
+        affiliate:          Affiliate
+        customer:           Customer
+        currency:           Ccy
+        date:               Date
         filters:
-            date_from:  From
-            date_to:    To
-            period:     Period
-            test:       Include test orders
-        gross:          Gross
-        net:            Net
-        order_id:       '#'
-        page_title:     Orders
-        paid:           Paid
-        tax:            Tax
-        test:           Demo
+            date_from:      From
+            date_to:        To
+            period:         Period
+            test:           Include test orders
+        gross:              Gross
+        net:                Net
+        order_id:           '#'
+        page_title:         Orders
+        paid:               Paid
+        tax:                Tax
+        test:               Demo
 
     sales:
         actions:
-            title:      Actions
-        affiliate:      Affiliate
-        currency:       Ccy
-        customer:       Customer
-        date:           Date
+            show:           Show order
+        affiliate:          Affiliate
+        currency:           Ccy
+        customer:           Customer
+        date:               Date
         filters:
-            date_from:  From
-            date_to:    To
-            period:     Period
-            test:       Include test orders
-        gross:          Gross
-        item:           Product/service
-        net:            Net
-        order_id:       Order no.
-        page_title:     Sales
-        paid:           Paid
-        quantity:       Qty
-        tax:            Tax
-        test:           Test
+            date_from:      From
+            date_to:        To
+            period:         Period
+            test:           Include test orders
+        gross:              Gross
+        item:               Product/service
+        net:                Net
+        order_id:           Order no.
+        page_title:         Sales
+        paid:               Paid
+        quantity:           Qty
+        tax:                Tax
+        test:               Test
 
     sips:
         actions:
