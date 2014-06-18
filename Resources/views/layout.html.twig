@@ -4,12 +4,19 @@
 <!--[if IE 8]>      <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-    {% block dzangocart_head_style %}{% endblock %}
+	{% block dzangocart_head_style %}{% endblock %}
+	{% block dzangocart_head_script %}
+	<script>
+	var dzangocart = {
+		locale = "{{ app.request.locale }}";
+	}
+	</script>
+	{% endblock %}
 </head>
 <body>
-    {% block dzangocart_page_nav %}{% endblock %}
-    {% block dzangocart_page_title %}{% endblock %}
-    {% block dzangocart_content %}{% block body_class %}{% endblock %}{% endblock %}
-    {% block dzangocart_foot_script %}{% endblock %}
+	{% block dzangocart_page_nav %}{% endblock %}
+	{% block dzangocart_page_title %}{% endblock %}
+	{% block dzangocart_content %}{% block body_class %}{% endblock %}{% endblock %}
+	{% block dzangocart_foot_script %}{% endblock %}
 </body>
 </html>
