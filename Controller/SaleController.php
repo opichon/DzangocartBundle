@@ -69,7 +69,7 @@ class SaleController extends Controller
         $_filters = $query->get('filters');
 
         foreach ($date_fields = array('date_from', 'date_to') as $field) {
-            $value = $_filters[$field];
+            $value = @$_filters[$field];
             if (!empty($value)) {
                 $filters[$field] = $value;
             }
