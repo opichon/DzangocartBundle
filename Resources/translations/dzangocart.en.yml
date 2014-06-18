@@ -5,6 +5,8 @@ dzangocart:
         fixed_price:       Fixed Price
         name:              Name
         page_title:        Catalogue
+        pcode:             Pcode
+        price:             Price
         price_included:    Price Included
         tax_included:      Tax Included
 

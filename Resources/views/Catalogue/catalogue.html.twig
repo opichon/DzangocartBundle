@@ -1,8 +1,9 @@
-{% for id, value in catalogue %}
-    <tr data-tt-id="{{ id }}" {% if value.parent_id != 0 %} data-tt-parent-id="{{ value.parent_id }}" {% endif %}>
-        <td>{{ value.name }}</td>
-        <td class="number">{{ value.code }}</td>
-        <td>{{ value.tax_included }}</td>
-        <td>{{ value.fixed_price }}</td>
-    </tr>
+{% for id, item in catalogue %}
+	<tr data-tt-id="{{ id }}" {% if item.parent_id != 0 %} data-tt-parent-id="{{ item.parent_id }}" {% endif %}>
+		<td>{{ item.name }}</td>
+		<td>{{ item.code }}</td>
+		<td>{{ item.pcode }}</td>
+		<td>{{ item.price }}</td>
+		<td>{{ item.tax_included ? '<i class="fa fa-check">' : '<i class="fa fa-times">' }}</td>
+	</tr>
 {% endfor %}

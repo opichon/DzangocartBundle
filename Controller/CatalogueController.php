@@ -7,7 +7,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 class CatalogueController extends Controller
 {
@@ -20,8 +19,6 @@ class CatalogueController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $dzangocart_config = $this->container->getParameter('dzangocart.config');
-
         $catalogue = $this->get('dzangocart')
             ->getCatalogue();
 
@@ -43,8 +40,9 @@ class CatalogueController extends Controller
                 'parent_id' => $item['parent_id'],
                 'name' => $item['name'],
                 'code' => $item['code'],
-                'tax_included' => $item['taxIncluded'],
-                'fixed_price' => $item['fixedPrice']
+                'pcode' => $item['pcode'],
+                'price' => $item['price'],
+                'tax_included' => $item['taxIncluded']
             );
 
             if (array_key_exists('categories', $item)) {

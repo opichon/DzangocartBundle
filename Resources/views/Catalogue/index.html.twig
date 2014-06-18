@@ -7,19 +7,20 @@
 {% block body_class %}catalogue{% endblock %}
 
 {% block dzangocart_content %}
-    <table class="table treetable">
-        <thead>
-            <tr>
-                <th class="name">{% trans %}dzangocart.catalogue.name{% endtrans %}</th>
-                <th class="code">{% trans %}dzangocart.catalogue.code{% endtrans %}</th>
-                <th class="price">{% trans %}dzangocart.catalogue.tax_included{% endtrans %}</th>
-                <th class="price">{% trans %}dzangocart.catalogue.fixed_price{% endtrans %}</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% include "DzangocartBundle:Catalogue:catalogue.html.twig" %}
-        </tbody>
-    </table>
+	<table class="table treetable">
+		<thead>
+			<tr>
+				<th class="name">{% trans %}dzangocart.catalogue.name{% endtrans %}</th>
+				<th class="code">{% trans %}dzangocart.catalogue.code{% endtrans %}</th>
+				<th class="code">{% trans %}dzangocart.catalogue.pcode{% endtrans %}</th>
+				<th class="price">{% trans %}dzangocart.catalogue.price{% endtrans %}</th>
+				<th class="price">{% trans %}dzangocart.catalogue.tax_included{% endtrans %}</th>
+			</tr>
+		</thead>
+		<tbody>
+		{% include "DzangocartBundle:Catalogue:catalogue.html.twig" %}
+		</tbody>
+	</table>
 
 {% endblock %}
 
