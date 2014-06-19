@@ -81,6 +81,7 @@
 
     $.fn.sales.defaults = {
         dataTables: {
+            autoWidth: false,
             columnDefs: [
                 { visible: false, targets: [ 0 ] },
                 { orderable: false, targets: [ 0, 5, 10, 13 ] },
@@ -88,18 +89,17 @@
                 { className: "center", targets: [ 10, 12 ] },
                 { className: "actions", targets: [ 13 ] }
             ],
-            stripeClasses: [],
-            autoWidth: false,
+            orderable: true,
             paging: true,
             processing: true,
+            searching: false,
             serverSide: true,
-            orderable: true,
             stateSave: false,
-            searching: false
+            stripeClasses: []
         },
         daterangepicker: {
-            minDate: moment('2009-01-01'),
-            maxDate: moment()
+            maxDate: moment(),
+            minDate: moment('2009-01-01')
         }
     };
 } ( window.jQuery );

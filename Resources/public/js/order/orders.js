@@ -81,25 +81,25 @@
 
     $.fn.orders.defaults = {
         dataTables: {
-            order: [ [ 1, 'asc' ] ],
+            autoWidth: false,
             columnDefs: [
                 { className: "number", targets: [ 5, 6, 7, 8 ] },
                 { className: "actions", targets: [ 11 ] },
                 { orderable: false, targets: [ 0, 11 ] },
                 { visible: false, targets: [ 0 ] }
             ],
-            stripeClasses: [],
-            autoWidth: false,
+            order: [ [ 1, 'asc' ] ],
+            orderable: true,
             paging: true,
             processing: true,
+            searching: false,
             serverSide: true,
-            orderable: true,
             stateSave: false,
-            searching: false
+            stripeClasses: []
         },
         daterangepicker: {
-            minDate: moment('2009-01-01'),
-            maxDate: moment()
+            maxDate: moment(),
+            minDate: moment('2009-01-01')
         }
     };
 } ( window.jQuery );
