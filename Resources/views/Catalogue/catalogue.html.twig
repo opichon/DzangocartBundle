@@ -5,7 +5,7 @@
 		<td>{{ item.pcode }}</td>
 		<td>{{ item.price }}</td>
 		<td>{{ item.taxIncluded ? '<i class="fa fa-check">' : '<i class="fa fa-times">' }}</td>
-        <td>{%- include 'DzangocartBundle:Catalogue:actions.html.twig' -%}</td>
+		<td>{%- include 'DzangocartBundle:Catalogue:actions.html.twig' -%}</td>
 	</tr>
 	{% if item.categories is defined %}
 		{% include "DzangocartBundle:Catalogue:catalogue.html.twig" with { 'catalogue': item.categories, 'parent_id': item.id }%}
