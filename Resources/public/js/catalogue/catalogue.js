@@ -13,10 +13,10 @@
 
 					$( "table.treetable", this )
 						.treetable( $.extend( true, {}, settings.treetable, {
-                            onInitialized: function(){
-                                $(this.table).show();
-                            }
-                        }));
+							onInitialized: function(){
+								$(this.table).show();
+							}
+						}));
 				});
 			}
 		};
@@ -34,9 +34,9 @@
 
 	$.fn.catalogue.defaults = {
 		treetable: {
-            expandable: true
-        }
-    };
+			expandable: true
+		}
+	};
 } ( window.jQuery );
 
 $( document ).ready(function() {
