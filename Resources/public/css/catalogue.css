@@ -1,5 +1,5 @@
 .catalogue table.table {
-	display: table;
+	display: none;
 }
 
 table.treetable tr.collapsed span.indenter a {

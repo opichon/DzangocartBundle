@@ -1,8 +1,7 @@
 !function( $ ) {
 	$.fn.catalogue = function( method ) {
 
-		var settings,
-			table;
+		var settings;
 
 		// Public methods
 		var methods = {
@@ -13,7 +12,11 @@
 					var $this = $( this );
 
 					$( "table.treetable", this )
-						.treetable( settings.treetable );
+						.treetable( $.extend( true, {}, settings.treetable, {
+                            onInitialized: function(){
+                                $(this.table).show();
+                            }
+                        }));
 				});
 			}
 		};
@@ -31,9 +34,9 @@
 
 	$.fn.catalogue.defaults = {
 		treetable: {
-			expandable: true
-		}
-	};
+            expandable: true
+        }
+    };
 } ( window.jQuery );
 
 $( document ).ready(function() {
