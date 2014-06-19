@@ -75,6 +75,10 @@ table.table td.amount {
 	padding-right: 10px;
 }
 
+table.table td.actions {
+	text-align: center;
+}
+
 .table tr.disabled td,
 .table tr.disabled a {
 	background-color: #eee;
