@@ -23,4 +23,13 @@ class CatalogueController extends Controller
             'catalogue' => $catalogue
         );
     }
+
+    /**
+     * @Route("/{id}", name="dzangocart_category", requirements={"id": "\d+"})
+     * @Template()
+     */
+    public function showAction(Request $request, $id)
+    {
+        return array();
+    }
 }

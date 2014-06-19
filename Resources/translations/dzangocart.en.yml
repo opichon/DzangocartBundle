@@ -8,6 +8,7 @@ dzangocart:
         pcode:             Pcode
         price:             Price
         price_included:    Price Included
+        show:              Show
         tax_included:      Tax Included
 
     direct_payments:

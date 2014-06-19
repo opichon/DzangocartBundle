@@ -1,0 +1,15 @@
+{% spaceless %}
+
+{% trans_default_domain "dzangocart" %}
+
+<div class='btn-group'>
+	<button type='button' class='dropdown-toggle' data-toggle='dropdown'>
+		<i class='fa fa-cog'></i>
+	</button>
+	<ul class='dropdown-menu dropdown-menu-right navbar-right' role='menu'>
+		<li>
+			<a href='{{ path("dzangocart_category", { id: item.id }) }}'>{% trans %}dzangocart.catalogue.show{% endtrans %}</a>
+		</li>
+	</ul>
+</div>
+{% endspaceless %}
