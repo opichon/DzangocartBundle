@@ -2,7 +2,7 @@
 	<tr data-tt-id="{{ item.id }}" {% if parent_id is defined %} data-tt-parent-id="{{ parent_id }}" {% endif %}>
 		<td>{{ item.name }}</td>
 		<td>{{ item.code }}</td>
-		<td>{{ item.pcode }}</td>
+		<td>{{ item.suffix }}</td>
 		<td>{{ item.price }}</td>
 		<td>{{ item.taxIncluded ? '<i class="fa fa-check">' : '<i class="fa fa-times">' }}</td>
 		<td>{%- include 'DzangocartBundle:Catalogue:actions.html.twig' -%}</td>
