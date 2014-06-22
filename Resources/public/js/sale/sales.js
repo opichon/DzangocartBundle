@@ -89,6 +89,9 @@
                 { className: "center", targets: [ 10, 12 ] },
                 { className: "actions", targets: [ 13 ] }
             ],
+            language: {
+                url: "/bundles/dzangocart/datatables/" + dzangocart.locale + ".json"
+            },
             orderable: true,
             paging: true,
             processing: true,

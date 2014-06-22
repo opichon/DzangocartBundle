@@ -88,6 +88,9 @@
                 { orderable: false, targets: [ 0, 11 ] },
                 { visible: false, targets: [ 0 ] }
             ],
+            language: {
+                url: "/bundles/dzangocart/datatables/" + dzangocart.locale + ".json"
+            },
             order: [ [ 1, 'asc' ] ],
             orderable: true,
             paging: true,
