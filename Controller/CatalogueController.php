@@ -2,6 +2,8 @@
 
 namespace Dzangocart\Bundle\DzangocartBundle\Controller;
 
+use Dzangocart\Bundle\DzangocartBundle\Form\Type\CategoryFormType;
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
@@ -30,6 +32,11 @@ class CatalogueController extends Controller
      */
     public function showAction(Request $request, $id)
     {
-        return array();
+        $form = $this->createForm(
+                new CategoryFormType()
+        );
+        return array(
+            "form" => $form->createView()
+        );
     }
 }
