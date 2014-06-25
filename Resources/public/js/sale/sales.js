@@ -77,11 +77,27 @@
         else {
             $.error( "Method " +  method + " does not exist in jQuery.sales." );
         }
-	};
+    };
 
     $.fn.sales.defaults = {
         dataTables: {
             autoWidth: false,
+            columns: [
+                { data: "check" },
+                { data: "date" },
+                { data: "order_id" },
+                { data: "customer" },
+                { data: "item" },
+                { data: "quantity" },
+                { data: "curency" },
+                { data: "amount_excl" },
+                { data: "tax_amount" },
+                { data: "amount_incl" },
+                { data: "paid" },
+                { data: "affiliate" },
+                { data: "test" },
+                { data: "actions" }
+            ],
             columnDefs: [
                 { visible: false, targets: [ 0 ] },
                 { orderable: false, targets: [ 0, 5, 10, 13 ] },
