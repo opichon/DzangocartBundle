@@ -2,28 +2,28 @@
 
 {% spaceless %}
 {
-	"draw": {{ app.request.query.all.draw }},
-	"recordsTotal": {{ meta['count_total'] }},
-	"recordsFiltered": {{ meta['count_filtered'] }},
-	"data" : [
-		{% for order in list %}
-			{
-				"DT_RowId": "{{ 'o_' ~ order.getOrderId }}",
-				"DT_RowClass": "{{ order.isTest ? 'test' : '' }}{% if not order.paid %} unpaid{% endif %}{% if order.credit %} credit{% endif %}",
-				"0": "",
-				"1": "{{ order.getDate|localizeddate('medium', 'short', app.request.locale, null, datetime_format) }}",
-				"2": "{{ order.id }}",
-				"3": "{{ order.CustomerFullName }}",
-				"4": "{{ order.getCurrency }}",
-				"5": "{{ order.getAmountExcl|currency(order.getCurrency, app.request.locale) }}",
-				"6": "{{ order.getTaxAmount|currency(order.getCurrency, app.request.locale) }}",
-				"7": "{{ order.getAmountIncl|currency(order.getCurrency, app.request.locale) }}",
-				"8": "{{ order.getAmountPaid|currency(order.getCurrency, app.request.locale) }}",
-				"9": "{{ order.affiliate }}",
-				"10": "{% if order.isTest %}<i class="fa fa-asterisk"></i>{% endif %}",
-				"11": "{%- include 'DzangocartBundle:Order:actions.html.twig' -%}"
-			}{% if not loop.last %},{% endif %}
-		{% endfor %}
-	]
+    "draw": {{ app.request.query.all.draw }},
+    "recordsTotal": {{ meta['count_total'] }},
+    "recordsFiltered": {{ meta['count_filtered'] }},
+    "data" : [
+        {% for order in list %}
+            {
+                "DT_RowId":    "{{ 'o_' ~ order.getOrderId }}",
+                "DT_RowClass": "{{ order.isTest ? 'test' : '' }}{% if not order.paid %} unpaid{% endif %}{% if order.credit %} credit{% endif %}",
+                "check": "",
+                "date":        "{{ order.getDate|localizeddate('medium', 'short', app.request.locale, null, datetime_format) }}",
+                "order_id":    "{{ order.id }}",
+                "customer":    "{{ order.CustomerFullName }}",
+                "curency":     "{{ order.getCurrency }}",
+                "amount_excl": "{{ order.getAmountExcl|currency(order.getCurrency, app.request.locale) }}",
+                "tax_amount":  "{{ order.getTaxAmount|currency(order.getCurrency, app.request.locale) }}",
+                "amount_incl": "{{ order.getAmountIncl|currency(order.getCurrency, app.request.locale) }}",
+                "amount_paid": "{{ order.getAmountPaid|currency(order.getCurrency, app.request.locale) }}",
+                "affiliate":   "{{ order.affiliate }}",
+                "test":        "{% if order.isTest %}<i class="fa fa-asterisk"></i>{% endif %}",
+                "actions":     "{%- include 'DzangocartBundle:Order:actions.html.twig' -%}"
+            }{% if not loop.last %},{% endif %}
+        {% endfor %}
+    ]
 }
 {% endspaceless %}
