@@ -87,7 +87,7 @@
                 { data: "date" },
                 { data: "order_id" },
                 { data: "customer" },
-                { data: "curency" },
+                { data: "currency" },
                 { data: "amount_excl" },
                 { data: "tax_amount" },
                 { data: "amount_incl" },

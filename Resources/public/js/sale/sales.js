@@ -89,7 +89,7 @@
                 { data: "customer" },
                 { data: "item" },
                 { data: "quantity" },
-                { data: "curency" },
+                { data: "currency" },
                 { data: "amount_excl" },
                 { data: "tax_amount" },
                 { data: "amount_incl" },
