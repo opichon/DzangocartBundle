@@ -32,11 +32,21 @@ class CatalogueController extends Controller
      */
     public function showAction(Request $request, $id)
     {
-        $form = $this->createForm(
-                new CategoryFormType()
+        $params = array(
+            'id' => $id
         );
+
+        $category = $this->get('dzangocart')
+            ->getCategory($params);
+
+        $form = $this->createForm(
+            new CategoryFormType()
+        );
+
         return array(
-            "form" => $form->createView()
+            'form' => $form->createView(),
+            'category' => $category
         );
     }
+
 }
