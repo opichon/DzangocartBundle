@@ -77,11 +77,25 @@
         else {
             $.error( "Method " +  method + " does not exist in jQuery.orders." );
         }
-	};
+    };
 
     $.fn.orders.defaults = {
         dataTables: {
             autoWidth: false,
+            columns: [
+                { data: "check" },
+                { data: "date" },
+                { data: "order_id" },
+                { data: "customer" },
+                { data: "currency" },
+                { data: "amount_excl" },
+                { data: "tax_amount" },
+                { data: "amount_incl" },
+                { data: "amount_paid" },
+                { data: "affiliate" },
+                { data: "test" },
+                { data: "actions" }
+            ],
             columnDefs: [
                 { className: "number", targets: [ 5, 6, 7, 8 ] },
                 { className: "actions", targets: [ 11 ] },
