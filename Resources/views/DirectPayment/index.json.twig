@@ -4,22 +4,22 @@
 {% spaceless %}
 {
     "draw": "{{ app.request.query.all.draw }}",
-    "recordsTotal": 0,
-    "recordsFiltered": 0,
+    "recordsTotal": {{ data['meta']['count_total'] }},
+    "recordsFiltered": {{ data['meta']['count_filtered'] }},
     "data" : [
-        {% for payment in data %}
+        {% for payment in data['data'] %}
             {
-                "DT_RowId":     "{{ 'p_' ~ payment.id }}",
-                "DT_RowClass":  "{{ 'payment' }}",
-                "check":        "",
-                "date":         "{{ payment.date|localizeddate('medium', 'none', app.request.locale, null, 'dd.MM.yyyy') }}",
-                "order_id":     "{{ payment.order_id }}",
-                "amount":       "{{ payment.amount|currency(payment.currency_id, app.request.locale) }}",
-                "bank":         "{{ payment.bank }}",
-                "type":         "{{ payment_types[payment.type]|trans }}",
-                "check_number": "{{ payment.cheque_number }}",
-                "test":         "{{ payment.test }}",
-                "actions":      ""
+                "DT_RowId":      "{{ 'p_' ~ payment['id'] }}",
+                "DT_RowClass":   "{{ 'payment' }}",
+                "check":         "",
+                "date":          "{{ payment['date']|localizeddate('medium', 'none', app.request.locale, null, 'dd.MM.yyyy') }}",
+                "order_id":      "{{ payment['order_id'] }}",
+                "amount":        "{{ payment['amount']|currency(payment['currency'], app.request.locale) }}",
+                "bank":          "{{ payment['bank'] }}",
+                "type":          "{{ payment_types[payment['type']]|trans }}",
+                "cheque_number": "{{ payment['cheque_number'] }}",
+                "test":          "{{ payment['test'] }}",
+                "actions":       ""
             }{% if not loop.last %},{% endif %}
         {% endfor %}
     ]

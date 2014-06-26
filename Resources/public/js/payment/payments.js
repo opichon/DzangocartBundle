@@ -91,7 +91,7 @@
                 { data: "amount" },
                 { data: "bank" },
                 { data: "type" },
-                { data: "check_number" },
+                { data: "cheque_number" },
                 { data: "test" },
                 { data: "actions" }
             ],
