@@ -6,3 +6,6 @@ dzangocart_admin_sale:
 
 dzangocart_admin_catalogue:
     resource: "@DzangocartBundle/Resources/config/routing/catalogue.yml"
+
+dzangocart_admin_payment:
+    resource: "@DzangocartBundle/Resources/config/routing/direct_payment.yml"
