@@ -19,7 +19,7 @@
                 "type":          "{{ payment_types[payment['type']]|trans }}",
                 "cheque_number": "{{ payment['cheque_number'] }}",
                 "test":          "{{ payment['test'] }}",
-                "actions":       ""
+                "actions":       "{%- include 'DzangocartBundle:DirectPayment:actions.html.twig' -%}"
             }{% if not loop.last %},{% endif %}
         {% endfor %}
     ]
