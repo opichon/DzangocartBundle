@@ -16,6 +16,34 @@ class CategoryFormType extends AbstractType
                 'class' => 'form-control'
             )
         ));
+
+        $builder->add('code', 'text', array(
+            'label' => 'dzangocart.catalogue.code',
+            'attr' => array(
+                'class' => 'form-control'
+            )
+        ));
+
+        $builder->add('pcode', 'text', array(
+            'label' => 'dzangocart.catalogue.pcode',
+            'attr' => array(
+                'class' => 'form-control'
+            )
+        ));
+
+        $builder->add('price', 'text', array(
+            'label' => 'dzangocart.catalogue.price',
+            'attr' => array(
+                'class' => 'form-control'
+            )
+        ));
+
+        $builder->add('tax_included', 'text', array(
+            'label' => 'dzangocart.catalogue.tax_included',
+            'attr' => array(
+                'class' => 'form-control'
+            )
+        ));
     }
 
     public function getName()
