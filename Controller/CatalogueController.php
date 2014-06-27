@@ -7,11 +7,12 @@ use Dzangocart\Bundle\DzangocartBundle\Form\Type\CategoryFormType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 class CatalogueController extends Controller
-{   
+{
     /**
      * @Route("/", name="dzangocart_catalogue")
      * @Template()
@@ -49,4 +50,13 @@ class CatalogueController extends Controller
         );
     }
 
+    /**
+     * @Route("/category/{id}/update", name="dzngocart_category_update", requirements={"id": "\d+"})
+     * @Template
+     * @Method({"POST"})
+     */
+    public function updateAction(Request $request, $id)
+    {
+        return array();
+    }
 }
