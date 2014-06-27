@@ -12,7 +12,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\ParameterBag;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 class SaleController extends Controller
 {
@@ -62,23 +61,13 @@ class SaleController extends Controller
     {
         $filters = array();
 
-        $filters['limit'] = $query->get('length');
-        $filters['offset'] = $query->get('start');
+        $filters['length'] = $query->get('length');
+        $filters['start'] = $query->get('start');
+        $filters['filters'] = $query->get('filters');
 
         $_filters = $query->get('filters');
 
-        foreach ($date_fields = array('date_from', 'date_to') as $field) {
-            $value = $_filters[$field];
-            if (!empty($value)) {
-                $filters[$field] = $value;
-            }
-        }
-
         $filters['test'] = @$_filters['test'] ? true : false;
-
-        if (array_key_exists('customer', $_filters)) {
-            $filters['customer'] = $_filters['customer'];
-        }
 
         return $filters;
     }
