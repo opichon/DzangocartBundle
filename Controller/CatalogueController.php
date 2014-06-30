@@ -41,7 +41,8 @@ class CatalogueController extends Controller
             ->getCategory($params);
 
         $form = $this->createForm(
-            new CategoryFormType()
+            new CategoryFormType(),
+                $category
         );
 
         return array(
