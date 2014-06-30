@@ -9,6 +9,7 @@ dzangocart:
         price:             Price
         price_included:    Price Included
         show:              Show
+        suffix:            Suffix
         tax_included:      Tax Included
 
     direct_payments:

@@ -24,8 +24,8 @@ class CategoryFormType extends AbstractType
             )
         ));
 
-        $builder->add('pcode', 'text', array(
-            'label' => 'dzangocart.catalogue.pcode',
+        $builder->add('suffix', 'text', array(
+            'label' => 'dzangocart.catalogue.suffix',
             'attr' => array(
                 'class' => 'form-control'
             )
