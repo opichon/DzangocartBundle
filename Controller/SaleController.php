@@ -61,13 +61,23 @@ class SaleController extends Controller
     {
         $filters = array();
 
-        $filters['length'] = $query->get('length');
-        $filters['start'] = $query->get('start');
-        $filters['filters'] = $query->get('filters');
+        $filters['limit'] = $query->get('length');
+        $filters['offset'] = $query->get('start');
 
         $_filters = $query->get('filters');
 
+        foreach ($date_fields = array('date_from', 'date_to') as $field) {
+            $value = $_filters[$field];
+            if (!empty($value)) {
+                $filters[$field] = $value;
+            }
+        }
+
         $filters['test'] = @$_filters['test'] ? true : false;
+
+        if (array_key_exists('customer', $_filters)) {
+            $filters['customer'] = $_filters['customer'];
+        }
 
         return $filters;
     }
