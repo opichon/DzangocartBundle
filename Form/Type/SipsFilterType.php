@@ -14,9 +14,6 @@ class SipsFilterType extends AbstractType
             'format' => 'yyyy-MM-dd',
             'label' => 'dzangocart.sips.filters.date_from',
             'widget' => 'single_text',
-            'widget_control_group_attr' => array(
-                'class' => 'date'
-            ),
             'attr' => array(
                 'class' => 'date_from'
             )
@@ -26,9 +23,6 @@ class SipsFilterType extends AbstractType
             'format' => 'yyyy-MM-dd',
             'label' => 'dzangocart.sips.filters.date_to',
             'widget' => 'single_text',
-            'widget_control_group_attr' => array(
-                'class' => 'date'
-            ),
             'attr' => array(
                 'class' => 'date_to'
             )
@@ -36,19 +30,13 @@ class SipsFilterType extends AbstractType
 
         $builder->add('date_range', 'text', array(
             'attr' => array(
-                'class' => 'input-xlarge period'
+                'class' => 'period'
             ),
             'label' => 'dzangocart.sips.filters.period'
         ));
 
         $builder->add('test', 'checkbox', array(
             'label' => 'dzangocart.sips.filters.test',
-            'label_render' => true,
-            'widget_checkbox_label' => 'widget',
-            'widget_control_group_attr' => array(
-                'class' => 'test'
-            ),
-            'widget_type' => 'inline'
         ));
     }
 
