@@ -94,6 +94,7 @@ class OrderController extends Controller
 
         foreach ($date_fields = array('date_from', 'date_to') as $field) {
             $value = $_filters[$field];
+
             if (!empty($value)) {
                 $filters[$field] = $value;
             }
