@@ -12,9 +12,9 @@
     "license": "MIT",
     "require": {
         "symfony/framework-bundle": "~2.0",
+        "braincrafted/bootstrap-bundle": "~2.0",
         "dzangocart/client": "~0.2@dev",
-        "goc/locale-bundle": "dev-master",
-        "uam/datatables-bundle": "*"
+        "goc/locale-bundle": "dev-master"
     },
     "autoload": {
         "psr-0": {
