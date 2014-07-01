@@ -24,33 +24,18 @@ class OrderController extends Controller
     {
         $dzangocart_config = $this->container->getParameter('dzangocart.config');
 
-        if ($request->isXmlHttpRequest() || $request->getRequestFormat() == 'json') {
-
-            $params = $this->getFilters($request->query);
-            $params['sort_by'] = $this->getSortOrder($request->query);
-
-            $data = $this->get('dzangocart')
-                ->getOrders($params);
-
-            $data['datetime_format'] = $dzangocart_config['datetime_format'];
-
-            $view = $this->renderView('DzangocartBundle:Order:index.json.twig', $data);
-
-            return new Response($view, 200, array('Content-Type' => 'application/json'));
-        } else {
-            $form = $this->createForm(
-                new OrderFilterType(),
-                array(
-                    'date_from' => (new DateTime())->modify('first day of this month'),
-                    'date_to' => new DateTime()
-                )
-            );
-
-            return array(
-                'form' => $form->createView(),
-                'config' => $dzangocart_config
-            );
-        }
+        $form = $this->createForm(
+            new OrderFilterType(),
+            array(
+                'date_from' => (new DateTime())->modify('first day of this month'),
+                'date_to' => new DateTime()
+            )
+        );
+        
+        return array(
+            'form' => $form->createView(),
+            'config' => $dzangocart_config
+        );
     }
 
     /**
@@ -59,8 +44,18 @@ class OrderController extends Controller
      */
     public function listAction(Request $request)
     {
-        return array();
+        $dzangocart_config = $this->container->getParameter('dzangocart.config');
+
+        $params = $this->getFilters($request->query);
+        $params['sort_by'] = $this->getSortOrder($request->query);
+
+        $data = $this->get('dzangocart')
+            ->getOrders($params);
+
+        $data['datetime_format'] = $dzangocart_config['datetime_format'];
+        return $data;
     }
+    
     /**
      * @Route("/{id}", name="dzangocart_order", requirements={"id": "\d+"})
      * @Template()
