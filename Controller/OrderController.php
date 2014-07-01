@@ -54,6 +54,14 @@ class OrderController extends Controller
     }
 
     /**
+     * @Route("/list", name="dzangocart_orders_list", requirements={"_format": "json"}, defaults={"_format": "json"})
+     * @Template("DzangocartBundle:Order:list.json.twig")
+     */
+    public function listAction(Request $request)
+    {
+        return array();
+    }
+    /**
      * @Route("/{id}", name="dzangocart_order", requirements={"id": "\d+"})
      * @Template()
      */
