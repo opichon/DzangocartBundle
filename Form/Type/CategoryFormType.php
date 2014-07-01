@@ -30,19 +30,19 @@ class CategoryFormType extends AbstractType
             'label' => 'dzangocart.catalogue.tax_included'
         ));
 
-        $builder->add('export', 'checkbox', array(
+        $builder->add('export1', 'checkbox', array(
             'label' => 'dzangocart.catalogue.export'
         ));
 
-        $builder->add('shipping', 'checkbox', array(
+        $builder->add('shipping1', 'checkbox', array(
             'label' => 'dzangocart.catalogue.shipping'
         ));
 
-        $builder->add('download', 'checkbox', array(
+        $builder->add('download1', 'checkbox', array(
             'label' => 'dzangocart.catalogue.download'
         ));
 
-        $builder->add('pack', 'checkbox', array(
+        $builder->add('pack1', 'checkbox', array(
             'label' => 'dzangocart.catalogue.pack'
         ));
 
