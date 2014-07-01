@@ -42,7 +42,7 @@ class CatalogueController extends Controller
 
         $form = $this->createForm(
             new CategoryFormType(),
-                $category
+            $category
         );
 
         return array(
