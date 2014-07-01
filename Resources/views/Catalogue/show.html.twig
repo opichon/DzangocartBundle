@@ -2,5 +2,7 @@
 
 {% trans_default_domain "dzangocart" %}
 
+{% form_theme form "DzangocartBundle:Form:bootstrap3.html.twig" %}
+
 {% block dzangocart_page_title %}Show Page{% endblock %}
 {% block dzangocart_content %}{{ form(form) }}{% endblock %}
