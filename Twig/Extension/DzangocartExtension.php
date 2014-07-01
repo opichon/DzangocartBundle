@@ -1,8 +1,8 @@
 <?php
 namespace Dzangocart\Bundle\DzangocartBundle\Twig\Extension;
 
-use \Twig_Extension;
-use \Twig_Function_Method;
+use Twig_Extension;
+use Twig_Function_Method;
 
 use Dzangocart\Client\DzangocartClient;
 
