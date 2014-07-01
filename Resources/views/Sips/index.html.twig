@@ -2,7 +2,7 @@
 
 {% trans_default_domain "dzangocart" %}
 
-{% block page_class %}{% endblock %}
+{% block page_class %}sips{% endblock %}
 
 {% block dzangocart_page_title %}{% trans %}dzangocart.sips.page_title{% endtrans %}{% endblock %}
 
@@ -12,36 +12,10 @@
 
 {% block dzangocart_head_style %}
     {{ parent() }}
-    {% stylesheets filter="cssrewrite" output="css/*.css"
-        'bundles/uamdatatables/css/jquery.dataTables_bootstrap.css'
-        'bundles/dzangocart/js/vendor/bootstrap-daterangepicker/daterangepicker-bs2.css'
-        'bundles/dzangocart/css/dzangocart.css'
-        'bundles/dzangocart/css/sips.css'
-    %}
-        <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
-    {% endstylesheets %}
+    {% include "DzangocartBundle:Sale:sales_head_style.html.twig" %}
 {% endblock %}
 
 {% block dzangocart_foot_script %}
     {{ parent() }}
-    {% javascripts
-        'bundles/uamdatatables/js/jquery.dataTables.js'
-        'bundles/uamdatatables/js/jquery.dataTables_bootstrap.js'
-        'bundles/dzangocart/js/vendor/moment/moment.js'
-        'bundles/dzangocart/js/vendor/moment/lang/fr.js'
-        'bundles/dzangocart/js/vendor/bootstrap-daterangepicker/daterangepicker.js'
-        'bundles/dzangocart/js/scripts/sips.js'
-    %}
-        <script src="{{ asset_url }}"></script>
-    {% endjavascripts %}
-    <script>
-    dzangocart.sips = {
-        dataTables: {
-            sAjaxSource: "{{ path('dzangocart_sips') }}"
-        },
-        daterangepicker: {
-            format: "{{ config.date_format|upper }}"
-        }
-    };
-    </script>
+    {% include "DzangocartBundle:Sale:sales_foot_script.html.twig" %}
 {% endblock %}
