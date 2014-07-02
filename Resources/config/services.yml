@@ -1,3 +1,6 @@
+parameters:
+    DzangocartBundle.controller.order.class: Dzangocart\Bundle\DzangocartBundle\Controller\OrderController
+
 services:
     dzangocart:
         class:          Dzangocart\Client\DzangocartClient
@@ -10,3 +13,6 @@ services:
         arguments: [@dzangocart]
         tags:
             - { name: twig.extension }
+
+    DzangocartBundle.order.controller:
+        class:		"%DzangocartBundle.controller.order.class%"
