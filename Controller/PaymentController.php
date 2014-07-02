@@ -47,6 +47,8 @@ class PaymentController extends Controller
      */
     public function listAction(Request $request)
     {
+        $dzangocart_config = $this->container->getParameter('dzangocart.config');
+
         $params = $this->getFilters($request->query, $dzangocart_config);
         $params['sort_by'] = $this->getSortOrder($request->query);
 
