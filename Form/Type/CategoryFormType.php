@@ -11,18 +11,6 @@ class CategoryFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
 
-        if($builder->getData()) {
-            $builder->setData(
-                array(
-                    'taxIncluded' => (bool)$builder->getData()['taxIncluded'],
-                    'export'      => (bool)$builder->getData()['export'] ,
-                    'shipping'    => (bool)$builder->getData()['shipping'],
-                    'download'    => (bool)$builder->getData()['download'],
-                    'pack'        => (bool)$builder->getData()['pack']
-                )
-            );
-        }
-
         $builder->add('name', 'text', array(
             'label' => 'dzangocart.catalogue.name',
         ));
