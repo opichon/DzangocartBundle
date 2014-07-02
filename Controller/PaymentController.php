@@ -28,7 +28,7 @@ class PaymentController extends Controller
         $dzangocart_config = $this->container->getParameter('dzangocart.config');
 
         $form = $this->createForm(
-            new DirectPaymentFilterType(),
+            new PaymentFilterType(),
             array(
                 'date_from' => (new DateTime())->modify('first day of this month'),
                 'date_to' => new DateTime()
