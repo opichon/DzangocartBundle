@@ -46,7 +46,6 @@ class CatalogueController extends Controller
         $category['download']    = (bool)$category['download'];
         $category['pack']        = (bool)$category['pack'];
 
-
         $form = $this->createForm(
             new CategoryFormType(),
             $category
