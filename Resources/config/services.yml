@@ -1,5 +1,5 @@
 parameters:
-    DzangocartBundle.controller.order.class: Dzangocart\Bundle\DzangocartBundle\Controller\OrderController
+    dzangocart.controller.order.class: Dzangocart\Bundle\DzangocartBundle\Controller\OrderController
 
 services:
     dzangocart:
@@ -14,6 +14,6 @@ services:
         tags:
             - { name: twig.extension }
 
-    DzangocartBundle.order.controller:
-        class:      "%DzangocartBundle.controller.order.class%"
+    dzangocart.controller.order:
+        class:      "%dzangocart.controller.order.class%"
         arguments:  [@service_container]
