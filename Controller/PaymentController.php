@@ -21,7 +21,7 @@ class PaymentController extends Controller
 {
     /**
      * @Route("/", name="dzangocart_payments")
-     * @Template()
+     * @Template("DzangocartBundle:Payment:index.html.twig")
      */
     public function indexAction(Request $request)
     {

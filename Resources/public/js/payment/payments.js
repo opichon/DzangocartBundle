@@ -18,31 +18,32 @@
                         },
                         ajax: {
                             data: function( data ) {
+                            $( ".filters input", $this ).each(function() {
+                                data[$( this ).attr( "name" )] = $( this ).val()
+                            });
+
                             $( ".filters :checkbox", $this ).each(function() {
                                 data[$( this ).attr( "name" )] = $( this ).is( ":checked" ) ? 1 : 0
                             });
 
-                            $( ".filters input", $this ).each(function() {
-                                data[$( this ).attr( "name" )] = $( this ).val()
-                            });
                         }
                         },
                         stateLoadParams: function( settings, data ) {
-                            $( ".filters :checkbox", $this ).each(function() {
-                                $( this ).attr( "checked", data[ $( this ).attr( "name" ) ] );
-                            });
-
                             $( ".filters input", $this ).each(function() {
                                 $( this ).val( data[ $( this ).attr( "name" ) ] );
                             });
+
+                            $( ".filters :checkbox", $this ).each(function() {
+                                $( this ).attr( "checked", data[ $( this ).attr( "name" ) ] );
+                            });
                         },
                         stateSaveParams: function( settings, data ) {
-                            $( ".filters :checkbox", $this ).each(function() {
-                                data[ $( this ).attr( "name" ) ] = $( this ).is( ":checked" );
-                            });
-
                             $( ".filters input", $this ).each(function() {
                                 data[ $( this ).attr( "name" ) ] = $( this ).val();
+                            });
+
+                            $( ".filters :checkbox", $this ).each(function() {
+                                data[ $( this ).attr( "name" ) ] = $( this ).is( ":checked" );
                             });
                         }
                     } ) );
