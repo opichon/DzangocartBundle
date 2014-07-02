@@ -16,4 +16,4 @@ services:
 
     DzangocartBundle.order.controller:
         class:		Dzangocart\Bundle\DzangocartBundle\Controller\OrderController
-        arguments: [@service_container]
+        arguments:  [@service_container]
