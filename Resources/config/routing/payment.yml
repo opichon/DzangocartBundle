@@ -1,0 +1,4 @@
+_dzangocart_payment:
+    resource: "@DzangocartBundle/Controller/PaymentController.php"
+    type: annotation
+    prefix: /payment

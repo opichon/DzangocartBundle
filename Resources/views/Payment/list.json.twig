@@ -1,0 +1,26 @@
+{% trans_default_domain "dzangocart" %}
+
+{% spaceless %}
+{
+    "draw": "{{ app.request.query.all.draw }}",
+    "recordsTotal": {{ data['meta']['count_total'] }},
+    "recordsFiltered": {{ data['meta']['count_filtered'] }},
+    "data" : [
+        {% for payment in data['data'] %}
+            {
+                "DT_RowId":      "{{ 'p_' ~ payment['id'] }}",
+                "DT_RowClass":   "{{ 'payment' }}",
+                "check":         "",
+                "date":          "{{ payment['date']|localizeddate('medium', 'none', app.request.locale, null, 'dd.MM.yyyy') }}",
+                "order_id":      "{{ payment['order_id'] }}",
+                "gateway":       "{{ payment['gateway'] }}",
+                "type":          "{{ payment['type'] }}",
+                "amount":        "{{ payment['amount']|currency(payment['currency'], app.request.locale) }}",
+                "status":        "{{ payment['status'] }}",
+                "test":          "{{ payment['test'] }}",
+                "actions":       "{%- include 'DzangocartBundle:Payment:actions.html.twig' -%}"
+            }{% if not loop.last %},{% endif %}
+        {% endfor %}
+    ]
+}
+{% endspaceless %}

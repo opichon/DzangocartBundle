@@ -4,7 +4,7 @@ namespace Dzangocart\Bundle\DzangocartBundle\Controller;
 
 use DateTime;
 
-use Dzangocart\Bundle\DzangocartBundle\Form\Type\OrderFilterType;
+use Dzangocart\Bundle\DzangocartBundle\Form\Type\PaymentFilterType;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -13,92 +13,72 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\ParameterBag;
 use Symfony\Component\HttpFoundation\Request;
 
-class OrderController extends Controller
+/**
+ * @Route("/")
+ * @Template
+ */
+class PaymentController extends Controller
 {
     /**
-     * @Route("/", name="dzangocart_orders")
-     * @Template("DzangocartBundle:Order:index.html.twig")
+     * @Route("/", name="dzangocart_payments")
+     * @Template("DzangocartBundle:Payment:index.html.twig")
      */
     public function indexAction(Request $request)
     {
         $dzangocart_config = $this->container->getParameter('dzangocart.config');
 
         $form = $this->createForm(
-            new OrderFilterType(),
+            new PaymentFilterType(),
             array(
                 'date_from' => (new DateTime())->modify('first day of this month'),
                 'date_to' => new DateTime()
             )
         );
-        
+
         return array(
             'form' => $form->createView(),
             'config' => $dzangocart_config
         );
     }
 
-    /**
-     * @Route("/list", name="dzangocart_orders_list", requirements={"_format": "json"}, defaults={"_format": "json"})
-     * @Template("DzangocartBundle:Order:list.json.twig")
+        /**
+     * @Route("/list", name="dzangocart_payments_list", requirements={"_format": "json"}, defaults={"_format": "json"})
+     * @Template("DzangocartBundle:Payment:list.json.twig")
      */
     public function listAction(Request $request)
     {
         $dzangocart_config = $this->container->getParameter('dzangocart.config');
 
-        $params = $this->getFilters($request->query);
+        $params = $this->getFilters($request->query, $dzangocart_config);
         $params['sort_by'] = $this->getSortOrder($request->query);
 
         $data = $this->get('dzangocart')
-            ->getOrders($params);
+            ->getPayments($params);
 
         $data['datetime_format'] = $dzangocart_config['datetime_format'];
+
         return $data;
     }
     
-    /**
-     * @Route("/{id}", name="dzangocart_order", requirements={"id": "\d+"})
-     * @Template()
-     */
-    public function showAction(Request $request, $id)
-    {
-        $dzangocart_config = $this->container->getParameter('dzangocart.config');
-
-        $params = array(
-            'id' => $id
-        );
-
-        $order = $this->get('dzangocart')
-            ->getOrder($params);
-
-        return array(
-            'order' => $order,
-            'config' => $dzangocart_config,
-            'data' => print_r($order, true)
-        );
-    }
-
-    protected function getFilters(ParameterBag $query)
+    protected function getFilters(ParameterBag $query, $config)
     {
         $filters = array();
 
-        $filters['limit'] = $query->get('length');
-        $filters['offset'] = $query->get('start');
+        $filters['length'] = $query->get('length');
+        $filters['start'] = $query->get('start');
 
         $_filters = $query->get('filters');
 
-        foreach ($date_fields = array('date_from', 'date_to') as $field) {
-            $value = $_filters[$field];
-
-            if (!empty($value)) {
-                $filters[$field] = $value;
+        if ($_filters) {
+            foreach ($date_fields = array('date_from', 'date_to') as $field) {
+                $value = $_filters[$field];
+                if (!empty($value)) {
+                    $filters[$field] = $value;
+                }
             }
         }
 
         $filters['test'] = @$_filters['test'] ? true : false;
-
-        if (array_key_exists('customer', $_filters)) {
-            $filters['customer'] = $_filters['customer'];
-        }
 
         return $filters;
     }
@@ -138,21 +118,14 @@ class OrderController extends Controller
 
     protected function getDefaultSortOrder()
     {
-        return array('cart.DATE', 'asc');
+        return array('payment.createdAt', 'asc');
     }
 
     protected function getSortColumns()
     {
         return array(
-            1 => 'cart.DATE',
-            2 => 'cart.ID',
-            3 => array('user_profile.SURNAME', 'user_profile.GIVEN_NAMES'),
-            4 => 'cart.CURRENCY_ID',
-            5 => 'cart.AMOUNT_EXCL',
-            6 => 'cart.TAX_AMOUNT',
-            7 => 'cart.AMOUNT_INCL',
-            9 => 'cart.AFFILIATE_ID',
-            10 => 'cart.TEST'
+            1 => 'payment.orderId',
+            2 => 'payment.createdAt'
         );
     }
 }

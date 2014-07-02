@@ -17,12 +17,12 @@
                             $( this ).show();
                         },
                         serverParams: function( data ) {
-                            $( ".filters :checkbox", $this ).each(function() {
-                                data[$( this ).attr( "name" )] = $( this ).is( ":checked" ) ? 1 : 0;
-                            });
-
                             $( ".filters input", $this ).each(function() {
                                 data[$( this ).attr( "name" )] = $( this ).val();
+                            });
+
+                            $( ".filters :checkbox", $this ).each(function() {
+                                data[$( this ).attr( "name" )] = $( this ).is( ":checked" ) ? 1 : 0;
                             });
                         },
                         stateLoadParams: function( settings, data ) {

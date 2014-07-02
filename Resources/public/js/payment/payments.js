@@ -18,31 +18,32 @@
                         },
                         ajax: {
                             data: function( data ) {
-                            $( ".filters :checkbox", $this ).each(function() {
-                                data[$( this ).attr( "name" )] = $( this ).is( ":checked" ) ? 1 : 0
-                            });
+                                $( ".filters input", $this ).each(function() {
+                                    data[$( this ).attr( "name" )] = $( this ).val()
+                                });
 
-                            $( ".filters input", $this ).each(function() {
-                                data[$( this ).attr( "name" )] = $( this ).val()
-                            });
-                        }
+                                $( ".filters :checkbox", $this ).each(function() {
+                                    data[$( this ).attr( "name" )] = $( this ).is( ":checked" ) ? 1 : 0
+                                });
+
+                            }
                         },
                         stateLoadParams: function( settings, data ) {
-                            $( ".filters :checkbox", $this ).each(function() {
-                                $( this ).attr( "checked", data[ $( this ).attr( "name" ) ] );
-                            });
-
                             $( ".filters input", $this ).each(function() {
                                 $( this ).val( data[ $( this ).attr( "name" ) ] );
                             });
+
+                            $( ".filters :checkbox", $this ).each(function() {
+                                $( this ).attr( "checked", data[ $( this ).attr( "name" ) ] );
+                            });
                         },
                         stateSaveParams: function( settings, data ) {
-                            $( ".filters :checkbox", $this ).each(function() {
-                                data[ $( this ).attr( "name" ) ] = $( this ).is( ":checked" );
-                            });
-
                             $( ".filters input", $this ).each(function() {
                                 data[ $( this ).attr( "name" ) ] = $( this ).val();
+                            });
+
+                            $( ".filters :checkbox", $this ).each(function() {
+                                data[ $( this ).attr( "name" ) ] = $( this ).is( ":checked" );
                             });
                         }
                     } ) );
@@ -88,17 +89,17 @@
                 { data: "check" },
                 { data: "date" },
                 { data: "order_id" },
-                { data: "amount" },
-                { data: "bank" },
+                { data: "gateway" },
                 { data: "type" },
-                { data: "cheque_number" },
+                { data: "amount" },
+                { data: "status" },
                 { data: "test" },
                 { data: "actions" }
             ],
             columnDefs: [
                 { orderable: false, targets: [ 0, 8 ] },
                 { visible: false, targets: [ 0 ] },
-                { className: "number", targets: [ 3 ] },
+                { className: "number", targets: [ 5 ] },
                 { className: "actions", targets: [ 8 ] }
             ],
             stripeClasses: [],
@@ -108,6 +109,7 @@
             serverSide: true,
             orderable: true,
             stateSave: true,
+            searching: false,
             language: {
                 url: "/bundles/dzangocart/datatables/" + dzangocart.locale + ".json"
             }

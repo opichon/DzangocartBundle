@@ -124,3 +124,18 @@ dzangocart:
             title:      Response code
         time:           Time
         transaction_id: Transaction id
+
+    payments:
+        amount:             Amount
+        gateway:            Gateway
+        status:             Status
+        date:               Date
+        filters:
+            date_from:      From
+            date_to:        To
+            period:         Period
+            test:           Include test orders
+        order_id:           Order no.
+        page_title:         Payments
+        test:               Demo
+        type:               Payment Type
