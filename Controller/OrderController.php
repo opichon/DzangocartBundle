@@ -4,6 +4,7 @@ namespace Dzangocart\Bundle\DzangocartBundle\Controller;
 
 use DateTime;
 
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Dzangocart\Bundle\DzangocartBundle\Form\Type\OrderFilterType;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -15,8 +16,14 @@ use Symfony\Component\HttpFoundation\Request;
 
 class OrderController extends Controller
 {
+    protected $container;
+
+    public function __construct(ContainerInterface $container = null)
+    {
+        $this->container = $container;
+    }
+
     /**
-     * @Route("/", name="dzangocart_orders")
      * @Template("DzangocartBundle:Order:index.html.twig")
      */
     public function indexAction(Request $request)
@@ -38,7 +45,6 @@ class OrderController extends Controller
     }
 
     /**
-     * @Route("/list", name="dzangocart_orders_list", requirements={"_format": "json"}, defaults={"_format": "json"})
      * @Template("DzangocartBundle:Order:list.json.twig")
      */
     public function listAction(Request $request)
