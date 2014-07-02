@@ -14,12 +14,12 @@
                 "check":         "",
                 "date":          "{{ payment['date']|localizeddate('medium', 'none', app.request.locale, null, 'dd.MM.yyyy') }}",
                 "order_id":      "{{ payment['order_id'] }}",
-                "amount":        "{{ payment['amount']|currency(payment['currency'], app.request.locale) }}",
-                "bank":          "{{ payment['bank'] }}",
+                "gateway":       "{{ payment['gateway'] }}",
                 "type":          "{{ payment_types[payment['type']]|trans }}",
-                "cheque_number": "{{ payment['cheque_number'] }}",
+                "amount":        "{{ payment['amount']|currency(payment['currency'], app.request.locale) }}",
+                "status":        "{{ payment['status'] }}",
                 "test":          "{{ payment['test'] }}",
-                "actions":       "{%- include 'DzangocartBundle:DirectPayment:actions.html.twig' -%}"
+                "actions":       "{%- include 'DzangocartBundle:Payment:actions.html.twig' -%}"
             }{% if not loop.last %},{% endif %}
         {% endfor %}
     ]
