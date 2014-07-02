@@ -59,7 +59,7 @@ class PaymentController extends Controller
 
         return $data;
     }
-    
+
     protected function getFilters(ParameterBag $query, $config)
     {
         $filters = array();

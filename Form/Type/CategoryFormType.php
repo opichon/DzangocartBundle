@@ -26,7 +26,7 @@ class CategoryFormType extends AbstractType
         $builder->add('price', 'text', array(
             'label' => 'dzangocart.catalogue.price'
         ));
-        
+
         $builder->add('taxIncluded', 'checkbox', array(
             'label' => 'dzangocart.catalogue.tax_included'
         ));

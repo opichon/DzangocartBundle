@@ -37,7 +37,7 @@ class OrderController extends Controller
                 'date_to' => new DateTime()
             )
         );
-        
+
         return array(
             'form' => $form->createView(),
             'config' => $dzangocart_config
@@ -58,9 +58,10 @@ class OrderController extends Controller
             ->getOrders($params);
 
         $data['datetime_format'] = $dzangocart_config['datetime_format'];
+
         return $data;
     }
-    
+
     /**
      * @Route("/{id}", name="dzangocart_order", requirements={"id": "\d+"})
      * @Template()
