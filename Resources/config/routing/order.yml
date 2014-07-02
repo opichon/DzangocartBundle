@@ -1,4 +1,14 @@
-_dzangocart_admin_order:
+_dzangocart_admin_ordera:
     resource: "@DzangocartBundle/Controller/OrderController.php"
     type: annotation
     prefix: /order
+
+dzangocart_orders:
+    pattern: /order
+    defaults: { _controller: DzangocartBundle.order.controller:indexAction }
+    
+dzangocart_orders_list:
+    pattern: /order/list
+    defaults: { _controller: DzangocartBundle.order.controller:listAction, _format: json }
+    requirements:
+        _format: json
