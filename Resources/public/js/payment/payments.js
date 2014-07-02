@@ -18,15 +18,15 @@
                         },
                         ajax: {
                             data: function( data ) {
-                            $( ".filters input", $this ).each(function() {
-                                data[$( this ).attr( "name" )] = $( this ).val()
-                            });
+                                $( ".filters input", $this ).each(function() {
+                                    data[$( this ).attr( "name" )] = $( this ).val()
+                                });
 
-                            $( ".filters :checkbox", $this ).each(function() {
-                                data[$( this ).attr( "name" )] = $( this ).is( ":checked" ) ? 1 : 0
-                            });
+                                $( ".filters :checkbox", $this ).each(function() {
+                                    data[$( this ).attr( "name" )] = $( this ).is( ":checked" ) ? 1 : 0
+                                });
 
-                        }
+                            }
                         },
                         stateLoadParams: function( settings, data ) {
                             $( ".filters input", $this ).each(function() {
@@ -99,7 +99,7 @@
             columnDefs: [
                 { orderable: false, targets: [ 0, 8 ] },
                 { visible: false, targets: [ 0 ] },
-                { className: "number", targets: [ 3 ] },
+                { className: "number", targets: [ 5 ] },
                 { className: "actions", targets: [ 8 ] }
             ],
             stripeClasses: [],
