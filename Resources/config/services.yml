@@ -15,4 +15,5 @@ services:
             - { name: twig.extension }
 
     DzangocartBundle.order.controller:
-        class:		"%DzangocartBundle.controller.order.class%"
+        class:		Dzangocart\Bundle\DzangocartBundle\Controller\OrderController
+        arguments: [@service_container]
