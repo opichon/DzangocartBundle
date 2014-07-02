@@ -1,6 +1,5 @@
 {% trans_default_domain "dzangocart" %}
 
-{% set payment_types = { 1: 'dzangocart.direct_payments.pay_by.wire_transfer', 2: 'dzangocart.direct_payments.pay_by.cheque' } %}
 {% spaceless %}
 {
     "draw": "{{ app.request.query.all.draw }}",
@@ -15,7 +14,7 @@
                 "date":          "{{ payment['date']|localizeddate('medium', 'none', app.request.locale, null, 'dd.MM.yyyy') }}",
                 "order_id":      "{{ payment['order_id'] }}",
                 "gateway":       "{{ payment['gateway'] }}",
-                "type":          "{{ payment_types[payment['type']]|trans }}",
+                "type":          "{{ payment['type'] }}",
                 "amount":        "{{ payment['amount']|currency(payment['currency'], app.request.locale) }}",
                 "status":        "{{ payment['status'] }}",
                 "test":          "{{ payment['test'] }}",

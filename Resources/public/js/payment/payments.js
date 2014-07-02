@@ -88,10 +88,10 @@
                 { data: "check" },
                 { data: "date" },
                 { data: "order_id" },
-                { data: "amount" },
-                { data: "bank" },
+                { data: "gateway" },
                 { data: "type" },
-                { data: "cheque_number" },
+                { data: "amount" },
+                { data: "status" },
                 { data: "test" },
                 { data: "actions" }
             ],
