@@ -109,6 +109,7 @@
             serverSide: true,
             orderable: true,
             stateSave: true,
+            searching: false,
             language: {
                 url: "/bundles/dzangocart/datatables/" + dzangocart.locale + ".json"
             }

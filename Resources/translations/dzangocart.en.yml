@@ -37,26 +37,6 @@ dzangocart:
             wire_transfer:  Wire transfer
         test:               Demo
         type:               Payment by
-    
-    payments:
-        action:
-            title:          Actions
-        amount:             Amount
-        bank:               Bank
-        cheque_number:      Cheque no.
-        date:               Date
-        filters:
-            date_from:      From
-            date_to:        To
-            period:         Period
-            test:           Include test orders
-        order_id:           Order no.
-        page_title:         Payments
-        pay_by:
-            cheque:         Cheque
-            wire_transfer:  Wire transfer
-        test:               Demo
-        type:               Payment by
 
     order:
         amount_excl:        Gross amount
@@ -144,3 +124,18 @@ dzangocart:
             title:      Response code
         time:           Time
         transaction_id: Transaction id
+
+    payments:
+        amount:             Amount
+        gateway:            Gateway
+        status:             Status
+        date:               Date
+        filters:
+            date_from:      From
+            date_to:        To
+            period:         Period
+            test:           Include test orders
+        order_id:           Order no.
+        page_title:         Payments
+        test:               Demo
+        type:               Payment Type
