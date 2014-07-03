@@ -84,55 +84,56 @@ class SaleController extends Controller
 
     protected function getSortOrder(ParameterBag $query)
     {
-        $sort_by = array();
 
-        $columns = $this->getSortColumns();
+//        $sort_by = array();
+//
+//        $columns = $this->getSortColumns();
+//
+//        $n = $query->get('sortingCols');
+//
+//        for ($i = 0; $i < $n; $i++) {
+//            $index = $query->get('sortCol_' . $i);
+//
+//            if (array_key_exists($index, $columns)) {
+//
+//                $column = $columns[$index];
+//
+//                if (!is_array($column)) {
+//                    $column = array($column);
+//                }
+//
+//                foreach ($column as $c) {
+//                    $sort_by[] = $c;
+//                    $sort_by[] = $query->get('sortDir_' . $i, 'asc');
+//                }
+//            }
+//        }
+//
+//        if (empty($sort_by)) {
+//            $sort_by = $this->getDefaultSortOrder();
+//        }
 
-        $n = $query->get('sortingCols');
-
-        for ($i = 0; $i < $n; $i++) {
-            $index = $query->get('sortCol_' . $i);
-
-            if (array_key_exists($index, $columns)) {
-
-                $column = $columns[$index];
-
-                if (!is_array($column)) {
-                    $column = array($column);
-                }
-
-                foreach ($column as $c) {
-                    $sort_by[] = $c;
-                    $sort_by[] = $query->get('sortDir_' . $i, 'asc');
-                }
-            }
-        }
-
-        if (empty($sort_by)) {
-            $sort_by = $this->getDefaultSortOrder();
-        }
-
-        return $sort_by;
+        return $query->get('order', array());
     }
 
-    protected function getDefaultSortOrder()
-    {
-        return array('cart.DATE', 'asc');
-    }
-
-    protected function getSortColumns()
-    {
-        return array(
-            1 => 'cart.DATE',
-            2 => 'item.ORDER_ID',
-            3 => array('user_profile.SURNAME', 'user_profile.GIVEN_NAMES'),
-            4 => 'item.NAME',
-            6 => 'cart.CURRENCY_ID',
-            7 => 'item.AMOUNT_EXCL',
-            8 => 'item.TAX_AMOUNT',
-            9 => 'item.AMOUNT_INCL',
-            11 => 'cart.AFFILIATE_ID',
-            11 => 'cart.TEST'
-        );
-    }
+//    protected function getDefaultSortOrder()
+//    {
+//        return array('cart.DATE', 'asc');
+//    }
+//
+//    protected function getSortColumns()
+//    {
+//        return array(
+//            1 => 'cart.DATE',
+//            2 => 'item.ORDER_ID',
+//            3 => array('user_profile.SURNAME', 'user_profile.GIVEN_NAMES'),
+//            4 => 'item.NAME',
+//            6 => 'cart.CURRENCY_ID',
+//            7 => 'item.AMOUNT_EXCL',
+//            8 => 'item.TAX_AMOUNT',
+//            9 => 'item.AMOUNT_INCL',
+//            11 => 'cart.AFFILIATE_ID',
+//            11 => 'cart.TEST'
+//        );
+//    }
 }
