@@ -7,7 +7,7 @@ dzangocart_category:
     defaults: { _controller: dzangocart.controller.catalogue:showAction }
     requirements:
         id: \d+
-        
+
 dzngocart_category_update:
     pattern: /catalogue/category/{id}/update
     defaults: { _controller: dzangocart.controller.catalogue:updateAction }

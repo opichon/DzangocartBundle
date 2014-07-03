@@ -13,13 +13,13 @@ class CatalogueController
 {
     protected $dzangocart;
     protected $form_factory;
-    
+
     public function __construct($dzangocart, FormFactory $form_factory)
     {
         $this->dzangocart = $dzangocart;
         $this->form_factory = $form_factory;
     }
-    
+
     /**
      * @Template()
      */
