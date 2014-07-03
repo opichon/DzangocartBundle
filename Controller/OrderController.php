@@ -15,15 +15,15 @@ use Symfony\Component\HttpFoundation\Request;
 
 class OrderController
 {
-    protected $form_factory;
-    protected $dzangocart_config;
     protected $dzangocart;
+    protected $dzangocart_config;
+    protected $form_factory;
 
-    public function __construct(FormFactory $form_factory, $dzangocart_config, $dzangocart)
+    public function __construct($dzangocart, $dzangocart_config, FormFactory $form_factory)
     {
-        $this->form_factory = $form_factory;
-        $this->dzangocart_config = $dzangocart_config;
         $this->dzangocart = $dzangocart;
+        $this->dzangocart_config = $dzangocart_config;
+        $this->form_factory = $form_factory;
     }
 
     /**
