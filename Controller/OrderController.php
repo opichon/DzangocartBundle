@@ -62,7 +62,6 @@ class OrderController
     }
 
     /**
-     * @Route("/{id}", name="dzangocart_order", requirements={"id": "\d+"})
      * @Template()
      */
     public function showAction(Request $request, $id)
