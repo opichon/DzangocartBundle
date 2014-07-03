@@ -108,54 +108,56 @@ class OrderController
 
     protected function getSortOrder(ParameterBag $query)
     {
-        $sort_by = array();
+        return $query->get('order', array());
 
-        $columns = $this->getSortColumns();
+        // this need to be removed because it is not according to the datatable 1.10
+//        $sort_by = array();
 
-        $n = $query->get('sortingCols');
+//        $columns = $this->getSortColumns();
+//
+//        $n = $query->get('sortingCols');
+//
+//        for ($i = 0; $i < $n; $i++) {
+//            $index = $query->get('sortCol_' . $i);
+//
+//            if (array_key_exists($index, $columns)) {
+//
+//                $column = $columns[$index];
+//
+//                if (!is_array($column)) {
+//                    $column = array($column);
+//                }
+//
+//                foreach ($column as $c) {
+//                    $sort_by[] = $c;
+//                    $sort_by[] = $query->get('sortDir_' . $i, 'asc');
+//                }
+//            }
+//        }
+//
+//        if (empty($sort_by)) {
+//            $sort_by = $this->getDefaultSortOrder();
+//        }
 
-        for ($i = 0; $i < $n; $i++) {
-            $index = $query->get('sortCol_' . $i);
-
-            if (array_key_exists($index, $columns)) {
-
-                $column = $columns[$index];
-
-                if (!is_array($column)) {
-                    $column = array($column);
-                }
-
-                foreach ($column as $c) {
-                    $sort_by[] = $c;
-                    $sort_by[] = $query->get('sortDir_' . $i, 'asc');
-                }
-            }
-        }
-
-        if (empty($sort_by)) {
-            $sort_by = $this->getDefaultSortOrder();
-        }
-
-        return $sort_by;
     }
 
-    protected function getDefaultSortOrder()
-    {
-        return array('cart.DATE', 'asc');
-    }
-
-    protected function getSortColumns()
-    {
-        return array(
-            1 => 'cart.DATE',
-            2 => 'cart.ID',
-            3 => array('user_profile.SURNAME', 'user_profile.GIVEN_NAMES'),
-            4 => 'cart.CURRENCY_ID',
-            5 => 'cart.AMOUNT_EXCL',
-            6 => 'cart.TAX_AMOUNT',
-            7 => 'cart.AMOUNT_INCL',
-            9 => 'cart.AFFILIATE_ID',
-            10 => 'cart.TEST'
-        );
-    }
+//    protected function getDefaultSortOrder()
+//    {
+//        return array('cart.DATE', 'asc');
+//    }
+//
+//    protected function getSortColumns()
+//    {
+//        return array(
+//            1 => 'cart.DATE',
+//            2 => 'cart.ID',
+//            3 => array('user_profile.SURNAME', 'user_profile.GIVEN_NAMES'),
+//            4 => 'cart.CURRENCY_ID',
+//            5 => 'cart.AMOUNT_EXCL',
+//            6 => 'cart.TAX_AMOUNT',
+//            7 => 'cart.AMOUNT_INCL',
+//            9 => 'cart.AFFILIATE_ID',
+//            10 => 'cart.TEST'
+//        );
+//    }
 }
