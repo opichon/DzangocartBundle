@@ -2,6 +2,12 @@ dzangocart_orders:
     pattern: /order
     defaults: { _controller: dzangocart.controller.order:indexAction }
 
+dzangocart_order:
+    pattern: /order/{id}
+    defaults: { _controller: dzangocart.controller.order:showAction }
+    requirements:
+        id: \d+
+
 dzangocart_orders_list:
     pattern: /order/list
     defaults: { _controller: dzangocart.controller.order:listAction, _format: json }

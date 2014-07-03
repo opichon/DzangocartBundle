@@ -16,4 +16,7 @@ services:
 
     dzangocart.controller.order:
         class:      "%dzangocart.controller.order.class%"
-        arguments:  [@service_container]
+        arguments:
+            - @form.factory
+            - "%dzangocart.config%"
+            - @dzangocart
