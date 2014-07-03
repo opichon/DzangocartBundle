@@ -28,44 +28,50 @@ class SipsController extends Controller
     {
         $dzangocart_config = $this->container->getParameter('dzangocart.config');
 
-        if ($request->isXmlHttpRequest() || $request->getRequestFormat() == 'json') {
+        $form = $this->createForm(
+            new SipsFilterType(),
+            array(
+                'date_from' => (new DateTime())->modify('first day of this month'),
+                'date_to' => new DateTime()
+            ),
+            array()
+        );
 
-            $params = $this->getFilters($request->query, $dzangocart_config);
-            $params['sort_by'] = $this->getSortOrder($request->query);
-
-            $data = $this->get('dzangocart')
-                ->getSips($params);
-
-            $data['datetime_format'] = $dzangocart_config['datetime_format'];
-
-            $view = $this->renderView('DzangocartBundle:Sips:index.json.twig', $data);
-
-            return new Response($view, 200, array('Content-Type' => 'application/json'));
-        } else {
-            $form = $this->createForm(
-                new SipsFilterType(),
-                array(
-                    'date_from' => (new DateTime())->modify('first day of this month'),
-                    'date_to' => new DateTime()
-                )
-            );
-
-            return array(
-                'form' => $form->createView(),
-                'config' => $dzangocart_config
-            );
-        }
+        return array(
+            'form' => $form->createView(),
+            'config' => $dzangocart_config
+        );
     }
 
-    protected function getFilters(ParameterBag $query, $config)
+    /**
+     * @Route("/list", name="dzangocart_sips_list", requirements={"_format": "json"}, defaults={"_format": "json"})
+     * @Template()
+     */
+    public function listAction(Request $request)
     {
+        $dzangocart_config = $this->container->getParameter('dzangocart.config');
+
+        $params = $this->getFilters($request);
+        $params['sort_by'] = $this->getSortOrder($request);
+
+        $data = $this->get('dzangocart')
+            ->getSips($params);
+
+        $data['datetime_format'] = $dzangocart_config['datetime_format'];
+
+        return $data;
+    }
+
+    protected function getFilters(Request $request)
+    {
+        $dzangocart_config = $this->container->getParameter('dzangocart.config');
+
         $filters = array();
 
-        $filters['search'] = $query->get('sSearch');
-        $filters['limit'] = $query->get('iDisplayLength');
-        $filters['offset'] = $query->get('iDisplayStart');
+        $filters['limit'] = min(100, $request->query->get('length', 10));
+        $filters['offset'] = max(0, $request->query->get('start', 0));
 
-        $_filters = $query->get('filters');
+        $_filters = $request->query->get('filters');
 
         if ($_filters) {
             foreach ($date_fields = array('date_from', 'date_to') as $field) {
@@ -77,43 +83,31 @@ class SipsController extends Controller
         }
 
         if (!@$_filters['test']) {
-            $filters['merchant_id'] = $config['sips']['merchant_id'];
+            $filters['merchant_id'] = $dzangocart_config['sips']['merchant_id'];
         }
 
         return $filters;
     }
 
-    protected function getSortOrder(ParameterBag $query)
+    protected function getSortOrder(Request $request)
     {
         $sort_by = array();
 
         $columns = $this->getSortColumns();
 
-        $n = $query->get('iSortingCols');
+        $order = $request->query->get('order', array());
 
-        for ($i = 0; $i < $n; $i++) {
-            $index = $query->get('iSortCol_' . $i);
+        foreach ($order as $setting) {
+
+            $index = $setting['column'];
 
             if (array_key_exists($index, $columns)) {
-
-                $column = $columns[$index];
-
-                if (!is_array($column)) {
-                    $column = array($column);
-                }
-
-                foreach ($column as $c) {
-                    $sort_by[] = $c;
-                    $sort_by[] = $query->get('sSortDir_' . $i, 'asc');
-                }
+                $sort_by[] = $columns[1] ;
+                $sort_by[] = $columns['dir'];
             }
         }
 
-        if (empty($sort_by)) {
-            $sort_by = $this->getDefaultSortOrder();
-        }
-
-        return $sort_by;
+        return implode(',', $sort_by);
     }
 
     protected function getDefaultSortOrder()
@@ -124,7 +118,7 @@ class SipsController extends Controller
     protected function getSortColumns()
     {
         return array(
-            1 => 'cart.DATE',
+            1 => 'date',
             2 => 'item.ORDER_ID',
             3 => array('user_profile.SURNAME', 'user_profile.GIVEN_NAMES'),
             4 => 'item.NAME',

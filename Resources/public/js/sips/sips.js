@@ -13,42 +13,21 @@
 					var $this = $( this );
 
 					table = $( "table.table", this ).dataTable( $.extend( true, {}, settings.dataTables, {
-						fnDrawCallback: function() {
-							$( this ).show();
-						},
-						fnServerParams: function( data ) {
-							$( ".filters :checkbox", $this ).each(function() {
-								data.push({
-									name: $( this ).attr( "name" ),
-									value: $( this ).is( ":checked" ) ? 1 : 0
-								});
-							});
+                        initComplete: function( settings, json ) {
+                            $( this ).show();
+                        },
+                        ajax: {
+                            data: function( d ) {
+                                $( ".filters input, .filters select" ).each(function() {
+                                    var name = $( this ).attr( "name" ),
+                                        value = $( this ).attr( "type" ) == "checkbox"
+                                            ? ($( this ).is( ":checked" ) ? $( this ).val() : 0)
+                                            : $( this ).val();
 
-							$( ".filters input", $this ).each(function() {
-								data.push({
-									name: $( this ).attr( "name" ),
-									value: $( this ).val()
-								});
-							});
-						},
-						fnStateLoadParams: function( oSettings, oData ) {
-							$( ".filters :checkbox", $this ).each(function() {
-								$( this ).attr( "checked", oData[ $( this ).attr( "name" ) ] );
-							});
-
-							$( ".filters input", $this ).each(function() {
-								$( this ).val( oData[ $( this ).attr( "name" ) ] );
-							});
-						},
-						fnStateSaveParams: function( oSettings, oData ) {
-							$( ".filters :checkbox", $this ).each(function() {
-								oData[ $( this ).attr( "name" ) ] = $( this ).is( ":checked" );
-							});
-
-							$( ".filters input", $this ).each(function() {
-								oData[ $( this ).attr( "name" ) ] = $( this ).val();
-							});
-						}
+                                    d[name] = value;
+                                } );
+                            }
+                        }
 					} ) );
 
 					moment.lang( dzangocart.locale );
@@ -87,23 +66,22 @@
 
 	$.fn.sips.defaults = {
 		dataTables: {
-			aoColumnDefs: [
-				{ bSortable: false, aTargets: [ 0, 12 ] },
-				{ bVisible: false, aTargets: [ 0 ] },
-				{ sClass: "number", aTargets: [ 4 ] },
-				{ sClass: "actions", aTargets: [ 12 ] }
+			autoWidth: false,
+			columnDefs: [
+				{ orderable: false, targets: [ 0, 12 ] },
+				{ visible: false, targets: [ 0 ] },
+				{ classname: "number", targets: [ 4 ] },
+				{ classname: "actions", targets: [ 12 ] }
 			],
-			asStripeClasses: [],
-			bAutoWidth: false,
-			bPaginate: true,
-			bProcessing: true,
-			bServerSide: true,
-			bSortable: true,
-			bStateSave: true,
-			oLanguage: {
-				sUrl: "/bundles/uamdatatables/lang/" + dzangocart.locale + ".txt"
+			language: {
+				url: "/bundles/dzangocart/datatables/" + dzangocart.locale + ".json"
 			},
-			sCookiePrefix: "dzangocart_"
+			orderable: true,
+			paging: true,
+			processing: true,
+			serverSide: true,
+			stateSave: true,
+			stripeClasses: [],
 		},
 		daterangepicker: {
 			minDate: moment('2009-01-01'),
