@@ -6,7 +6,6 @@ use DateTime;
 
 use Dzangocart\Bundle\DzangocartBundle\Form\Type\OrderFilterType;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Symfony\Component\Form\FormFactory;
