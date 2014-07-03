@@ -41,7 +41,7 @@ class PaymentController extends Controller
         );
     }
 
-        /**
+    /**
      * @Route("/list", name="dzangocart_payments_list", requirements={"_format": "json"}, defaults={"_format": "json"})
      * @Template("DzangocartBundle:Payment:list.json.twig")
      */
