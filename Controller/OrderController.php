@@ -6,21 +6,23 @@ use DateTime;
 
 use Dzangocart\Bundle\DzangocartBundle\Form\Type\OrderFilterType;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpFoundation\ParameterBag;
 use Symfony\Component\HttpFoundation\Request;
 
-class OrderController extends Controller
+class OrderController
 {
-    protected $container;
+    protected $dzangocart;
+    protected $dzangocart_config;
+    protected $form_factory;
 
-    public function __construct(ContainerInterface $container = null)
+    public function __construct($dzangocart, $dzangocart_config, FormFactory $form_factory)
     {
-        $this->container = $container;
+        $this->dzangocart = $dzangocart;
+        $this->dzangocart_config = $dzangocart_config;
+        $this->form_factory = $form_factory;
     }
 
     /**
@@ -28,9 +30,7 @@ class OrderController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $dzangocart_config = $this->container->getParameter('dzangocart.config');
-
-        $form = $this->createForm(
+        $form = $this->form_factory->create(
             new OrderFilterType(),
             array(
                 'date_from' => (new DateTime())->modify('first day of this month'),
@@ -40,7 +40,7 @@ class OrderController extends Controller
 
         return array(
             'form' => $form->createView(),
-            'config' => $dzangocart_config
+            'config' => $this->dzangocart_config
         );
     }
 
@@ -49,37 +49,32 @@ class OrderController extends Controller
      */
     public function listAction(Request $request)
     {
-        $dzangocart_config = $this->container->getParameter('dzangocart.config');
-
         $params = $this->getFilters($request->query);
         $params['sort_by'] = $this->getSortOrder($request->query);
 
-        $data = $this->get('dzangocart')
+        $data = $this->dzangocart
             ->getOrders($params);
 
-        $data['datetime_format'] = $dzangocart_config['datetime_format'];
+        $data['datetime_format'] = $this->dzangocart_config['datetime_format'];
 
         return $data;
     }
 
     /**
-     * @Route("/{id}", name="dzangocart_order", requirements={"id": "\d+"})
      * @Template()
      */
     public function showAction(Request $request, $id)
     {
-        $dzangocart_config = $this->container->getParameter('dzangocart.config');
-
         $params = array(
             'id' => $id
         );
 
-        $order = $this->get('dzangocart')
+        $order = $this->dzangocart
             ->getOrder($params);
 
         return array(
             'order' => $order,
-            'config' => $dzangocart_config,
+            'config' => $this->dzangocart_config,
             'data' => print_r($order, true)
         );
     }
