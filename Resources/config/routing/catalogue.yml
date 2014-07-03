@@ -1,4 +1,16 @@
-_dzangocart_admin_catalogue:
-    resource: "@DzangocartBundle/Controller/CatalogueController.php"
-    type: annotation
-    prefix: /catalogue
+dzangocart_catalogue:
+    pattern: /catalogue
+    defaults: { _controller: dzangocart.controller.catalogue:indexAction }
+
+dzangocart_category:
+    pattern: /catalogue/category/{id}
+    defaults: { _controller: dzangocart.controller.catalogue:showAction }
+    requirements:
+        id: \d+
+        
+dzngocart_category_update:
+    pattern: /catalogue/category/{id}/update
+    defaults: { _controller: dzangocart.controller.catalogue:updateAction }
+    methods:  [POST]
+    requirements:
+        id: \d+

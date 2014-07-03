@@ -4,22 +4,28 @@ namespace Dzangocart\Bundle\DzangocartBundle\Controller;
 
 use Dzangocart\Bundle\DzangocartBundle\Form\Type\CategoryFormType;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpFoundation\Request;
 
-class CatalogueController extends Controller
+class CatalogueController
 {
+    protected $dzangocart;
+    protected $form_factory;
+    
+    public function __construct($dzangocart, FormFactory $form_factory)
+    {
+        $this->dzangocart = $dzangocart;
+        $this->form_factory = $form_factory;
+    }
+    
     /**
-     * @Route("/", name="dzangocart_catalogue")
      * @Template()
      */
     public function indexAction(Request $request)
     {
-        $catalogue = $this->get('dzangocart')
+        $catalogue = $this->dzangocart
             ->getCatalogue();
 
         return array(
@@ -28,7 +34,6 @@ class CatalogueController extends Controller
     }
 
     /**
-     * @Route("/category/{id}", name="dzangocart_category", requirements={"id": "\d+"})
      * @Template()
      */
     public function showAction(Request $request, $id)
@@ -37,10 +42,10 @@ class CatalogueController extends Controller
             'id' => $id
         );
 
-        $category = $this->get('dzangocart')
+        $category = $this->dzangocart
             ->getCategory($params);
 
-        $form = $this->createForm(
+        $form = $this->form_factory->create(
             new CategoryFormType(),
             $category
         );
@@ -52,9 +57,7 @@ class CatalogueController extends Controller
     }
 
     /**
-     * @Route("/category/{id}/update", name="dzngocart_category_update", requirements={"id": "\d+"})
      * @Template
-     * @Method({"POST"})
      */
     public function updateAction(Request $request, $id)
     {

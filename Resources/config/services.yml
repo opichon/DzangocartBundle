@@ -1,4 +1,5 @@
 parameters:
+    dzangocart.controller.catalogue.class: Dzangocart\Bundle\DzangocartBundle\Controller\CatalogueController
     dzangocart.controller.order.class: Dzangocart\Bundle\DzangocartBundle\Controller\OrderController
 
 services:
@@ -19,4 +20,10 @@ services:
         arguments:
             - @dzangocart
             - "%dzangocart.config%"
+            - @form.factory
+
+    dzangocart.controller.catalogue:
+        class:      "%dzangocart.controller.catalogue.class%"
+        arguments:
+            - @dzangocart
             - @form.factory
