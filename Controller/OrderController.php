@@ -49,7 +49,7 @@ class OrderController
      */
     public function listAction(Request $request)
     {
-        $params = $this->getFilters($request->query);
+        $params = $this->getFilters($request);
         $params['sort_by'] = $this->getSortOrder($request);
 
         $data = $this->dzangocart
@@ -79,28 +79,40 @@ class OrderController
         );
     }
 
-    protected function getFilters(ParameterBag $query)
+    protected function getFilters(Request $request)
     {
         $filters = array();
 
-        $filters['limit'] = $query->get('length');
-        $filters['offset'] = $query->get('start');
+        $filters['limit'] = $request->query->get('length');
+        $filters['offset'] = $request->query->get('start');
 
-        $_filters = $query->get('filters');
+        $_filters = $request->query->get('filters');
 
-        foreach ($date_fields = array('date_from', 'date_to') as $field) {
-            $value = $_filters[$field];
+        $fields = array(
+            'affiliate',
+            'category',
+            'code',
+            'code_generic',
+            'customer',
+            'date_from',
+            'date_to',
+            'list_by',
+            'name',
+            'search'
+        );
 
-            if (!empty($value)) {
-                $filters[$field] = $value;
+        foreach ($fields as $field) {
+            if (array_key_exists($field, $_filters)) {
+                $value = $_filters[$field];
+
+                if (!empty($value)) {
+                    $filters[$field] = $value;
+                }
             }
+
         }
 
         $filters['test'] = @$_filters['test'] ? true : false;
-
-        if (array_key_exists('customer', $_filters)) {
-            $filters['customer'] = $_filters['customer'];
-        }
 
         return $filters;
     }

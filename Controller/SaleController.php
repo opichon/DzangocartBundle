@@ -63,7 +63,6 @@ class SaleController extends Controller
 
         $filters['limit'] = $request->query->get('length');
         $filters['offset'] = $request->query->get('start');
-        $filters['list_by'] = $request->query->get('list_by');
 
         $_filters = $request->query->get('filters');
 
@@ -75,6 +74,7 @@ class SaleController extends Controller
             'customer',
             'date_from',
             'date_to',
+            'list_by',
             'name'
         );
 
