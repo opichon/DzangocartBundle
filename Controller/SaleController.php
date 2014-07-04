@@ -47,7 +47,7 @@ class SaleController extends Controller
         $dzangocart_config = $this->container->getParameter('dzangocart.config');
 
         $params = $this->getFilters($request->query);
-//        $params['sort_by'] = $this->getSortOrder($request->query);
+        $params['sort_by'] = $this->getSortOrder($request);
 
         $data = $this->get('dzangocart')
             ->getSales($params);
@@ -82,58 +82,48 @@ class SaleController extends Controller
         return $filters;
     }
 
-    protected function getSortOrder(ParameterBag $query)
+    protected function getSortOrder(Request $request)
     {
+        $sort_by = array();
 
-//        $sort_by = array();
-//
-//        $columns = $this->getSortColumns();
-//
-//        $n = $query->get('sortingCols');
-//
-//        for ($i = 0; $i < $n; $i++) {
-//            $index = $query->get('sortCol_' . $i);
-//
-//            if (array_key_exists($index, $columns)) {
-//
-//                $column = $columns[$index];
-//
-//                if (!is_array($column)) {
-//                    $column = array($column);
-//                }
-//
-//                foreach ($column as $c) {
-//                    $sort_by[] = $c;
-//                    $sort_by[] = $query->get('sortDir_' . $i, 'asc');
-//                }
-//            }
-//        }
-//
-//        if (empty($sort_by)) {
-//            $sort_by = $this->getDefaultSortOrder();
-//        }
+        $order = $request->query->get('order');
 
-        return $query->get('order', array());
+        $columns = $this->getSortColumns();
+        $count = 0;
+        foreach ($order as $setting) {
+
+            $index = $setting['column'];
+
+            if (!array_key_exists($index, $columns)) {
+                $sort_by[] = $columns[1] ;
+                $sort_by[] = 'asc';
+
+                return implode(',', $sort_by);
+            }
+
+            $sort_by[] = $columns[$index] ;
+            $sort_by[] = $setting['dir'];
+            $count++;
+        }
+
+        return implode(',', $sort_by);
+
     }
 
-//    protected function getDefaultSortOrder()
-//    {
-//        return array('cart.DATE', 'asc');
-//    }
-//
-//    protected function getSortColumns()
-//    {
-//        return array(
-//            1 => 'cart.DATE',
-//            2 => 'item.ORDER_ID',
-//            3 => array('user_profile.SURNAME', 'user_profile.GIVEN_NAMES'),
-//            4 => 'item.NAME',
-//            6 => 'cart.CURRENCY_ID',
-//            7 => 'item.AMOUNT_EXCL',
-//            8 => 'item.TAX_AMOUNT',
-//            9 => 'item.AMOUNT_INCL',
-//            11 => 'cart.AFFILIATE_ID',
-//            11 => 'cart.TEST'
-//        );
-//    }
+
+    protected function getSortColumns()
+    {
+        return array(
+            1 => 'Cart.date',
+            2 => 'item.order_id',
+            3 => array('user_profile.surname', 'user_profile.given_names'),
+            4 => 'item.name',
+            6 => 'Cart.currency_id',
+            7 => 'item.amount_excl',
+            8 => 'item.tax_amount',
+            9 => 'item.amount_incl',
+            11 => 'Cart.affiliate_id',
+            11 => 'Cart.test'
+        );
+    }
 }
