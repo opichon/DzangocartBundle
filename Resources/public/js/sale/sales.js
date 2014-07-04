@@ -16,14 +16,17 @@
                         drawCallback: function() {
                             $( this ).show();
                         },
-                        serverParams: function( data ) {
-                            $( ".filters input", $this ).each(function() {
-                                data[$( this ).attr( "name" )] = $( this ).val();
-                            });
+                        ajax: {
+                            data: function( data ) {
+                                $( ".filters input", $this ).each(function() {
+                                    data[$( this ).attr( "name" )] = $( this ).val()
+                                });
 
-                            $( ".filters :checkbox", $this ).each(function() {
-                                data[$( this ).attr( "name" )] = $( this ).is( ":checked" ) ? 1 : 0;
-                            });
+                                $( ".filters :checkbox", $this ).each(function() {
+                                    data[$( this ).attr( "name" )] = $( this ).is( ":checked" ) ? 1 : 0
+                                });
+
+                            }
                         },
                         stateLoadParams: function( settings, data ) {
                             $( ".filters :checkbox", $this ).each(function() {
