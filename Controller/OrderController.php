@@ -109,7 +109,6 @@ class OrderController
                     $filters[$field] = $value;
                 }
             }
-
         }
 
         $filters['test'] = @$_filters['test'] ? true : false;

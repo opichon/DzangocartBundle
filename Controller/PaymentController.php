@@ -49,7 +49,7 @@ class PaymentController extends Controller
     {
         $dzangocart_config = $this->container->getParameter('dzangocart.config');
 
-        $params = $this->getFilters($request->query, $dzangocart_config);
+        $params = $this->getFilters($request);
         $params['sort_by'] = $this->getSortOrder($request->query);
 
         $data = $this->get('dzangocart')
@@ -60,18 +60,25 @@ class PaymentController extends Controller
         return $data;
     }
 
-    protected function getFilters(ParameterBag $query, $config)
+    protected function getFilters(Request $request)
     {
         $filters = array();
 
-        $filters['length'] = $query->get('length');
-        $filters['start'] = $query->get('start');
+        $filters['length'] = $request->query->get('length');
+        $filters['start'] = $request->query->get('start');
 
-        $_filters = $query->get('filters');
+        $_filters = $request->query->get('filters');
 
-        if ($_filters) {
-            foreach ($date_fields = array('date_from', 'date_to') as $field) {
+        $fields = array(
+            'date_from',
+            'date_to',
+            'list_by'
+        );
+
+        foreach ($fields as $field) {
+            if (array_key_exists($field, $_filters)) {
                 $value = $_filters[$field];
+
                 if (!empty($value)) {
                     $filters[$field] = $value;
                 }
