@@ -113,7 +113,7 @@ class PaymentController extends Controller
             $sort_by = $this->getDefaultSortOrder();
         }
 
-        return $sort_by;
+        return implode(',', $sort_by);
     }
 
     protected function getDefaultSortOrder()
