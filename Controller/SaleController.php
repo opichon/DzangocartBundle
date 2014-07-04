@@ -10,7 +10,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\ParameterBag;
 use Symfony\Component\HttpFoundation\Request;
 
 class SaleController extends Controller
@@ -46,7 +45,8 @@ class SaleController extends Controller
     {
         $dzangocart_config = $this->container->getParameter('dzangocart.config');
 
-        $params = $this->getFilters($request->query);
+        $params = $this->getFilters($request);
+
         $params['sort_by'] = $this->getSortOrder($request);
 
         $data = $this->get('dzangocart')
@@ -57,27 +57,41 @@ class SaleController extends Controller
         return $data;
     }
 
-    protected function getFilters(ParameterBag $query)
+    protected function getFilters(Request $request)
     {
         $filters = array();
 
-        $filters['limit'] = $query->get('length');
-        $filters['offset'] = $query->get('start');
+        $filters['limit'] = $request->query->get('length');
+        $filters['offset'] = $request->query->get('start');
+        $filters['list_by'] = $request->query->get('list_by');
 
-        $_filters = $query->get('filters');
+        $_filters = $request->query->get('filters');
 
-        foreach ($date_fields = array('date_from', 'date_to') as $field) {
-            $value = $_filters[$field];
-            if (!empty($value)) {
-                $filters[$field] = $value;
+        $fields = array(
+            'affiliate_id',
+            'category',
+            'code',
+            'code_generic',
+            'customer',
+            'date_from',
+            'date_to',
+            'name'
+        );
+
+        foreach ($fields as $field) {
+            if (array_key_exists($field, $_filters)) {
+                $value = $_filters[$field];
+
+                if (!empty($value)) {
+                    $filters[$field] = $value;
+                }
             }
+
         }
 
         $filters['test'] = @$_filters['test'] ? true : false;
 
-        if (array_key_exists('customer', $_filters)) {
-            $filters['customer'] = $_filters['customer'];
-        }
+        $filters['include_subcategories'] = @$_filters['include_subcategories'] ? true : false;
 
         return $filters;
     }
