@@ -50,7 +50,7 @@ class OrderController
     public function listAction(Request $request)
     {
         $params = $this->getFilters($request->query);
-//        $params['sort_by'] = $this->getSortOrder($request->query);
+        $params['sort_by'] = $this->getSortOrder($request);
 
         $data = $this->dzangocart
             ->getOrders($params);
@@ -105,58 +105,46 @@ class OrderController
         return $filters;
     }
 
-    protected function getSortOrder(ParameterBag $query)
+    protected function getSortOrder(Request $request)
     {
-        return $query->get('order', array());
+        $sort_by = array();
 
-        // this need to be removed because it is not according to the datatable 1.10
-//        $sort_by = array();
+        $order = $request->query->get('order');
 
-//        $columns = $this->getSortColumns();
-//
-//        $n = $query->get('sortingCols');
-//
-//        for ($i = 0; $i < $n; $i++) {
-//            $index = $query->get('sortCol_' . $i);
-//
-//            if (array_key_exists($index, $columns)) {
-//
-//                $column = $columns[$index];
-//
-//                if (!is_array($column)) {
-//                    $column = array($column);
-//                }
-//
-//                foreach ($column as $c) {
-//                    $sort_by[] = $c;
-//                    $sort_by[] = $query->get('sortDir_' . $i, 'asc');
-//                }
-//            }
-//        }
-//
-//        if (empty($sort_by)) {
-//            $sort_by = $this->getDefaultSortOrder();
-//        }
+        $columns = $this->getSortColumns();
+        $count = 0;
+        foreach ($order as $setting) {
+
+            $index = $setting['column'];
+
+            if (!array_key_exists($index, $columns)) {
+                $sort_by[] = $columns[1] ;
+                $sort_by[] = 'asc';
+
+                return implode(',', $sort_by);
+            }
+
+            $sort_by[] = $columns[$index] ;
+            $sort_by[] = $setting['dir'];
+            $count++;
+        }
+
+        return implode(',', $sort_by);
 
     }
 
-//    protected function getDefaultSortOrder()
-//    {
-//        return array('cart.DATE', 'asc');
-//    }
-//
-//    protected function getSortColumns()
-//    {
-//        return array(
-//            1 => 'cart.DATE',
-//            2 => 'cart.ID',
-//            3 => array('user_profile.SURNAME', 'user_profile.GIVEN_NAMES'),
-//            4 => 'cart.CURRENCY_ID',
-//            5 => 'cart.AMOUNT_EXCL',
-//            6 => 'cart.TAX_AMOUNT',
-//            7 => 'cart.AMOUNT_INCL',
-//            9 => 'cart.AFFILIATE_ID',
-//            10 => 'cart.TEST'
-//        );
-//    }
+    protected function getSortColumns()
+    {
+        return array(
+            1 => 'Cart.date',
+            2 => 'Cart.id',
+            3 => array('user_profile.surname', 'user_profile.given_names'),
+            4 => 'Cart.currency_id',
+            5 => 'Cart.amount_excl',
+            6 => 'Cart.tax_amount',
+            7 => 'Cart.amount_incl',
+            9 => 'Cart.affiliate_id',
+            10 => 'Cart.test'
+        );
+    }
 }
