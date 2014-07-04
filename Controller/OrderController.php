@@ -50,7 +50,7 @@ class OrderController
     public function listAction(Request $request)
     {
         $params = $this->getFilters($request->query);
-        $params['sort_by'] = $this->getSortOrder($request->query);
+//        $params['sort_by'] = $this->getSortOrder($request->query);
 
         $data = $this->dzangocart
             ->getOrders($params);

@@ -47,7 +47,7 @@ class SaleController extends Controller
         $dzangocart_config = $this->container->getParameter('dzangocart.config');
 
         $params = $this->getFilters($request->query);
-        $params['sort_by'] = $this->getSortOrder($request->query);
+//        $params['sort_by'] = $this->getSortOrder($request->query);
 
         $data = $this->get('dzangocart')
             ->getSales($params);
