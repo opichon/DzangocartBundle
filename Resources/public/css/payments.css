@@ -1,14 +1,29 @@
-.dzangocart th.bank {
-	width: 10em;
+
+.dzangocart th.id {
+	width: 6em;
 }
 
 .dzangocart th.type {
 	width: 8em;
 }
 
-.dzangocart th.cheque_no {
+.dzangocart th.status {
 	width: 6em;
 }
+
+.dzangocart th.test {
+	width: 5em;
+}
+
+.dzangocart th.type {
+	width: 5em;
+}
+
 .dzangocart th.actions {
 	width: 5em;
 }
+
+.dzangocart th.gateway {
+	width: 10em;
+}
+
