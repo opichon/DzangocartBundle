@@ -62,7 +62,8 @@
                             $( ".filters .date_to", $this ).val( end.format( "YYYY-MM-DD" ) );
                             table.api().draw();
                         }
-                    ).data( "daterangepicker" ).updateInputText();
+                    )
+                    .data( "daterangepicker" ).updateInputText();
 
                     $( ".filters input", $this ).change(function() {
                         table.api().draw();
