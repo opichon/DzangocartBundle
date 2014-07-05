@@ -45,7 +45,15 @@ class SaleController extends Controller
     {
         $dzangocart_config = $this->container->getParameter('dzangocart.config');
 
-        $params = $this->getFilters($request);
+        $params = array(
+            'limit' => $request->query->get('length'),
+            'offset' => $request->query->get('start')
+        );
+
+        $params = array_merge(
+            $params,
+            $this->getFilters($request)
+        );
 
         $params['sort_by'] = $this->getSortOrder($request);
 
@@ -61,82 +69,61 @@ class SaleController extends Controller
     {
         $filters = array();
 
-        $filters['limit'] = $request->query->get('length');
-        $filters['offset'] = $request->query->get('start');
+        $search_values = $request->query->get('filters');
 
-        $_filters = $request->query->get('filters');
+        $search_columns = $this->getSearchColumns();
 
-        $fields = array(
-            'affiliate_id',
-            'category',
-            'code',
-            'code_generic',
-            'customer',
-            'date_from',
-            'date_to',
-            'list_by',
-            'name'
-        );
-
-        foreach ($fields as $field) {
-            if (array_key_exists($field, $_filters)) {
-                $value = $_filters[$field];
-
-                if (!empty($value)) {
-                    $filters[$field] = $value;
-                }
+        foreach ($search_values as $name => $value) {
+            if (array_key_exists($name, $search_columns)) {
+                $filters[$search_columns[$name]] = $value;
             }
         }
-
-        $filters['test'] = @$_filters['test'] ? true : false;
-
-        $filters['include_subcategories'] = @$_filters['include_subcategories'] ? true : false;
 
         return $filters;
     }
 
+    protected function getSearchColumns()
+    {
+        return array(
+            'date_from' => 'date_from',
+            'date_to' => 'date_to',
+            'test' => 'test'
+        );
+    }
+
     protected function getSortOrder(Request $request)
     {
-        $sort_by = array();
+        $sort = array();
 
         $order = $request->query->get('order');
 
         $columns = $this->getSortColumns();
-        $count = 0;
+
         foreach ($order as $setting) {
 
             $index = $setting['column'];
 
-            if (!array_key_exists($index, $columns)) {
-                $sort_by[] = $columns[1] ;
-                $sort_by[] = 'asc';
-
-                return implode(',', $sort_by);
+            if (isset($columns[$index])) {
+                $sort[] = $columns[$index] ;
+                $sort[] = $setting['dir'];
             }
-
-            $sort_by[] = $columns[$index] ;
-            $sort_by[] = $setting['dir'];
-            $count++;
         }
 
-        return implode(',', $sort_by);
-
+        return implode(',', $sort);
     }
 
 
     protected function getSortColumns()
     {
         return array(
-            1 => 'Cart.date',
-            2 => 'item.order_id',
-            3 => array('user_profile.surname', 'user_profile.given_names'),
-            4 => 'item.name',
-            6 => 'Cart.currency_id',
-            7 => 'item.amount_excl',
-            8 => 'item.tax_amount',
-            9 => 'item.amount_incl',
-            11 => 'Cart.affiliate_id',
-            11 => 'Cart.test'
+            1 => 'date',
+            2 => 'order_id',
+            3 => 'customer',
+            4 => 'name',
+            6 => 'currency_id',
+            7 => 'amount_excl',
+            8 => 'tax_amount',
+            9 => 'amount_incl'
         );
     }
 }

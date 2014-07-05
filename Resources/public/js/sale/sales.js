@@ -96,9 +96,23 @@
                 { data: "amount_excl" },
                 { data: "tax_amount" },
                 { data: "amount_incl" },
-                { data: "paid" },
+                { data:  function( row, type, val, meta ) {
+                        if ( "display" == type ) {
+                            return row.paid
+                                ? "<i class='fa fa-thumbs-o-up'></i>"
+                                : "<i class='fa fa-exclamation-triangle'></i>";
+                        }
+                    }
+                },
                 { data: "affiliate" },
-                { data: "test" },
+                { data: function( row, type, val, meta ) {
+                        if ( "display" == type ) {
+                            return row.test
+                                ? "<i class='fa fa-asterisk'></i>"
+                                : "";
+                        }
+                    }
+                },
                 { data: "actions" }
             ],
             columnDefs: [

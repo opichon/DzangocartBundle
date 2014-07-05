@@ -3,8 +3,8 @@
 {% spaceless %}
 {
     "draw": {{ app.request.query.all.draw }},
-    "recordsTotal": {{ meta['count_total'] }},
-    "recordsFiltered": {{ meta['count_filtered'] }},
+    "recordsTotal": {{ meta.total_count }},
+    "recordsFiltered": {{ meta.filtered_count }},
     "data" : [
         {% for sale in results %}
             {
@@ -21,9 +21,9 @@
                 "amount_excl": "{{ sale.amountExcl|currency(sale.currency, app.request.locale) }}",
                 "tax_amount": "{{ sale.amountTax|currency(sale.currency, app.request.locale) }}",
                 "amount_incl": "{{ sale.amountIncl|currency(sale.currency, app.request.locale) }}",
-                "paid": "<i class='fa fa-{{ sale.paid ? 'thumbs-o-up' : 'exclamation-triangle' }}' />",
+                "paid": "{{ sale.paid }}",
                 "affiliate": "{{ sale.affiliate }}",
-                "test": "{% if sale.isTest %}<i class="fa fa-asterisk"></i>{% endif %}",
+                "test": "{{ sale.test }}",
                 "actions": "{%- include 'DzangocartBundle:Sale:actions.html.twig' -%}"
             }{% if not loop.last %},{% endif %}
         {% endfor %}

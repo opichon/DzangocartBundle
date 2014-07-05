@@ -1,6 +1,7 @@
 parameters:
     dzangocart.controller.catalogue.class: Dzangocart\Bundle\DzangocartBundle\Controller\CatalogueController
     dzangocart.controller.order.class: Dzangocart\Bundle\DzangocartBundle\Controller\OrderController
+    dzangocart.controller.sale.class: Dzangocart\Bundle\DzangocartBundle\Controller\SaleController
 
 services:
     dzangocart:
@@ -15,6 +16,12 @@ services:
         tags:
             - { name: twig.extension }
 
+    dzangocart.controller.catalogue:
+        class:      "%dzangocart.controller.catalogue.class%"
+        arguments:
+            - @dzangocart
+            - @form.factory
+
     dzangocart.controller.order:
         class:      "%dzangocart.controller.order.class%"
         arguments:
@@ -22,8 +29,9 @@ services:
             - "%dzangocart.config%"
             - @form.factory
 
-    dzangocart.controller.catalogue:
-        class:      "%dzangocart.controller.catalogue.class%"
+    dzangocart.controller.sale:
+        class:      "%dzangocart.controller.sale.class%"
         arguments:
             - @dzangocart
+            - "%dzangocart.config%"
             - @form.factory

@@ -30,6 +30,7 @@ class SaleFilterType extends AbstractType
                 'class' => 'date_from form-control'
             )
         ));
+
         $builder->add('date_to', 'date', array(
             'format' => 'yyyy-MM-dd',
             'label' => 'dzangocart.sales.filters.date_to',
