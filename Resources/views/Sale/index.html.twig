@@ -2,12 +2,15 @@
 
 {% trans_default_domain "dzangocart" %}
 
-{% block page_class %}{% endblock %}
+{% block dzangocart_page_class %}dzangocart sales{% endblock %}
 
 {% block dzangocart_page_title %}{% trans %}dzangocart.sales.page_title{% endtrans %}{% endblock %}
 
 {% block dzangocart_content %}
-{% include "DzangocartBundle:Sale:sales.html.twig" %}
+	{% block filters %}
+		{% include "DzangocartBundle:Sale:filters.html.twig" %}
+	{% endblock %}
+	{% include "DzangocartBundle:Sale:sales.html.twig" %}
 {% endblock %}
 
 {% block dzangocart_head_style %}

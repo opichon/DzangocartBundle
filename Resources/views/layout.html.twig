@@ -7,7 +7,7 @@
 	{% block dzangocart_head_style %}{% endblock %}
 	{% include "DzangocartBundle::head_script.html.twig" %}
 </head>
-<body>
+<body class="{% block dzangocart_page_class %]{% endblock %}">
 	{% block dzangocart_page_nav %}{% endblock %}
 	{% block dzangocart_page_title %}{% endblock %}
 	{% block dzangocart_content %}{% block body_class %}{% endblock %}{% endblock %}

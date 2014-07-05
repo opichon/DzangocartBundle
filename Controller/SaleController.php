@@ -4,7 +4,7 @@ namespace Dzangocart\Bundle\DzangocartBundle\Controller;
 
 use DateTime;
 
-use Dzangocart\Bundle\DzangocartBundle\Form\Type\SaleFilterType;
+use Dzangocart\Bundle\DzangocartBundle\Form\Type\SalesFilterType;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -22,8 +22,8 @@ class SaleController extends Controller
     {
         $dzangocart_config = $this->container->getParameter('dzangocart.config');
 
-        $form = $this->createForm(
-            new SaleFilterType(),
+        $filters = $this->createForm(
+            new SalesFilterType(),
             array(
                 'date_from' => (new DateTime())->modify('first day of this month'),
                 'date_to' => new DateTime()
@@ -32,7 +32,7 @@ class SaleController extends Controller
         );
 
         return array(
-            'form' => $form->createView(),
+            'filters' => $filters->createView(),
             'config' => $dzangocart_config
         );
     }

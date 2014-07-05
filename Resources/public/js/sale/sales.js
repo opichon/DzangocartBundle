@@ -12,8 +12,8 @@
                 return this.each(function() {
                     var $this = $( this );
 
-                    table = $( "table.table", this ).DataTable( $.extend( true, {}, settings.dataTables, {
-                        drawCallback: function() {
+                    table = $( "table.table", this ).dataTable( $.extend( true, {}, settings.dataTables, {
+                        initComplete: function( settings, json ) {
                             $( this ).show();
                         },
                         ajax: {
@@ -60,12 +60,12 @@
                         function( start, end ) {
                             $( ".filters .date_from", $this ).val( start.format( "YYYY-MM-DD" ) );
                             $( ".filters .date_to", $this ).val( end.format( "YYYY-MM-DD" ) );
-                            table.draw();
+                            table.api().draw();
                         }
                     ).data( "daterangepicker" ).updateInputText();
 
                     $( ".filters input", $this ).change(function() {
-                        table.draw();
+                        table.api().draw();
                     });
                 });
             }
@@ -92,13 +92,12 @@
                 { data: "customer" },
                 { data: "item" },
                 { data: "quantity" },
-                { data: "currency" },
                 { data: "amount_excl" },
                 { data: "tax_amount" },
                 { data: "amount_incl" },
-                { data:  function( row, type, val, meta ) {
+                { data: function( row, type, val, meta ) {
                         if ( "display" == type ) {
-                            return row.paid
+                            return row.paid == 1
                                 ? "<i class='fa fa-thumbs-o-up'></i>"
                                 : "<i class='fa fa-exclamation-triangle'></i>";
                         }
@@ -117,15 +116,16 @@
             ],
             columnDefs: [
                 { visible: false, targets: [ 0 ] },
-                { orderable: false, targets: [ 0, 5, 10, 13 ] },
+                { orderable: false, targets: [ 0, 5, 9, 12 ] },
                 { className: "number", targets: [ 5, 7, 8, 9 ] },
-                { className: "center", targets: [ 10, 12 ] },
-                { className: "actions", targets: [ 13 ] }
+                { className: "center", targets: [ 9, 11 ] },
+                { className: "actions", targets: [ 12 ] }
             ],
             language: {
                 url: "/bundles/dzangocart/datatables/" + dzangocart.locale + ".json"
             },
             orderable: true,
+            orderCellsTop: true,
             paging: true,
             processing: true,
             searching: false,
@@ -134,6 +134,28 @@
             stripeClasses: []
         },
         daterangepicker: {
+            ranges: {
+                "MTD": [moment().startOf( "month" ), moment()],
+                "Last Month": [
+                    moment().subtract( "month", 1).startOf( "month" ),
+                    moment().subtract( "month", 1).endOf( "month" )
+                ],
+                "QTD": [
+                    moment().month( moment().quarter() * 3 ).subtract( "month", 3).startOf( "month" ),
+                    moment()
+                ],
+                "Last quarter": [
+                    moment().month( (moment().quarter() - 1) * 3 ).subtract( "month", 3 ).startOf( "month" ),
+                    moment().month( (moment().quarter() - 1) * 3 ).subtract( "month", 1 ).endOf( "month" )
+                ],
+                "YTD": [moment().startOf( "year" ), moment()],
+                "Last Year": [
+                    moment().subtract( "year", 1 ).startOf( "year"),
+                    moment().subtract( "year", 1 ).endOf( "year" )
+                ]
+            },
+            startDate: moment(),
+            locale: { cancelLabel: 'Clear' },
             maxDate: moment(),
             minDate: moment('2009-01-01')
         }

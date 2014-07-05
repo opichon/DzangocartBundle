@@ -1,0 +1,7 @@
+.sales tr.filters input.form-control {
+	width: 100%;
+}
+
+.sales .filters input.date {
+	display: none;
+}

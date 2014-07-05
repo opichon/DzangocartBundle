@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class SaleFilterType extends AbstractType
+class SalesFilterType extends AbstractType
 {
     protected $options = array();
 
@@ -22,12 +22,20 @@ class SaleFilterType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $builder->add('order_id', 'text', array());
+
+        $builder->add('name', 'text', array());
+
+        $builder->add('customer', 'text', array());
+
+        $builder->add('customer_id', 'hidden', array());
+
         $builder->add('date_from', 'date', array(
             'format' => 'yyyy-MM-dd',
             'label' => 'dzangocart.sales.filters.date_from',
             'widget' => 'single_text',
             'attr' => array(
-                'class' => 'date_from form-control'
+                'class' => 'date date_from'
             )
         ));
 
@@ -36,13 +44,13 @@ class SaleFilterType extends AbstractType
             'label' => 'dzangocart.sales.filters.date_to',
             'widget' => 'single_text',
             'attr' => array(
-                'class' => 'date_to form-control'
+                'class' => 'date date_to'
             )
         ));
 
-        $builder->add('date_range', 'text', array(
+        $builder->add('period', 'text', array(
             'attr' => array(
-                'class' => 'period form-control'
+                'class' => 'period'
             ),
             'label' => 'dzangocart.sales.filters.period'
         ));

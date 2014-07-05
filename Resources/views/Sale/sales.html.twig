@@ -1,29 +1,38 @@
 {% trans_default_domain "dzangocart" %}
 
-<div class="dzangocart sales">
-	{% block filters %}
-	{% include "DzangocartBundle:Sale:filters.html.twig" with { form: form } %}
-	{% endblock %}
-	<table class="table table-condensed table-hover" id="sales">
-		<thead>
-			<tr>
-				<th class="check"><input type="checkbox" id="checkall" /></th>
-				<th class="datetime">{% trans %}dzangocart.sales.date{% endtrans %}</th>
-				<th class="order_id">{% trans %}dzangocart.sales.order_id{% endtrans %}</th>
-				<th class="customer">{% trans %}dzangocart.sales.customer{% endtrans %}</th>
-				<th class="item">{% trans %}dzangocart.sales.item{% endtrans %}</th>
-				<th class="quantity">{% trans %}dzangocart.sales.quantity{% endtrans %}</th>
-				<th class="currency">{% trans %}dzangocart.sales.currency{% endtrans %}</th>
-				<th class="net">{% trans %}dzangocart.sales.net{% endtrans %}</th>
-				<th class="tax">{% trans %}dzangocart.sales.tax{% endtrans %}</th>
-				<th class="gross">{% trans %}dzangocart.sales.gross{% endtrans %}</th>
-				<th class="paid">{% trans %}dzangocart.sales.paid{% endtrans %}</th>
-				<th class="affiliate">{% trans %}dzangocart.sales.affiliate{% endtrans %}</th>
-				<th class="demo">{% trans %}dzangocart.sales.test{% endtrans %}</th>
-				<th class="actions"><i class="fa fa-cog"></i></th>
-			</tr>
-		</thead>
-		<tbody>
-		</tbody>
-	</table>
-</div>
+<table class="table table-condensed table-hover" id="sales">
+	<thead>
+		<tr>
+			<th class="check"><input type="checkbox" id="checkall" /></th>
+			<th class="datetime">{% trans %}dzangocart.sales.date{% endtrans %}</th>
+			<th class="order_id">{% trans %}dzangocart.sales.order_id{% endtrans %}</th>
+			<th class="customer">{% trans %}dzangocart.sales.customer{% endtrans %}</th>
+			<th class="item">{% trans %}dzangocart.sales.item{% endtrans %}</th>
+			<th class="quantity">{% trans %}dzangocart.sales.quantity{% endtrans %}</th>
+			<th class="net">{% trans %}dzangocart.sales.net{% endtrans %}</th>
+			<th class="tax">{% trans %}dzangocart.sales.tax{% endtrans %}</th>
+			<th class="gross">{% trans %}dzangocart.sales.gross{% endtrans %}</th>
+			<th class="paid">{% trans %}dzangocart.sales.paid{% endtrans %}</th>
+			<th class="affiliate">{% trans %}dzangocart.sales.affiliate{% endtrans %}</th>
+			<th class="demo">{% trans %}dzangocart.sales.test{% endtrans %}</th>
+			<th class="actions"><i class="fa fa-cog"></i></th>
+		</tr>
+		<tr class="filters">
+			<th></th>
+			<th></th>
+			<th class="filters_keyup">{{ form_widget(filters.order_id) }}</th>
+			<th>{{ form_widget(filters.customer) }}</th>
+			<th class="filters_keyup">{{ form_widget(filters.name) }}</th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+	</tbody>
+</table>
