@@ -12,8 +12,8 @@
                 return this.each(function() {
                     var $this = $( this );
 
-                    table = $( 'table.table', this ).DataTable( $.extend( true, {}, settings.dataTables, {
-                        drawCallback: function() {
+                    table = $( 'table.table', this ).dataTable( $.extend( true, {}, settings.dataTables, {
+                        initComplete: function( settings, json ) {
                             $( this ).show();
                         },
                         ajax: {
@@ -60,12 +60,12 @@
                         function( start, end ) {
                             $( ".filters .date_from", $this ).val( start.format( "YYYY-MM-DD" ) );
                             $( ".filters .date_to", $this ).val( end.format( "YYYY-MM-DD" ) );
-                            table.draw();
+                            table.api().draw();
                         }
                     ).data( "daterangepicker" ).updateInputText();
 
                     $( ".filters input", $this ).change(function() {
-                        table.draw();
+                        table.api().draw();
                     });
                 });
             }
@@ -110,6 +110,7 @@
             },
             order: [ [ 1, 'asc' ] ],
             orderable: true,
+            orderCellsTop: true,
             paging: true,
             processing: true,
             searching: false,

@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class OrderFilterType extends AbstractType
+class OrdersFilterType extends AbstractType
 {
     protected $options = array();
 
@@ -22,15 +22,20 @@ class OrderFilterType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $builder->add('order_id', 'text', array());
+
+        $builder->add('name', 'text', array());
+
+        $builder->add('customer', 'text', array());
+
+        $builder->add('customer_id', 'hidden', array());
+
         $builder->add('date_from', 'date', array(
             'format' => 'yyyy-MM-dd',
             'label' => 'dzangocart.orders.filters.date_from',
             'widget' => 'single_text',
-//            'widget_control_group_attr' => array(
-//                'class' => 'date'
-//            ),
             'attr' => array(
-                'class' => 'date_from form-control'
+                'class' => 'date date_from'
             )
         ));
 
@@ -38,17 +43,14 @@ class OrderFilterType extends AbstractType
             'format' => 'yyyy-MM-dd',
             'label' => 'dzangocart.orders.filters.date_to',
             'widget' => 'single_text',
-//            'widget_control_group_attr' => array(
-//                'class' => 'date'
-//            ),
             'attr' => array(
-                'class' => 'date_to form-control'
+                'class' => 'date date_to'
             )
         ));
 
-        $builder->add('date_range', 'text', array(
+        $builder->add('period', 'text', array(
             'attr' => array(
-                'class' => 'input-xlarge period form-control'
+                'class' => 'period form-control'
             ),
             'label' => 'dzangocart.orders.filters.period'
         ));
@@ -58,12 +60,6 @@ class OrderFilterType extends AbstractType
             'attr' => array(
                 'class' => 'checkbox'
             ),
-//            'label_render' => true,
-//            'widget_checkbox_label' => 'widget',
-//            'widget_control_group_attr' => array(
-//                'class' => 'test'
-//            ),
-//            'widget_type' => 'inline'
         ));
     }
 

@@ -4,7 +4,7 @@ namespace Dzangocart\Bundle\DzangocartBundle\Controller;
 
 use DateTime;
 
-use Dzangocart\Bundle\DzangocartBundle\Form\Type\OrderFilterType;
+use Dzangocart\Bundle\DzangocartBundle\Form\Type\OrdersFilterType;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
@@ -30,8 +30,8 @@ class OrderController
      */
     public function indexAction(Request $request)
     {
-        $form = $this->form_factory->create(
-            new OrderFilterType(),
+        $filters = $this->form_factory->create(
+            new OrdersFilterType(),
             array(
                 'date_from' => (new DateTime())->modify('first day of this month'),
                 'date_to' => new DateTime()
@@ -39,7 +39,7 @@ class OrderController
         );
 
         return array(
-            'form' => $form->createView(),
+            'filters' => $filters->createView(),
             'config' => $this->dzangocart_config
         );
     }
