@@ -135,6 +135,9 @@
             stripeClasses: []
         },
         daterangepicker: {
+            locale: { cancelLabel: 'Clear' },
+            maxDate: moment(),
+            minDate: moment('2009-01-01'),
             ranges: {
                 "MTD": [moment().startOf( "month" ), moment()],
                 "Last Month": [
@@ -155,10 +158,7 @@
                     moment().subtract( "year", 1 ).endOf( "year" )
                 ]
             },
-            startDate: moment(),
-            locale: { cancelLabel: 'Clear' },
-            maxDate: moment(),
-            minDate: moment('2009-01-01')
+            startDate: moment()
         }
     };
 } ( window.jQuery );
