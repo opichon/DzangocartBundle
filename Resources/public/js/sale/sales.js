@@ -29,21 +29,21 @@
                             }
                         },
                         stateLoadParams: function( settings, data ) {
-                            $( ".filters :checkbox", $this ).each(function() {
-                                $( this ).attr( "checked", data[ $( this ).attr( "name" ) ] );
-                            });
-
                             $( ".filters input", $this ).each(function() {
                                 $( this ).val( data[ $( this ).attr( "name" ) ] );
                             });
+
+                            $( ".filters :checkbox", $this ).each(function() {
+                                $( this ).attr( "checked", data[ $( this ).attr( "name" ) ] );
+                            });
                         },
                         stateSaveParams: function( settings, data ) {
-                            $( ".filters :checkbox", $this ).each(function() {
-                                data[ $( this ).attr( "name" ) ] = $( this ).is( ":checked" );
-                            });
-
                             $( ".filters input", $this ).each(function() {
                                 data[ $( this ).attr( "name" ) ] = $( this ).val();
+                            });
+
+                            $( ".filters :checkbox", $this ).each(function() {
+                                data[ $( this ).attr( "name" ) ] = $( this ).is( ":checked" );
                             });
                         }
                     } ) );
@@ -97,20 +97,24 @@
                 { data: "tax_amount" },
                 { data: "amount_incl" },
                 { data: function( row, type, val, meta ) {
-                        if ( "display" == type ) {
+                        if ( "display" === type ) {
                             return row.paid == 1
                                 ? "<i class='fa fa-thumbs-o-up'></i>"
                                 : "<i class='fa fa-exclamation-triangle'></i>";
                         }
+
+                        return "";
                     }
                 },
                 { data: "affiliate" },
                 { data: function( row, type, val, meta ) {
-                        if ( "display" == type ) {
+                        if ( "display" === type ) {
                             return row.test
                                 ? "<i class='fa fa-asterisk'></i>"
                                 : "";
                         }
+
+                        return "";
                     }
                 },
                 { data: "actions" }
