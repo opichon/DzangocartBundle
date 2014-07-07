@@ -119,12 +119,11 @@ class SaleController extends Controller
             2 => 'order_id',
             3 => 'customer',
             4 => 'name',
-            6 => 'currency_id',
-            7 => 'amount_excl',
-            8 => 'tax_amount',
-            9 => 'amount_incl',
-            11 => 'affiliate',
-            12 => 'test'
+            6 => 'amount_excl',
+            7 => 'tax_amount',
+            8 => 'amount_incl',
+            10 => 'affiliate',
+            11 => 'test'
         );
     }
 }
