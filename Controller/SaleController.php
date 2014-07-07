@@ -122,7 +122,9 @@ class SaleController extends Controller
             6 => 'currency_id',
             7 => 'amount_excl',
             8 => 'tax_amount',
-            9 => 'amount_incl'
+            9 => 'amount_incl',
+            11 => 'affiliate',
+            12 => 'test'
         );
     }
 }
