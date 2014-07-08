@@ -50,6 +50,8 @@ class CatalogueController
             $category
         );
 
+        $form->handleRequest($request);
+
         return array(
             'form' => $form->createView(),
             'category' => $category
