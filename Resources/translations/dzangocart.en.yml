@@ -3,14 +3,16 @@ category:
         code:               Code
         download:           Download
         export:             Export
-        fixed_price:        Fixed Price
-        max_quantity:       Max. Quantity
-        min_quantity:       Min. Quantity
+        fixed_price:        Fixed price
+        max_quantity:       Max. quantity
+        min_quantity:       Min. quantity
         name:               Name
         pack:               Pack
-        pcode:              Pcode
         price:              Price
-        price_included:     Price Included
+        shipping:           Shipping
+        suffix:             Suffix
+        tax_included:       Net price
+
     show:
         back:               Return to catalogue page
         page_title:         Category: %name%
@@ -23,7 +25,7 @@ catalogue:
     page_title:             Catalogue
     price:                  Price
     suffix:                 Suffix
-    tax_included:           Tax Included
+    tax_included:           Net
 
 
 dzangocart:

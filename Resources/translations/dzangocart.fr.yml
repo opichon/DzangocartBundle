@@ -1,17 +1,15 @@
 category:
     form:
         code:              Code
-        download:          Download
+        download:          Téléchargement
         export:            Export
-        fixed_price:       Fixed Price
-        max_quantity:      Max. Quantity
-        min_quantity:      Min. Quantity
-        name:              Name
+        fixed_price:       Prix fixe
+        max_quantity:      Quantité max.
+        min_quantity:      Quantité min.
+        name:              Nom
         pack:              Pack
-        pcode:             Pcode
-        price:             Price
-        price_included:    Price Included
-        shipping:          Shipping
+        price:             Prix
+        shipping:          Livraison
         suffix:            Suffix
         tax_included:      Tax Included
     show:
