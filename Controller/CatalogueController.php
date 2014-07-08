@@ -52,6 +52,10 @@ class CatalogueController
 
         $form->handleRequest($request);
 
+        if( $form ->isValid()){
+            
+        }
+
         return array(
             'form' => $form->createView(),
             'category' => $category
