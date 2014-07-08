@@ -93,6 +93,7 @@
                 { data: "customer" },
                 { data: "item" },
                 { data: "quantity" },
+                { data: "currency" },
                 { data: "amount_excl" },
                 { data: "tax_amount" },
                 { data: "amount_incl" },
@@ -121,10 +122,10 @@
             ],
             columnDefs: [
                 { visible: false, targets: [ 0 ] },
-                { orderable: false, targets: [ 0, 5, 9, 12 ] },
-                { className: "number", targets: [ 5, 7, 8, 9 ] },
-                { className: "center", targets: [ 9, 11 ] },
-                { className: "actions", targets: [ 12 ] }
+                { orderable: false, targets: [ 0, 5, 10, 13 ] },
+                { className: "number", targets: [ 5, 8, 9, 10 ] },
+                { className: "center", targets: [ 10, 12 ] },
+                { className: "actions", targets: [ 13 ] }
             ],
             language: {
                 url: "/bundles/dzangocart/datatables/" + dzangocart.locale + ".json"
