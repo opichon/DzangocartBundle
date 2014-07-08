@@ -74,6 +74,7 @@ class CatalogueController
     public function updateAction(Request $request, $id)
     {
         // Processing of data is done here.
+        die('Update Called');
         //return array();
     }
 }
