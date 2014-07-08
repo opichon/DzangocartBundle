@@ -8,18 +8,20 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Routing\Router;
 
 class CatalogueController
 {
     protected $dzangocart;
     protected $form_factory;
-    protected $request_stack;
-    protected $http_kernel;
+    protected $router;
 
-    public function __construct($dzangocart, FormFactory $form_factory)
+    public function __construct($dzangocart, FormFactory $form_factory, Router $router)
     {
         $this->dzangocart = $dzangocart;
         $this->form_factory = $form_factory;
+        $this->router = $router;
     }
 
     /**
@@ -49,7 +51,15 @@ class CatalogueController
 
         $form = $this->form_factory->create(
             new CategoryFormType(),
-            $category
+            $category,
+                array(
+                'action' => $this->router->generate(
+                    'dzngocart_category_update', 
+                    array('id' => $id),
+                    UrlGeneratorInterface::ABSOLUTE_PATH
+            ),
+                'method' => 'POST'
+            )
         );
 
         return array(
@@ -61,11 +71,9 @@ class CatalogueController
     /**
      * @Template
      */
-    public function updateAction(Request $request)
+    public function updateAction(Request $request, $id)
     {
-        echo "<pre>";
-        print_r($request);
-        die;
+        // Processing of data is done here.
         //return array();
     }
 }
