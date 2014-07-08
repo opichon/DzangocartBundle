@@ -21,6 +21,8 @@ services:
         arguments:
             - @dzangocart
             - @form.factory
+            - @request_stack
+            - @http_kernel
 
     dzangocart.controller.order:
         class:      "%dzangocart.controller.order.class%"
