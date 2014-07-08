@@ -1,22 +1,32 @@
-dzangocart:
+category:
+    form:
+        code:               Code
+        download:           Download
+        export:             Export
+        fixed_price:        Fixed Price
+        max_quantity:       Max. Quantity
+        min_quantity:       Min. Quantity
+        name:               Name
+        pack:               Pack
+        pcode:              Pcode
+        price:              Price
+        price_included:     Price Included
+    show:
+        back:               Return to catalogue page
+        page_title:         Category: %name%
 
-    catalogue:
-        code:              Code
-        download:          Download
-        export:            Export
-        fixed_price:       Fixed Price
-        max_quantity:      Max. Quantity
-        min_quantity:      Min. Quantity
-        name:              Name
-        pack:              Pack
-        page_title:        Catalogue
-        pcode:             Pcode
-        price:             Price
-        price_included:    Price Included
-        show:              Show
-        shipping:          Shipping
-        suffix:            Suffix
-        tax_included:      Tax Included
+catalogue:
+    actions:
+        show:               Show category
+    code:                   Code
+    name:                   Category
+    page_title:             Catalogue
+    price:                  Price
+    suffix:                 Suffix
+    tax_included:           Tax Included
+
+
+dzangocart:
 
     direct_payments:
         action:
@@ -80,6 +90,21 @@ dzangocart:
         tax:                Tax
         test:               Demo
 
+    payments:
+        amount:             Amount
+        gateway:            Gateway
+        status:             Status
+        date:               Date
+        filters:
+            date_from:      From
+            date_to:        To
+            period:         Period
+            test:           Include test orders
+        order_id:           Order no.
+        page_title:         Payments
+        test:               Demo
+        type:               Payment Type
+
     sales:
         actions:
             show:           Show order
@@ -125,17 +150,3 @@ dzangocart:
         time:           Time
         transaction_id: Transaction id
 
-    payments:
-        amount:             Amount
-        gateway:            Gateway
-        status:             Status
-        date:               Date
-        filters:
-            date_from:      From
-            date_to:        To
-            period:         Period
-            test:           Include test orders
-        order_id:           Order no.
-        page_title:         Payments
-        test:               Demo
-        type:               Payment Type

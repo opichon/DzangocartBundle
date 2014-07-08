@@ -12,57 +12,57 @@ class CategoryFormType extends AbstractType
     {
 
         $builder->add('name', 'text', array(
-            'label' => 'dzangocart.catalogue.name',
+            'label' => 'category.form.name',
             'required' => false
         ));
 
         $builder->add('code', 'text', array(
-            'label' => 'dzangocart.catalogue.code',
+            'label' => 'category.form.code',
             'required' => false
         ));
 
         $builder->add('suffix', 'text', array(
-            'label' => 'dzangocart.catalogue.suffix',
+            'label' => 'category.form.suffix',
             'required' => false
         ));
 
         $builder->add('price', 'text', array(
-            'label' => 'dzangocart.catalogue.price',
+            'label' => 'category.form.price',
             'required' => false
         ));
 
         $builder->add('taxIncluded', 'checkbox', array(
-            'label' => 'dzangocart.catalogue.tax_included',
+            'label' => 'category.form.tax_included',
             'required' => false
         ));
 
         $builder->add('export', 'checkbox', array(
-            'label' => 'dzangocart.catalogue.export',
+            'label' => 'category.form.export',
             'required' => false
         ));
 
         $builder->add('shipping', 'checkbox', array(
-            'label' => 'dzangocart.catalogue.shipping',
+            'label' => 'category.form.shipping',
             'required' => false
         ));
 
         $builder->add('download', 'checkbox', array(
-            'label' => 'dzangocart.catalogue.download',
+            'label' => 'category.form.download',
             'required' => false
         ));
 
         $builder->add('pack', 'checkbox', array(
-            'label' => 'dzangocart.catalogue.pack',
+            'label' => 'category.form.pack',
             'required' => false
         ));
 
         $builder->add('minQuantity', 'text', array(
-            'label' => 'dzangocart.catalogue.min_quantity',
+            'label' => 'category.form.min_quantity',
             'required' => false
         ));
 
         $builder->add('maxQuantity', 'text', array(
-            'label' => 'dzangocart.catalogue.max_quantity',
+            'label' => 'category.form.max_quantity',
             'required' => false
         ));
 

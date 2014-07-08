@@ -4,5 +4,12 @@
 
 {% form_theme form "DzangocartBundle:Form:bootstrap3.html.twig" %}
 
-{% block dzangocart_page_title %}Show Page{% endblock %}
+{% block dzangocart_page_title %}{% spaceless %}
+{% trans with { '%name%': category.name } %}category.show.page_title{% endtrans %}
+{% endspaceless %}{% endblock %}
+
+{% block dzangocart_page_nav %}
+<a href="{{ path('dzangocart_catalogue') }}"><i class="fa fa-long-arrow-left"></i> {% trans %}category.show.back{% endtrans %}</a>
+{% endblock %}
+
 {% block dzangocart_content %}{{ form(form) }}{% endblock %}
