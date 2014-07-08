@@ -8,9 +8,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\HttpKernel\HttpKernel;
-use Symfony\Component\HttpKernel\HttpKernelInterface;
 
 class CatalogueController
 {
@@ -19,12 +16,10 @@ class CatalogueController
     protected $request_stack;
     protected $http_kernel;
 
-    public function __construct($dzangocart, FormFactory $form_factory, RequestStack $request_stack, HttpKernel  $http_kernel)
+    public function __construct($dzangocart, FormFactory $form_factory)
     {
         $this->dzangocart = $dzangocart;
         $this->form_factory = $form_factory;
-        $this->request_stack = $request_stack;
-        $this->http_kernel = $http_kernel;
     }
 
     /**
@@ -56,16 +51,6 @@ class CatalogueController
             new CategoryFormType(),
             $category
         );
-
-        $form->handleRequest($request);
-
-        if( $form ->isValid()){
-            $path = array('category' => $category);
-            $path['_controller'] = 'dzangocart.controller.catalogue:updateAction';
-            $subRequest = $this->request_stack->getCurrentRequest()->duplicate(array(), null, $path);
-
-            return $this->http_kernel->handle($subRequest, HttpKernelInterface::SUB_REQUEST);
-        }
 
         return array(
             'form' => $form->createView(),
