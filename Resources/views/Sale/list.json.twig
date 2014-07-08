@@ -17,6 +17,7 @@
                 "customer": "{{ sale.customerFullName}} ",
                 "item": "{{ sale.name|raw }}",
                 "quantity": "{{ sale.quantity|integer(app.request.locale) }}",
+                "currency": "{{ sale.currency }}",
                 "amount_excl": "{{ sale.amountExcl|currency(sale.currency, app.request.locale) }}",
                 "tax_amount": "{{ sale.amountTax|currency(sale.currency, app.request.locale) }}",
                 "amount_incl": "{{ sale.amountIncl|currency(sale.currency, app.request.locale) }}",
