@@ -3,7 +3,6 @@
 
 		var settings;
 
-		// Public methods
 		var methods = {
 			init: function( options ) {
 				settings = $.extend( true, {}, $.fn.catalogue.defaults, options );
@@ -14,7 +13,7 @@
 					$( "table.treetable", this )
 						.treetable( $.extend( true, {}, settings.treetable, {
 							onInitialized: function(){
-								$(this.table).show();
+								$( this.table ).show();
 							}
 						}));
 				});
