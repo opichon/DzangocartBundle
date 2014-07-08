@@ -76,8 +76,11 @@ class CatalogueController
     /**
      * @Template
      */
-    public function updateAction(Request $request, $id)
+    public function updateAction(Request $request)
     {
-        return array();
+        echo "<pre>";
+        print_r($request);
+        die;
+        //return array();
     }
 }
