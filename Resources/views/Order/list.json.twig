@@ -14,7 +14,7 @@
                 "date":        "{{ order.getDate|localizeddate('medium', 'short', app.request.locale, null, datetime_format) }}",
                 "order_id":    "{{ order.id }}",
                 "customer":    "{{ order.CustomerFullName }}",
-                "currency":     "{{ order.getCurrency }}",
+                "currency":    "{{ order.getCurrency }}",
                 "amount_excl": "{{ order.getAmountExcl|currency(order.getCurrency, app.request.locale) }}",
                 "tax_amount":  "{{ order.getTaxAmount|currency(order.getCurrency, app.request.locale) }}",
                 "amount_incl": "{{ order.getAmountIncl|currency(order.getCurrency, app.request.locale) }}",

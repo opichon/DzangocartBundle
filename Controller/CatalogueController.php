@@ -7,8 +7,8 @@ use Dzangocart\Bundle\DzangocartBundle\Form\Type\CategoryFormType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Symfony\Component\Form\FormFactory;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\Router;
 
 class CatalogueController
@@ -53,13 +53,12 @@ class CatalogueController
             new CategoryFormType(),
             $category,
                 array(
-                'action' => $this->router->generate(
-                    'dzngocart_category_update', 
-                    array('id' => $id),
-                    UrlGeneratorInterface::ABSOLUTE_PATH
-            ),
-                'method' => 'POST'
-            )
+                    'action' => $this->router->generate(
+                        'dzngocart_category_update',
+                        array('id' => $id)
+                    ),
+                    'method' => 'POST'
+                )
         );
 
         return array(
@@ -73,8 +72,10 @@ class CatalogueController
      */
     public function updateAction(Request $request, $id)
     {
-        // Processing of data is done here.
-        die('Update Called');
-        //return array();
+        $params = array(
+            'id' => $id
+        );
+
+        return new RedirectResponse($this->router->generate('dzangocart_category', $params));
     }
 }
