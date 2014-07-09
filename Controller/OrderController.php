@@ -48,7 +48,16 @@ class OrderController
      */
     public function listAction(Request $request)
     {
-        $params = $this->getFilters($request);
+        $params = array(
+            'limit' => $request->query->get('length'),
+            'offset' => $request->query->get('start')
+        );
+
+        $params = array_merge(
+            $params,
+            $this->getFilters($request)
+        );
+
         $params['sort_by'] = $this->getSortOrder($request);
 
         $data = $this->dzangocart
@@ -82,37 +91,26 @@ class OrderController
     {
         $filters = array();
 
-        $filters['limit'] = $request->query->get('length');
-        $filters['offset'] = $request->query->get('start');
+        $search_values = $request->query->get('filters');
 
-        $_filters = $request->query->get('filters');
+        $search_columns = $this->getSearchColumns();
 
-        $fields = array(
-            'affiliate',
-            'category',
-            'code',
-            'code_generic',
-            'customer',
-            'date_from',
-            'date_to',
-            'list_by',
-            'name',
-            'search'
-        );
-
-        foreach ($fields as $field) {
-            if (array_key_exists($field, $_filters)) {
-                $value = $_filters[$field];
-
-                if (!empty($value)) {
-                    $filters[$field] = $value;
-                }
+        foreach ($search_values as $name => $value) {
+            if (array_key_exists($name, $search_columns)) {
+                $filters[$search_columns[$name]] = $value;
             }
         }
 
-        $filters['test'] = @$_filters['test'] ? true : false;
-
         return $filters;
+    }
+
+    protected function getSearchColumns()
+    {
+        return array(
+            'date_from' => 'date_from',
+            'date_to' => 'date_to',
+            'test' => 'test'
+        );
     }
 
     protected function getSortOrder(Request $request)
