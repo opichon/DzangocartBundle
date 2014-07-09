@@ -54,7 +54,7 @@ class CatalogueController
             $category,
                 array(
                 'action' => $this->router->generate(
-                    'dzngocart_category_update', 
+                    'dzngocart_category_update',
                     array('id' => $id),
                     UrlGeneratorInterface::ABSOLUTE_PATH
             ),

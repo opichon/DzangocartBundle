@@ -9,7 +9,6 @@ use Dzangocart\Bundle\DzangocartBundle\Form\Type\OrdersFilterType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Symfony\Component\Form\FormFactory;
-use Symfony\Component\HttpFoundation\ParameterBag;
 use Symfony\Component\HttpFoundation\Request;
 
 class OrderController

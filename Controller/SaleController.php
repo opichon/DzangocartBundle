@@ -111,7 +111,6 @@ class SaleController extends Controller
         return implode(',', $sort);
     }
 
-
     protected function getSortColumns()
     {
         return array(
