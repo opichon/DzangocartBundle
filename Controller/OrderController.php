@@ -9,7 +9,6 @@ use Dzangocart\Bundle\DzangocartBundle\Form\Type\OrdersFilterType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Symfony\Component\Form\FormFactory;
-use Symfony\Component\HttpFoundation\ParameterBag;
 use Symfony\Component\HttpFoundation\Request;
 
 class OrderController
@@ -118,44 +117,37 @@ class OrderController
 
     protected function getSortOrder(Request $request)
     {
-        $sort_by = array();
+        $sort = array();
 
         $order = $request->query->get('order');
 
         $columns = $this->getSortColumns();
-        $count = 0;
+
         foreach ($order as $setting) {
 
             $index = $setting['column'];
 
-            if (!array_key_exists($index, $columns)) {
-                $sort_by[] = $columns[1] ;
-                $sort_by[] = 'asc';
-
-                return implode(',', $sort_by);
+            if (isset($columns[$index])) {
+                $sort[] = $columns[$index] ;
+                $sort[] = $setting['dir'];
             }
-
-            $sort_by[] = $columns[$index] ;
-            $sort_by[] = $setting['dir'];
-            $count++;
         }
 
-        return implode(',', $sort_by);
-
+        return implode(',', $sort);
     }
 
     protected function getSortColumns()
     {
         return array(
-            1 => 'Cart.date',
-            2 => 'Cart.id',
-            3 => array('user_profile.surname', 'user_profile.given_names'),
-            4 => 'Cart.currency_id',
-            5 => 'Cart.amount_excl',
-            6 => 'Cart.tax_amount',
-            7 => 'Cart.amount_incl',
-            9 => 'Cart.affiliate_id',
-            10 => 'Cart.test'
+            1 => 'date',
+            2 => 'order_id',
+            3 => 'customer',
+            4 => 'currency',
+            5 => 'amount_excl',
+            6 => 'tax_amount',
+            7 => 'amount_incl',
+            9 => 'affiliate',
+            10 => 'test'
         );
     }
 }

@@ -100,10 +100,10 @@
                 { data: "actions" }
             ],
             columnDefs: [
-                { className: "number", targets: [ 5, 6, 7, 8 ] },
-                { className: "actions", targets: [ 11 ] },
+                { visible: false, targets: [ 0 ] },
                 { orderable: false, targets: [ 0, 11 ] },
-                { visible: false, targets: [ 0 ] }
+                { className: "number", targets: [ 5, 6, 7, 8 ] },
+                { className: "actions", targets: [ 11 ] }
             ],
             language: {
                 url: "/bundles/dzangocart/datatables/" + dzangocart.locale + ".json"
