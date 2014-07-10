@@ -72,17 +72,18 @@ class CatalogueController
      */
     public function updateAction(Request $request, $id)
     {
-        $params = array(
-            'id' => $id
+        $form = $this->form_factory->create(
+            new CategoryFormType()
         );
+        $form->handleRequest($request);
+
+        if (!$form->isValid()) {
+            die('Invalid');
+        }
 
         $category = $this->dzangocart
-            ->updateCategory($params);
+            ->updateCategory($form->getData());
 
-//        echo "<pre>";
-//        print_r($category);
-//        die;
-//        return new RedirectResponse($this->router->generate('dzangocart_category', $params));
-        return array();
+        return 0;
     }
 }
