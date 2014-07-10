@@ -72,10 +72,6 @@ class CatalogueController
      */
     public function updateAction(Request $request, $id)
     {
-        $params = array(
-            'id' => $id
-        );
-
         $form = $this->form_factory->create(
             new CategoryFormType()
         );
@@ -86,9 +82,11 @@ class CatalogueController
             // TODO Display flash success message.
         }
 
+        $category = $request->get('category');
+
         return array(
             'form' => $form->createView(),
-            'category' => $request->get('category')
+            'category' => $category
         );
     }
 }
