@@ -73,8 +73,16 @@ class CatalogueController
     {
         // TODO merge this with the showAction?
 
+        $params = array(
+            'id' => $id
+        );
+
+        $category = $this->dzangocart
+            ->getCategory($params);
+
         $form = $this->form_factory->create(
-            new CategoryFormType()
+            new CategoryFormType(),
+            $category
         );
 
         $form->handleRequest($request);
@@ -84,8 +92,6 @@ class CatalogueController
         } else {
             // TODO deal with invalid form
         }
-
-        $category = $request->get('category');
 
         return array(
             'form' => $form->createView(),
