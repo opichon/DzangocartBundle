@@ -68,7 +68,7 @@ class CatalogueController
     }
 
     /**
-     * @Template
+     * @Template("DzangocartBundle:Catalogue:show.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
@@ -85,5 +85,10 @@ class CatalogueController
         if ($form->isValid()) {
             // TODO Display flash success message.
         }
+
+        return array(
+            'form' => $form->createView(),
+            'category' => $request->get('category')
+        );
     }
 }
