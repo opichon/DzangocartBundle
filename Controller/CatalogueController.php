@@ -83,7 +83,7 @@ class CatalogueController
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            // TODO store flash message to display later
+            // TODO Display flash success message.
         }
     }
 }
