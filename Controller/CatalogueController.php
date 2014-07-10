@@ -80,6 +80,8 @@ class CatalogueController
 
         if ($form->isValid()) {
             // TODO Display flash success message.
+        } else {
+            // TODO deal with invalid form
         }
 
         $category = $request->get('category');
