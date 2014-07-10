@@ -72,18 +72,26 @@ class CatalogueController
      */
     public function updateAction(Request $request, $id)
     {
+        $params = array(
+            'id' => $id
+        );
+
         $form = $this->form_factory->create(
             new CategoryFormType()
         );
         $form->handleRequest($request);
 
-        if (!$form->isValid()) {
-            die('Invalid');
+        if ($form->isValid()) {
+//            $request->get('session')->getFlashBag()->add(
+//            'category.edit.success',
+//            $this->get('translator')->trans(
+//                'category.edit.success',
+//                array(),
+//                'dzangocart',
+//                $request->getLocale()
+//            ));
         }
-
-        $category = $this->dzangocart
-            ->updateCategory($form->getData());
-
-        return 0;
+//        return new RedirectResponse($this->router->generate('dzangocart_category', $params));
+    
     }
 }
