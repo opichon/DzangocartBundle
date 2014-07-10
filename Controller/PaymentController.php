@@ -10,7 +10,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\ParameterBag;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -49,8 +48,17 @@ class PaymentController extends Controller
     {
         $dzangocart_config = $this->container->getParameter('dzangocart.config');
 
-        $params = $this->getFilters($request);
-        $params['sort_by'] = $this->getSortOrder($request->query);
+        $params = array(
+            'length' => $request->query->get('length'),
+            'start' => $request->query->get('start')
+        );
+
+        $params = array_merge(
+            $params,
+            $this->getFilters($request)
+        );
+
+        $params['sort_by'] = $this->getSortOrder($request);
 
         $data = $this->get('dzangocart')
             ->getPayments($params);
@@ -64,75 +72,58 @@ class PaymentController extends Controller
     {
         $filters = array();
 
-        $filters['length'] = $request->query->get('length');
-        $filters['start'] = $request->query->get('start');
+        $search_values = $request->query->get('filters');
 
-        $_filters = $request->query->get('filters');
+        $search_columns = $this->getSearchColumns();
 
-        $fields = array(
-            'date_from',
-            'date_to',
-            'list_by'
-        );
-
-        foreach ($fields as $field) {
-            if (array_key_exists($field, $_filters)) {
-                $value = $_filters[$field];
-
-                if (!empty($value)) {
-                    $filters[$field] = $value;
-                }
+        foreach ($search_values as $name => $value) {
+            if (array_key_exists($name, $search_columns)) {
+                $filters[$search_columns[$name]] = $value;
             }
         }
-
-        $filters['test'] = @$_filters['test'] ? true : false;
 
         return $filters;
     }
 
-    protected function getSortOrder(ParameterBag $query)
+    protected function getSortOrder(Request $request)
     {
-        $sort_by = array();
+        $sort = array();
+
+        $order = $request->query->get('order');
 
         $columns = $this->getSortColumns();
 
-        $n = $query->get('sortingCols');
+        foreach ($order as $setting) {
 
-        for ($i = 0; $i < $n; $i++) {
-            $index = $query->get('sortCol_' . $i);
+            $index = $setting['column'];
 
-            if (array_key_exists($index, $columns)) {
-
-                $column = $columns[$index];
-
-                if (!is_array($column)) {
-                    $column = array($column);
-                }
-
-                foreach ($column as $c) {
-                    $sort_by[] = $c;
-                    $sort_by[] = $query->get('sortDir_' . $i, 'asc');
-                }
+            if (isset($columns[$index])) {
+                $sort[] = $columns[$index] ;
+                $sort[] = $setting['dir'];
             }
         }
 
-        if (empty($sort_by)) {
-            $sort_by = $this->getDefaultSortOrder();
-        }
-
-        return implode(',', $sort_by);
-    }
-
-    protected function getDefaultSortOrder()
-    {
-        return array('payment.createdAt', 'asc');
+        return implode(',', $sort);
     }
 
     protected function getSortColumns()
     {
         return array(
-            1 => 'payment.orderId',
-            2 => 'payment.createdAt'
+            1 => 'date',
+            2 => 'order_id',
+            3 => 'gateway',
+            4 => 'type',
+            6 => 'status',
+            7 => 'test'
+        );
+    }
+
+    protected function getSearchColumns()
+    {
+        return array(
+            'date_from' => 'date_from',
+            'date_to' => 'date_to',
+            'test' => 'test'
         );
     }
 }
