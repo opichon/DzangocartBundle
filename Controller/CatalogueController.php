@@ -88,6 +88,7 @@ class CatalogueController
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+            //TODO Pass category data to dzangocart client's categoryUpdate command
             // TODO Display flash success message.
 
             return array(
