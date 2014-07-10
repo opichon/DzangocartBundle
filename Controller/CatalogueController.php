@@ -52,13 +52,13 @@ class CatalogueController
         $form = $this->form_factory->create(
             new CategoryFormType(),
             $category,
-                array(
-                    'action' => $this->router->generate(
-                        'dzngocart_category_update',
-                        array('id' => $id)
-                    ),
-                    'method' => 'POST'
-                )
+            array(
+                'action' => $this->router->generate(
+                    'dzangocart_category_update',
+                    array('id' => $id)
+                ),
+                'method' => 'POST'
+            )
         );
 
         return array(
@@ -76,6 +76,14 @@ class CatalogueController
             'id' => $id
         );
 
-        return new RedirectResponse($this->router->generate('dzangocart_category', $params));
+        $form = $this->form_factory->create(
+            new CategoryFormType()
+        );
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            // TODO store flash message to display later
+        }
     }
 }
