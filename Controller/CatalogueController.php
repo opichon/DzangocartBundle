@@ -76,6 +76,13 @@ class CatalogueController
             'id' => $id
         );
 
-        return new RedirectResponse($this->router->generate('dzangocart_category', $params));
+        $category = $this->dzangocart
+            ->updateCategory($params);
+
+//        echo "<pre>";
+//        print_r($category);
+//        die;
+//        return new RedirectResponse($this->router->generate('dzangocart_category', $params));
+        return array();
     }
 }
