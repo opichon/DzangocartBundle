@@ -89,16 +89,13 @@ class CatalogueController
 
         if ($form->isValid()) {
             // TODO Display flash success message.
+
+            return array(
+                'form' => $form->createView(),
+                'category' => $category
+            );
         } else {
             // TODO deal with invalid form
         }
-
-        var_dump($category);
-        die();
-
-        return array(
-            'form' => $form->createView(),
-            'category' => $category
-        );
     }
 }
