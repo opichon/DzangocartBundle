@@ -72,7 +72,6 @@ class CatalogueController
     public function updateAction(Request $request, $id)
     {
         // TODO merge this with the showAction?
-
         $params = array(
             'id' => $id
         );
@@ -90,13 +89,11 @@ class CatalogueController
         if ($form->isValid()) {
             //TODO Pass category data to dzangocart client's categoryUpdate command
             // TODO Display flash success message.
-
-            return array(
-                'form' => $form->createView(),
-                'category' => $category
-            );
-        } else {
-            // TODO deal with invalid form
         }
+
+        return array(
+            'form' => $form->createView(),
+            'category' => $category
+        );
     }
 }
