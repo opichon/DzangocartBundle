@@ -72,6 +72,8 @@ class CatalogueController
      */
     public function updateAction(Request $request, $id)
     {
+        // TODO merge this with the showAction?
+
         $form = $this->form_factory->create(
             new CategoryFormType()
         );
