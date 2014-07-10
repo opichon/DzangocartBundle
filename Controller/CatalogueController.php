@@ -79,19 +79,11 @@ class CatalogueController
         $form = $this->form_factory->create(
             new CategoryFormType()
         );
+
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-//            $request->get('session')->getFlashBag()->add(
-//            'category.edit.success',
-//            $this->get('translator')->trans(
-//                'category.edit.success',
-//                array(),
-//                'dzangocart',
-//                $request->getLocale()
-//            ));
+            // TODO store flash message to display later
         }
-//        return new RedirectResponse($this->router->generate('dzangocart_category', $params));
-    
     }
 }
