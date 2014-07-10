@@ -8,7 +8,7 @@ dzangocart_category:
     requirements:
         id: \d+
 
-dzngocart_category_update:
+dzangocart_category_update:
     pattern: /catalogue/category/{id}/update
     defaults: { _controller: dzangocart.controller.catalogue:updateAction }
     methods:  [POST]
