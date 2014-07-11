@@ -1,0 +1,22 @@
+{% javascripts
+    'bundles/dzangocart/vendor/datatables/media/js/jquery.dataTables.min.js'
+    'bundles/dzangocart/vendor/datatables-bootstrap3/BS3/assets/js/datatables.min.js'
+    'bundles/dzangocart/vendor/momentjs/min/moment-with-langs.js'
+    'bundles/dzangocart/vendor/bootstrap-daterangepicker/daterangepicker.js'
+    'bundles/dzangocart/js/payment/direct_payments.js'
+    'bundles/dzangocart/js/ajax.js'
+%}
+    <script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+<script>
+    dzangocart.direct_payments = {
+        dataTables: {
+            ajax: {
+                url: "{{ path('dzangocart_direct_payments_list') }}"
+            }
+        },
+        daterangepicker: {
+            format: "{{ config.date_format|upper }}"
+        }
+    };
+</script>

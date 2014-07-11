@@ -11,7 +11,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @Route("/")
@@ -67,10 +66,7 @@ class DirectPaymentController extends Controller
 
         $data['datetime_format'] = $dzangocart_config['datetime_format'];
 
-        $view = $this->renderView('DzangocartBundle:DirectPayment:index.json.twig', $data);
-
-        return new Response($view, 200, array('Content-Type' => 'application/json'));
-
+        return $data;
     }
 
     protected function getFilters(Request $request)
