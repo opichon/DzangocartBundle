@@ -10,7 +10,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\ParameterBag;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -22,115 +21,115 @@ class DirectPaymentController extends Controller
 {
     /**
      * @Route("/", name="dzangocart_direct_payments")
-     * @Template()
+     * @Template("DzangocartBundle:DirectPayment:index.html.twig")
      */
     public function indexAction(Request $request)
     {
         $dzangocart_config = $this->container->getParameter('dzangocart.config');
 
-        if ($request->isXmlHttpRequest() || $request->getRequestFormat() == 'json') {
+        $form = $this->createForm(
+            new DirectPaymentFilterType(),
+            array(
+                'date_from' => (new DateTime())->modify('first day of this month'),
+                'date_to' => new DateTime()
+            )
+        );
 
-            $params = $this->getFilters($request->query, $dzangocart_config);
-            $params['sort_by'] = $this->getSortOrder($request->query);
+        return array(
+            'form' => $form->createView(),
+            'config' => $dzangocart_config
+        );
 
-            $data = $this->get('dzangocart')
-                ->getDirectPayments($params);
-
-            $data['datetime_format'] = $dzangocart_config['datetime_format'];
-
-            $view = $this->renderView('DzangocartBundle:DirectPayment:index.json.twig', $data);
-
-            return new Response($view, 200, array('Content-Type' => 'application/json'));
-        } else {
-            $form = $this->createForm(
-                new DirectPaymentFilterType(),
-                array(
-                    'date_from' => (new DateTime())->modify('first day of this month'),
-                    'date_to' => new DateTime()
-                )
-            );
-
-            return array(
-                'form' => $form->createView(),
-                'config' => $dzangocart_config
-            );
-        }
     }
 
-    protected function getFilters(ParameterBag $query, $config)
+        /**
+     * @Route("/list", name="dzangocart_direct_payments_list", requirements={"_format": "json"}, defaults={"_format": "json"})
+     * @Template("DzangocartBundle:DirectPayment:list.json.twig")
+     */
+    public function listAction(Request $request)
+    {
+        $dzangocart_config = $this->container->getParameter('dzangocart.config');
+
+        $params = array(
+            'limit' => $request->query->get('length'),
+            'offset' => $request->query->get('start')
+        );
+
+        $params = array_merge(
+            $params,
+            $this->getFilters($request)
+        );
+
+        $params['sort_by'] = $this->getSortOrder($request);
+
+        $data = $this->get('dzangocart')
+            ->getDirectPayments($params);
+
+        $data['datetime_format'] = $dzangocart_config['datetime_format'];
+
+        $view = $this->renderView('DzangocartBundle:DirectPayment:index.json.twig', $data);
+
+        return new Response($view, 200, array('Content-Type' => 'application/json'));
+
+    }
+
+    protected function getFilters(Request $request)
     {
         $filters = array();
 
-        $filters['limit'] = $query->get('length');
-        $filters['offset'] = $query->get('start');
+        $search_values = $request->query->get('filters');
 
-        $_filters = $query->get('filters');
+        $search_columns = $this->getSearchColumns();
 
-        if ($_filters) {
-            foreach ($date_fields = array('date_from', 'date_to') as $field) {
-                $value = $_filters[$field];
-                if (!empty($value)) {
-                    $filters[$field] = $value;
-                }
+        foreach ($search_values as $name => $value) {
+            if (array_key_exists($name, $search_columns)) {
+                $filters[$search_columns[$name]] = $value;
             }
         }
-
-        $filters['test'] = @$_filters['test'] ? true : false;
 
         return $filters;
     }
 
-    protected function getSortOrder(ParameterBag $query)
+    protected function getSortOrder(Request $request)
     {
-        $sort_by = array();
+        $sort = array();
+
+        $order = $request->query->get('order');
 
         $columns = $this->getSortColumns();
 
-        $n = $query->get('sortingCols');
+        foreach ($order as $setting) {
 
-        for ($i = 0; $i < $n; $i++) {
-            $index = $query->get('sortCol_' . $i);
+            $index = $setting['column'];
 
-            if (array_key_exists($index, $columns)) {
-
-                $column = $columns[$index];
-
-                if (!is_array($column)) {
-                    $column = array($column);
-                }
-
-                foreach ($column as $c) {
-                    $sort_by[] = $c;
-                    $sort_by[] = $query->get('sortDir_' . $i, 'asc');
-                }
+            if (isset($columns[$index])) {
+                $sort[] = $columns[$index] ;
+                $sort[] = $setting['dir'];
             }
         }
 
-        if (empty($sort_by)) {
-            $sort_by = $this->getDefaultSortOrder();
-        }
-
-        return $sort_by;
+        return implode(',', $sort);
     }
 
-    protected function getDefaultSortOrder()
-    {
-        return array('cart.DATE', 'asc');
-    }
-
-    protected function getSortColumns()
+        protected function getSortColumns()
     {
         return array(
-            1 => 'cart.DATE',
-            2 => 'item.ORDER_ID',
-            3 => array('user_profile.SURNAME', 'user_profile.GIVEN_NAMES'),
-            4 => 'item.NAME',
-            6 => 'cart.CURRENCY_ID',
-            7 => 'item.AMOUNT_EXCL',
-            8 => 'item.TAX_AMOUNT',
-            9 => 'item.AMOUNT_INCL',
-            11 => 'cart.AFFILIATE_ID',
-            11 => 'cart.TEST'
+            1 => 'date',
+            2 => 'order_id',
+            3 => 'amount',
+            4 => 'bank',
+            5 => 'type',
+            6 => 'cheque',
+            7 => 'test'
+        );
+    }
+
+    protected function getSearchColumns()
+    {
+        return array(
+            'date_from' => 'date_from',
+            'date_to' => 'date_to',
+            'test' => 'test'
         );
     }
 }
