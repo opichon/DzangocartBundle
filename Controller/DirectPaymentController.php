@@ -112,6 +112,7 @@ class DirectPaymentController extends Controller
         return array(
             1 => 'date',
             2 => 'order_id',
+            3 => 'amount',
             4 => 'bank',
             5 => 'type',
             6 => 'cheque',
