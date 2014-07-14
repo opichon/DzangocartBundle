@@ -89,7 +89,7 @@ class CatalogueController
         if ($form->isValid()) {
             $category = $this->dzangocart
                 ->updateCategory($category->getData());
-            //TODO Pass category data to dzangocart client's categoryUpdate command
+
             // TODO Display flash success message.
         }
 
