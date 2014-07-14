@@ -93,6 +93,13 @@ dzangocart:
         test:               Demo
 
     payments:
+        status:
+            label:
+                approved:   APPROVED
+                cancelled:  CANCELLED
+                error:      ERROR
+                open:       OPEN
+                paid:       PAID
         amount:             Amount
         gateway:            Gateway
         status:             Status

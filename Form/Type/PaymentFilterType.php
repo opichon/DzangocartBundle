@@ -10,6 +10,26 @@ class PaymentFilterType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $builder->add('order_id', 'text', array(
+            'required' => false
+        ));
+
+        $builder->add('service_id', 'choice', array(
+            'choices'   => array(),
+            'required' => false
+        ));
+
+        $builder->add('status', 'choice', array(
+            'choices'   => array(
+                0 => 'dzangocart.payments.status.label.open',
+                2 => 'dzangocart.payments.status.label.cancelled',
+                4 => 'dzangocart.payments.status.label.error',
+                8 => 'dzangocart.payments.status.label.approved',
+                16 => 'dzangocart.payments.status.label.paid'
+            ),
+            'required' => false
+        ));
+
         $builder->add('date_from', 'date', array(
             'format' => 'yyyy-MM-dd',
             'label' => 'dzangocart.direct_payments.filters.date_from',
@@ -52,6 +72,7 @@ class PaymentFilterType extends AbstractType
     {
         $resolver->setDefaults(array(
             'translation_domain' => 'dzangocart',
+            'show_legend' => false
         ));
     }
 }
