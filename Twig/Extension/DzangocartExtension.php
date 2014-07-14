@@ -85,7 +85,7 @@ class DzangocartExtension extends Twig_Extension
         $checkout = false)
     {
         $url = $this->dzangocart->getConfig('cart_url');
-        $url .= '/cart/show?';
+        $url .= '/cart?';
 
         $params = array(
             'name' => is_object($product) ? $product->__toString() : $product,
