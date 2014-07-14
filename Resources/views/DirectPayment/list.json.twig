@@ -16,7 +16,7 @@
                 "order_id":      "{{ payment['order_id'] }}",
                 "amount":        "{{ payment['amount']|currency(payment['currency'], app.request.locale) }}",
                 "bank":          "{{ payment['bank'] }}",
-                "type":          "{{ payment_types[payment['type']]|trans }}",
+                "type":          "{% if payment['type'] %}{{ payment_types[payment['type']]|trans }}{% endif %}",
                 "cheque_number": "{{ payment['cheque_number'] }}",
                 "test":          "{{ payment['test'] }}",
                 "actions":       "{%- include 'DzangocartBundle:DirectPayment:actions.html.twig' -%}"

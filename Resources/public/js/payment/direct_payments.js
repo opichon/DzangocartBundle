@@ -99,7 +99,7 @@
             columnDefs: [
                 { orderable: false, targets: [ 0, 8 ] },
                 { visible: false, targets: [ 0 ] },
-                { className: "number", targets: [ 5 ] },
+                { className: "number", targets: [ 2 ] },
                 { className: "actions", targets: [ 8 ] }
             ],
             stripeClasses: [],
