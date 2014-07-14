@@ -109,6 +109,7 @@
             orderable: true,
             stateSave: false,
             searching: false,
+            orderCellsTop: true,
             language: {
                 url: "/bundles/dzangocart/datatables/" + dzangocart.locale + ".json"
             }

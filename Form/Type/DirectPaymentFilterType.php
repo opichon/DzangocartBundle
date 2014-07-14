@@ -10,6 +10,12 @@ class DirectPaymentFilterType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $builder->add('order_id', 'text', array());
+
+        $builder->add('bank', 'text', array());
+
+        $builder->add('cheque', 'text', array());
+
         $builder->add('date_from', 'date', array(
             'format' => 'yyyy-MM-dd',
             'label' => 'dzangocart.direct_payments.filters.date_from',
