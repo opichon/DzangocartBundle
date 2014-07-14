@@ -2,11 +2,14 @@
 
 {% trans_default_domain "dzangocart" %}
 
-{% block page_class %}{% endblock %}
+{% block dzangocart_page_class %}dzangocart payments{% endblock %}
 
 {% block dzangocart_page_title %}{% trans %}dzangocart.payments.page_title{% endtrans %}{% endblock %}
 
 {% block dzangocart_content %}
+    {% block filters %}
+		{% include "DzangocartBundle:Payment:filters.html.twig" %}
+	{% endblock %}
 {% include "DzangocartBundle:Payment:payments.html.twig" %}
 {% endblock %}
 

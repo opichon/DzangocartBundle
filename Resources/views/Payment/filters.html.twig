@@ -1,5 +1,12 @@
 <div class="filters clearfix">
-    <form action="#" method="post" class="form">
-        {{ form_widget(form) }}
-    </form>
+	<div class="row">
+		<div class="col-sm-6">
+			{{ form_row(filters.period) }}
+		</div>
+		<div class="col-sm-6">
+			{{ form_row(filters.test) }}
+		</div>
+	</div>
+	{{ form_widget(filters.date_to) }}
+	{{ form_widget(filters.date_from) }}
 </div>

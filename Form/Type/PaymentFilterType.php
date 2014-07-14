@@ -28,7 +28,7 @@ class PaymentFilterType extends AbstractType
             )
         ));
 
-        $builder->add('date_range', 'text', array(
+        $builder->add('period', 'text', array(
             'attr' => array(
                 'class' => 'input-xlarge period form-control'
             ),
