@@ -1,12 +1,12 @@
 !function( $ ) {
-    $.fn.direct_payments = function( method ) {
+    $.fn.payments = function( method ) {
         var settings,
             table;
 
         var methods = {
             init: function( options ) {
 
-                settings = $.extend( true, {}, this.direct_payments.defaults, options );
+                settings = $.extend( true, {}, this.payments.defaults, options );
 
                 return this.each(function() {
                     var $this = $( this );
@@ -82,7 +82,7 @@
         }
     };
 
-    $.fn.direct_payments.defaults = {
+    $.fn.payments.defaults = {
         dataTables: {
             columns: [
                 { data: "check" },
@@ -144,6 +144,6 @@
 
 $( document ).ready(function() {
 	if ( typeof dzangocart != 'undefined' ) {
-		$( ".dzangocart.direct_payments" ).direct_payments( dzangocart.direct_payments );
+		$( ".dzangocart.direct_payments" ).payments( dzangocart.payments );
 	}
 });
