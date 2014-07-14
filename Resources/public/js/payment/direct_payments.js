@@ -1,6 +1,5 @@
 !function( $ ) {
     $.fn.direct_payments = function( method ) {
-
         var settings,
             table;
 
@@ -108,15 +107,37 @@
             processing: true,
             serverSide: true,
             orderable: true,
-            stateSave: true,
+            stateSave: false,
             searching: false,
             language: {
                 url: "/bundles/dzangocart/datatables/" + dzangocart.locale + ".json"
             }
         },
         daterangepicker: {
+            locale: { cancelLabel: 'Clear' },
+            maxDate: moment(),
             minDate: moment('2009-01-01'),
-            maxDate: moment()
+            ranges: {
+                "MTD": [moment().startOf( "month" ), moment()],
+                "Last Month": [
+                    moment().subtract( "month", 1).startOf( "month" ),
+                    moment().subtract( "month", 1).endOf( "month" )
+                ],
+                "QTD": [
+                    moment().month( moment().quarter() * 3 ).subtract( "month", 3).startOf( "month" ),
+                    moment()
+                ],
+                "Last quarter": [
+                    moment().month( (moment().quarter() - 1) * 3 ).subtract( "month", 3 ).startOf( "month" ),
+                    moment().month( (moment().quarter() - 1) * 3 ).subtract( "month", 1 ).endOf( "month" )
+                ],
+                "YTD": [moment().startOf( "year" ), moment()],
+                "Last Year": [
+                    moment().subtract( "year", 1 ).startOf( "year"),
+                    moment().subtract( "year", 1 ).endOf( "year" )
+                ]
+            },
+            startDate: moment()
         }
     };
 } ( window.jQuery );
