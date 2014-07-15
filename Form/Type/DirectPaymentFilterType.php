@@ -21,7 +21,7 @@ class DirectPaymentFilterType extends AbstractType
             'label' => 'dzangocart.direct_payments.filters.date_from',
             'widget' => 'single_text',
             'attr' => array(
-                'class' => 'date_from form-control'
+                'class' => 'date_from'
             )
         ));
 
@@ -30,13 +30,13 @@ class DirectPaymentFilterType extends AbstractType
             'label' => 'dzangocart.direct_payments.filters.date_to',
             'widget' => 'single_text',
             'attr' => array(
-                'class' => 'date_to form-control'
+                'class' => 'date_to'
             )
         ));
 
         $builder->add('period', 'text', array(
             'attr' => array(
-                'class' => 'input-xlarge period form-control'
+                'class' => 'period form-control'
             ),
             'label' => 'dzangocart.direct_payments.filters.period'
         ));

@@ -97,6 +97,31 @@ sales:
     tax:                Tax
     test:               Test
 
+sips:
+    filters:
+        date_from:          From
+        date_to:            To
+        period:             Period
+        test_transactions:
+            group_label:    Test transactions
+            label:          Include test transactions
+    transactions:
+        actions:
+            title:      Actions
+        amount:         Amount
+        card_number:    Card no.
+        currency:       Ccy
+        date:           Date
+        order_id:       Order no.
+        page_title:     Sips transactions
+        payment_means:  Payment by
+        response_code:
+            bank:       Bank
+            code:       Code
+            cvv:        CVV
+            title:      Response code
+        time:           Time
+        transaction_id: Transaction id
 
 dzangocart:
     direct_payments:
@@ -140,26 +165,3 @@ dzangocart:
             tax:            Amount
             title:          VAT
         show:               Show Order
-
-    sips:
-        actions:
-            title:      Actions
-        amount:         Amount
-        card_number:    Card no.
-        currency:       Ccy
-        date:           Date
-        filters:
-            date_from:  From
-            date_to:    To
-            period:     Period
-            test:       Include test transactions
-        order_id:       Order no.
-        page_title:     Sips transactions
-        payment_means:  Payment by
-        response_code:
-            bank:       Bank
-            code:       Code
-            cvv:        CVV
-            title:      Response code
-        time:           Time
-        transaction_id: Transaction id

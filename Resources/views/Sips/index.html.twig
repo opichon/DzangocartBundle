@@ -2,12 +2,15 @@
 
 {% trans_default_domain "dzangocart" %}
 
-{% block page_class %}sips{% endblock %}
+{% block page_class %}dzangocart sips{% endblock %}
 
-{% block dzangocart_page_title %}{% trans %}dzangocart.sips.page_title{% endtrans %}{% endblock %}
+{% block dzangocart_page_title %}{% trans %}sips.transactions.page_title{% endtrans %}{% endblock %}
 
 {% block dzangocart_content %}
-{% include "DzangocartBundle:Sips:list.html.twig" %}
+	{% block filters %}
+		{% include "DzangocartBundle:Sips:filters.html.twig" %}
+	{% endblock %}
+	{% include "DzangocartBundle:Sips:transactions.html.twig" %}
 {% endblock %}
 
 {% block dzangocart_head_style %}

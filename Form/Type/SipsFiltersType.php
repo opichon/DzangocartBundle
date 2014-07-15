@@ -6,37 +6,37 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class SipsFilterType extends AbstractType
+class SipsFiltersType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('date_from', 'date', array(
             'format' => 'yyyy-MM-dd',
-            'label' => 'dzangocart.sips.filters.date_from',
+            'label' => 'sips.filters.date_from',
             'widget' => 'single_text',
             'attr' => array(
-                'class' => 'date_from'
+                'class' => 'date date_from'
             )
         ));
 
         $builder->add('date_to', 'date', array(
             'format' => 'yyyy-MM-dd',
-            'label' => 'dzangocart.sips.filters.date_to',
+            'label' => 'sips.filters.date_to',
             'widget' => 'single_text',
             'attr' => array(
-                'class' => 'date_to'
+                'class' => 'date date_to'
             )
         ));
 
-        $builder->add('date_range', 'text', array(
+        $builder->add('period', 'text', array(
             'attr' => array(
                 'class' => 'period'
             ),
-            'label' => 'dzangocart.sips.filters.period'
+            'label' => 'sips.filters.period'
         ));
 
         $builder->add('test', 'checkbox', array(
-            'label' => 'dzangocart.sips.filters.test',
+            'label' => 'sips.filters.test_transactions.label',
         ));
     }
 

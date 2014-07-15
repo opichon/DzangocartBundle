@@ -2,10 +2,10 @@
 
 {% spaceless %}
 {
-    "sEcho": "{{ app.request.query.all.sEcho }}",
-    "iTotalRecords": 0,
-    "iTotalDisplayRecords": 0,
-    "aaData" : [
+    "draw": "{{ app.request.query.all.draw }}",
+    "recordsTotal": 0,
+    "recordsFiltered": 0,
+    "data" : [
         {% for s in list %}
             {
                 "DT_RowId": "{{ 'u_' ~ s.id }}",
