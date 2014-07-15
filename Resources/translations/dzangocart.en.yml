@@ -27,6 +27,31 @@ category:
         back:               Return to catalogue page
         page_title:         Category: %name%
 
+sales:
+    actions:
+        show:           Show order
+    affiliate:          Affiliate
+    currency:           Ccy
+    customer:           Customer
+    date:               Date
+    filters:
+        date_from:      From
+        date_to:        To
+        period:         Period
+        test_orders:
+            group_label:    Test orders
+            label:          Include test orders
+    gross:              Gross
+    item:               Product/service
+    net:                Net
+    order_id:           Order no.
+    page_title:         Sales
+    paid:               Paid
+    quantity:           Qty
+    tax:                Tax
+    test:               Test
+
+
 dzangocart:
     direct_payments:
         action:
@@ -111,28 +136,6 @@ dzangocart:
             title:          Status
         test:               Demo
         type:               Payment Type
-
-    sales:
-        actions:
-            show:           Show order
-        affiliate:          Affiliate
-        currency:           Ccy
-        customer:           Customer
-        date:               Date
-        filters:
-            date_from:      From
-            date_to:        To
-            period:         Period
-            test:           Include test orders
-        gross:              Gross
-        item:               Product/service
-        net:                Net
-        order_id:           Order no.
-        page_title:         Sales
-        paid:               Paid
-        quantity:           Qty
-        tax:                Tax
-        test:               Test
 
     sips:
         actions:
