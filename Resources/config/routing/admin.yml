@@ -10,8 +10,8 @@ dzangocart_admin_catalogue:
 dzangocart_admin_payment:
     resource: "@DzangocartBundle/Resources/config/routing/payment.yml"
 
+dzangocart_admin_direct_payment:
+    resource: "@DzangocartBundle/Resources/config/routing/po.yml"
+
 dzangocart_admin_sips:
     resource: "@DzangocartBundle/Resources/config/routing/sips.yml"
-
-dzangocart_admin_direct_payment:
-    resource: "@DzangocartBundle/Resources/config/routing/direct_payment.yml"

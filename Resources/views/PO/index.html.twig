@@ -1,0 +1,24 @@
+{% extends "DzangocartBundle::admin.html.twig" %}
+
+{% trans_default_domain "dzangocart" %}
+
+{% block dzangocart_page_class %}dzangocart po{% endblock %}
+
+{% block dzangocart_page_title %}{% trans %}po.transactions.page_title{% endtrans %}{% endblock %}
+
+{% block dzangocart_content %}
+    {% block filters %}
+		{% include "DzangocartBundle:PO:filters.html.twig" %}
+	{% endblock %}
+{% include "DzangocartBundle:PO:transactions.html.twig" %}
+{% endblock %}
+
+{% block dzangocart_head_style %}
+    {{ parent() }}
+    {% include "DzangocartBundle:PO:transactions_head_style.html.twig" %}
+{% endblock %}
+
+{% block dzangocart_foot_script %}
+    {{ parent() }}
+    {% include "DzangocartBundle:PO:transactions_foot_script.html.twig" %}
+{% endblock %}

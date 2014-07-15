@@ -73,6 +73,29 @@ payments:
     test:               Demo
     type:               Payment Type
 
+po:
+    filters:
+        date_from:      From
+        date_to:        To
+        period:         Period
+        test_transactions:
+            group_label:    Test transactions
+            label:          Include test transactions
+    transactions:
+        action:
+            title:          Actions
+        amount:             Amount
+        bank:               Bank
+        cheque_number:      Cheque no.
+        date:               Date
+        order_id:           Order no.
+        page_title:         Direct payments
+        pay_by:
+            cheque:         Cheque
+            wire_transfer:  Wire transfer
+        test:               Demo
+        type:               Payment by
+
 sales:
     actions:
         show:           Show order
@@ -124,25 +147,6 @@ sips:
         transaction_id: Transaction id
 
 dzangocart:
-    direct_payments:
-        action:
-            title:          Actions
-        amount:             Amount
-        bank:               Bank
-        cheque_number:      Cheque no.
-        date:               Date
-        filters:
-            date_from:      From
-            date_to:        To
-            period:         Period
-            test:           Include test orders
-        order_id:           Order no.
-        page_title:         Direct payments
-        pay_by:
-            cheque:         Cheque
-            wire_transfer:  Wire transfer
-        test:               Demo
-        type:               Payment by
 
     order:
         amount_excl:        Gross amount

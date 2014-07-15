@@ -1,9 +1,12 @@
+{% trans_default_domain "dzangocart" %}
+
 <div class="filters clearfix">
 	<div class="row">
-		<div class="col-sm-6">
+		<div class="col-sm-3">
 			{{ form_row(filters.period) }}
 		</div>
 		<div class="col-sm-6">
+			<label class="control-label">{% trans %}po.filters.test_transactions.group_label{% endtrans %}</label>
 			{{ form_row(filters.test) }}
 		</div>
 	</div>

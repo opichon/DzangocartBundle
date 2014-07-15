@@ -3,16 +3,16 @@
     'bundles/dzangocart/vendor/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js'
     'bundles/dzangocart/vendor/momentjs/min/moment-with-langs.js'
     'bundles/dzangocart/vendor/bootstrap-daterangepicker/daterangepicker.js'
-    'bundles/dzangocart/js/po/payments.js'
     'bundles/dzangocart/js/ajax.js'
+    'bundles/dzangocart/js/po/transactions.js'
 %}
     <script src="{{ asset_url }}"></script>
 {% endjavascripts %}
 <script>
-    dzangocart.payments = {
-        dataTables: {
+    dzangocart.po = {
+        datatables: {
             ajax: {
-                url: "{{ path('dzangocart_direct_payments_list') }}"
+                url: "{{ path('dzangocart_po_list') }}"
             }
         },
         daterangepicker: {

@@ -4,7 +4,7 @@ namespace Dzangocart\Bundle\DzangocartBundle\Controller;
 
 use DateTime;
 
-use Dzangocart\Bundle\DzangocartBundle\Form\Type\DirectPaymentFilterType;
+use Dzangocart\Bundle\DzangocartBundle\Form\Type\POFiltersType;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -16,18 +16,18 @@ use Symfony\Component\HttpFoundation\Request;
  * @Route("/")
  * @Template
  */
-class DirectPaymentController extends Controller
+class POController extends Controller
 {
     /**
-     * @Route("/", name="dzangocart_direct_payments")
-     * @Template("DzangocartBundle:DirectPayment:index.html.twig")
+     * @Route("/", name="dzangocart_po")
+     * @Template("DzangocartBundle:PO:index.html.twig")
      */
     public function indexAction(Request $request)
     {
         $dzangocart_config = $this->container->getParameter('dzangocart.config');
 
         $filters = $this->createForm(
-            new DirectPaymentFilterType(),
+            new POFiltersType(),
             array(
                 'date_from' => (new DateTime())->modify('first day of this month'),
                 'date_to' => new DateTime()
@@ -42,8 +42,8 @@ class DirectPaymentController extends Controller
     }
 
         /**
-     * @Route("/list", name="dzangocart_direct_payments_list", requirements={"_format": "json"}, defaults={"_format": "json"})
-     * @Template("DzangocartBundle:DirectPayment:list.json.twig")
+     * @Route("/list", name="dzangocart_po_list", requirements={"_format": "json"}, defaults={"_format": "json"})
+     * @Template("DzangocartBundle:PO:list.json.twig")
      */
     public function listAction(Request $request)
     {
