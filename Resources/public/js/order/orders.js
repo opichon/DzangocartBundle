@@ -12,7 +12,7 @@
                 return this.each(function() {
                     var $this = $( this );
 
-                    table = $( 'table.table', this ).dataTable( $.extend( true, {}, settings.dataTables, {
+                    table = $( 'table.table', this ).dataTable( $.extend( true, {}, settings.datatables, {
                         initComplete: function( settings, json ) {
                             $( this ).show();
                         },
@@ -83,7 +83,7 @@
     };
 
     $.fn.orders.defaults = {
-        dataTables: {
+        datatables: {
             autoWidth: false,
             columns: [
                 { data: "check" },
