@@ -110,6 +110,7 @@ dzangocart:
                 error:      ERROR
                 open:       OPEN
                 paid:       PAID
+            title:          Status
         test:               Demo
         type:               Payment Type
 

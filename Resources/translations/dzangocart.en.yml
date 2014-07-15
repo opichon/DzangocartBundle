@@ -101,7 +101,6 @@ dzangocart:
         gateway:            Gateway
         order_id:           Order no.
         page_title:         Payments
-        status:             Status
         status:
             label:
                 approved:   APPROVED
@@ -109,6 +108,7 @@ dzangocart:
                 error:      ERROR
                 open:       OPEN
                 paid:       PAID
+            title:          Status
         test:               Demo
         type:               Payment Type
 
