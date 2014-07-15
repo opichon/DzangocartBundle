@@ -49,6 +49,31 @@ orders:
     tax:                TVA
     test:               Demo
 
+payments:
+    amount:             Amount
+    date:               Date
+    filters:
+        date_from:      From
+        date_to:        To
+        period:         Period
+        test_payments:
+            group_label:    Paiements de démonstration
+            label:          Inclure les paiements de démonstration
+    gateway:            Gateway
+    order_id:           Order no.
+    page_title:         Payments
+    status:             Status
+    status:
+        label:
+            approved:   APPROVED
+            cancelled:  CANCELLED
+            error:      ERROR
+            open:       OPEN
+            paid:       PAID
+        title:          Status
+    test:               Demo
+    type:               Payment Type
+
 sales:
     actions:
         show:           Afficher la commande
@@ -116,29 +141,6 @@ dzangocart:
             rate:           Taux
             tax:            Montant
             title:          TVA
-
-    payments:
-        amount:             Amount
-        date:               Date
-        filters:
-            date_from:      From
-            date_to:        To
-            period:         Period
-            test:           Include test orders
-        gateway:            Gateway
-        order_id:           Order no.
-        page_title:         Payments
-        status:             Status
-        status:
-            label:
-                approved:   APPROVED
-                cancelled:  CANCELLED
-                error:      ERROR
-                open:       OPEN
-                paid:       PAID
-            title:          Status
-        test:               Demo
-        type:               Payment Type
 
     sips:
         actions:

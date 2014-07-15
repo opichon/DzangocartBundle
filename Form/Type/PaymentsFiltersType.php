@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class PaymentFilterType extends AbstractType
+class PaymentsFiltersType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -21,42 +21,42 @@ class PaymentFilterType extends AbstractType
 
         $builder->add('status', 'choice', array(
             'choices'   => array(
-                0 => 'dzangocart.payments.status.label.open',
-                2 => 'dzangocart.payments.status.label.cancelled',
-                4 => 'dzangocart.payments.status.label.error',
-                8 => 'dzangocart.payments.status.label.approved',
-                16 => 'dzangocart.payments.status.label.paid'
+                0 => 'payments.status.label.open',
+                2 => 'payments.status.label.cancelled',
+                4 => 'payments.status.label.error',
+                8 => 'payments.status.label.approved',
+                16 => 'payments.status.label.paid'
             ),
             'required' => false
         ));
 
         $builder->add('date_from', 'date', array(
             'format' => 'yyyy-MM-dd',
-            'label' => 'dzangocart.direct_payments.filters.date_from',
+            'label' => 'payments.filters.date_from',
             'widget' => 'single_text',
             'attr' => array(
-                'class' => 'date_from form-control'
+                'class' => 'date_from'
             )
         ));
 
         $builder->add('date_to', 'date', array(
             'format' => 'yyyy-MM-dd',
-            'label' => 'dzangocart.direct_payments.filters.date_to',
+            'label' => 'payments.filters.date_to',
             'widget' => 'single_text',
             'attr' => array(
-                'class' => 'date_to form-control'
+                'class' => 'date_to'
             )
         ));
 
         $builder->add('period', 'text', array(
             'attr' => array(
-                'class' => 'input-xlarge period form-control'
+                'class' => 'period'
             ),
-            'label' => 'dzangocart.direct_payments.filters.period'
+            'label' => 'payments.filters.period'
         ));
 
         $builder->add('test', 'checkbox', array(
-            'label' => 'dzangocart.direct_payments.filters.test',
+            'label' => 'payments.filters.test_payments.label',
             'attr' => array(
                 'class' => 'checkbox'
             )
@@ -71,8 +71,7 @@ class PaymentFilterType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'translation_domain' => 'dzangocart',
-            'show_legend' => false
+            'translation_domain' => 'dzangocart'
         ));
     }
 }

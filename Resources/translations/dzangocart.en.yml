@@ -49,6 +49,30 @@ orders:
     tax:                Tax
     test:               Demo
 
+payments:
+    amount:             Amount
+    date:               Date
+    filters:
+        date_from:      From
+        date_to:        To
+        period:         Period
+        test_payments:
+            group_label:    Test payments
+            label:          Include test payments
+    gateway:            Gateway
+    order_id:           Order no.
+    page_title:         Payments
+    status:
+        label:
+            approved:   APPROVED
+            cancelled:  CANCELLED
+            error:      ERROR
+            open:       OPEN
+            paid:       PAID
+        title:          Status
+    test:               Demo
+    type:               Payment Type
+
 sales:
     actions:
         show:           Show order
@@ -116,28 +140,6 @@ dzangocart:
             tax:            Amount
             title:          VAT
         show:               Show Order
-
-    payments:
-        amount:             Amount
-        date:               Date
-        filters:
-            date_from:      From
-            date_to:        To
-            period:         Period
-            test:           Include test orders
-        gateway:            Gateway
-        order_id:           Order no.
-        page_title:         Payments
-        status:
-            label:
-                approved:   APPROVED
-                cancelled:  CANCELLED
-                error:      ERROR
-                open:       OPEN
-                paid:       PAID
-            title:          Status
-        test:               Demo
-        type:               Payment Type
 
     sips:
         actions:
