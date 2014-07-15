@@ -12,7 +12,7 @@
                 return this.each(function() {
                     var $this = $( this );
 
-                    table = $( "table.table", this ).dataTable( $.extend( true, {}, settings.dataTables, {
+                    table = $( "table.table", this ).dataTable( $.extend( true, {}, settings.datatables, {
                         drawCallback: function() {
                             $( this ).show();
                         },
@@ -84,7 +84,7 @@
     };
 
     $.fn.payments.defaults = {
-        dataTables: {
+        datatables: {
             columns: [
                 { data: "check" },
                 { data: "date" },
