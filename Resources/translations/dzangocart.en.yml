@@ -27,6 +27,28 @@ category:
         back:               Return to catalogue page
         page_title:         Category: %name%
 
+orders:
+    actions:
+        show:           Show order
+    affiliate:          Affiliate
+    customer:           Customer
+    currency:           Ccy
+    date:               Date
+    filters:
+        date_from:      From
+        date_to:        To
+        period:         Period
+        test_orders:
+            group_label:    Test orders
+            label:          Include test orders
+    gross:              Gross
+    net:                Net
+    order_id:           '#'
+    page_title:         Orders
+    paid:               Paid
+    tax:                Tax
+    test:               Demo
+
 sales:
     actions:
         show:           Show order
@@ -94,26 +116,6 @@ dzangocart:
             tax:            Amount
             title:          VAT
         show:               Show Order
-
-    orders:
-        actions:
-            show:           Show order
-        affiliate:          Affiliate
-        customer:           Customer
-        currency:           Ccy
-        date:               Date
-        filters:
-            date_from:      From
-            date_to:        To
-            period:         Period
-            test:           Include test orders
-        gross:              Gross
-        net:                Net
-        order_id:           '#'
-        page_title:         Orders
-        paid:               Paid
-        tax:                Tax
-        test:               Demo
 
     payments:
         amount:             Amount

@@ -32,7 +32,7 @@ class OrdersFilterType extends AbstractType
 
         $builder->add('date_from', 'date', array(
             'format' => 'yyyy-MM-dd',
-            'label' => 'dzangocart.orders.filters.date_from',
+            'label' => 'orders.filters.date_from',
             'widget' => 'single_text',
             'attr' => array(
                 'class' => 'date date_from'
@@ -41,7 +41,7 @@ class OrdersFilterType extends AbstractType
 
         $builder->add('date_to', 'date', array(
             'format' => 'yyyy-MM-dd',
-            'label' => 'dzangocart.orders.filters.date_to',
+            'label' => 'orders.filters.date_to',
             'widget' => 'single_text',
             'attr' => array(
                 'class' => 'date date_to'
@@ -52,11 +52,11 @@ class OrdersFilterType extends AbstractType
             'attr' => array(
                 'class' => 'period form-control'
             ),
-            'label' => 'dzangocart.orders.filters.period'
+            'label' => 'orders.filters.period'
         ));
 
         $builder->add('test', 'checkbox', array(
-            'label' => 'dzangocart.orders.filters.test',
+            'label' => 'orders.filters.test_orders.label',
             'attr' => array(
                 'class' => 'checkbox'
             ),

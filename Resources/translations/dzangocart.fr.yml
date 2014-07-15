@@ -27,6 +27,28 @@ category:
         back:               Return to catalogue page
         page_title:         Category: %name%
 
+orders:
+    actions:
+        show:           Afficher la commande
+    affiliate:          Affilié
+    currency:           Dev.
+    customer:           Client
+    date:               Date
+    gross:              TTC
+    filters:
+        date_from:      Du
+        date_to:        Au
+        period:         Période
+        test_orders:
+            group_label:    Commandes de démonstration
+            label:          Inclure les commandes de démonstration
+    net:                HT
+    order_id:           n˚
+    page_title:         Commandes
+    paid:               Payé
+    tax:                TVA
+    test:               Demo
+
 sales:
     actions:
         show:           Afficher la commande
@@ -94,26 +116,6 @@ dzangocart:
             rate:           Taux
             tax:            Montant
             title:          TVA
-
-    orders:
-        actions:
-            show:           Afficher la commande
-        affiliate:          Affilié
-        currency:           Dev.
-        customer:           Client
-        date:               Date
-        gross:              TTC
-        filters:
-            date_from:      Du
-            date_to:        Au
-            period:         Période
-            test:           Inclure les commandes de démonstration
-        net:                HT
-        order_id:           n˚
-        page_title:         Commandes
-        paid:               Payé
-        tax:                TVA
-        test:               Demo
 
     payments:
         amount:             Amount
