@@ -1,3 +1,13 @@
+catalogue:
+    actions:
+        show:               Show category
+    code:                   Code
+    name:                   Category
+    page_title:             Catalogue
+    price:                  Price
+    suffix:                 Suffix
+    tax_included:           Net
+
 category:
     form:
         code:              Code
@@ -12,14 +22,12 @@ category:
         shipping:          Livraison
         suffix:            Suffix
         tax_included:      Tax Included
+
     show:
+        back:               Return to catalogue page
         page_title:         Category: %name%
 
 dzangocart:
-
-    catalogue:
-        page_title:        Catalogue
-
     direct_payments:
         actions:
             title:          Actions
@@ -84,6 +92,17 @@ dzangocart:
         test:               Demo
 
     payments:
+        amount:             Amount
+        date:               Date
+        filters:
+            date_from:      From
+            date_to:        To
+            period:         Period
+            test:           Include test orders
+        gateway:            Gateway
+        order_id:           Order no.
+        page_title:         Payments
+        status:             Status
         status:
             label:
                 approved:   APPROVED
@@ -91,17 +110,6 @@ dzangocart:
                 error:      ERROR
                 open:       OPEN
                 paid:       PAID
-        amount:             Amount
-        gateway:            Gateway
-        status:             Status
-        date:               Date
-        filters:
-            date_from:      From
-            date_to:        To
-            period:         Period
-            test:           Include test orders
-        order_id:           Order no.
-        page_title:         Payments
         test:               Demo
         type:               Payment Type
 
