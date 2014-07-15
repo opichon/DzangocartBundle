@@ -126,7 +126,7 @@ table.table tr td.actions .dropdown-menu > li > a:hover {
 	background-color: #ddd;
 }
 
-.dataTables_processing {
+div.dataTables_processing {
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -141,12 +141,23 @@ table.table tr td.actions .dropdown-menu > li > a:hover {
 	-moz-border-radius: 5px;
 	text-align: center;
 	color: #999;
-	font-size: 14px;
-	background-color: #ffe57e;
+	font-size: 115%;
+	background: #ffe57e;
 	-moz-box-shadow: 0px 5px 90px #888;
 	-webkit-box-shadow: 0px 5px 90px #888;
 	box-shadow: 0px 5px 90px #888;
-	box-sizing: border-box;
+}
+
+ul.pagination li.previous a:before {
+	font-family: FontAwesome;
+	content: "\f053";
+	margin-right: 10px;
+}
+
+ul.pagination li.next a:after {
+	font-family: FontAwesome;
+	content: "\f054";
+	margin-left: 10px;
 }
 
 tr.filters input.form-control {

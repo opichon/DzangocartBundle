@@ -1,6 +1,5 @@
 var gulp = require("gulp");
 var bowerFiles = require("gulp-bower-files");
-var uglify = require("gulp-uglify");
 var jsmin = require("gulp-jsmin");
 var rename = require("gulp-rename");
 
