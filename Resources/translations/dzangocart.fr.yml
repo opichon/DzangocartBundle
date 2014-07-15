@@ -27,6 +27,30 @@ category:
         back:               Return to catalogue page
         page_title:         Category: %name%
 
+sales:
+    actions:
+        show:           Afficher la commande
+    affiliate:          Affilié
+    currency:           Dev.
+    customer:           Client
+    date:               Date
+    filters:
+        date_from:      Du
+        date_to:        Au
+        period:         Période
+        test_orders:
+            group_label:    Commandes de démonstration
+            label:          Inclure les commandes de démonstration
+    gross:              TTC
+    item:               Produit/service
+    net:                HT
+    order_id:           Comm.
+    page_title:         Ventes
+    paid:               Payé
+    quantity:           Qté
+    tax:                TVA
+    test:               Demo
+
 dzangocart:
     direct_payments:
         actions:
@@ -113,28 +137,6 @@ dzangocart:
             title:          Status
         test:               Demo
         type:               Payment Type
-
-    sales:
-        actions:
-            show:           Afficher la commande
-        affiliate:          Affilié
-        currency:           Dev.
-        customer:           Client
-        date:               Date
-        filters:
-            date_from:      Du
-            date_to:        Au
-            period:         Période
-            test:           Inclure les commandes de démonstration
-        gross:              TTC
-        item:               Produit/service
-        net:                HT
-        order_id:           Comm.
-        page_title:         Ventes
-        paid:               Payé
-        quantity:           Qté
-        tax:                TVA
-        test:               Demo
 
     sips:
         actions:
