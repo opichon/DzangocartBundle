@@ -4,7 +4,7 @@
 	{% block customer %}
 	<div class="row-fluid customer">
 		<div class="span6">
-			{% trans with { '%date%': order.date|date(config.date_format) } %}dzangocart.order.date{% endtrans %}
+			{% trans with { '%date%': order.date|date(config.date_format) } %}order.date{% endtrans %}
 		</div>
 		<div class="span6">
 			<address>
@@ -22,28 +22,28 @@
 		<table class="table items">
 			<thead>
 				<tr>
-					<th class="rank">{% trans %}dzangocart.order.items.rank{% endtrans %}</th>
-					<th class="description">{% trans %}dzangocart.order.items.description{% endtrans %}</th>
-					<th class="quantity">{% trans %}dzangocart.order.items.quantity{% endtrans %}</th>
-					<th class="price">{% trans %}dzangocart.order.items.price_excl{% endtrans %}</th>
-					<th class="amount">{% trans %}dzangocart.order.items.amount_excl{% endtrans %}</th>
+					<th class="rank">{% trans %}order.items.rank{% endtrans %}</th>
+					<th class="description">{% trans %}order.items.description{% endtrans %}</th>
+					<th class="quantity">{% trans %}order.items.quantity{% endtrans %}</th>
+					<th class="price">{% trans %}order.items.price_excl{% endtrans %}</th>
+					<th class="amount">{% trans %}order.items.amount_excl{% endtrans %}</th>
 				</tr>
 			</thead>
 			<tfoot>
 				<tr>
-					<th colspan="4">{% trans %}dzangocart.order.amount_excl{% endtrans %}</th>
+					<th colspan="4">{% trans %}order.amount_excl{% endtrans %}</th>
 					<td class="amount">{{ order.amountExcl|currency(order.getCurrency, app.request.locale) }}</td>
 				</tr>
 				<tr>
-					<th colspan="4">{% trans %}dzangocart.order.amount_incl{% endtrans %}</th>
+					<th colspan="4">{% trans %}order.amount_incl{% endtrans %}</th>
 					<td class="amount">{{ order.amountIncl|currency(order.getCurrency, app.request.locale) }}</td>
 				</tr>
 				<tr>
-					<th colspan="4">{% trans %}dzangocart.order.amount_paid{% endtrans %}</th>
+					<th colspan="4">{% trans %}order.amount_paid{% endtrans %}</th>
 					<td class="amount">{{ order.amountPaid|currency(order.getCurrency, app.request.locale) }}</td>
 				</tr>
 				<tr>
-					<th colspan="4">{% trans %}dzangocart.order.amount_outstanding{% endtrans %}</th>
+					<th colspan="4">{% trans %}order.amount_outstanding{% endtrans %}</th>
 					<td class="amount">{{ order.amountOutstanding|currency(order.getCurrency, app.request.locale) }}</td>
 				</tr>
 			</tfoot>
@@ -73,12 +73,12 @@
 	{% endblock %}
 	{% block taxes %}
 	<section class="taxes">
-		<h3>{% trans %}dzangocart.order.taxes.title{% endtrans %}</h3>
+		<h3>{% trans %}order.taxes.title{% endtrans %}</h3>
 		<table class="table">
 			<thead>
 				<tr>
-					<th class="rate">{% trans %}dzangocart.order.taxes.rate{% endtrans %}</th>
-					<th class="tax">{% trans %}dzangocart.order.taxes.tax{% endtrans %}</th>
+					<th class="rate">{% trans %}order.taxes.rate{% endtrans %}</th>
+					<th class="tax">{% trans %}order.taxes.tax{% endtrans %}</th>
 				</tr>
 			</thead>
 			<tbody>

@@ -27,6 +27,28 @@ category:
         back:               Return to catalogue page
         page_title:         Category: %name%
 
+order:
+    amount_excl:        Gross amount
+    amount_incl:        Net amount
+    amount_outstanding: Outstanding balance
+    amount_paid:        Amount already paid
+    amount_tax:         VAT
+    date:               Date: %date%
+    items:
+        amount_excl:    Gross amount
+        amount_incl:    Net amount
+        description:    Item
+        price_excl:     Gross price
+        price_incl:     Net price
+        quantity:       Qty
+        rank:           '#'
+    page_title:         Order n˚ %order_id%
+    taxes:
+        rate:           Rate
+        tax:            Amount
+        title:          VAT
+    show:               Show Order
+
 orders:
     actions:
         show:           Show order
@@ -146,26 +168,3 @@ sips:
         time:           Time
         transaction_id: Transaction id
 
-dzangocart:
-
-    order:
-        amount_excl:        Gross amount
-        amount_incl:        Net amount
-        amount_outstanding: Outstanding balance
-        amount_paid:        Amount already paid
-        amount_tax:         VAT
-        date:               Date: %date%
-        items:
-            amount_excl:    Gross amount
-            amount_incl:    Net amount
-            description:    Item
-            price_excl:     Gross price
-            price_incl:     Net price
-            quantity:       Qty
-            rank:           '#'
-        page_title:         Order n˚ %order_id%
-        taxes:
-            rate:           Rate
-            tax:            Amount
-            title:          VAT
-        show:               Show Order
