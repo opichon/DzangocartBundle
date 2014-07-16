@@ -123,7 +123,10 @@ class PaymentController extends Controller
         return array(
             'date_from' => 'date_from',
             'date_to' => 'date_to',
-            'test' => 'test'
+            'test' => 'test',
+            'service_id' => 'service_id',
+            'order_id' => 'order_id',
+            'status' => 'status'
         );
     }
 }

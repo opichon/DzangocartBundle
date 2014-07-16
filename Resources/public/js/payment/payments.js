@@ -12,13 +12,23 @@
                 return this.each(function() {
                     var $this = $( this );
 
+                    $( ".filters select" ).change(function(event) {
+                        event.stopPropagation();
+                        table.api().draw();
+                    });
+
+                    $( ".filters input" ).keyup(function(event) {
+                        event.stopPropagation();
+                        table.api().draw();
+                    });
+
                     table = $( "table.table", this ).dataTable( $.extend( true, {}, settings.datatables, {
                         drawCallback: function() {
                             $( this ).show();
                         },
                         ajax: {
                             data: function( data ) {
-                                $( ".filters input", $this ).each(function() {
+                                $( ".filters input, .filters select", $this ).each(function() {
                                     data[$( this ).attr( "name" )] = $( this ).val()
                                 });
 
@@ -29,7 +39,7 @@
                             }
                         },
                         stateLoadParams: function( settings, data ) {
-                            $( ".filters input", $this ).each(function() {
+                            $( ".filters input, .filters select", $this ).each(function() {
                                 $( this ).val( data[ $( this ).attr( "name" ) ] );
                             });
 
@@ -38,7 +48,7 @@
                             });
                         },
                         stateSaveParams: function( settings, data ) {
-                            $( ".filters input", $this ).each(function() {
+                            $( ".filters input, .filters select", $this ).each(function() {
                                 data[ $( this ).attr( "name" ) ] = $( this ).val();
                             });
 
