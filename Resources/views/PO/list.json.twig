@@ -1,6 +1,6 @@
 {% trans_default_domain "dzangocart" %}
 
-{% set payment_types = { 1: 'dzangocart.direct_payments.pay_by.wire_transfer', 2: 'dzangocart.direct_payments.pay_by.cheque' } %}
+{% set payment_types = { 1: 'po.transactions.pay_by.wire_transfer', 2: 'po.transactions.pay_by.cheque' } %}
 {% spaceless %}
 {
     "draw": "{{ app.request.query.all.draw }}",
