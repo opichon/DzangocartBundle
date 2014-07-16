@@ -62,7 +62,7 @@ class POController extends Controller
         $params['sort_by'] = $this->getSortOrder($request);
 
         $data = $this->get('dzangocart')
-            ->getDirectPayments($params);
+            ->getPOTransactions($params);
 
         $data['datetime_format'] = $dzangocart_config['datetime_format'];
 
@@ -125,7 +125,10 @@ class POController extends Controller
         return array(
             'date_from' => 'date_from',
             'date_to' => 'date_to',
-            'test' => 'test'
+            'test' => 'test',
+            'order_id' => 'order_id',
+            'bank' => 'bank',
+            'cheque' => 'cheque'
         );
     }
 }

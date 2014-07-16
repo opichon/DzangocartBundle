@@ -11,6 +11,11 @@
                 return this.each(function() {
                     var $this = $( this );
 
+                    $( ".filters input" ).keyup(function(event) {
+                        event.stopPropagation();
+                        table.api().draw();
+                    });
+
                     table = $( "table.table", this ).dataTable( $.extend( true, {}, settings.datatables, {
                         drawCallback: function() {
                             $( this ).show();
