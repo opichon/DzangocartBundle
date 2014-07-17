@@ -51,13 +51,17 @@ class CatalogueController
         $form = $this->form_factory->create(
             new CategoryFormType(),
             $category,
-            array(
-                'action' => $this->router->generate(
-                    'dzangocart_category_update',
-                    array('id' => $id)
-                ),
-                'method' => 'POST'
+            array_merge(
+                array(
+                    'action' => $this->router->generate(
+                        'dzangocart_category_update',
+                        array(
+                            'id' => $id
+                        )
+                    )
+                ), $this->getDefaultOptions()
             )
+
         );
 
         return array(
