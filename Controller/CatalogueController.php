@@ -81,7 +81,8 @@ class CatalogueController
 
         $form = $this->form_factory->create(
             new CategoryFormType(),
-            $category
+            $category,
+            $this->getDefaultOptions()
         );
 
         $form->handleRequest($request);
@@ -96,6 +97,13 @@ class CatalogueController
         return array(
             'form' => $form->createView(),
             'category' => $category
+        );
+    }
+
+    protected function getDefaultOptions(array $options = null)
+    {
+        return array(
+           'csrf_protection' => false
         );
     }
 }
