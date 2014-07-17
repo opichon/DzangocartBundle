@@ -1,0 +1,30 @@
+{% trans_default_domain "dzangocart" %}
+
+<table class="table table-condensed" id="po">
+    <thead>
+        <tr>
+            <th class="check"><input type="checkbox" id="checkall" /></th>
+            <th class="date">{% trans %}po.transactions.date{% endtrans %}</th>
+            <th class="order_id">{% trans %}po.transactions.order_id{% endtrans %}</th>
+            <th class="amount">{% trans %}po.transactions.amount{% endtrans %}</th>
+            <th class="bank">{% trans %}po.transactions.bank{% endtrans %}</th>
+            <th class="type">{% trans %}po.transactions.type{% endtrans %}</th>
+            <th class="cheque_no">{% trans %}po.transactions.cheque_number{% endtrans %}</th>
+            <th class="test">{% trans %}po.transactions.test{% endtrans %}</th>
+            <th class="actions"><i class="fa fa-cog"></i></th>
+        </tr>
+        <tr class="filters">
+            <th></th>
+            <th></th>
+            <th>{{ form_widget(filters.order_id) }}</th>
+            <th></th>
+            <th>{{ form_widget(filters.bank) }}</th>
+            <th></th>
+            <th>{{ form_widget(filters.cheque) }}</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>

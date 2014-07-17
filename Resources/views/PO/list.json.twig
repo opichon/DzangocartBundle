@@ -1,6 +1,6 @@
 {% trans_default_domain "dzangocart" %}
 
-{% set payment_types = { 1: 'dzangocart.direct_payments.pay_by.wire_transfer', 2: 'dzangocart.direct_payments.pay_by.cheque' } %}
+{% set payment_types = { 1: 'po.transactions.pay_by.wire_transfer', 2: 'po.transactions.pay_by.cheque' } %}
 {% spaceless %}
 {
     "draw": "{{ app.request.query.all.draw }}",
@@ -19,7 +19,7 @@
                 "type":          "{% if payment['type'] %}{{ payment_types[payment['type']]|trans }}{% endif %}",
                 "cheque_number": "{{ payment['cheque_number'] }}",
                 "test":          "{{ payment['test'] }}",
-                "actions":       "{%- include 'DzangocartBundle:DirectPayment:actions.html.twig' -%}"
+                "actions":       "{%- include 'DzangocartBundle:PO:actions.html.twig' -%}"
             }{% if not loop.last %},{% endif %}
         {% endfor %}
     ]

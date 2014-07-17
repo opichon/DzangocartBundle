@@ -6,37 +6,43 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class PaymentFilterType extends AbstractType
+class POFiltersType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $builder->add('order_id', 'text', array());
+
+        $builder->add('bank', 'text', array());
+
+        $builder->add('cheque', 'text', array());
+
         $builder->add('date_from', 'date', array(
             'format' => 'yyyy-MM-dd',
-            'label' => 'dzangocart.direct_payments.filters.date_from',
+            'label' => 'po.filters.date_from',
             'widget' => 'single_text',
             'attr' => array(
-                'class' => 'date_from form-control'
+                'class' => 'date date_from'
             )
         ));
 
         $builder->add('date_to', 'date', array(
             'format' => 'yyyy-MM-dd',
-            'label' => 'dzangocart.direct_payments.filters.date_to',
+            'label' => 'po.filters.date_to',
             'widget' => 'single_text',
             'attr' => array(
-                'class' => 'date_to form-control'
+                'class' => 'date date_to'
             )
         ));
 
-        $builder->add('date_range', 'text', array(
+        $builder->add('period', 'text', array(
             'attr' => array(
-                'class' => 'input-xlarge period form-control'
+                'class' => 'period'
             ),
-            'label' => 'dzangocart.direct_payments.filters.period'
+            'label' => 'po.filters.period'
         ));
 
         $builder->add('test', 'checkbox', array(
-            'label' => 'dzangocart.direct_payments.filters.test',
+            'label' => 'po.filters.test_transactions.label',
             'attr' => array(
                 'class' => 'checkbox'
             )

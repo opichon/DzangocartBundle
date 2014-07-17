@@ -4,7 +4,7 @@ namespace Dzangocart\Bundle\DzangocartBundle\Controller;
 
 use DateTime;
 
-use Dzangocart\Bundle\DzangocartBundle\Form\Type\DirectPaymentFilterType;
+use Dzangocart\Bundle\DzangocartBundle\Form\Type\POFiltersType;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -16,18 +16,18 @@ use Symfony\Component\HttpFoundation\Request;
  * @Route("/")
  * @Template
  */
-class DirectPaymentController extends Controller
+class POController extends Controller
 {
     /**
-     * @Route("/", name="dzangocart_direct_payments")
-     * @Template("DzangocartBundle:DirectPayment:index.html.twig")
+     * @Route("/", name="dzangocart_po")
+     * @Template("DzangocartBundle:PO:index.html.twig")
      */
     public function indexAction(Request $request)
     {
         $dzangocart_config = $this->container->getParameter('dzangocart.config');
 
-        $form = $this->createForm(
-            new DirectPaymentFilterType(),
+        $filters = $this->createForm(
+            new POFiltersType(),
             array(
                 'date_from' => (new DateTime())->modify('first day of this month'),
                 'date_to' => new DateTime()
@@ -35,15 +35,15 @@ class DirectPaymentController extends Controller
         );
 
         return array(
-            'form' => $form->createView(),
+            'filters' => $filters->createView(),
             'config' => $dzangocart_config
         );
 
     }
 
         /**
-     * @Route("/list", name="dzangocart_direct_payments_list", requirements={"_format": "json"}, defaults={"_format": "json"})
-     * @Template("DzangocartBundle:DirectPayment:list.json.twig")
+     * @Route("/list", name="dzangocart_po_list", requirements={"_format": "json"}, defaults={"_format": "json"})
+     * @Template("DzangocartBundle:PO:list.json.twig")
      */
     public function listAction(Request $request)
     {
@@ -62,7 +62,7 @@ class DirectPaymentController extends Controller
         $params['sort_by'] = $this->getSortOrder($request);
 
         $data = $this->get('dzangocart')
-            ->getDirectPayments($params);
+            ->getPOTransactions($params);
 
         $data['datetime_format'] = $dzangocart_config['datetime_format'];
 
@@ -125,7 +125,10 @@ class DirectPaymentController extends Controller
         return array(
             'date_from' => 'date_from',
             'date_to' => 'date_to',
-            'test' => 'test'
+            'test' => 'test',
+            'order_id' => 'order_id',
+            'bank' => 'bank',
+            'cheque' => 'cheque'
         );
     }
 }

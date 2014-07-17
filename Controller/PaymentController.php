@@ -4,7 +4,7 @@ namespace Dzangocart\Bundle\DzangocartBundle\Controller;
 
 use DateTime;
 
-use Dzangocart\Bundle\DzangocartBundle\Form\Type\PaymentFilterType;
+use Dzangocart\Bundle\DzangocartBundle\Form\Type\PaymentsFiltersType;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -26,8 +26,8 @@ class PaymentController extends Controller
     {
         $dzangocart_config = $this->container->getParameter('dzangocart.config');
 
-        $form = $this->createForm(
-            new PaymentFilterType(),
+        $filters = $this->createForm(
+            new PaymentsFiltersType(),
             array(
                 'date_from' => (new DateTime())->modify('first day of this month'),
                 'date_to' => new DateTime()
@@ -35,7 +35,7 @@ class PaymentController extends Controller
         );
 
         return array(
-            'form' => $form->createView(),
+            'filters' => $filters->createView(),
             'config' => $dzangocart_config
         );
     }
@@ -123,7 +123,10 @@ class PaymentController extends Controller
         return array(
             'date_from' => 'date_from',
             'date_to' => 'date_to',
-            'test' => 'test'
+            'test' => 'test',
+            'service_id' => 'service_id',
+            'order_id' => 'order_id',
+            'status' => 'status'
         );
     }
 }

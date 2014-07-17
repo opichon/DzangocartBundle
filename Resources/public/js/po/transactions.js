@@ -1,18 +1,22 @@
 !function( $ ) {
-    $.fn.direct_payments = function( method ) {
-
+    $.fn.transactions = function( method ) {
         var settings,
             table;
 
         var methods = {
             init: function( options ) {
 
-                settings = $.extend( true, {}, this.direct_payments.defaults, options );
+                settings = $.extend( true, {}, this.transactions.defaults, options );
 
                 return this.each(function() {
                     var $this = $( this );
 
-                    table = $( "table.table", this ).dataTable( $.extend( true, {}, settings.dataTables, {
+                    $( ".filters input" ).keyup(function(event) {
+                        event.stopPropagation();
+                        table.api().draw();
+                    });
+
+                    table = $( "table.table", this ).dataTable( $.extend( true, {}, settings.datatables, {
                         drawCallback: function() {
                             $( this ).show();
                         },
@@ -79,12 +83,12 @@
             return methods.init.apply( this, arguments );
         }
         else {
-            $.error( "Method " +  method + " does not exist in jQuery.payments." );
+            $.error( "Method " +  method + " does not exist in jQuery.transactions." );
         }
     };
 
-    $.fn.direct_payments.defaults = {
-        dataTables: {
+    $.fn.transactions.defaults = {
+        datatables: {
             columns: [
                 { data: "check" },
                 { data: "date" },
@@ -108,21 +112,44 @@
             processing: true,
             serverSide: true,
             orderable: true,
-            stateSave: true,
+            stateSave: false,
             searching: false,
+            orderCellsTop: true,
             language: {
                 url: "/bundles/dzangocart/datatables/" + dzangocart.locale + ".json"
             }
         },
         daterangepicker: {
+            locale: { cancelLabel: 'Clear' },
+            maxDate: moment(),
             minDate: moment('2009-01-01'),
-            maxDate: moment()
+            ranges: {
+                "MTD": [moment().startOf( "month" ), moment()],
+                "Last Month": [
+                    moment().subtract( "month", 1).startOf( "month" ),
+                    moment().subtract( "month", 1).endOf( "month" )
+                ],
+                "QTD": [
+                    moment().month( moment().quarter() * 3 ).subtract( "month", 3).startOf( "month" ),
+                    moment()
+                ],
+                "Last quarter": [
+                    moment().month( (moment().quarter() - 1) * 3 ).subtract( "month", 3 ).startOf( "month" ),
+                    moment().month( (moment().quarter() - 1) * 3 ).subtract( "month", 1 ).endOf( "month" )
+                ],
+                "YTD": [moment().startOf( "year" ), moment()],
+                "Last Year": [
+                    moment().subtract( "year", 1 ).startOf( "year"),
+                    moment().subtract( "year", 1 ).endOf( "year" )
+                ]
+            },
+            startDate: moment()
         }
     };
 } ( window.jQuery );
 
 $( document ).ready(function() {
 	if ( typeof dzangocart != 'undefined' ) {
-		$( ".dzangocart.direct_payments" ).direct_payments( dzangocart.direct_payments );
+		$( ".dzangocart.po" ).transactions( dzangocart.po );
 	}
 });

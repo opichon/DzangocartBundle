@@ -4,7 +4,7 @@
     "bootstrap": "~3.1",
     "bootstrap-daterangepicker": "~1.3",
     "datatables": "~1.10",
-    "datatables-bootstrap3": "0.1",
+    "datatables-plugins": "*",
     "font-awesome": "~4.1",
     "jquery": "~1.11",
     "jquery-treetable": "~3.1.0"
@@ -16,15 +16,15 @@
         "daterangepicker-bs3.css"
       ]
     },
-    "datatables-bootstrap3": {
+    "datatables-plugins": {
       "main": [
-        "BS3/assets/css/datatables.css",
-        "BS3/assets/images/sort_asc.png",
-        "BS3/assets/images/sort_asc_disabled.png",
-        "BS3/assets/images/sort_both.png",
-        "BS3/assets/images/sort_desc.png",
-        "BS3/assets/images/sort_desc_disabled.png",
-        "BS3/assets/js/datatables.js"
+        "integration/bootstrap/3/dataTables.bootstrap.css",
+        "integration/bootstrap/3/dataTables.bootstrap.js",
+        "integration/bootstrap/images/sort_asc.png",
+        "integration/bootstrap/images/sort_asc_disabled.png",
+        "integration/bootstrap/images/sort_both.png",
+        "integration/bootstrap/images/sort_desc.png",
+        "integration/bootstrap/images/sort_desc_disabled.png"
       ]
     },
     "jquery-treetable": {
@@ -36,7 +36,6 @@
     },
     "momentjs": {
       "main": [
-        "moment.js",
         "min/moment-with-langs.js",
         "min/moment-with-langs.min.js"
       ]

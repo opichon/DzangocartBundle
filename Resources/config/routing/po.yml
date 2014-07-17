@@ -1,0 +1,4 @@
+_dzangocart_direct_payment:
+    resource: "@DzangocartBundle/Controller/POController.php"
+    type: annotation
+    prefix: /po

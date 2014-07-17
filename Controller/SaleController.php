@@ -86,7 +86,10 @@ class SaleController extends Controller
         return array(
             'date_from' => 'date_from',
             'date_to' => 'date_to',
-            'test' => 'test'
+            'test' => 'test',
+            'order_id' => 'order_id',
+            'customer' => 'customer_id',
+            'name' => 'name'
         );
     }
 

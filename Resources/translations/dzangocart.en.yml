@@ -1,3 +1,13 @@
+catalogue:
+    actions:
+        show:               Show category
+    code:                   Code
+    name:                   Category
+    page_title:             Catalogue
+    price:                  Price
+    suffix:                 Suffix
+    tax_included:           Net
+
 category:
     form:
         code:               Code
@@ -17,31 +27,89 @@ category:
         back:               Return to catalogue page
         page_title:         Category: %name%
 
-catalogue:
+order:
+    amount_excl:        Gross amount
+    amount_incl:        Net amount
+    amount_outstanding: Outstanding balance
+    amount_paid:        Amount already paid
+    amount_tax:         VAT
+    date:               Date: %date%
+    items:
+        amount_excl:    Gross amount
+        amount_incl:    Net amount
+        description:    Item
+        price_excl:     Gross price
+        price_incl:     Net price
+        quantity:       Qty
+        rank:           '#'
+    page_title:         Order n˚ %order_id%
+    taxes:
+        rate:           Rate
+        tax:            Amount
+        title:          VAT
+    show:               Show Order
+
+orders:
     actions:
-        show:               Show category
-    code:                   Code
-    name:                   Category
-    page_title:             Catalogue
-    price:                  Price
-    suffix:                 Suffix
-    tax_included:           Net
+        show:           Show order
+    affiliate:          Affiliate
+    customer:           Customer
+    currency:           Ccy
+    date:               Date
+    filters:
+        date_from:      From
+        date_to:        To
+        period:         Period
+        test_orders:
+            group_label:    Test orders
+            label:          Include test orders
+    gross:              Gross
+    net:                Net
+    order_id:           '#'
+    page_title:         Orders
+    paid:               Paid
+    tax:                Tax
+    test:               Demo
 
+payments:
+    amount:             Amount
+    date:               Date
+    filters:
+        date_from:      From
+        date_to:        To
+        period:         Period
+        test_payments:
+            group_label:    Test payments
+            label:          Include test payments
+    gateway:            Gateway
+    order_id:           Order no.
+    page_title:         Payments
+    status:
+        label:
+            approved:   APPROVED
+            cancelled:  CANCELLED
+            error:      ERROR
+            open:       OPEN
+            paid:       PAID
+        title:          Status
+    test:               Demo
+    type:               Payment Type
 
-dzangocart:
-
-    direct_payments:
+po:
+    filters:
+        date_from:      From
+        date_to:        To
+        period:         Period
+        test_transactions:
+            group_label:    Test transactions
+            label:          Include test transactions
+    transactions:
         action:
             title:          Actions
         amount:             Amount
         bank:               Bank
         cheque_number:      Cheque no.
         date:               Date
-        filters:
-            date_from:      From
-            date_to:        To
-            period:         Period
-            test:           Include test orders
         order_id:           Order no.
         page_title:         Direct payments
         pay_by:
@@ -50,97 +118,45 @@ dzangocart:
         test:               Demo
         type:               Payment by
 
-    order:
-        amount_excl:        Gross amount
-        amount_incl:        Net amount
-        amount_outstanding: Outstanding balance
-        amount_paid:        Amount already paid
-        amount_tax:         VAT
-        date:               Date: %date%
-        items:
-            amount_excl:    Gross amount
-            amount_incl:    Net amount
-            description:    Item
-            price_excl:     Gross price
-            price_incl:     Net price
-            quantity:       Qty
-            rank:           '#'
-        page_title:         Order n˚ %order_id%
-        taxes:
-            rate:           Rate
-            tax:            Amount
-            title:          VAT
-        show:               Show Order
+sales:
+    actions:
+        show:           Show order
+    affiliate:          Affiliate
+    currency:           Ccy
+    customer:           Customer
+    date:               Date
+    filters:
+        date_from:      From
+        date_to:        To
+        period:         Period
+        test_orders:
+            group_label:    Test orders
+            label:          Include test orders
+    gross:              Gross
+    item:               Product/service
+    net:                Net
+    order_id:           Order no.
+    page_title:         Sales
+    paid:               Paid
+    quantity:           Qty
+    tax:                Tax
+    test:               Test
 
-    orders:
-        actions:
-            show:           Show order
-        affiliate:          Affiliate
-        customer:           Customer
-        currency:           Ccy
-        date:               Date
-        filters:
-            date_from:      From
-            date_to:        To
-            period:         Period
-            test:           Include test orders
-        gross:              Gross
-        net:                Net
-        order_id:           '#'
-        page_title:         Orders
-        paid:               Paid
-        tax:                Tax
-        test:               Demo
-
-    payments:
-        amount:             Amount
-        gateway:            Gateway
-        status:             Status
-        date:               Date
-        filters:
-            date_from:      From
-            date_to:        To
-            period:         Period
-            test:           Include test orders
-        order_id:           Order no.
-        page_title:         Payments
-        test:               Demo
-        type:               Payment Type
-
-    sales:
-        actions:
-            show:           Show order
-        affiliate:          Affiliate
-        currency:           Ccy
-        customer:           Customer
-        date:               Date
-        filters:
-            date_from:      From
-            date_to:        To
-            period:         Period
-            test:           Include test orders
-        gross:              Gross
-        item:               Product/service
-        net:                Net
-        order_id:           Order no.
-        page_title:         Sales
-        paid:               Paid
-        quantity:           Qty
-        tax:                Tax
-        test:               Test
-
-    sips:
+sips:
+    filters:
+        date_from:          From
+        date_to:            To
+        period:             Period
+        test_transactions:
+            group_label:    Test transactions
+            label:          Include test transactions
+    transactions:
         actions:
             title:      Actions
         amount:         Amount
         card_number:    Card no.
         currency:       Ccy
         date:           Date
-        filters:
-            date_from:  From
-            date_to:    To
-            period:     Period
-            test:       Include test transactions
         order_id:       Order no.
         page_title:     Sips transactions
         payment_means:  Payment by
@@ -151,3 +167,4 @@ dzangocart:
             title:      Response code
         time:           Time
         transaction_id: Transaction id
+
