@@ -1,6 +1,7 @@
 {% javascripts
 	'bundles/dzangocart/vendor/datatables/media/js/jquery.dataTables.min.js'
 	'bundles/dzangocart/vendor/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js'
+	'bundles/dzangocart/vendor/typeahead.js/dist/typeahead.bundle.min.js'
 	'bundles/dzangocart/vendor/momentjs/min/moment-with-langs.js'
 	'bundles/dzangocart/vendor/bootstrap-daterangepicker/daterangepicker.js'
 	'bundles/dzangocart/js/ajax.js'
@@ -10,13 +11,18 @@
 {% endjavascripts %}
 <script>
 dzangocart.sales = {
-	datatables: {
-		ajax: {
-			url: "{{ path('dzangocart_sales_list') }}"
-		}
-	},
-	daterangepicker: {
-		format: "{{ config.date_format|upper }}"
-	}
+    datatables: {
+        ajax: {
+            url: "{{ path('dzangocart_sales_list') }}"
+        }
+    },
+    daterangepicker: {
+        format: "{{ config.date_format|upper }}"
+    },
+    typeahead: {
+        remote: {
+            url:  "{{ path('dzangocart_customer_search', { search: '__query__' }) }}"
+        }
+    }
 };
 </script>

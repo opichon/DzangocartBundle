@@ -88,7 +88,7 @@ class SaleController extends Controller
             'date_to' => 'date_to',
             'test' => 'test',
             'order_id' => 'order_id',
-            'customer' => 'customer_id',
+            'customer_id' => 'customer',
             'name' => 'name'
         );
     }
