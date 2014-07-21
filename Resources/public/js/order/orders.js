@@ -17,13 +17,17 @@
                         table.api().draw();
                     });
 
+                    $( ".filters input", $this ).change(function() {
+                        table.api().draw();
+                    });
+
                     table = $( 'table.table', this ).dataTable( $.extend( true, {}, settings.datatables, {
                         initComplete: function( settings, json ) {
                             $( this ).show();
                         },
                         ajax: {
                             data: function( data ) {
-                                $( ".filters input", $this ).each(function() {
+                                $( ".filters input, .filters select", $this ).each(function() {
                                     data[$( this ).attr( "name" )] = $( this ).val()
                                 });
 
@@ -34,7 +38,7 @@
                             }
                         },
                         stateLoadParams: function( settings, data ) {
-                            $( ".filters input", $this ).each(function() {
+                            $( ".filters input, .filters select", $this ).each(function() {
                                 $( this ).val( data[ $( this ).attr( "name" ) ] );
                             });
 
@@ -43,7 +47,7 @@
                             });
                         },
                         stateSaveParams: function( settings, data ) {
-                            $( ".filters input", $this ).each(function() {
+                            $( ".filters input, .filters select", $this ).each(function() {
                                 data[ $( this ).attr( "name" ) ] = $( this ).val();
                             });
 
@@ -68,10 +72,6 @@
                             table.api().draw();
                         }
                     ).data( "daterangepicker" ).updateInputText();
-
-                    $( ".filters input", $this ).change(function() {
-                        table.api().draw();
-                    });
 
                     var widget = $( "[name='filters[customer]']" );
 
