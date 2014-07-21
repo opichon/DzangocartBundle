@@ -13,3 +13,9 @@ dzangocart_orders_list:
     defaults: { _controller: dzangocart.controller.order:listAction, _format: json }
     requirements:
         _format: json
+
+dzangocart_customer_search:
+    pattern: /search/{search}
+    defaults: { _controller: dzangocart.controller.order:searchAction, _format: json }
+    requirements:
+        _format: json

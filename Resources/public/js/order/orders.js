@@ -12,7 +12,7 @@
                 return this.each(function() {
                     var $this = $( this );
 
-                    $( ".filters input" ).keyup(function(event) {
+                    $( ".filters_keyup input" ).keyup(function(event) {
                         event.stopPropagation();
                         table.api().draw();
                     });
@@ -72,6 +72,38 @@
                     $( ".filters input", $this ).change(function() {
                         table.api().draw();
                     });
+
+                    var widget = $( "[name='filters[customer]']" );
+
+                    var customers = new Bloodhound({
+                        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+                        queryTokenizer: Bloodhound.tokenizers.whitespace,
+                        remote: {
+                            url: settings.typeahead.remote.url,
+                            replace: function( url, uriEncodedQuery ) {
+                                return url.replace( "__query__", uriEncodedQuery );
+                            }
+                        }
+                    });
+
+                    customers.initialize();
+
+                    widget.typeahead( null, {
+                        name: "customer",
+                        displayKey: "value",
+                        source: customers.ttAdapter()
+                    })
+                    .on( "typeahead:selected", function( e, datum ) {
+                        $( "[name='filters[customer_id]']" ).val( datum.id );
+                            table.api().draw();
+                    });
+
+                    widget.keyup( function( ) {
+                        if ( $(this).val() === "" ) {
+                            $( "[name='filters[customer_id]']" ).val( "" );
+                            table.api().draw();
+                        }
+                    })
                 });
             }
         };
