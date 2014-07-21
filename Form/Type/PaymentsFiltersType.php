@@ -86,11 +86,11 @@ class PaymentsFiltersType extends AbstractType
     {
         $services = array();
 
+        // FIXME [JP 2014-07-21] Assumes $this->services is not empty.
         foreach ($this->services as $service) {
             $services[$service['id']] = $service['value'];
         }
 
         return $services;
     }
-
 }
