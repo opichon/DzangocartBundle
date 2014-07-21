@@ -17,7 +17,7 @@
                         table.api().draw();
                     });
 
-                    $( ".filters input", $this ).change(function() {
+                    $( ".filters select", $this ).change(function() {
                         table.api().draw();
                     });
 
