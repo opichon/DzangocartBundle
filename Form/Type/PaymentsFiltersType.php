@@ -8,6 +8,13 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class PaymentsFiltersType extends AbstractType
 {
+    protected $services;
+
+    public function __construct($services)
+    {
+        $this->services = $services;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('order_id', 'text', array(
@@ -15,7 +22,7 @@ class PaymentsFiltersType extends AbstractType
         ));
 
         $builder->add('service_id', 'choice', array(
-            'choices'   => array(),
+            'choices'   => $this->getGatewayServices(),
             'required' => false
         ));
 
@@ -74,4 +81,16 @@ class PaymentsFiltersType extends AbstractType
             'translation_domain' => 'dzangocart'
         ));
     }
+
+    protected function getGatewayServices()
+    {
+        $services = array();
+
+        foreach ($this->services as $service) {
+            $services[$service['id']] = $service['value'];
+        }
+
+        return $services;
+    }
+
 }
