@@ -1,3 +1,7 @@
 .orders table.table th.paid {
     width: 8em;
 }
+
+.orders table.table th.customer {
+	width: 10em;
+}

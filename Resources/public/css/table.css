@@ -45,14 +45,17 @@ table.table th.ccy {
 
 table.table th.net {
 	width: 8em;
+    text-align: center;
 }
 
 table.table th.tax {
 	width: 5em;
+    text-align: center;
 }
 
 table.table th.gross {
 	width: 8em;
+    text-align: center;
 }
 
 table.table th.affiliate {
@@ -167,3 +170,13 @@ tr.filters input.form-control {
 .filters input.date {
 	display: none;
 }
+
+table.table thead tr.filters th {
+    padding: 5px 1px;
+}
+table.table thead tr.filters th .form-control {
+    font-weight: normal;
+    padding: 6px;
+    width: 100%;
+}
+
