@@ -1,11 +1,11 @@
 table.table {
-	display: none;
+    display: none;
 }
 
 table.table th,
 table.table td {
-	border-top: none;
-	border-bottom: 1px solid #ddd;
+    border-top: none;
+    border-bottom: 1px solid #ddd;
 }
 
 table.table thead th,
@@ -14,161 +14,161 @@ table.table thead .sorting_asc,
 table.table thead .sorting_desc,
 table.table thead .sorting_asc_disabled,
 table.table thead .sorting_desc_disabled {
-	vertical-align: bottom;
-	background-color: #f1f6e0;
-	font-weight: normal;
+    vertical-align: bottom;
+    background-color: #f1f6e0;
+    font-weight: normal;
 }
 
 table.table .center {
-	text-align: center;
+    text-align: center;
 }
 
 table.table th.date {
-	width: 6em;
+    width: 6em;
 }
 
 table.table th.datetime {
-	width: 9em;
+    width: 9em;
 }
 
 table.table th.order_id {
-	width: 4em;
+    width: 4em;
 }
 
 table.table th.amount  {
-	width: 8em;
+    width: 8em;
 }
 
 table.table th.ccy {
-	width: 4em;
+    width: 4em;
 }
 
 table.table th.net {
-	width: 8em;
+    width: 8em;
     text-align: center;
 }
 
 table.table th.tax {
-	width: 5em;
+    width: 5em;
     text-align: center;
 }
 
 table.table th.gross {
-	width: 8em;
+    width: 8em;
     text-align: center;
 }
 
 table.table th.affiliate {
-	width: 4em;
+    width: 4em;
 }
 
 table.table th.demo {
-	width: 4em;
+    width: 4em;
 }
 
 table.table th.actions {
-	text-align: center;
-	width: 36px;
+    text-align: center;
+    width: 36px;
 }
 
 table.table td.number,
 table.table td.price,
 table.table td.amount {
-	text-align: right;
-	padding-right: 10px;
+    text-align: right;
+    padding-right: 10px;
 }
 
 table.table td.actions {
-	text-align: center;
+    text-align: center;
 }
 
 .table tr.disabled td,
 .table tr.disabled a {
-	background-color: #eee;
-	color: #aaa;
+    background-color: #eee;
+    color: #aaa;
 }
 
 .table tr.unpaid td {
-	color: #D8000C;
-  	background-color: #FFBABA;
+    color: #D8000C;
+    background-color: #FFBABA;
 }
 
 .table tr.test td {
-	color: #888;
-	background-color: #eee;
+    color: #888;
+    background-color: #eee;
 }
 
 .table-hover > tbody > tr:hover > td,
 .table-hover > tbody > tr:hover > th {
-	color: #535353;
-	background-color: #FFF6BF;
+    color: #535353;
+    background-color: #FFF6BF;
 }
 
 table.table td.actions button.dropdown-toggle {
-	border: none;
-	background: transparent;
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
-	box-shadow: none;
+    border: none;
+    background: transparent;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
 }
 
 table.table td.actions .dropdown-menu {
-	margin-top: 0;
+    margin-top: 0;
 }
 
 table.table td.actions .dropdown-menu > li > a {
-	text-align: left;
+    text-align: left;
 }
 
 table.table tr:hover td.actions .dropdown-menu > li > a {
-	background-color: #fff;
+    background-color: #fff;
 }
 
 table.table tr td.actions .dropdown-menu > li > a:hover {
-	color: #fff;
-	background-color: #ddd;
+    color: #fff;
+    background-color: #ddd;
 }
 
 div.dataTables_processing {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	width: 250px;
-	height: 50px;
-	margin-left: -125px;
-	margin-top: -15px;
-	padding: 14px 0 2px 0;
-	border: 1px solid #e2b709;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	text-align: center;
-	color: #999;
-	font-size: 115%;
-	background: #ffe57e;
-	-moz-box-shadow: 0px 5px 90px #888;
-	-webkit-box-shadow: 0px 5px 90px #888;
-	box-shadow: 0px 5px 90px #888;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 250px;
+    height: 50px;
+    margin-left: -125px;
+    margin-top: -15px;
+    padding: 14px 0 2px 0;
+    border: 1px solid #e2b709;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    text-align: center;
+    color: #999;
+    font-size: 115%;
+    background: #ffe57e;
+    -moz-box-shadow: 0px 5px 90px #888;
+    -webkit-box-shadow: 0px 5px 90px #888;
+    box-shadow: 0px 5px 90px #888;
 }
 
 ul.pagination li.previous a:before {
-	font-family: FontAwesome;
-	content: "\f053";
-	margin-right: 10px;
+    font-family: FontAwesome;
+    content: "\f053";
+    margin-right: 10px;
 }
 
 ul.pagination li.next a:after {
-	font-family: FontAwesome;
-	content: "\f054";
-	margin-left: 10px;
+    font-family: FontAwesome;
+    content: "\f054";
+    margin-left: 10px;
 }
 
 tr.filters input.form-control {
-	width: 100%;
+    width: 100%;
 }
 
 .filters input.date {
-	display: none;
+    display: none;
 }
 
 table.table thead tr.filters th {
