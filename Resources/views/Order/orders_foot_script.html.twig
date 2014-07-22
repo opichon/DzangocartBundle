@@ -19,11 +19,6 @@ dzangocart.orders = {
     date_format: "{{ config.date_format }}",
     daterangepicker: {
         format: "{{ config.date_format|upper }}"
-    },
-    typeahead: {
-        remote: {
-            url:  "{{ path('dzangocart_customer_search', { search: '__query__' }) }}"
-        }
     }
 };
 </script>

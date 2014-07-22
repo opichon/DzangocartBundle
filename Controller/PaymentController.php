@@ -26,11 +26,11 @@ class PaymentController extends Controller
     {
         $dzangocart_config = $this->container->getParameter('dzangocart.config');
 
-        $services = $this->get('dzangocart')
-                ->getService();
+//        $services = $this->get('dzangocart')
+//                ->getService();
 
         $filters = $this->createForm(
-            new PaymentsFiltersType($services),
+            new PaymentsFiltersType(),
             array(
                 'date_from' => (new DateTime())->modify('first day of this month'),
                 'date_to' => new DateTime()

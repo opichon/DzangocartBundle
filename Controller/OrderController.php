@@ -151,20 +151,20 @@ class OrderController
         );
     }
 
-    /**
-     * @Template("DzangocartBundle:Order:search.json.twig")
-     */
-    public function searchAction(Request $request, $search = '%QUERY')
-    {
-        $params = array(
-            'search' => $search
-        );
-
-        $customers = $this->dzangocart
-            ->getCustomer($params);
-
-        return array(
-            'customers' => $customers
-        );
-    }
+//    /**
+//     * @Template("DzangocartBundle:Order:search.json.twig")
+//     */
+//    public function searchAction(Request $request, $search = '%QUERY')
+//    {
+//        $params = array(
+//            'search' => $search
+//        );
+//
+//        $customers = $this->dzangocart
+//            ->getCustomer($params);
+//
+//        return array(
+//            'customers' => $customers
+//        );
+//    }
 }

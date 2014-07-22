@@ -8,13 +8,6 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class PaymentsFiltersType extends AbstractType
 {
-    protected $services;
-
-    public function __construct($services)
-    {
-        $this->services = $services;
-    }
-
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('order_id', 'text', array(
@@ -22,7 +15,7 @@ class PaymentsFiltersType extends AbstractType
         ));
 
         $builder->add('service_id', 'choice', array(
-            'choices'   => $this->getGatewayServices(),
+            'choices'   => array(),
             'required' => false
         ));
 
@@ -82,15 +75,15 @@ class PaymentsFiltersType extends AbstractType
         ));
     }
 
-    protected function getGatewayServices()
-    {
-        $services = array();
-
-        // FIXME [JP 2014-07-21] Assumes $this->services is not empty.
-        foreach ($this->services as $service) {
-            $services[$service['id']] = $service['value'];
-        }
-
-        return $services;
-    }
+//    protected function getGatewayServices()
+//    {
+//        $services = array();
+//
+//        // FIXME [JP 2014-07-21] Assumes $this->services is not empty.
+//        foreach ($this->services as $service) {
+//            $services[$service['id']] = $service['value'];
+//        }
+//
+//        return $services;
+//    }
 }
