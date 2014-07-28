@@ -14,7 +14,7 @@
                 "name":          "{{ customer['name'] }}",
                 "gender":        "{% if(customer['gender'] == '1') %} m {% elseif(customer['gender'] == '0') %} f {% else %} {% endif %}",
                 "email":         "{{ customer['email'] }}",
-                "ytdsales":      "{{ customer['ytdsales'] }}",
+                "ytdsales":      "{{ customer['ytdsales']|currency(customer['currency'], app.request.locale) }}",
                 "actions":       "{%- include 'DzangocartBundle:Customer:actions.html.twig' -%}"
             }{% if not loop.last %},{% endif %}
         {% endfor %}

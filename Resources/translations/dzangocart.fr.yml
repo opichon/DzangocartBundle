@@ -31,8 +31,8 @@ customers:
     email:                  Email
     filters:
         gender:
-            male:           M
-            female:         F
+            male:           Male
+            female:         Female
     gender:                 Gender
     name:                   Name
     page_title:             Customers
