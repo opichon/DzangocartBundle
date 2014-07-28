@@ -15,3 +15,6 @@ dzangocart_admin_direct_payment:
 
 dzangocart_admin_sips:
     resource: "@DzangocartBundle/Resources/config/routing/sips.yml"
+
+dzangocart_admin_customers:
+    resource: "@DzangocartBundle/Resources/config/routing/customer.yml"

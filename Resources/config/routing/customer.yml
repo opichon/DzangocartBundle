@@ -1,0 +1,4 @@
+_dzangocart_admin_sale:
+    resource: "@DzangocartBundle/Controller/CustomerController.php"
+    type: annotation
+    prefix: /customer

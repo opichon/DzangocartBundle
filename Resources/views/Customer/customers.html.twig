@@ -1,0 +1,24 @@
+{% trans_default_domain "dzangocart" %}
+
+<table class="table table-condensed" id="customers">
+    <thead>
+        <tr>
+            <th class="check"><input type="checkbox" id="checkall" /></th>
+            <th class="name">{% trans %}customers.name{% endtrans %}</th>
+            <th class="gender">{% trans %}customers.gender{% endtrans %}</th>
+            <th class="email">{% trans %}customers.email{% endtrans %}</th>
+            <th class="amount">{% trans %} customers.ytdsale {% endtrans %}</th>
+            <th class="actions"><i class="fa fa-cog"></i></th>
+        </tr>
+        <tr class="filters">
+            <th></th>
+            <th>{{ form_widget(filters.customer) }}</th>
+            <th>{{ form_widget(filters.gender) }}</th>
+            <th>{{ form_widget(filters.email) }}</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>

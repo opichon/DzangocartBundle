@@ -1,0 +1,23 @@
+{% trans_default_domain "dzangocart" %}
+
+{% spaceless %}
+{
+    "draw": "{{ app.request.query.all.draw }}",
+    "recordsTotal": {{ data['meta']['total_count'] }},
+    "recordsFiltered": {{ data['meta']['filtered_count'] }},
+    "data" : [
+        {% for customer in data['data'] %}
+            {
+                "DT_RowId":      "{{ 'c_' }}",
+                "DT_RowClass":   "{{ 'customer' }}",
+                "check":         "",
+                "name":          "",
+                "gender":        "",
+                "email":         "{{ customer['email'] }}",
+                "ytdsales":      "{{ customer['ytd'] }}",
+                "actions":       "{%- include 'DzangocartBundle:Customer:actions.html.twig' -%}"
+            }{% if not loop.last %},{% endif %}
+        {% endfor %}
+    ]
+}
+{% endspaceless %}

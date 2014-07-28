@@ -1,0 +1,24 @@
+{% extends "DzangocartBundle::admin.html.twig" %}
+
+{% trans_default_domain "dzangocart" %}
+
+{% block dzangocart_page_class %}dzangocart customers{% endblock %}
+
+{% block dzangocart_page_title %}{% trans %}customers.page_title{% endtrans %}{% endblock %}
+
+{% block dzangocart_content %}
+	{% block filters %}
+		{% include "DzangocartBundle:Customer:filters.html.twig" %}
+	{% endblock %}
+{% include "DzangocartBundle:Customer:customers.html.twig" %}
+{% endblock %}
+
+{% block dzangocart_head_style %}
+    {{ parent() }}
+    {% include "DzangocartBundle:Customer:customers_head_style.html.twig" %}
+{% endblock %}
+
+{% block dzangocart_foot_script %}
+    {{ parent() }}
+    {% include "DzangocartBundle:Customer:customers_foot_script.html.twig" %}
+{% endblock %}

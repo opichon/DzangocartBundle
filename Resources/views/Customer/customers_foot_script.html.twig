@@ -1,0 +1,17 @@
+{% javascripts
+    'bundles/dzangocart/vendor/datatables/media/js/jquery.dataTables.min.js'
+    'bundles/dzangocart/vendor/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js'
+    'bundles/dzangocart/js/customer/customers.js'
+    'bundles/dzangocart/js/ajax.js'
+%}
+    <script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+<script>
+dzangocart.customers = {
+    datatables: {
+        ajax: {
+            url: "{{ path('dzangocart_customers_list') }}"
+        }
+    }
+};
+</script>
