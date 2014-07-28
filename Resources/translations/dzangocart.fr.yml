@@ -28,6 +28,8 @@ category:
         page_title:         Category: %name%
 
 customers:
+    actions:
+        show:               Show Customer
     email:                  Email
     filters:
         gender:
