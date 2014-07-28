@@ -27,6 +27,17 @@ category:
         back:               Return to catalogue page
         page_title:         Category: %name%
 
+customers:
+    email:                  Email
+    filters:
+        gender:
+            male:           M
+            female:         F
+    gender:                 Gender
+    name:                   Name
+    page_title:             Customers
+    ytdsale:                YTD Sales
+
 order:
     amount_excl:        Total HT
     amount_incl:        Total TTC

@@ -11,10 +11,10 @@
                 "DT_RowId":      "{{ 'c_' }}",
                 "DT_RowClass":   "{{ 'customer' }}",
                 "check":         "",
-                "name":          "",
-                "gender":        "",
+                "name":          "{{ customer['name'] }}",
+                "gender":        "{% if(customer['gender'] == '1') %} m {% elseif(customer['gender'] == '0') %} f {% else %} {% endif %}",
                 "email":         "{{ customer['email'] }}",
-                "ytdsales":      "{{ customer['ytd'] }}",
+                "ytdsales":      "{{ customer['ytdsales'] }}",
                 "actions":       "{%- include 'DzangocartBundle:Customer:actions.html.twig' -%}"
             }{% if not loop.last %},{% endif %}
         {% endfor %}
