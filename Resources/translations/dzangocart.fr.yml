@@ -40,7 +40,7 @@ customers:
     page_title:             Customers
     show:
         back:               Return to customers page
-        page_title:         Custosmer: %name%
+        page_title:         Customer: %name%
     ytdsale:                YTD Sales
 
 order:
