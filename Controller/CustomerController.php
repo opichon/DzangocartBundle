@@ -69,8 +69,11 @@ class CustomerController extends Controller
                 ->getCustomer($params);
 
         } catch (Exception $ex) {
-            //FIXME: [JP 7-29-2014], need to display proper error message.
-            die();
+            throw new Exception(
+                $ex->getResponse()->getReasonPhrase(),
+                $ex->getCode(),
+                $ex->getPrevious()
+            );
         }
 
         return array(
