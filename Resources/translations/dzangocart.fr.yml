@@ -38,6 +38,9 @@ customers:
     gender:                 Gender
     name:                   Name
     page_title:             Customers
+    show:
+        back:               Return to customers page
+        page_title:         Custosmer: %name%
     ytdsale:                YTD Sales
 
 order:

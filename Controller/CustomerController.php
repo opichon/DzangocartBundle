@@ -2,6 +2,8 @@
 
 namespace Dzangocart\Bundle\DzangocartBundle\Controller;
 
+use Exception;
+
 use Dzangocart\Bundle\DzangocartBundle\Form\Type\CustomersFilterType;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -50,6 +52,30 @@ class CustomerController extends Controller
             ->getCustomers($params);
 
         return $data;
+    }
+
+    /**
+     * @Route("/{id}", name="dzangocart_customer", requirements={"id": "\d+"})
+     * @Template()
+     */
+    public function showAction(Request $request, $id)
+    {
+        $params = array(
+            'id' => $id
+        );
+
+        try {
+            $customer = $this->get('dzangocart')
+                ->getCustomer($params);
+
+        } catch (Exception $ex) {
+            //FIXME: [JP 7-29-2014], need to display proper error message.
+            die();
+        }
+
+        return array(
+            'customer' => $customer['data']
+        );
     }
 
     protected function getFilters(Request $request)

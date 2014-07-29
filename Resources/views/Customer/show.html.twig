@@ -1,0 +1,14 @@
+{% extends "DzangocartBundle::admin.html.twig" %}
+
+{% trans_default_domain "dzangocart" %}
+
+
+{% block dzangocart_page_title %}{% spaceless %}
+{% trans with { '%name%': customer['name'] } %}customers.show.page_title{% endtrans %}
+{% endspaceless %}{% endblock %}
+
+{% block dzangocart_page_nav %}
+<a href="{{ path('dzangocart_customers') }}"><i class="fa fa-long-arrow-left"></i> {% trans %}customers.show.back{% endtrans %}</a>
+{% endblock %}
+
+{% block dzangocart_content %}{% endblock %}
