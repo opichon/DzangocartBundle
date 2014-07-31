@@ -1,0 +1,9 @@
+daterangepicker:
+    range:
+        all:            All
+        mtd:            This month
+        last_month:     Last month
+        qtd:            This quarter
+        last_quarter:   Last quarter
+        ytd:            This year
+        last_year:      Last year

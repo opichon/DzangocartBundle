@@ -83,3 +83,7 @@ label[for="filters_date_to"] {
 .twitter-typeahead {
 		display: block !important;
 }
+
+.daterangepicker .ranges li:last-child {
+    display: none;
+}

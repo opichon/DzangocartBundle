@@ -16,7 +16,8 @@
             }
         },
         daterangepicker: {
-            format: "{{ config.date_format|upper }}"
+            format: "{{ config.date_format|upper }}",
+            ranges: {% include "DzangocartBundle::date_ranges.html.twig" %}
         }
     };
 </script>

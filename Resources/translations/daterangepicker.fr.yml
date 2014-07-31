@@ -1,0 +1,9 @@
+daterangepicker:
+    range:
+        all:            Tout
+        mtd:            Mois en cours
+        last_month:     Mois dernier
+        qtd:            Trimestre en cours
+        last_quarter:   Trimestre dernier
+        ytd:            Année en cours
+        last_year:      Année dernière
