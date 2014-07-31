@@ -26,9 +26,6 @@ class PaymentController extends Controller
     {
         $dzangocart_config = $this->container->getParameter('dzangocart.config');
 
-//        $services = $this->get('dzangocart')
-//                ->getService();
-
         $filters = $this->createForm(
             new PaymentsFiltersType(),
             array(
@@ -127,7 +124,7 @@ class PaymentController extends Controller
             'date_from' => 'date_from',
             'date_to' => 'date_to',
             'test' => 'test',
-            'service_id' => 'service_id',
+            'gateway_id' => 'gateway_id',
             'order_id' => 'order_id',
             'status' => 'status'
         );

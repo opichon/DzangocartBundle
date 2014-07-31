@@ -5,6 +5,14 @@
     "draw": "{{ app.request.query.all.draw }}",
     "recordsTotal": {{ data['meta']['count_total'] }},
     "recordsFiltered": {{ data['meta']['count_filtered'] }},
+    "gateways": [
+        {% for gateway in data['meta']['gateways'] %}
+            {
+                "id":         "{{ gateway['id'] }}",
+                "value":      "{{ gateway['name'] }}"
+            }{% if not loop.last %},{% endif %}
+        {% endfor %}
+    ],
     "data" : [
         {% for payment in data['data'] %}
             {

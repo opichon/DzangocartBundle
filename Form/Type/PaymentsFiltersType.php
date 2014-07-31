@@ -14,7 +14,7 @@ class PaymentsFiltersType extends AbstractType
             'required' => false
         ));
 
-        $builder->add('service_id', 'choice', array(
+        $builder->add('gateway_id', 'choice', array(
             'choices'   => array(),
             'required' => false
         ));
@@ -74,16 +74,4 @@ class PaymentsFiltersType extends AbstractType
             'translation_domain' => 'dzangocart'
         ));
     }
-
-//    protected function getGatewayServices()
-//    {
-//        $services = array();
-//
-//        // FIXME [JP 2014-07-21] Assumes $this->services is not empty.
-//        foreach ($this->services as $service) {
-//            $services[$service['id']] = $service['value'];
-//        }
-//
-//        return $services;
-//    }
 }

@@ -23,7 +23,8 @@
                     });
 
                     table = $( "table.table", this ).dataTable( $.extend( true, {}, settings.datatables, {
-                        drawCallback: function() {
+                        drawCallback: function( settings ) {
+                            helpers.initGatewayChoice( settings.json.gateways );
                             $( this ).show();
                         },
                         ajax: {
@@ -79,6 +80,21 @@
                         table.api().draw();
                     });
                 });
+            }
+        };
+
+        var helpers = {
+            initGatewayChoice: function( data ) {
+                var gatewayChoiceWidget = $( '#filters_gateway_id' );
+
+                var choices = "";
+                if ( gatewayChoiceWidget.find( 'option' ).length <= 1 ) {
+
+                    for ( var i = 0; i < data.length; i++ ) {
+                        choices = choices + '<option value="' + data[i]['id'] + '">' +  data[i]['value'] +'</option>';
+                    }
+                    gatewayChoiceWidget.append( choices );
+                }
             }
         };
 
