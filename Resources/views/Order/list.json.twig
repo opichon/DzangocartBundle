@@ -20,7 +20,7 @@
                 "amount_incl": "{{ order.getAmountIncl|currency(order.getCurrency, app.request.locale) }}",
                 "amount_paid": "{{ order.getAmountPaid|currency(order.getCurrency, app.request.locale) }}",
                 "affiliate":   "{{ order.affiliate }}",
-                "test":        "{% if order.isTest %}<i class="fa fa-asterisk"></i>{% endif %}",
+                "test":        "{% if order.isTest %}<i class='fa fa-asterisk'></i>{% endif %}",
                 "actions":     "{%- include 'DzangocartBundle:Order:actions.html.twig' -%}"
             }{% if not loop.last %},{% endif %}
         {% endfor %}
