@@ -23,6 +23,7 @@ services:
             - @form.factory
             - @router
             - @session
+            - @translator
 
     dzangocart.controller.order:
         class:      "%dzangocart.controller.order.class%"

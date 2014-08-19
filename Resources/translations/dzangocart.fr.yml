@@ -27,6 +27,10 @@ category:
         back:               Return to catalogue page
         page_title:         Category: %name%
 
+    error:
+        not_found:          Category Not Found
+
+
 customers:
     actions:
         show:               Show Customer

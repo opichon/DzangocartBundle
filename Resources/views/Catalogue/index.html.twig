@@ -7,6 +7,11 @@
 {% block body_class %}catalogue{% endblock %}
 
 {% block dzangocart_content %}
+	{% for flashMessage in app.session.flashbag.get('Category.error') %}
+		<div class="alert alert-danger">
+			{{ flashMessage }}
+		</div>
+   {% endfor %}
 	<table class="table treetable">
 		<thead>
 			<tr>
@@ -15,7 +20,7 @@
 				<th class="code">{% trans %}catalogue.suffix{% endtrans %}</th>
 				<th class="price">{% trans %}catalogue.price{% endtrans %}</th>
 				<th class="price">{% trans %}catalogue.tax_included{% endtrans %}</th>
-                <th class="actions"><i class="fa fa-cog"></i></th>
+				<th class="actions"><i class="fa fa-cog"></i></th>
 			</tr>
 		</thead>
 		<tbody>
