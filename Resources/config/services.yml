@@ -22,7 +22,6 @@ services:
             - @dzangocart
             - @form.factory
             - @router
-            - @session
             - @translator
 
     dzangocart.controller.order:

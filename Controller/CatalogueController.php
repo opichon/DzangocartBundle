@@ -11,7 +11,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Router;
 use Symfony\Component\Translation\TranslatorInterface;
 
@@ -20,15 +19,13 @@ class CatalogueController
     protected $dzangocart;
     protected $form_factory;
     protected $router;
-    protected $session;
     protected $translator;
 
-    public function __construct($dzangocart, FormFactory $form_factory, Router $router, Session $session, TranslatorInterface $translator)
+    public function __construct($dzangocart, FormFactory $form_factory, Router $router, TranslatorInterface $translator)
     {
         $this->dzangocart = $dzangocart;
         $this->form_factory = $form_factory;
         $this->router = $router;
-        $this->session = $session;
         $this->translator = $translator;
     }
 
@@ -58,7 +55,7 @@ class CatalogueController
             $category = $this->dzangocart
                 ->getCategory($params);
         } catch (Exception $e){
-            $this->session->getFlashBag()->add(
+            $request->getSession()->getFlashBag()->add(
                 'Category.error',
                 $this->translator->trans('category.error.not_found', array(), 'dzangocart', $request->getLocale())
             );
