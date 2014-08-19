@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Router;
 
 class CatalogueController
@@ -15,12 +16,14 @@ class CatalogueController
     protected $dzangocart;
     protected $form_factory;
     protected $router;
+    protected $session;
 
-    public function __construct($dzangocart, FormFactory $form_factory, Router $router)
+    public function __construct($dzangocart, FormFactory $form_factory, Router $router, Session $session)
     {
         $this->dzangocart = $dzangocart;
         $this->form_factory = $form_factory;
         $this->router = $router;
+        $this->session = $session;
     }
 
     /**
