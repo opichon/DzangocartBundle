@@ -122,7 +122,7 @@ class CatalogueController
     protected function getDefaultOptions(array $options = null)
     {
         return array(
-            'csrf_protection' => false
+            'csrf_protection' => true
         );
     }
 }
