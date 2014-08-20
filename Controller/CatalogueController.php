@@ -105,9 +105,7 @@ class CatalogueController
                 array(
                     'action' => $this->router->generate(
                         'dzangocart_category_update',
-                        array(
-                            'id' => $id
-                        )
+                        $params
                     )
                 ), $this->getDefaultOptions()
             )
