@@ -101,7 +101,16 @@ class CatalogueController
         $form = $this->form_factory->create(
             new CategoryFormType(),
             $category,
-            $this->getDefaultOptions()
+            array_merge(
+                array(
+                    'action' => $this->router->generate(
+                        'dzangocart_category_update',
+                        array(
+                            'id' => $id
+                        )
+                    )
+                ), $this->getDefaultOptions()
+            )
         );
 
         $form->handleRequest($request);
