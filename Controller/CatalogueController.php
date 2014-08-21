@@ -66,15 +66,11 @@ class CatalogueController
         $form = $this->form_factory->create(
             new CategoryFormType(),
             $category,
-            array_merge(
-                array(
-                    'action' => $this->router->generate(
-                        'dzangocart_category_update',
-                        array(
-                            'id' => $id
-                        )
-                    )
-                ), $this->getDefaultOptions()
+            array(
+                'action' => $this->router->generate(
+                    'dzangocart_category_update',
+                    $params
+                )
             )
 
         );
@@ -101,13 +97,11 @@ class CatalogueController
         $form = $this->form_factory->create(
             new CategoryFormType(),
             $category,
-            array_merge(
-                array(
-                    'action' => $this->router->generate(
-                        'dzangocart_category_update',
-                        $params
-                    )
-                ), $this->getDefaultOptions()
+            array(
+                'action' => $this->router->generate(
+                    'dzangocart_category_update',
+                    $params
+                )
             )
         );
 
@@ -126,10 +120,4 @@ class CatalogueController
         );
     }
 
-    protected function getDefaultOptions(array $options = null)
-    {
-        return array(
-            'csrf_protection' => true
-        );
-    }
 }
