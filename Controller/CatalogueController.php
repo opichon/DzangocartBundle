@@ -112,6 +112,10 @@ class CatalogueController
                 ->updateCategory($category->getData());
 
             // TODO Display flash success message.
+            $request->getSession()->getFlashBag()->add(
+                'Category.update.success',
+                $this->translator->trans('category.update.success', array(), 'dzangocart', $request->getLocale())
+            );
         }
 
         return array(
