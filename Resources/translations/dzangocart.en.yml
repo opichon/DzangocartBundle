@@ -29,6 +29,10 @@ category:
 
     error:
         not_found:          Category Not Found
+        update:             Category update failed
+
+    update:
+        success:            Category successfully updated
 
 customers:
     actions:
