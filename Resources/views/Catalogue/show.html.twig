@@ -13,10 +13,10 @@
 {% endblock %}
 
 {% block dzangocart_content %}
-    {% for flashMessage in app.session.flashbag.get('Category.update.success') %}
+	{% for flashMessage in app.session.flashbag.get('Category.update.success') %}
 		<div class="alert alert-success">
 			{{ flashMessage }}
 		</div>
-    {% endfor %}
-    {{ form(form) }}
+	{% endfor %}
+	{{ form(form) }}
 {% endblock %}
