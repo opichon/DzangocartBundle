@@ -11,6 +11,6 @@ dzangocart_category:
 dzangocart_category_update:
     pattern: /catalogue/category/{id}/update
     defaults: { _controller: dzangocart.controller.catalogue:updateAction }
-    methods:  [POST]
+    methods:  [GET, POST]
     requirements:
         id: \d+
