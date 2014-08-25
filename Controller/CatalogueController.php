@@ -107,21 +107,29 @@ class CatalogueController
 
         $form->handleRequest($request);
 
-        if ($form->isValid()) {
-            $category = $this->dzangocart
-                ->updateCategory($category->getData());
+        try{
+            if ($form->isValid()) {
+                $category = $this->dzangocart
+                    ->updateCategory($category->getData());
 
-            // TODO Display flash success message.
-            $request->getSession()->getFlashBag()->add(
-                'Category.update.success',
-                $this->translator->trans('category.update.success', array(), 'dzangocart', $request->getLocale())
+                // TODO Display flash success message.
+                $request->getSession()->getFlashBag()->add(
+                    'Category.update.success',
+                    $this->translator->trans('category.update.success', array(), 'dzangocart', $request->getLocale())
+                );
+            }
+
+            return array(
+                'form' => $form->createView(),
+                'category' => $category
             );
+        } catch(Exception $e){
+            $request->getSession()->getFlashBag()->add(
+                    'Category.error.update',
+                    $this->translator->trans('category.error.update', array(), 'dzangocart', $request->getLocale())
+                );
+            return new RedirectResponse($this->router->generate('dzangocart_category', array( 'id' => $id)));
         }
-
-        return array(
-            'form' => $form->createView(),
-            'category' => $category
-        );
     }
 
 }
