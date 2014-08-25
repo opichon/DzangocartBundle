@@ -128,7 +128,7 @@ class CatalogueController
                     'Category.error.update',
                     $this->translator->trans('category.error.update', array(), 'dzangocart', $request->getLocale())
                 );
-            return new RedirectResponse($this->router->generate('dzangocart_category', array( 'id' => $id)));
+            return new RedirectResponse($this->router->generate('dzangocart_category', array('id' => $id)));
         }
     }
 
