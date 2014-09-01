@@ -100,15 +100,15 @@ class CatalogueController
             array(
                 'action' => $this->router->generate(
                     'dzangocart_category_update',
-                    $params
+                    array('id' => $id)
                 )
             )
         );
 
         $form->handleRequest($request);
 
-        try{
-            if ($form->isValid()) {
+        if ($form->isValid()) {
+            try {
                 $category = $this->dzangocart
                     ->updateCategory($category->getData());
 
@@ -117,19 +117,21 @@ class CatalogueController
                     'Category.update.success',
                     $this->translator->trans('category.update.success', array(), 'dzangocart', $request->getLocale())
                 );
-            }
 
-            return array(
-                'form' => $form->createView(),
-                'category' => $category
-            );
-        } catch(Exception $e){
-            $request->getSession()->getFlashBag()->add(
-                    'Category.error.update',
-                    $this->translator->trans('category.error.update', array(), 'dzangocart', $request->getLocale())
-                );
-            return new RedirectResponse($this->router->generate('dzangocart_category', array('id' => $id)));
+                return new RedirectResponse($this->router->generate('dzangocart_category', array('id' => $id)));
+
+            } catch(Exception $e){
+                $request->getSession()->getFlashBag()->add(
+                        'Category.error.update',
+                        $this->translator->trans('category.error.update', array(), 'dzangocart', $request->getLocale())
+                    );
+            }
         }
+
+        return array(
+            'form' => $form->createView(),
+            'category' => $category
+        );
     }
 
 }
