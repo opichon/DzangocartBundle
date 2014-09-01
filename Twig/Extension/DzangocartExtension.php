@@ -1,4 +1,5 @@
 <?php
+
 namespace Dzangocart\Bundle\DzangocartBundle\Twig\Extension;
 
 use Twig_Extension;

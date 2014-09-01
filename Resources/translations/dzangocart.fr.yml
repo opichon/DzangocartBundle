@@ -34,7 +34,6 @@ category:
     update:
         success:            Category successfully updated
 
-
 customers:
     actions:
         show:               Show Customer
@@ -50,6 +49,10 @@ customers:
         back:               Return to customers page
         page_title:         Customer: %name%
     ytdsale:                YTD Sales
+
+links:
+    add_to_cart:            Ajouter au panier
+    buy_now:                Acheter maintenant
 
 order:
     amount_excl:        Total HT
