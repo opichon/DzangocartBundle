@@ -110,7 +110,7 @@ class CatalogueController
         if ($form->isValid()) {
             try {
                 $category = $this->dzangocart
-                    ->updateCategory($category->getData());
+                    ->updateCategory($this->processFormData($category->getData()));
 
                 // TODO Display flash success message.
                 $request->getSession()->getFlashBag()->add(
@@ -131,6 +131,48 @@ class CatalogueController
         return array(
             'form' => $form->createView(),
             'category' => $category
+        );
+    }
+
+    protected function processFormData($data = array())
+    {
+        $check_box_datas = array();
+        $others = array();
+
+        $keys = $this->getCheckBoxKeys();
+
+        foreach ($data as $name => $value) {
+            if (array_key_exists($name, $keys)) {
+                if ($value) {
+                    $check_box_datas[$name] = $value;
+                }
+            } else {
+                $others[$name] = $value;
+            }
+        }
+
+        return array_merge($check_box_datas, $others);
+    }
+
+    protected function getCheckBoxKeys()
+    {
+        return array(
+            'taxIncluded' => 'taxIncluded',
+            'export' => 'export',
+            'download' => 'download',
+            'shipping' => 'shipping',
+            'pack' => 'pack'
+        );
+    }
+
+    protected function getdefaultValues()
+    {
+        return array(
+            'taxIncluded' => false,
+            'export' => false,
+            'pack' => false,
+            'download' => false,
+            'shipping' => false
         );
     }
 
