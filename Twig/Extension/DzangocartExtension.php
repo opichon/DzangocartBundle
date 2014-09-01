@@ -30,6 +30,7 @@ class DzangocartExtension extends Twig_Extension
             'dzangocart_link' => new Twig_Function_Method($this, 'dzangocartLink', array('is_safe' => array('html'))),
             'dzangocart_url' => new Twig_Function_Method($this, 'dzangocartUrl', array('is_safe' => array('html'))),
             'dzangocart_js' => new Twig_Function_Method($this, 'dzangocartJs', array('is_safe' => array('html'))),
+            'dzangocart_js_url' => new Twig_Function_Method($this, 'dzangocartJsUrl', array('is_safe' => array('html'))),
         );
     }
 
@@ -108,8 +109,13 @@ class DzangocartExtension extends Twig_Extension
 
     public function dzangocartJs()
     {
+        return '<script src="' . $this->dzangocartJsUrl() . '" type="text/javascript"></script>';
+    }
+
+    public function dzangocartJsUrl()
+    {
         return sprintf(
-            '<script src="%s/cart/js/" type="text/javascript"></script>',
+            '%s/cart/js',
             $this->dzangocart->getConfig('cart_url')
         );
     }

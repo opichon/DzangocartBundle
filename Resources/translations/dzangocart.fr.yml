@@ -53,6 +53,7 @@ customers:
 links:
     add_to_cart:            Ajouter au panier
     buy_now:                Acheter maintenant
+    cart_js:                Cart js
 
 order:
     amount_excl:        Total HT
