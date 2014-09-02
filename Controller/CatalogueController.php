@@ -134,6 +134,9 @@ class CatalogueController
         );
     }
 
+    /*
+     * Takes submitted form data, accepts only checked value from checkbox.
+     */
     protected function processFormData($data = array())
     {
         $check_box_datas = array();
@@ -162,17 +165,6 @@ class CatalogueController
             'download' => 'download',
             'shipping' => 'shipping',
             'pack' => 'pack'
-        );
-    }
-
-    protected function getdefaultValues()
-    {
-        return array(
-            'taxIncluded' => false,
-            'export' => false,
-            'pack' => false,
-            'download' => false,
-            'shipping' => false
         );
     }
 
