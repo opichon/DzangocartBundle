@@ -135,8 +135,7 @@ class CatalogueController
     }
 
     /*
-     * Here the this function checks if array contains any empty value for the existing keys.
-     * If array has any key with empty value then such keys are skipped. 
+     * Takes submitted form data, accepts only checked value from checkbox.
      */
     protected function processFormData($data = array())
     {
