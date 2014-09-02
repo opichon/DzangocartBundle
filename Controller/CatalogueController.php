@@ -168,15 +168,4 @@ class CatalogueController
         );
     }
 
-//    protected function getdefaultValues()
-//    {
-//        return array(
-//            'taxIncluded' => false,
-//            'export' => false,
-//            'pack' => false,
-//            'download' => false,
-//            'shipping' => false
-//        );
-//    }
-
 }
