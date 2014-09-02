@@ -134,6 +134,10 @@ class CatalogueController
         );
     }
 
+    /*
+     * Here the this function checks if array contains any empty value for the existing keys.
+     * If array has any key with empty value then such keys are skipped. 
+     */
     protected function processFormData($data = array())
     {
         $check_box_datas = array();
@@ -165,15 +169,15 @@ class CatalogueController
         );
     }
 
-    protected function getdefaultValues()
-    {
-        return array(
-            'taxIncluded' => false,
-            'export' => false,
-            'pack' => false,
-            'download' => false,
-            'shipping' => false
-        );
-    }
+//    protected function getdefaultValues()
+//    {
+//        return array(
+//            'taxIncluded' => false,
+//            'export' => false,
+//            'pack' => false,
+//            'download' => false,
+//            'shipping' => false
+//        );
+//    }
 
 }
