@@ -4,12 +4,18 @@
 
 {% block head_style %}
     {{ parent() }}
+    {% stylesheets filter="cssrewrite" output="css/*.css"
+        'bundles/dzangocart/css/purchases.css'
+    %}
+    <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+    {% endstylesheets %}
+
 {% endblock head_style %}
 
 {% block page_title %}Purchases{% endblock %}
 
 {% block content %}
-    <table class="table table-hover">
+    <table class="table table-hover purchases">
         <thead>
             <tr>
                 <th class="datetime">{% trans %}purchases.date{% endtrans %}</th>
@@ -30,7 +36,7 @@
         <tbody>
             {% for purchase in purchases %}
             <tr>
-                <td>{{ purchase.date }}</td>
+                <td>{{ purchase.date|localizeddate('medium', 'short', app.request.locale, null, 'dd.MM.yyyy HH:mm') }}</td>
                 <td>{{ purchase.order_id }}</td>
                 <td>{{ purchase.customer.name }}</td>
                 <td>{{ purchase.name }}</td>
