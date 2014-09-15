@@ -20,13 +20,11 @@ class UserController extends Controller
             'offset' => $request->query->get('start')
         );
 
-        $data = $this->get('dzangocart')
+        $purchases = $this->get('dzangocart')
             ->getSales($params);
 
-        $data['datetime_format'] = $dzangocart_config['datetime_format'];
-
         return array(
-            'data' => $data['data']
+            'purchases' => $purchases['data']
         );
     }
 }
