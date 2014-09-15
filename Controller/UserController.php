@@ -15,7 +15,7 @@ class UserController extends Controller
     {
         $dzangocart_config = $this->container->getParameter('dzangocart.config');
 
-        $customer = $this->getUser();
+        $customer = $this->getUser()->getId();
 
         $params = array(
             'limit' => $request->query->get('length'),
