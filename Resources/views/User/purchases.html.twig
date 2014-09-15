@@ -4,12 +4,7 @@
 
 {% block head_style %}
     {{ parent() }}
-    {% stylesheets filter="cssrewrite" output="css/*.css"
-        'bundles/dzangocart/css/purchases.css'
-    %}
-    <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
-    {% endstylesheets %}
-
+    {% include "DzangocartBundle:User:purchases_head_style.html.twig" %}
 {% endblock head_style %}
 
 {% block page_title %}Purchases{% endblock %}
@@ -47,7 +42,7 @@
                     <td>{{ purchase.paid }}</td>
                     <td>{{ purchase.affiliate_id }}</td>
                     <td>{{ purchase.test }}</td>
-                    <td>{{ purchase.order_id }}</td>
+                    <td>{%- include 'DzangocartBundle:User:actions.html.twig' -%}</td>
                 </tr>
                 {% endfor %}
             {% else %}
