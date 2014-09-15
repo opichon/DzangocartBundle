@@ -34,23 +34,29 @@
             </tr>
         </thead>
         <tbody>
-            {% for purchase in purchases %}
-            <tr>
-                <td>{{ purchase.date|localizeddate('medium', 'short', app.request.locale, null, 'dd.MM.yyyy HH:mm') }}</td>
-                <td>{{ purchase.order_id }}</td>
-                <td>{{ purchase.customer.name }}</td>
-                <td>{{ purchase.name }}</td>
-                <td>{{ purchase.quantity }}</td>
-                <td>{{ purchase.currency }}</td>
-                <td>{{ purchase.amount_excl }}</td>
-                <td>{{ purchase.amount_tax }}</td>
-                <td>{{ purchase.amount_incl }}</td>
-                <td>{{ purchase.paid }}</td>
-                <td>{{ purchase.affiliate_id }}</td>
-                <td>{{ purchase.test }}</td>
-                <td>{{ purchase.order_id }}</td>
-            </tr>
-            {% endfor %}
+            {% if purchases is not empty %}
+                {% for purchase in purchases %}
+                <tr>
+                    <td>{{ purchase.date|localizeddate('medium', 'short', app.request.locale, null, 'dd.MM.yyyy HH:mm') }}</td>
+                    <td>{{ purchase.order_id }}</td>
+                    <td>{{ purchase.customer.name }}</td>
+                    <td>{{ purchase.name }}</td>
+                    <td>{{ purchase.quantity }}</td>
+                    <td>{{ purchase.currency }}</td>
+                    <td>{{ purchase.amount_excl }}</td>
+                    <td>{{ purchase.amount_tax }}</td>
+                    <td>{{ purchase.amount_incl }}</td>
+                    <td>{{ purchase.paid }}</td>
+                    <td>{{ purchase.affiliate_id }}</td>
+                    <td>{{ purchase.test }}</td>
+                    <td>{{ purchase.order_id }}</td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="13" align="center"><strong>Items not Found</strong></td>
+                </tr>
+            {% endif %}
         </tbody>
     </table>
 {% endblock %}
