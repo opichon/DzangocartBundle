@@ -12,18 +12,18 @@
     <table class="table table-hover" id="sales">
         <thead>
             <tr>
-                <th class="datetime">{% trans %}sales.date{% endtrans %}</th>
-                <th class="order_id">{% trans %}sales.order_id{% endtrans %}</th>
-                <th class="customer">{% trans %}sales.customer{% endtrans %}</th>
-                <th class="item">{% trans %}sales.item{% endtrans %}</th>
-                <th class="quantity">{% trans %}sales.quantity{% endtrans %}</th>
-                <th class="currency">{% trans %}sales.currency{% endtrans %}</th>
-                <th class="net">{% trans %}sales.net{% endtrans %}</th>
-                <th class="tax">{% trans %}sales.tax{% endtrans %}</th>
-                <th class="gross">{% trans %}sales.gross{% endtrans %}</th>
-                <th class="paid">{% trans %}sales.paid{% endtrans %}</th>
-                <th class="affiliate">{% trans %}sales.affiliate{% endtrans %}</th>
-                <th class="demo">{% trans %}sales.test{% endtrans %}</th>
+                <th class="datetime">{% trans %}purchases.date{% endtrans %}</th>
+                <th class="order_id">{% trans %}purchases.order_id{% endtrans %}</th>
+                <th class="customer">{% trans %}purchases.customer{% endtrans %}</th>
+                <th class="item">{% trans %}purchases.item{% endtrans %}</th>
+                <th class="quantity">{% trans %}purchases.quantity{% endtrans %}</th>
+                <th class="currency">{% trans %}purchases.currency{% endtrans %}</th>
+                <th class="net">{% trans %}purchases.net{% endtrans %}</th>
+                <th class="tax">{% trans %}purchases.tax{% endtrans %}</th>
+                <th class="gross">{% trans %}purchases.gross{% endtrans %}</th>
+                <th class="paid">{% trans %}purchases.paid{% endtrans %}</th>
+                <th class="affiliate">{% trans %}purchases.affiliate{% endtrans %}</th>
+                <th class="demo">{% trans %}purchases.test{% endtrans %}</th>
                 <th class="actions"><i class="fa fa-cog"></i></th>
             </tr>
         </thead>
@@ -31,18 +31,18 @@
             {% for datum in data %}
             <tr>
                 <td>{{ datum.date }}</td>
-                <td>{{ datum.date }}</td>
-                <td>{{ datum.date }}</td>
-                <td>{{ datum.date }}</td>
-                <td>{{ datum.date }}</td>
-                <td>{{ datum.date }}</td>
-                <td>{{ datum.date }}</td>
-                <td>{{ datum.date }}</td>
-                <td>{{ datum.date }}</td>
-                <td>{{ datum.date }}</td>
-                <td>{{ datum.date }}</td>
-                <td>{{ datum.date }}</td>
-                <td>{{ datum.date }}</td>
+                <td>{{ datum.order_id }}</td>
+                <td>{{ datum.customer.name }}</td>
+                <td>{{ datum.name }}</td>
+                <td>{{ datum.quantity }}</td>
+                <td>{{ datum.currency }}</td>
+                <td>{{ datum.amount_excl }}</td>
+                <td>{{ datum.amount_tax }}</td>
+                <td>{{ datum.amount_incl }}</td>
+                <td>{{ datum.paid }}</td>
+                <td>{{ datum.affiliate_id }}</td>
+                <td>{{ datum.test }}</td>
+                <td>{{ datum.order_id }}</td>
             </tr>
             {% endfor %}
         </tbody>
