@@ -15,9 +15,12 @@ class UserController extends Controller
     {
         $dzangocart_config = $this->container->getParameter('dzangocart.config');
 
+        $customer = $this->getUser();
+
         $params = array(
             'limit' => $request->query->get('length'),
-            'offset' => $request->query->get('start')
+            'offset' => $request->query->get('start'),
+            'customer' => $customer
         );
 
         $purchases = $this->get('dzangocart')
