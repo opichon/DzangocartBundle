@@ -20,7 +20,6 @@
             <tr>
                 <th class="datetime">{% trans %}purchases.date{% endtrans %}</th>
                 <th class="order_id">{% trans %}purchases.order_id{% endtrans %}</th>
-                <th class="customer">{% trans %}purchases.customer{% endtrans %}</th>
                 <th class="item">{% trans %}purchases.item{% endtrans %}</th>
                 <th class="quantity">{% trans %}purchases.quantity{% endtrans %}</th>
                 <th class="currency">{% trans %}purchases.currency{% endtrans %}</th>
@@ -39,7 +38,6 @@
                 <tr>
                     <td>{{ purchase.date|localizeddate('medium', 'short', app.request.locale, null, 'dd.MM.yyyy HH:mm') }}</td>
                     <td>{{ purchase.order_id }}</td>
-                    <td>{{ purchase.customer.name }}</td>
                     <td>{{ purchase.name }}</td>
                     <td>{{ purchase.quantity }}</td>
                     <td>{{ purchase.currency }}</td>
