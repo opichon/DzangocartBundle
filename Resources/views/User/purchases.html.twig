@@ -1,0 +1,50 @@
+{% extends "::frontend.html.twig" %}
+
+{% trans_default_domain "dzangocart" %}
+
+{% block head_style %}
+    {{ parent() }}
+{% endblock head_style %}
+
+{% block page_title %}Purchases{% endblock %}
+
+{% block content %}
+    <table class="table table-hover" id="sales">
+        <thead>
+            <tr>
+                <th class="datetime">{% trans %}sales.date{% endtrans %}</th>
+                <th class="order_id">{% trans %}sales.order_id{% endtrans %}</th>
+                <th class="customer">{% trans %}sales.customer{% endtrans %}</th>
+                <th class="item">{% trans %}sales.item{% endtrans %}</th>
+                <th class="quantity">{% trans %}sales.quantity{% endtrans %}</th>
+                <th class="currency">{% trans %}sales.currency{% endtrans %}</th>
+                <th class="net">{% trans %}sales.net{% endtrans %}</th>
+                <th class="tax">{% trans %}sales.tax{% endtrans %}</th>
+                <th class="gross">{% trans %}sales.gross{% endtrans %}</th>
+                <th class="paid">{% trans %}sales.paid{% endtrans %}</th>
+                <th class="affiliate">{% trans %}sales.affiliate{% endtrans %}</th>
+                <th class="demo">{% trans %}sales.test{% endtrans %}</th>
+                <th class="actions"><i class="fa fa-cog"></i></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for datum in data %}
+            <tr>
+                <td>{{ datum.date }}</td>
+                <td>{{ datum.date }}</td>
+                <td>{{ datum.date }}</td>
+                <td>{{ datum.date }}</td>
+                <td>{{ datum.date }}</td>
+                <td>{{ datum.date }}</td>
+                <td>{{ datum.date }}</td>
+                <td>{{ datum.date }}</td>
+                <td>{{ datum.date }}</td>
+                <td>{{ datum.date }}</td>
+                <td>{{ datum.date }}</td>
+                <td>{{ datum.date }}</td>
+                <td>{{ datum.date }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
