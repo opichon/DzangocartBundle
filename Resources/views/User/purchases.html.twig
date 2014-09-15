@@ -1,0 +1,56 @@
+{% extends "::frontend.html.twig" %}
+
+{% trans_default_domain "dzangocart" %}
+
+{% block head_style %}
+    {{ parent() }}
+    {% stylesheets filter="cssrewrite" output="css/*.css"
+        'bundles/dzangocart/css/purchases.css'
+    %}
+    <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+    {% endstylesheets %}
+
+{% endblock head_style %}
+
+{% block page_title %}Purchases{% endblock %}
+
+{% block content %}
+    <table class="table table-hover purchases">
+        <thead>
+            <tr>
+                <th class="datetime">{% trans %}purchases.date{% endtrans %}</th>
+                <th class="order_id">{% trans %}purchases.order_id{% endtrans %}</th>
+                <th class="customer">{% trans %}purchases.customer{% endtrans %}</th>
+                <th class="item">{% trans %}purchases.item{% endtrans %}</th>
+                <th class="quantity">{% trans %}purchases.quantity{% endtrans %}</th>
+                <th class="currency">{% trans %}purchases.currency{% endtrans %}</th>
+                <th class="net">{% trans %}purchases.net{% endtrans %}</th>
+                <th class="tax">{% trans %}purchases.tax{% endtrans %}</th>
+                <th class="gross">{% trans %}purchases.gross{% endtrans %}</th>
+                <th class="paid">{% trans %}purchases.paid{% endtrans %}</th>
+                <th class="affiliate">{% trans %}purchases.affiliate{% endtrans %}</th>
+                <th class="demo">{% trans %}purchases.test{% endtrans %}</th>
+                <th class="actions"><i class="fa fa-cog"></i></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for purchase in purchases %}
+            <tr>
+                <td>{{ purchase.date|localizeddate('medium', 'short', app.request.locale, null, 'dd.MM.yyyy HH:mm') }}</td>
+                <td>{{ purchase.order_id }}</td>
+                <td>{{ purchase.customer.name }}</td>
+                <td>{{ purchase.name }}</td>
+                <td>{{ purchase.quantity }}</td>
+                <td>{{ purchase.currency }}</td>
+                <td>{{ purchase.amount_excl }}</td>
+                <td>{{ purchase.amount_tax }}</td>
+                <td>{{ purchase.amount_incl }}</td>
+                <td>{{ purchase.paid }}</td>
+                <td>{{ purchase.affiliate_id }}</td>
+                <td>{{ purchase.test }}</td>
+                <td>{{ purchase.order_id }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
