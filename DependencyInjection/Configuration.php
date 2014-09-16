@@ -17,6 +17,10 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
+                ->scalarNode('store_url')
+                    ->isRequired()
+                    ->cannotBeEmpty()
+                ->end()
                 ->scalarNode('cart_url')
                     ->isRequired()
                     ->cannotBeEmpty()
