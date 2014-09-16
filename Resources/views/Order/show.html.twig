@@ -1,3 +1,9 @@
+{% if is_granted('ROLE_ADMIN') %}
+    {% set template = "DzangocartBundle::admin.html.twig" %}
+{% else %}
+    {% set template = "DzangocartBundle::frontend.html.twig" %}
+{% endif %}
+
 {% extends template %}
 
 {% trans_default_domain "dzangocart" %}
