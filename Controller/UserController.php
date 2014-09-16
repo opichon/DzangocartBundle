@@ -3,6 +3,7 @@
 namespace Dzangocart\Bundle\DzangocartBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -13,9 +14,7 @@ class UserController extends Controller
      */
     public function purchasesAction(Request $request)
     {
-        $dzangocart_config = $this->container->getParameter('dzangocart.config');
-
-        $customer = $this->getUser();
+        $customer = $this->getUser()->getId();
 
         $params = array(
             'limit' => $request->query->get('length'),
