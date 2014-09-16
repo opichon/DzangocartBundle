@@ -9,8 +9,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 class UserController extends Controller
 {
-    use TemplateController;
-
     /**
      * @Template()
      */
