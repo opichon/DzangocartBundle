@@ -9,6 +9,8 @@ use Symfony\Component\HttpFoundation\Request;
 
 class UserController extends Controller
 {
+    use TemplateController;
+
     /**
      * @Template()
      */
@@ -26,7 +28,13 @@ class UserController extends Controller
             ->getSales($params);
 
         return array(
-            'purchases' => $purchases['data']
+            'purchases' => $purchases['data'],
+            'template' => $this->getBaseTemplate()
         );
+    }
+
+    public function getBaseTemplate()
+    {
+        return "DzangocartBundle::frontend.html.twig";
     }
 }

@@ -18,6 +18,8 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class PaymentController extends Controller
 {
+    use TemplateController;
+
     /**
      * @Route("/", name="dzangocart_payments")
      * @Template("DzangocartBundle:Payment:index.html.twig")
@@ -36,7 +38,8 @@ class PaymentController extends Controller
 
         return array(
             'filters' => $filters->createView(),
-            'config' => $dzangocart_config
+            'config' => $dzangocart_config,
+            'template' => $this->getBaseTemplate()
         );
     }
 
