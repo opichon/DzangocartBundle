@@ -16,8 +16,6 @@ use Symfony\Component\Translation\TranslatorInterface;
 
 class CatalogueController
 {
-    use TemplateController;
-
     protected $dzangocart;
     protected $form_factory;
     protected $router;
@@ -40,8 +38,7 @@ class CatalogueController
             ->getCatalogue();
 
         return array(
-            'catalogue' => $catalogue,
-            'template' => $this->getBaseTemplate()
+            'catalogue' => $catalogue
         );
     }
 

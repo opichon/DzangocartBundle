@@ -14,8 +14,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 class SaleController extends Controller
 {
-    use TemplateController;
-
     /**
      * @Route("/", name="dzangocart_sales")
      * @Template()
@@ -34,8 +32,7 @@ class SaleController extends Controller
 
         return array(
             'filters' => $filters->createView(),
-            'config' => $dzangocart_config,
-            'template' => $this->getBaseTemplate()
+            'config' => $dzangocart_config
         );
     }
 
