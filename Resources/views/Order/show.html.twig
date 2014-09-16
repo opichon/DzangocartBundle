@@ -5,16 +5,16 @@
 {% block dzangocart_page_title %}{% trans with { '%order_id%': order.orderId } %}order.page_title{% endtrans %}{% endblock %}
 
 {% block dzangocart_page_nav %}
-<div class="pull-right">
-{% include "DzangocartBundle:Order:toolbar.html.twig" %}
-</div>
+    <div class="pull-right">
+        {% include "DzangocartBundle:Order:toolbar.html.twig" %}
+    </div>
 {% endblock %}
 
 {% block dzangocart_content %}
-{% include "DzangocartBundle:Order:order.html.twig" %}
-{% if 'dev' == app.environment %}
-<pre>{{ data }}</pre>
-{% endif %}
+    {% include "DzangocartBundle:Order:order.html.twig" %}
+    {% if 'dev' == app.environment %}
+        <pre>{{ data }}</pre>
+    {% endif %}
 {% endblock %}
 
 {% block dzangocart_head_style %}
@@ -23,7 +23,7 @@
         'bundles/dzangocart/css/dzangocart.css'
         'bundles/dzangocart/css/order.css'
     %}
-        <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+    <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
     {% endstylesheets %}
 {% endblock %}
 
@@ -32,10 +32,10 @@
     {% javascripts
         'bundles/dzangocart/js/order/order.js'
     %}
-        <script src="{{ asset_url }}"></script>
+    <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
     <script>
-    dzangocart.order = {
-    };
+        dzangocart.order = {
+        };
     </script>
 {% endblock %}
