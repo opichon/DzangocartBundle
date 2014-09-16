@@ -6,7 +6,7 @@
 	<i class='fa fa-cog dropdown-toggle' data-toggle='dropdown'></i>
 	<ul class='dropdown-menu dropdown-menu-right navbar-right' role='menu'>
 		<li>
-			<a href='#'>{% trans %}purchases.actions.show{% endtrans %}</a>
+			<a href={{ path('dzangocart_user_purchase_show', { id: purchase.order_id } ) }}>{% trans %}purchases.actions.show{% endtrans %}</a>
 		</li>
 	</ul>
 </div>
