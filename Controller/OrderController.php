@@ -13,6 +13,8 @@ use Symfony\Component\HttpFoundation\Request;
 
 class OrderController
 {
+    use TemplateController;
+
     protected $dzangocart;
     protected $dzangocart_config;
     protected $form_factory;
@@ -39,7 +41,8 @@ class OrderController
 
         return array(
             'filters' => $filters->createView(),
-            'config' => $this->dzangocart_config
+            'config' => $this->dzangocart_config,
+            'template' => $this->getBaseTemplate()
         );
     }
 
@@ -83,6 +86,7 @@ class OrderController
         return array(
             'order' => $order,
             'config' => $this->dzangocart_config,
+            'template' => $this->getBaseTemplate(),
             'data' => print_r($order, true)
         );
     }
