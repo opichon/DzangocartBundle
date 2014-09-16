@@ -1,3 +1,9 @@
 dzangocart_user_purchases:
     path: /purchases
     defaults: { _controller: DzangocartBundle:User:purchases  }
+
+dzangocart_user_purchase_show:
+    path: /purchase/{id}
+    defaults: { _controller: dzangocart.controller.order:showAction }
+    requirements:
+        id: \d+
