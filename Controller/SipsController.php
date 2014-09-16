@@ -18,8 +18,6 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class SipsController extends Controller
 {
-    use TemplateController;
-
     /**
      * @Route("/", name="dzangocart_sips")
      * @Template()
@@ -39,8 +37,7 @@ class SipsController extends Controller
 
         return array(
             'filters' => $filters->createView(),
-            'config' => $dzangocart_config,
-            'template' => $this->getBaseTemplate()
+            'config' => $dzangocart_config
         );
     }
 

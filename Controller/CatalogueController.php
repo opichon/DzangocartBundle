@@ -16,8 +16,6 @@ use Symfony\Component\Translation\TranslatorInterface;
 
 class CatalogueController
 {
-    use TemplateController;
-
     protected $dzangocart;
     protected $form_factory;
     protected $router;
@@ -40,8 +38,7 @@ class CatalogueController
             ->getCatalogue();
 
         return array(
-            'catalogue' => $catalogue,
-            'template' => $this->getBaseTemplate()
+            'catalogue' => $catalogue
         );
     }
 
@@ -57,7 +54,7 @@ class CatalogueController
         try {
             $category = $this->dzangocart
                 ->getCategory($params);
-        } catch (Exception $e){
+        } catch (Exception $e) {
             $request->getSession()->getFlashBag()->add(
                 'Category.error',
                 $this->translator->trans('category.error.not_found', array(), 'dzangocart', $request->getLocale())
@@ -123,7 +120,7 @@ class CatalogueController
 
                 return new RedirectResponse($this->router->generate('dzangocart_category', array('id' => $id)));
 
-            } catch(Exception $e){
+            } catch (Exception $e) {
                 $request->getSession()->getFlashBag()->add(
                         'Category.error.update',
                         $this->translator->trans('category.error.update', array(), 'dzangocart', $request->getLocale())

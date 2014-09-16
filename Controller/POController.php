@@ -18,8 +18,6 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class POController extends Controller
 {
-    use TemplateController;
-
     /**
      * @Route("/", name="dzangocart_po")
      * @Template("DzangocartBundle:PO:index.html.twig")
@@ -38,8 +36,7 @@ class POController extends Controller
 
         return array(
             'filters' => $filters->createView(),
-            'config' => $dzangocart_config,
-            'template' => $this->getBaseTemplate()
+            'config' => $dzangocart_config
         );
 
     }
