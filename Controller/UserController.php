@@ -29,4 +29,25 @@ class UserController extends Controller
             'purchases' => $purchases['data']
         );
     }
+
+    /**
+     * @Template()
+     */
+    public function showAction(Request $request, $id)
+    {
+        $dzangocart_config = $this->container->getParameter('dzangocart.config');
+
+        $params = array(
+            'id' => $id
+        );
+
+        $order = $this->get('dzangocart')
+            ->getOrder($params);
+
+        return array(
+            'order' => $order,
+            'config' => $dzangocart_config,
+            'data' => print_r($order, true)
+        );
+    }
 }
