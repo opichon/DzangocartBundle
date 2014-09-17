@@ -1,0 +1,41 @@
+{% extends "DzangocartBundle::admin.html.twig" %}
+
+{% trans_default_domain "dzangocart" %}
+
+{% block dzangocart_page_title %}{% trans with { '%order_id%': order.orderId } %}order.page_title{% endtrans %}{% endblock %}
+
+{% block dzangocart_page_nav %}
+    <div class="pull-right">
+        {% include "DzangocartBundle:Order:toolbar.html.twig" %}
+    </div>
+{% endblock %}
+
+{% block dzangocart_content %}
+    {% include "DzangocartBundle:Order:order.html.twig" %}
+    {% if 'dev' == app.environment %}
+        <pre>{{ data }}</pre>
+    {% endif %}
+{% endblock %}
+
+{% block dzangocart_head_style %}
+    {{ parent() }}
+    {% stylesheets filter="cssrewrite" output="css/*.css"
+        'bundles/dzangocart/css/dzangocart.css'
+        'bundles/dzangocart/css/order.css'
+    %}
+    <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block dzangocart_foot_script %}
+    {{ parent() }}
+    {% javascripts
+        'bundles/dzangocart/js/order/order.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    <script>
+        dzangocart.order = {
+        };
+    </script>
+{% endblock %}
