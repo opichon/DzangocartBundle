@@ -14,12 +14,10 @@
 }
 
 #simplemodal-container { 
-  height: 430px;
+  height: 425px;
   width: 640px;
   color: #bbb;
   background-color: #333;
-  border: 4px solid #444;
-  padding: 12px;
 }
 
 #simplemodal-container code {
@@ -40,8 +38,8 @@
   display: inline;
   z-index: 3200;
   position: absolute;
-  top: -15px;
-  right: -16px;
+  top: -16px;
+  right: -9px;
   cursor: pointer;
 }
 
