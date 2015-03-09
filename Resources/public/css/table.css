@@ -149,6 +149,7 @@ div.dataTables_processing {
     -moz-box-shadow: 0px 5px 90px #888;
     -webkit-box-shadow: 0px 5px 90px #888;
     box-shadow: 0px 5px 90px #888;
+    z-index: 9999;
 }
 
 ul.pagination li.previous a:before {
