@@ -3,11 +3,8 @@
 namespace Dzangocart\Bundle\DzangocartBundle\Controller;
 
 use DateTime;
-
 use Dzangocart\Bundle\DzangocartBundle\Form\Type\OrdersFilterType;
-
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-
 use Symfony\Component\HttpFoundation\Request;
 
 class OrderController extends AbstractDzangocartController
@@ -21,13 +18,13 @@ class OrderController extends AbstractDzangocartController
             new OrdersFilterType(),
             array(
                 'date_from' => (new DateTime())->modify('first day of this month'),
-                'date_to' => new DateTime()
+                'date_to' => new DateTime(),
             )
         );
 
         return array(
             'filters' => $filters->createView(),
-            'config' => $this->getDzangocartConfig()
+            'config' => $this->getDzangocartConfig(),
         );
     }
 
@@ -38,7 +35,7 @@ class OrderController extends AbstractDzangocartController
     {
         $params = array(
             'limit' => $request->query->get('length'),
-            'offset' => $request->query->get('start')
+            'offset' => $request->query->get('start'),
         );
 
         $params = array_merge(
@@ -62,7 +59,7 @@ class OrderController extends AbstractDzangocartController
     public function showAction(Request $request, $id)
     {
         $params = array(
-            'id' => $id
+            'id' => $id,
         );
 
         $order = $this->contaienr->get('dzangocart')
@@ -71,7 +68,7 @@ class OrderController extends AbstractDzangocartController
         return array(
             'order' => $order,
             'config' => $this->dzangocart_config,
-            'data' => print_r($order, true)
+            'data' => print_r($order, true),
         );
     }
 
@@ -99,7 +96,7 @@ class OrderController extends AbstractDzangocartController
             'date_to' => 'date_to',
             'test' => 'test',
             'order_id' => 'order_id',
-            'customer_id' => 'customer'
+            'customer_id' => 'customer',
         );
     }
 
@@ -112,11 +109,10 @@ class OrderController extends AbstractDzangocartController
         $columns = $this->getSortColumns();
 
         foreach ($order as $setting) {
-
             $index = $setting['column'];
 
             if (isset($columns[$index])) {
-                $sort[] = $columns[$index] ;
+                $sort[] = $columns[$index];
                 $sort[] = $setting['dir'];
             }
         }
@@ -135,7 +131,7 @@ class OrderController extends AbstractDzangocartController
             6 => 'tax_amount',
             7 => 'amount_incl',
             9 => 'affiliate',
-            10 => 'test'
+            10 => 'test',
         );
     }
 

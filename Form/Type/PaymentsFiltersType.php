@@ -11,12 +11,12 @@ class PaymentsFiltersType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('order_id', 'text', array(
-            'required' => false
+            'required' => false,
         ));
 
         $builder->add('gateway_id', 'choice', array(
             'choices'   => array(),
-            'required' => false
+            'required' => false,
         ));
 
         $builder->add('status', 'choice', array(
@@ -25,9 +25,9 @@ class PaymentsFiltersType extends AbstractType
                 2 => 'payments.status.label.cancelled',
                 4 => 'payments.status.label.error',
                 8 => 'payments.status.label.approved',
-                16 => 'payments.status.label.paid'
+                16 => 'payments.status.label.paid',
             ),
-            'required' => false
+            'required' => false,
         ));
 
         $builder->add('date_from', 'date', array(
@@ -35,8 +35,8 @@ class PaymentsFiltersType extends AbstractType
             'label' => 'payments.filters.date_from',
             'widget' => 'single_text',
             'attr' => array(
-                'class' => 'date_from'
-            )
+                'class' => 'date_from',
+            ),
         ));
 
         $builder->add('date_to', 'date', array(
@@ -44,22 +44,22 @@ class PaymentsFiltersType extends AbstractType
             'label' => 'payments.filters.date_to',
             'widget' => 'single_text',
             'attr' => array(
-                'class' => 'date_to'
-            )
+                'class' => 'date_to',
+            ),
         ));
 
         $builder->add('period', 'text', array(
             'attr' => array(
-                'class' => 'period'
+                'class' => 'period',
             ),
-            'label' => 'payments.filters.period'
+            'label' => 'payments.filters.period',
         ));
 
         $builder->add('test', 'checkbox', array(
             'label' => 'payments.filters.test_payments.label',
             'attr' => array(
-                'class' => 'checkbox'
-            )
+                'class' => 'checkbox',
+            ),
         ));
     }
 
@@ -71,7 +71,7 @@ class PaymentsFiltersType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'translation_domain' => 'dzangocart'
+            'translation_domain' => 'dzangocart',
         ));
     }
 }

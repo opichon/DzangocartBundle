@@ -3,16 +3,11 @@
 namespace Dzangocart\Bundle\DzangocartBundle\Controller;
 
 use Dzangocart\Bundle\DzangocartBundle\Form\Type\CategoryFormType;
-
 use Exception;
-
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-
-use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Router;
-use Symfony\Component\Translation\TranslatorInterface;
 
 class CatalogueController extends AbstractDzangocartController
 {
@@ -25,7 +20,7 @@ class CatalogueController extends AbstractDzangocartController
             ->getCatalogue();
 
         return array(
-            'catalogue' => $catalogue
+            'catalogue' => $catalogue,
         );
     }
 
@@ -35,7 +30,7 @@ class CatalogueController extends AbstractDzangocartController
     public function showAction(Request $request, $id)
     {
         $params = array(
-            'id' => $id
+            'id' => $id,
         );
 
         try {
@@ -57,14 +52,14 @@ class CatalogueController extends AbstractDzangocartController
                 'action' => $this->router->generate(
                     'dzangocart_category_update',
                     $params
-                )
+                ),
             )
 
         );
 
         return array(
             'form' => $form->createView(),
-            'category' => $category
+            'category' => $category,
         );
     }
 
@@ -75,7 +70,7 @@ class CatalogueController extends AbstractDzangocartController
     {
         // TODO merge this with the showAction?
         $params = array(
-            'id' => $id
+            'id' => $id,
         );
 
         $category = $this->getDzangocartClient()
@@ -88,7 +83,7 @@ class CatalogueController extends AbstractDzangocartController
                 'action' => $this->router->generate(
                     'dzangocart_category_update',
                     array('id' => $id)
-                )
+                ),
             )
         );
 
@@ -106,7 +101,6 @@ class CatalogueController extends AbstractDzangocartController
                 );
 
                 return new RedirectResponse($this->router->generate('dzangocart_category', array('id' => $id)));
-
             } catch (Exception $e) {
                 $request->getSession()->getFlashBag()->add(
                         'Category.error.update',
@@ -117,7 +111,7 @@ class CatalogueController extends AbstractDzangocartController
 
         return array(
             'form' => $form->createView(),
-            'category' => $category
+            'category' => $category,
         );
     }
 
@@ -151,8 +145,7 @@ class CatalogueController extends AbstractDzangocartController
             'export' => 'export',
             'download' => 'download',
             'shipping' => 'shipping',
-            'pack' => 'pack'
+            'pack' => 'pack',
         );
     }
-
 }

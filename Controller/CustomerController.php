@@ -3,12 +3,9 @@
 namespace Dzangocart\Bundle\DzangocartBundle\Controller;
 
 use Exception;
-
 use Dzangocart\Bundle\DzangocartBundle\Form\Type\CustomersFilterType;
-
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-
 use Symfony\Component\HttpFoundation\Request;
 
 class CustomerController extends AbstractDzangocartController
@@ -25,7 +22,7 @@ class CustomerController extends AbstractDzangocartController
         );
 
         return array(
-            'filters' => $filters->createView()
+            'filters' => $filters->createView(),
         );
     }
 
@@ -37,7 +34,7 @@ class CustomerController extends AbstractDzangocartController
     {
         $params = array(
             'length' => $request->query->get('length'),
-            'start' => $request->query->get('start')
+            'start' => $request->query->get('start'),
         );
 
         $params = array_merge(
@@ -60,13 +57,12 @@ class CustomerController extends AbstractDzangocartController
     public function showAction(Request $request, $id)
     {
         $params = array(
-            'id' => $id
+            'id' => $id,
         );
 
         try {
             $customer = $this->get('dzangocart')
                 ->getCustomer($params);
-
         } catch (Exception $ex) {
             throw new Exception(
                 $ex->getResponse()->getReasonPhrase(),
@@ -76,7 +72,7 @@ class CustomerController extends AbstractDzangocartController
         }
 
         return array(
-            'customer' => $customer['data']
+            'customer' => $customer['data'],
         );
     }
 
@@ -102,7 +98,7 @@ class CustomerController extends AbstractDzangocartController
         return array(
             'customer_id' => 'customer',
             'gender' => 'gender',
-            'email' => 'email'
+            'email' => 'email',
         );
     }
 
@@ -115,11 +111,10 @@ class CustomerController extends AbstractDzangocartController
         $columns = $this->getSortColumns();
 
         foreach ($order as $setting) {
-
             $index = $setting['column'];
 
             if (isset($columns[$index])) {
-                $sort[] = $columns[$index] ;
+                $sort[] = $columns[$index];
                 $sort[] = $setting['dir'];
             }
         }
@@ -132,7 +127,7 @@ class CustomerController extends AbstractDzangocartController
         return array(
             1 => 'customer',
             2 => 'gender',
-            3 => 'email'
+            3 => 'email',
         );
     }
 }

@@ -11,18 +11,17 @@ class CustomersFilterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('gender', 'choice', array(
-            'choices' => array(1=>'customers.filters.gender.male', 0=>'customers.filters.gender.female'),
-            'required' => false
+            'choices' => array(1 => 'customers.filters.gender.male', 0 => 'customers.filters.gender.female'),
+            'required' => false,
         ));
 
         $builder->add('email', 'text', array(
-            'required' => false
+            'required' => false,
         ));
 
         $builder->add('customer', 'text', array());
 
         $builder->add('customer_id', 'hidden', array());
-
     }
 
     public function getName()

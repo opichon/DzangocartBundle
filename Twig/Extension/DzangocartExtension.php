@@ -4,7 +4,6 @@ namespace Dzangocart\Bundle\DzangocartBundle\Twig\Extension;
 
 use Twig_Extension;
 use Twig_Function_Method;
-
 use Dzangocart\Client\DzangocartClient;
 
 class DzangocartExtension extends Twig_Extension
@@ -28,7 +27,7 @@ class DzangocartExtension extends Twig_Extension
     {
         return array(
             'dzangocart_link' => new Twig_Function_Method($this, 'dzangocartLink', array('is_safe' => array('html'))),
-            'dzangocart_url' => new Twig_Function_Method($this, 'dzangocartUrl', array('is_safe' => array('html')))
+            'dzangocart_url' => new Twig_Function_Method($this, 'dzangocartUrl', array('is_safe' => array('html'))),
         );
     }
 
@@ -53,7 +52,7 @@ class DzangocartExtension extends Twig_Extension
         );
 
         $html_options['class'] = array_key_exists('class', $html_options)
-            ? 'dzangocart ' . $html_options['class']
+            ? 'dzangocart '.$html_options['class']
             : 'dzangocart';
 
         $html_options['href'] = $this->dzangocartUrl(
@@ -68,12 +67,12 @@ class DzangocartExtension extends Twig_Extension
         $attributes = "";
 
         foreach ($html_options as $key => $value) {
-            $attributes .= ' ' . $key . '="' . htmlspecialchars($value) . '"';
+            $attributes .= ' '.$key.'="'.htmlspecialchars($value).'"';
         }
 
         $this->setCustomerData($customer_data);
 
-        return '<a' . $attributes . '>' . $label . '</a>';
+        return '<a'.$attributes.'>'.$label.'</a>';
     }
 
     public function dzangocartUrl(
@@ -89,12 +88,18 @@ class DzangocartExtension extends Twig_Extension
 
         $params = array(
             'name' => is_object($product) ? $product->__toString() : $product,
-            'price' => $price
+            'price' => $price,
         );
 
-        if ($quantity) { $params['quantity'] = $quantity; }
-        if ($category) { $params['category'] = $category; }
-        if ($checkout) { $params['checkout'] = true; }
+        if ($quantity) {
+            $params['quantity'] = $quantity;
+        }
+        if ($category) {
+            $params['category'] = $category;
+        }
+        if ($checkout) {
+            $params['checkout'] = true;
+        }
 
         if (!array_key_exists('test', $options) && $test = $this->dzangocart->getConfig('test_code')) {
             $options['test'] = $test;
@@ -102,7 +107,7 @@ class DzangocartExtension extends Twig_Extension
 
         $params = array_merge($params, $options);
 
-        return $url . http_build_query($params);
+        return $url.http_build_query($params);
     }
 
     protected function setCustomerData($customer_data)

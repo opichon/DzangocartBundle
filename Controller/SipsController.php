@@ -3,13 +3,9 @@
 namespace Dzangocart\Bundle\DzangocartBundle\Controller;
 
 use DateTime;
-
 use Dzangocart\Bundle\DzangocartBundle\Form\Type\SipsFiltersType;
-
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -28,14 +24,14 @@ class SipsController extends AbstractDzangocartController
             new SipsFiltersType(),
             array(
                 'date_from' => (new DateTime())->modify('first day of this month'),
-                'date_to' => new DateTime()
+                'date_to' => new DateTime(),
             ),
             array()
         );
 
         return array(
             'filters' => $filters->createView(),
-            'config' => $this->getDzangocartConfig()
+            'config' => $this->getDzangocartConfig(),
         );
     }
 
@@ -90,11 +86,10 @@ class SipsController extends AbstractDzangocartController
         $order = $request->query->get('order', array());
 
         foreach ($order as $setting) {
-
             $index = $setting['column'];
 
             if (array_key_exists($index, $columns)) {
-                $sort_by[] = $columns[1] ;
+                $sort_by[] = $columns[1];
                 $sort_by[] = $columns['dir'];
             }
         }
@@ -119,7 +114,7 @@ class SipsController extends AbstractDzangocartController
             8 => 'item.TAX_AMOUNT',
             9 => 'item.AMOUNT_INCL',
             11 => 'cart.AFFILIATE_ID',
-            11 => 'cart.TEST'
+            11 => 'cart.TEST',
         );
     }
 }

@@ -15,8 +15,8 @@ class SipsFiltersType extends AbstractType
             'label' => 'sips.filters.date_from',
             'widget' => 'single_text',
             'attr' => array(
-                'class' => 'date date_from'
-            )
+                'class' => 'date date_from',
+            ),
         ));
 
         $builder->add('date_to', 'date', array(
@@ -24,15 +24,15 @@ class SipsFiltersType extends AbstractType
             'label' => 'sips.filters.date_to',
             'widget' => 'single_text',
             'attr' => array(
-                'class' => 'date date_to'
-            )
+                'class' => 'date date_to',
+            ),
         ));
 
         $builder->add('period', 'text', array(
             'attr' => array(
-                'class' => 'period'
+                'class' => 'period',
             ),
-            'label' => 'sips.filters.period'
+            'label' => 'sips.filters.period',
         ));
 
         $builder->add('test', 'checkbox', array(

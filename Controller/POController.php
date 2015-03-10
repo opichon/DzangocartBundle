@@ -3,12 +3,9 @@
 namespace Dzangocart\Bundle\DzangocartBundle\Controller;
 
 use DateTime;
-
 use Dzangocart\Bundle\DzangocartBundle\Form\Type\POFiltersType;
-
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -27,15 +24,14 @@ class POController extends AbstractDzangocartController
             new POFiltersType(),
             array(
                 'date_from' => (new DateTime())->modify('first day of this month'),
-                'date_to' => new DateTime()
+                'date_to' => new DateTime(),
             )
         );
 
         return array(
             'filters' => $filters->createView(),
-            'config' => $this->getDzangocartConfig()
+            'config' => $this->getDzangocartConfig(),
         );
-
     }
 
     /**
@@ -46,7 +42,7 @@ class POController extends AbstractDzangocartController
     {
         $params = array(
             'limit' => $request->query->get('length'),
-            'offset' => $request->query->get('start')
+            'offset' => $request->query->get('start'),
         );
 
         $params = array_merge(
@@ -90,11 +86,10 @@ class POController extends AbstractDzangocartController
         $columns = $this->getSortColumns();
 
         foreach ($order as $setting) {
-
             $index = $setting['column'];
 
             if (isset($columns[$index])) {
-                $sort[] = $columns[$index] ;
+                $sort[] = $columns[$index];
                 $sort[] = $setting['dir'];
             }
         }
@@ -102,7 +97,7 @@ class POController extends AbstractDzangocartController
         return implode(',', $sort);
     }
 
-        protected function getSortColumns()
+    protected function getSortColumns()
     {
         return array(
             1 => 'date',
@@ -111,7 +106,7 @@ class POController extends AbstractDzangocartController
             4 => 'bank',
             5 => 'type',
             6 => 'cheque',
-            7 => 'test'
+            7 => 'test',
         );
     }
 
@@ -123,7 +118,7 @@ class POController extends AbstractDzangocartController
             'test' => 'test',
             'order_id' => 'order_id',
             'bank' => 'bank',
-            'cheque' => 'cheque'
+            'cheque' => 'cheque',
         );
     }
 }

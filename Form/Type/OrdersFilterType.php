@@ -35,8 +35,8 @@ class OrdersFilterType extends AbstractType
             'label' => 'orders.filters.date_from',
             'widget' => 'single_text',
             'attr' => array(
-                'class' => 'date date_from'
-            )
+                'class' => 'date date_from',
+            ),
         ));
 
         $builder->add('date_to', 'date', array(
@@ -44,21 +44,21 @@ class OrdersFilterType extends AbstractType
             'label' => 'orders.filters.date_to',
             'widget' => 'single_text',
             'attr' => array(
-                'class' => 'date date_to'
-            )
+                'class' => 'date date_to',
+            ),
         ));
 
         $builder->add('period', 'text', array(
             'attr' => array(
-                'class' => 'period form-control'
+                'class' => 'period form-control',
             ),
-            'label' => 'orders.filters.period'
+            'label' => 'orders.filters.period',
         ));
 
         $builder->add('test', 'checkbox', array(
             'label' => 'orders.filters.test_orders.label',
             'attr' => array(
-                'class' => 'checkbox'
+                'class' => 'checkbox',
             ),
         ));
     }

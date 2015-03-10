@@ -21,8 +21,8 @@ class POFiltersType extends AbstractType
             'label' => 'po.filters.date_from',
             'widget' => 'single_text',
             'attr' => array(
-                'class' => 'date date_from'
-            )
+                'class' => 'date date_from',
+            ),
         ));
 
         $builder->add('date_to', 'date', array(
@@ -30,22 +30,22 @@ class POFiltersType extends AbstractType
             'label' => 'po.filters.date_to',
             'widget' => 'single_text',
             'attr' => array(
-                'class' => 'date date_to'
-            )
+                'class' => 'date date_to',
+            ),
         ));
 
         $builder->add('period', 'text', array(
             'attr' => array(
-                'class' => 'period'
+                'class' => 'period',
             ),
-            'label' => 'po.filters.period'
+            'label' => 'po.filters.period',
         ));
 
         $builder->add('test', 'checkbox', array(
             'label' => 'po.filters.test_transactions.label',
             'attr' => array(
-                'class' => 'checkbox'
-            )
+                'class' => 'checkbox',
+            ),
         ));
     }
 

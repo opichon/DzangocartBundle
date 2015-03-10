@@ -3,7 +3,6 @@
 namespace Dzangocart\Bundle\DzangocartBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -19,14 +18,14 @@ class UserController extends Controller
         $params = array(
             'limit' => $request->query->get('length'),
             'offset' => $request->query->get('start'),
-            'customer' => $customer
+            'customer' => $customer,
         );
 
         $purchases = $this->get('dzangocart')
             ->getSales($params);
 
         return array(
-            'purchases' => $purchases['data']
+            'purchases' => $purchases['data'],
         );
     }
 
@@ -38,7 +37,7 @@ class UserController extends Controller
         $dzangocart_config = $this->container->getParameter('dzangocart.config');
 
         $params = array(
-            'id' => $id
+            'id' => $id,
         );
 
         $order = $this->get('dzangocart')
@@ -47,7 +46,7 @@ class UserController extends Controller
         return array(
             'order' => $order,
             'config' => $dzangocart_config,
-            'data' => print_r($order, true)
+            'data' => print_r($order, true),
         );
     }
 }

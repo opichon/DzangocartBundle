@@ -3,12 +3,9 @@
 namespace Dzangocart\Bundle\DzangocartBundle\Controller;
 
 use DateTime;
-
 use Dzangocart\Bundle\DzangocartBundle\Form\Type\SalesFilterType;
-
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-
 use Symfony\Component\HttpFoundation\Request;
 
 class SaleController extends AbstractDzangocartController
@@ -23,13 +20,13 @@ class SaleController extends AbstractDzangocartController
             new SalesFilterType(),
             array(
                 'date_from' => (new DateTime())->modify('first day of this month'),
-                'date_to' => new DateTime()
+                'date_to' => new DateTime(),
             )
         );
 
         return array(
             'filters' => $filters->createView(),
-            'config' => $this->getDzangocartConfig()
+            'config' => $this->getDzangocartConfig(),
         );
     }
 
@@ -41,7 +38,7 @@ class SaleController extends AbstractDzangocartController
     {
         $params = array(
             'limit' => $request->query->get('length'),
-            'offset' => $request->query->get('start')
+            'offset' => $request->query->get('start'),
         );
 
         $params = array_merge(
@@ -84,7 +81,7 @@ class SaleController extends AbstractDzangocartController
             'test' => 'test',
             'order_id' => 'order_id',
             'customer_id' => 'customer',
-            'name' => 'name'
+            'name' => 'name',
         );
     }
 
@@ -97,11 +94,10 @@ class SaleController extends AbstractDzangocartController
         $columns = $this->getSortColumns();
 
         foreach ($order as $setting) {
-
             $index = $setting['column'];
 
             if (isset($columns[$index])) {
-                $sort[] = $columns[$index] ;
+                $sort[] = $columns[$index];
                 $sort[] = $setting['dir'];
             }
         }
@@ -121,7 +117,7 @@ class SaleController extends AbstractDzangocartController
             8 => 'tax_amount',
             9 => 'amount_incl',
             11 => 'affiliate',
-            12 => 'test'
+            12 => 'test',
         );
     }
 }

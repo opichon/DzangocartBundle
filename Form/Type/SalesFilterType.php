@@ -35,8 +35,8 @@ class SalesFilterType extends AbstractType
             'label' => 'sales.filters.date_from',
             'widget' => 'single_text',
             'attr' => array(
-                'class' => 'date date_from'
-            )
+                'class' => 'date date_from',
+            ),
         ));
 
         $builder->add('date_to', 'date', array(
@@ -44,21 +44,21 @@ class SalesFilterType extends AbstractType
             'label' => 'sales.filters.date_to',
             'widget' => 'single_text',
             'attr' => array(
-                'class' => 'date date_to'
-            )
+                'class' => 'date date_to',
+            ),
         ));
 
         $builder->add('period', 'text', array(
             'attr' => array(
-                'class' => 'period'
+                'class' => 'period',
             ),
-            'label' => 'sales.filters.period'
+            'label' => 'sales.filters.period',
         ));
 
         $builder->add('test', 'checkbox', array(
             'label' => 'sales.filters.test_orders.label',
             'attr' => array(
-                'class' => 'checkbox'
+                'class' => 'checkbox',
             ),
         ));
     }

@@ -3,12 +3,9 @@
 namespace Dzangocart\Bundle\DzangocartBundle\Controller;
 
 use DateTime;
-
 use Dzangocart\Bundle\DzangocartBundle\Form\Type\PaymentsFiltersType;
-
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -27,13 +24,13 @@ class PaymentController extends AbstractDzangocartController
             new PaymentsFiltersType(),
             array(
                 'date_from' => (new DateTime())->modify('first day of this month'),
-                'date_to' => new DateTime()
+                'date_to' => new DateTime(),
             )
         );
 
         return array(
             'filters' => $filters->createView(),
-            'config' => $this->getDzangocartConfig()
+            'config' => $this->getDzangocartConfig(),
         );
     }
 
@@ -45,7 +42,7 @@ class PaymentController extends AbstractDzangocartController
     {
         $params = array(
             'length' => $request->query->get('length'),
-            'start' => $request->query->get('start')
+            'start' => $request->query->get('start'),
         );
 
         $params = array_merge(
@@ -89,11 +86,10 @@ class PaymentController extends AbstractDzangocartController
         $columns = $this->getSortColumns();
 
         foreach ($order as $setting) {
-
             $index = $setting['column'];
 
             if (isset($columns[$index])) {
-                $sort[] = $columns[$index] ;
+                $sort[] = $columns[$index];
                 $sort[] = $setting['dir'];
             }
         }
@@ -109,7 +105,7 @@ class PaymentController extends AbstractDzangocartController
             3 => 'gateway',
             4 => 'type',
             6 => 'status',
-            7 => 'test'
+            7 => 'test',
         );
     }
 
@@ -121,7 +117,7 @@ class PaymentController extends AbstractDzangocartController
             'test' => 'test',
             'gateway_id' => 'gateway_id',
             'order_id' => 'order_id',
-            'status' => 'status'
+            'status' => 'status',
         );
     }
 }
