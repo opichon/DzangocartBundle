@@ -1,16 +1,19 @@
 dzangocart_catalogue:
     pattern: /catalogue
-    defaults: { _controller: dzangocart.controller.catalogue:indexAction }
+    defaults:
+        _controller: DzangocartBundle:Catalogue:index
 
 dzangocart_category:
     pattern: /catalogue/category/{id}
-    defaults: { _controller: dzangocart.controller.catalogue:showAction }
+    defaults:
+        _controller: DzangocartBundle:Catalogue:show
     requirements:
         id: \d+
 
 dzangocart_category_update:
     pattern: /catalogue/category/{id}/update
-    defaults: { _controller: dzangocart.controller.catalogue:updateAction }
+    defaults:
+        _controller: DzangocartBundle:Catalogue:update
     methods:  [GET, POST]
     requirements:
         id: \d+

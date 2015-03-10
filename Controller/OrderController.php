@@ -8,28 +8,16 @@ use Dzangocart\Bundle\DzangocartBundle\Form\Type\OrdersFilterType;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpFoundation\Request;
 
-class OrderController
+class OrderController extends AbstractDzangocartController
 {
-    protected $dzangocart;
-    protected $dzangocart_config;
-    protected $form_factory;
-
-    public function __construct($dzangocart, $dzangocart_config, FormFactory $form_factory)
-    {
-        $this->dzangocart = $dzangocart;
-        $this->dzangocart_config = $dzangocart_config;
-        $this->form_factory = $form_factory;
-    }
-
     /**
      * @Template("DzangocartBundle:Order:index.html.twig")
      */
     public function indexAction(Request $request)
     {
-        $filters = $this->form_factory->create(
+        $filters = $this->createForm(
             new OrdersFilterType(),
             array(
                 'date_from' => (new DateTime())->modify('first day of this month'),
@@ -39,7 +27,7 @@ class OrderController
 
         return array(
             'filters' => $filters->createView(),
-            'config' => $this->dzangocart_config
+            'config' => $this->getDzangocartConfig()
         );
     }
 
@@ -60,10 +48,10 @@ class OrderController
 
         $params['sort_by'] = $this->getSortOrder($request);
 
-        $data = $this->dzangocart
+        $data = $this->container->get('dzangocart')
             ->getOrders($params);
 
-        $data['datetime_format'] = $this->dzangocart_config['datetime_format'];
+        $data['datetime_format'] = $this->getDzangocartConfig('datetime_format');
 
         return $data;
     }
@@ -77,7 +65,7 @@ class OrderController
             'id' => $id
         );
 
-        $order = $this->dzangocart
+        $order = $this->contaienr->get('dzangocart')
             ->getOrder($params);
 
         return array(

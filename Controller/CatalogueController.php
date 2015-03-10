@@ -14,27 +14,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Router;
 use Symfony\Component\Translation\TranslatorInterface;
 
-class CatalogueController
+class CatalogueController extends AbstractDzangocartController
 {
-    protected $dzangocart;
-    protected $form_factory;
-    protected $router;
-    protected $translator;
-
-    public function __construct($dzangocart, FormFactory $form_factory, Router $router, TranslatorInterface $translator)
-    {
-        $this->dzangocart = $dzangocart;
-        $this->form_factory = $form_factory;
-        $this->router = $router;
-        $this->translator = $translator;
-    }
-
     /**
      * @Template()
      */
     public function indexAction(Request $request)
     {
-        $catalogue = $this->dzangocart
+        $catalogue = $this->getDzangocartClient()
             ->getCatalogue();
 
         return array(
@@ -52,7 +39,7 @@ class CatalogueController
         );
 
         try {
-            $category = $this->dzangocart
+            $category = $this->getDzangocartClient()
                 ->getCategory($params);
         } catch (Exception $e) {
             $request->getSession()->getFlashBag()->add(
@@ -91,7 +78,7 @@ class CatalogueController
             'id' => $id
         );
 
-        $category = $this->dzangocart
+        $category = $this->getDzangocartClient()
             ->getCategory($params);
 
         $form = $this->form_factory->create(

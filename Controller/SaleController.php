@@ -9,10 +9,9 @@ use Dzangocart\Bundle\DzangocartBundle\Form\Type\SalesFilterType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-class SaleController extends Controller
+class SaleController extends AbstractDzangocartController
 {
     /**
      * @Route("/", name="dzangocart_sales")
@@ -20,8 +19,6 @@ class SaleController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $dzangocart_config = $this->container->getParameter('dzangocart.config');
-
         $filters = $this->createForm(
             new SalesFilterType(),
             array(
@@ -32,7 +29,7 @@ class SaleController extends Controller
 
         return array(
             'filters' => $filters->createView(),
-            'config' => $dzangocart_config
+            'config' => $this->getDzangocartConfig()
         );
     }
 
@@ -42,8 +39,6 @@ class SaleController extends Controller
      */
     public function listAction(Request $request)
     {
-        $dzangocart_config = $this->container->getParameter('dzangocart.config');
-
         $params = array(
             'limit' => $request->query->get('length'),
             'offset' => $request->query->get('start')
@@ -59,7 +54,7 @@ class SaleController extends Controller
         $data = $this->get('dzangocart')
             ->getSales($params);
 
-        $data['datetime_format'] = $dzangocart_config['datetime_format'];
+        $data['datetime_format'] = $this->getDzangocartConfig('datetime_format');
 
         return $data;
     }

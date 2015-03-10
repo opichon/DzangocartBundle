@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\Request;
  * @Route("/sips")
  * @Template
  */
-class SipsController extends Controller
+class SipsController extends AbstractDzangocartController
 {
     /**
      * @Route("/", name="dzangocart_sips")
@@ -24,8 +24,6 @@ class SipsController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $dzangocart_config = $this->container->getParameter('dzangocart.config');
-
         $filters = $this->createForm(
             new SipsFiltersType(),
             array(
@@ -37,7 +35,7 @@ class SipsController extends Controller
 
         return array(
             'filters' => $filters->createView(),
-            'config' => $dzangocart_config
+            'config' => $this->getDzangocartConfig()
         );
     }
 
@@ -47,23 +45,19 @@ class SipsController extends Controller
      */
     public function listAction(Request $request)
     {
-        $dzangocart_config = $this->container->getParameter('dzangocart.config');
-
         $params = $this->getFilters($request);
         $params['sort_by'] = $this->getSortOrder($request);
 
         $data = $this->get('dzangocart')
             ->getSips($params);
 
-        $data['datetime_format'] = $dzangocart_config['datetime_format'];
+        $data['datetime_format'] = $this->getDzangocartConfig('datetime_format');
 
         return $data;
     }
 
     protected function getFilters(Request $request)
     {
-        $dzangocart_config = $this->container->getParameter('dzangocart.config');
-
         $filters = array();
 
         $filters['limit'] = min(100, $request->query->get('length', 10));
@@ -81,7 +75,7 @@ class SipsController extends Controller
         }
 
         if (!@$_filters['test']) {
-            $filters['merchant_id'] = $dzangocart_config['sips']['merchant_id'];
+            $filters['merchant_id'] = $this->getDzangocartConfig('sips')['merchant_id'];
         }
 
         return $filters;

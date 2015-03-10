@@ -9,10 +9,9 @@ use Dzangocart\Bundle\DzangocartBundle\Form\Type\CustomersFilterType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-class CustomerController extends Controller
+class CustomerController extends AbstractDzangocartController
 {
     /**
      * @Route("/", name="dzangocart_customers")

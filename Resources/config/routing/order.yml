@@ -1,21 +1,27 @@
 dzangocart_orders:
     pattern: /order
-    defaults: { _controller: dzangocart.controller.order:indexAction }
+    defaults:
+        _controller: DzangocartBundle:Order:index
 
 dzangocart_order:
     pattern: /order/{id}
-    defaults: { _controller: dzangocart.controller.order:showAction }
+    defaults:
+        _controller: DzangocartBundle:Order:show
     requirements:
         id: \d+
 
 dzangocart_orders_list:
     pattern: /order/list
-    defaults: { _controller: dzangocart.controller.order:listAction, _format: json }
+    defaults:
+        _controller: DzangocartBundle:Order:list
+        _format: json
     requirements:
         _format: json
 
 dzangocart_customer_search:
     pattern: /search/{search}
-    defaults: { _controller: dzangocart.controller.order:searchAction, _format: json }
+    defaults:
+        _controller: DzangocartBundle:Order:search
+        _format: json
     requirements:
         _format: json
