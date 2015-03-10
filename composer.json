@@ -16,11 +16,8 @@
         "goc/locale-bundle": "dev-master"
     },
     "autoload": {
-        "psr-0": {
-            "Dzangocart\\Bundle\\DzangocartBundle": ""
-        }
+        "psr-4": { "Dzangocart\\Bundle\\DzangocartBundle\\": "" }
     },
-    "target-dir": "Dzangocart/Bundle/DzangocartBundle",
     "extra": {
         "branch-alias": {
             "dev-master": "0.3.x-dev"
