@@ -62,12 +62,12 @@ class OrderController extends AbstractDzangocartController
             'id' => $id,
         );
 
-        $order = $this->contaienr->get('dzangocart')
+        $order = $this->container->get('dzangocart')
             ->getOrder($params);
 
         return array(
             'order' => $order,
-            'config' => $this->dzangocart_config,
+            'config' => $this->getDzangocartConfig(),
             'data' => print_r($order, true),
         );
     }
