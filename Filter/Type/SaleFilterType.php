@@ -11,7 +11,6 @@ class SaleFilterType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-
         $builder->add('order_id', 'text', array());
 
         $builder->add('name', 'text', array());
@@ -59,7 +58,7 @@ class SaleFilterType extends AbstractType
     }
 
     /**
-     * BC
+     * BC.
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {

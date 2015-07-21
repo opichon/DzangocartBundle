@@ -15,12 +15,12 @@ class PaymentsFiltersType extends AbstractType
         ));
 
         $builder->add('gateway_id', 'choice', array(
-            'choices'   => array(),
+            'choices' => array(),
             'required' => false,
         ));
 
         $builder->add('status', 'choice', array(
-            'choices'   => array(
+            'choices' => array(
                 0 => 'payments.status.label.open',
                 2 => 'payments.status.label.cancelled',
                 4 => 'payments.status.label.error',

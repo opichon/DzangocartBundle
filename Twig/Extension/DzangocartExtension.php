@@ -74,7 +74,7 @@ class DzangocartExtension extends Twig_Extension
             $checkout
         );
 
-        $attributes = "";
+        $attributes = '';
 
         foreach ($html_options as $key => $value) {
             $attributes .= ' '.$key.'="'.htmlspecialchars($value).'"';
@@ -131,7 +131,7 @@ class DzangocartExtension extends Twig_Extension
 
             setcookie('dzangocart', $data, null, '/');
         } else {
-            setcookie('dzangocart', "", time() - 3600, '/');
+            setcookie('dzangocart', '', time() - 3600, '/');
         }
     }
 

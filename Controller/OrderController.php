@@ -2,8 +2,6 @@
 
 namespace Dzangocart\Bundle\DzangocartBundle\Controller;
 
-use DateTime;
-use Dzangocart\Bundle\DzangocartBundle\Form\Type\OrdersFilterType;
 use Dzangocart\Bundle\DzangocartBundle\Propel\OrderManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;

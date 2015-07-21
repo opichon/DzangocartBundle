@@ -58,7 +58,7 @@ class OrderFilterType extends AbstractType
     }
 
     /**
-     * BC
+     * BC.
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {

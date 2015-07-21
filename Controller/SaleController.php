@@ -2,10 +2,7 @@
 
 namespace Dzangocart\Bundle\DzangocartBundle\Controller;
 
-use DateTime;
-use Dzangocart\Bundle\DzangocartBundle\Form\Type\SalesFilterType;
 use Dzangocart\Bundle\DzangocartBundle\Propel\SaleManager;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use UAM\Bundle\DatatablesBundle\Controller\DatatablesEnabledControllerTrait;

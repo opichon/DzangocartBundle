@@ -96,7 +96,7 @@ class SaleManager extends AbstractEntityManager
     {
         return array(
             'date',
-            'desc'
+            'desc',
         );
     }
 

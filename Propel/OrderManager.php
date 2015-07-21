@@ -94,7 +94,7 @@ class OrderManager extends AbstractEntityManager
     {
         return array(
             'date',
-            'desc'
+            'desc',
         );
     }
 
