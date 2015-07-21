@@ -1,8 +1,7 @@
 !function( $ ) {
     $.fn.orders = function( method ) {
 
-        var settings,
-            table;
+        var settings;
 
         var methods = {
             init: function( options ) {
@@ -11,51 +10,6 @@
 
                 return this.each(function() {
                     var $this = $( this );
-
-                    $( ".filters_keyup input" ).keyup(function(event) {
-                        event.stopPropagation();
-                        table.api().draw();
-                    });
-
-                    $( ".filters select", $this ).change(function() {
-                        table.api().draw();
-                    });
-
-                    table = $( 'table.table', this ).dataTable( $.extend( true, {}, settings.datatables, {
-                        initComplete: function( settings, json ) {
-                            $( this ).show();
-                        },
-                        ajax: {
-                            data: function( data ) {
-                                $( ".filters input, .filters select", $this ).each(function() {
-                                    data[$( this ).attr( "name" )] = $( this ).val()
-                                });
-
-                                $( ".filters :checkbox", $this ).each(function() {
-                                    data[$( this ).attr( "name" )] = $( this ).is( ":checked" ) ? 1 : 0
-                                });
-
-                            }
-                        },
-                        stateLoadParams: function( settings, data ) {
-                            $( ".filters input, .filters select", $this ).each(function() {
-                                $( this ).val( data[ $( this ).attr( "name" ) ] );
-                            });
-
-                            $( ".filters :checkbox", $this ).each(function() {
-                                $( this ).attr( "checked", data[ $( this ).attr( "name" ) ] );
-                            });
-                        },
-                        stateSaveParams: function( settings, data ) {
-                            $( ".filters input, .filters select", $this ).each(function() {
-                                data[ $( this ).attr( "name" ) ] = $( this ).val();
-                            });
-
-                            $( ".filters :checkbox", $this ).each(function() {
-                                data[ $( this ).attr( "name" ) ] = $( this ).is( ":checked" );
-                            });
-                        }
-                    } ) );
 
                     moment.lang( dzangocart.locale );
 
@@ -67,11 +21,12 @@
                             }
                         ),
                         function( start, end ) {
-                            $( ".filters .date_from", $this ).val( start.format( "YYYY-MM-DD" ) );
-                            $( ".filters .date_to", $this ).val( end.format( "YYYY-MM-DD" ) );
-                            table.api().draw();
+                            $( ".filters .date_from", $this ).attr( "value", start.format( "YYYY-MM-DD" ) ).change();
+                            $( ".filters .date_to", $this ).attr( "value", end.format( "YYYY-MM-DD" ) ).change();
                         }
-                    ).data( "daterangepicker" ).updateInputText();
+                    );
+
+                    $this.uamdatatables( settings.uamdatatables );
 
 //                    var widget = $( "[name='filters[customer]']" );
 //
@@ -120,52 +75,17 @@
     };
 
     $.fn.orders.defaults = {
-        datatables: {
-            autoWidth: false,
-            columns: [
-                { data: "check" },
-                { data: "date" },
-                { data: "order_id" },
-                { data: "customer" },
-                { data: "currency" },
-                { data: "amount_excl" },
-                { data: "tax_amount" },
-                { data: "amount_incl" },
-                { data: "amount_paid" },
-                { data: "affiliate" },
-                { data: "test" },
-                { data: "actions" }
-            ],
-            columnDefs: [
-                { visible: false, targets: [ 0 ] },
-                { orderable: false, targets: [ 0, 11 ] },
-                { className: "number", targets: [ 5, 6, 7, 8 ] },
-                { className: "actions", targets: [ 11 ] }
-            ],
-            language: {
-                url: "/bundles/dzangocart/datatables/" + dzangocart.locale + ".json"
-            },
-            order: [ [ 1, 'asc' ] ],
-            orderable: true,
-            orderCellsTop: true,
-            paging: true,
-            processing: true,
-            searching: false,
-            serverSide: true,
-            stateSave: false,
-            stripeClasses: []
-        },
         daterangepicker: {
-            locale: { cancelLabel: 'Clear' },
+            locale: { cancelLabel: "Clear" },
             maxDate: moment(),
-            minDate: moment('2009-01-01'),
+            minDate: moment("2009-01-01"),
             startDate: moment()
         }
     };
 } ( window.jQuery );
 
 $( document ).ready(function() {
-    if ( typeof dzangocart != 'undefined' ) {
+    if ( typeof dzangocart != "undefined" ) {
         $( ".dzangocart.orders" ).orders( dzangocart.orders || {} );
     }
 });

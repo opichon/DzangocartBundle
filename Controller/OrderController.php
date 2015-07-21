@@ -186,4 +186,17 @@ class OrderController extends AbstractDzangocartController
     {
         return new OrderManager($this->get('dzangocart'));
     }
+
+    protected function getFilter(Request $request)
+    {
+        if ($filter_type = $this->getEntityManager()->getFilterType($request)) {
+            return $this->createForm(
+                $filter_type,
+                array(
+                    'date_from' => date_create(date('Y').'-01-01'),
+                    'date_to' => date_create(date('Y').'-12-31'),
+                )
+            );
+        }
+    }
 }
