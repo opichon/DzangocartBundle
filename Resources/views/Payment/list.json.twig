@@ -3,10 +3,10 @@
 {% spaceless %}
 {
     "draw": "{{ app.request.query.all.draw }}",
-    "recordsTotal": {{ data['meta']['count_total'] }},
-    "recordsFiltered": {{ data['meta']['count_filtered'] }},
+    "recordsTotal": {{ meta['count_total'] }},
+    "recordsFiltered": {{ meta['count_filtered'] }},
     "gateways": [
-        {% for gateway in data['meta']['gateways'] %}
+        {% for gateway in meta['gateways'] %}
             {
                 "id":         "{{ gateway['id'] }}",
                 "value":      "{{ gateway['name'] }}"
@@ -14,19 +14,19 @@
         {% endfor %}
     ],
     "data" : [
-        {% for payment in data['data'] %}
+        {% for payment in list %}
             {
-                "DT_RowId":      "{{ 'p_' ~ payment['id'] }}",
+                "DT_RowId":      "{{ 'p_' ~ payment.id }}",
                 "DT_RowClass":   "{{ 'payment' }}",
-                "check":         "",
-                "date":          "{{ payment['date']|localizeddate('medium', 'none', app.request.locale, null, 'dd.MM.yyyy') }}",
-                "order_id":      "{{ payment['order_id'] }}",
-                "gateway":       "{{ payment['gateway'] }}",
-                "type":          "{{ payment['type'] }}",
-                "amount":        "{{ payment['amount']|currency(payment['currency'], app.request.locale) }}",
-                "status":        "{{ payment['status']|raw }}",
-                "test":          "{% if payment['test'] %}<i class='fa fa-asterisk'></i>{% endif %}",
-                "actions":       "{%- include 'DzangocartBundle:Payment:actions.html.twig' -%}"
+                "date":          "{{ payment.date|datetime(dzangocart_config.date_format, dzangocart_config.time_format) }}",
+                "order_id":      "{{ payment.orderId }}",
+                "gateway":       "{{ payment.gateway }}",
+                "type":          "{{ payment.type }}",
+                "amount":        "{{ payment.amount|currency(payment.currency, app.request.locale) }}",
+                "status":        "{{ payment.status|raw }}",
+				"test":        {{ payment.test ? 1 : 0 }},
+				"urls": {
+				}
             }{% if not loop.last %},{% endif %}
         {% endfor %}
     ]

@@ -1,23 +1,75 @@
 {% javascripts
-    'bundles/dzangocart/vendor/datatables/media/js/jquery.dataTables.min.js'
-    'bundles/dzangocart/vendor/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js'
-    'bundles/dzangocart/vendor/moment/min/moment-with-locales.min.js'
-    'bundles/dzangocart/vendor/bootstrap-daterangepicker/daterangepicker.min.js'
-    'bundles/dzangocart/js/payment/payments.js'
-    'bundles/dzangocart/js/ajax.js'
+	"@uamdatatables_bootstrap_mustache_js"
+	"bundles/dzangocart/vendor/typeahead.js/dist/typeahead.bundle.min.js"
+	"bundles/dzangocart/vendor/moment/min/moment-with-locales.min.js"
+	"bundles/dzangocart/vendor/bootstrap-daterangepicker/daterangepicker.min.js"
+	"bundles/dzangocart/js/ajax.js"
+	"bundles/dzangocart/js/payment/payments.js"
 %}
-    <script src="{{ asset_url }}"></script>
+	<script src="{{ asset_url }}"></script>
 {% endjavascripts %}
 <script>
 dzangocart.payments = {
-    datatables: {
-        ajax: {
-            url: "{{ path('dzangocart_payments_list') }}"
-        }
-    },
-    daterangepicker: {
-        format: "{{ config.date_format|upper }}",
-        ranges: {% include "DzangocartBundle::date_ranges.html.twig" %}
-    }
+	date_format: "{{ dzangocart_config.date_format }}",
+	daterangepicker: {
+		format: "{{ dzangocart_config.date_format|upper }}",
+		ranges: {% include "DzangocartBundle::date_ranges.html.twig" %}
+	},
+	uamdatatables: {
+		ajax: {
+			url: "{{ path('dzangocart_payment_list') }}"
+		},
+		columns: [
+			{
+				data: function( row, type, val, meta ) {
+					if ( "display" === type ) {
+						var template = $( "template.select" ).html();
+						return Mustache.render( template, row );
+					}
+
+					return "";
+				},
+				orderable: false,
+				visible: false
+			},
+			{ data: "date" },
+			{ data: "order_id" },
+			{ data: "gateway" },
+			{ data: "type" },
+			{
+				data: "amount",
+				className: "amount"
+			},
+			{ data: "status" },
+			{
+				data: function( row, type, val, meta ) {
+					if ( "display" === type ) {
+						var template = $( "template.test" ).html();
+						return Mustache.render( template, row );
+					}
+
+					return "";
+				}
+			},
+			{
+				data: function( row, type, val, meta ) {
+					if ( "display" === type ) {
+						var template = $( "template.orders.actions" ).html();
+						return Mustache.render( template, row );
+					}
+
+					return "";
+				},
+				className: "actions",
+				orderable: false
+			}
+		],
+		destroy: true,
+		locale: "{{ app.request.locale }}",
+		order: [ [ 1, 'desc' ] ],
+		orderCellsTop: true,
+		searching: false,
+		stateSave: true
+	}
 };
 </script>

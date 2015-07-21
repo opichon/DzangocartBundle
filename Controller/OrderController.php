@@ -79,6 +79,9 @@ class OrderController extends AbstractDzangocartController
         return new OrderManager($this->get('dzangocart'));
     }
 
+    /**
+     * @inheritdoc
+     */
     protected function getFilter(Request $request)
     {
         if ($filter_type = $this->getEntityManager()->getFilterType($request)) {

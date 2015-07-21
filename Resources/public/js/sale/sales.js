@@ -1,32 +1,32 @@
 !function( $ ) {
-    $.fn.sales = function( method ) {
+	$.fn.sales = function( method ) {
 
-        var settings;
+		var settings;
 
-        var methods = {
-            init: function( options ) {
+		var methods = {
+			init: function( options ) {
 
-                settings = $.extend( true, {}, this.sales.defaults, options );
+				settings = $.extend( true, {}, this.sales.defaults, options );
 
-                return this.each(function() {
-                    var $this = $( this );
+				return this.each(function() {
+					var $this = $( this );
 
-                    moment.lang( dzangocart.locale );
+					moment.lang( dzangocart.locale );
 
-                    $( ".filters .period", this ).daterangepicker(
-                        $.extend( true, {}, settings.daterangepicker,
-                            {
-                                startDate: moment( $( ".filters .date_from", $this ).val(), "YYYY-MM-DD" ),
-                                endDate: moment( $( ".filters .date_to", $this ).val(), "YYYY-MM-DD" )
-                            }
-                        ),
-                        function( start, end ) {
-                            $( ".filters .date_from", $this ).attr( "value", start.format( "YYYY-MM-DD" ) ).change();
-                            $( ".filters .date_to", $this ).attr( "value", end.format( "YYYY-MM-DD" ) ).change();
-                        }
-                    );
+					$( ".filters .period", this ).daterangepicker(
+						$.extend( true, {}, settings.daterangepicker,
+							{
+								startDate: moment( $( ".filters .date_from", $this ).val(), "YYYY-MM-DD" ),
+								endDate: moment( $( ".filters .date_to", $this ).val(), "YYYY-MM-DD" )
+							}
+						),
+						function( start, end ) {
+							$( ".filters .date_from", $this ).attr( "value", start.format( "YYYY-MM-DD" ) ).change();
+							$( ".filters .date_to", $this ).attr( "value", end.format( "YYYY-MM-DD" ) ).change();
+						}
+					);
 
-                    $this.uamdatatables( settings.uamdatatables );
+					$this.uamdatatables( settings.uamdatatables );
 
 //                    var widget = $( "[name='filters[customer]']" );
 //
@@ -59,33 +59,33 @@
 //                            table.api().draw();
 //                        }
 //                    })
-                });
-            }
-        };
+				});
+			}
+		};
 
-        if ( methods[ method ] ) {
-            return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ) );
-        }
-        else if ( typeof method === "object" || !method ) {
-            return methods.init.apply( this, arguments );
-        }
-        else {
-            $.error( "Method " +  method + " does not exist in jQuery.sales." );
-        }
-    };
+		if ( methods[ method ] ) {
+			return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ) );
+		}
+		else if ( typeof method === "object" || !method ) {
+			return methods.init.apply( this, arguments );
+		}
+		else {
+			$.error( "Method " +  method + " does not exist in jQuery.sales." );
+		}
+	};
 
-    $.fn.sales.defaults = {
-        daterangepicker: {
-            locale: { cancelLabel: "Clear" },
-            maxDate: moment(),
-            minDate: moment( "2009-01-01" ),
-            startDate: moment()
-        }
-    };
+	$.fn.sales.defaults = {
+		daterangepicker: {
+			locale: { cancelLabel: "Clear" },
+			maxDate: moment(),
+			minDate: moment( "2009-01-01" ),
+			startDate: moment()
+		}
+	};
 } ( window.jQuery );
 
 $( document ).ready(function() {
-    if ( typeof dzangocart != "undefined" ) {
-        $( ".dzangocart.sales" ).sales( dzangocart.sales );
-    }
+	if ( typeof dzangocart != "undefined" ) {
+		$( ".dzangocart.sales" ).sales( dzangocart.sales );
+	}
 });

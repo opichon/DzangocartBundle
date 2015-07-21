@@ -43,6 +43,9 @@ class SaleController extends AbstractDzangocartController
         return new SaleManager($this->get('dzangocart'));
     }
 
+    /**
+     * @inheritdoc
+     */
     protected function getFilter(Request $request)
     {
         if ($filter_type = $this->getEntityManager()->getFilterType($request)) {

@@ -1,4 +1,19 @@
-_dzangocart_payment:
-    resource: "@DzangocartBundle/Controller/PaymentController.php"
-    type: annotation
-    prefix: /payment
+dzangocart_payments:
+    pattern: /payment
+    defaults:
+        _controller: DzangocartBundle:Payment:index
+
+dzangocart_payment:
+    pattern: /payment/{id}
+    defaults:
+        _controller: DzangocartBundle:Payment:show
+    requirements:
+        id: \d+
+
+dzangocart_payment_list:
+    pattern: /payment/list
+    defaults:
+        _controller: DzangocartBundle:Payment:list
+        _format: json
+    requirements:
+        _format: json

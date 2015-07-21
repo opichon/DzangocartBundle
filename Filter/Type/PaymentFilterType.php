@@ -1,12 +1,13 @@
 <?php
 
-namespace Dzangocart\Bundle\DzangocartBundle\Form\Type;
+namespace Dzangocart\Bundle\DzangocartBundle\Filter\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class PaymentsFiltersType extends AbstractType
+class PaymentFilterType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -65,10 +66,21 @@ class PaymentsFiltersType extends AbstractType
 
     public function getName()
     {
-        return 'filters';
+        return 'payment_filter';
     }
 
+    /**
+     * BC.
+     */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        $this->configureOptions($resolver);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             'translation_domain' => 'dzangocart',

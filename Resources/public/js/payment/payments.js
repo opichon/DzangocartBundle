@@ -1,8 +1,7 @@
 !function( $ ) {
     $.fn.payments = function( method ) {
 
-        var settings,
-            table;
+        var settings;
 
         var methods = {
             init: function( options ) {
@@ -12,57 +11,9 @@
                 return this.each(function() {
                     var $this = $( this );
 
-                    $( ".filters select" ).change(function(event) {
-                        event.stopPropagation();
-                        table.api().draw();
-                    });
-
-                    $( ".filters input" ).keyup(function(event) {
-                        event.stopPropagation();
-                        table.api().draw();
-                    });
-
-                    table = $( "table.table", this ).dataTable( $.extend( true, {}, settings.datatables, {
-                        drawCallback: function( settings ) {
-                            helpers.initGatewayChoice( settings.json.gateways );
-                            $( this ).show();
-                        },
-                        ajax: {
-                            data: function( data ) {
-                                $( ".filters input, .filters select", $this ).each(function() {
-                                    data[$( this ).attr( "name" )] = $( this ).val()
-                                });
-
-                                $( ".filters :checkbox", $this ).each(function() {
-                                    data[$( this ).attr( "name" )] = $( this ).is( ":checked" ) ? 1 : 0
-                                });
-
-                            }
-                        },
-                        stateLoadParams: function( settings, data ) {
-                            $( ".filters input, .filters select", $this ).each(function() {
-                                $( this ).val( data[ $( this ).attr( "name" ) ] );
-                            });
-
-                            $( ".filters :checkbox", $this ).each(function() {
-                                $( this ).attr( "checked", data[ $( this ).attr( "name" ) ] );
-                            });
-                        },
-                        stateSaveParams: function( settings, data ) {
-                            $( ".filters input, .filters select", $this ).each(function() {
-                                data[ $( this ).attr( "name" ) ] = $( this ).val();
-                            });
-
-                            $( ".filters :checkbox", $this ).each(function() {
-                                data[ $( this ).attr( "name" ) ] = $( this ).is( ":checked" );
-                            });
-                        }
-                    } ) );
-
-
                     moment.lang( dzangocart.locale );
 
-                    $( ".filters .period", $this ).daterangepicker(
+                    $( ".filters .period", this ).daterangepicker(
                         $.extend( true, {}, settings.daterangepicker,
                             {
                                 startDate: moment( $( ".filters .date_from", $this ).val(), "YYYY-MM-DD" ),
@@ -70,15 +21,12 @@
                             }
                         ),
                         function( start, end ) {
-                            $( ".filters .date_from", $this ).val( start.format( "YYYY-MM-DD" ) );
-                            $( ".filters .date_to", $this ).val( end.format( "YYYY-MM-DD" ) );
-                            table.api().draw();
+                            $( ".filters .date_from", $this ).attr( "value", start.format( "YYYY-MM-DD" ) ).change();
+                            $( ".filters .date_to", $this ).attr( "value", end.format( "YYYY-MM-DD" ) ).change();
                         }
-                    ).data( "daterangepicker" ).updateInputText();
+                    );
 
-                    $( ".filters input", $this ).change(function() {
-                        table.api().draw();
-                    });
+                    $this.uamdatatables( settings.uamdatatables );
                 });
             }
         };
@@ -111,23 +59,6 @@
 
     $.fn.payments.defaults = {
         datatables: {
-            columns: [
-                { data: "check" },
-                { data: "date" },
-                { data: "order_id" },
-                { data: "gateway" },
-                { data: "type" },
-                { data: "amount" },
-                { data: "status" },
-                { data: "test" },
-                { data: "actions" }
-            ],
-            columnDefs: [
-                { orderable: false, targets: [ 0, 8 ] },
-                { visible: false, targets: [ 0 ] },
-                { className: "number", targets: [ 5 ] },
-                { className: "actions", targets: [ 8 ] }
-            ],
             stripeClasses: [],
             autoWidth: false,
             paging: true,
@@ -142,9 +73,9 @@
             }
         },
         daterangepicker: {
-            locale: { cancelLabel: 'Clear' },
+            locale: { cancelLabel: "Clear" },
             maxDate: moment(),
-            minDate: moment('2009-01-01'),
+            minDate: moment( "2009-01-01" ),
             startDate: moment()
         }
     };

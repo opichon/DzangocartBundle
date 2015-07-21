@@ -80,6 +80,9 @@ class Configuration implements ConfigurationInterface
                         ->scalarNode('address')
                             ->defaultValue('Dzangocart\OM\Address')
                         ->end()
+                        ->scalarNode('payment')
+                            ->defaultValue('Dzangocart\OM\Payment')
+                        ->end()
                     ->end()
                 ->end()
             ->end();
