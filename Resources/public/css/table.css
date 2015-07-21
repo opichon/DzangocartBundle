@@ -36,26 +36,24 @@ table.table th.order_id {
 }
 
 table.table th.amount  {
+    text-align: center;
     width: 8em;
 }
 
 table.table th.ccy {
-    width: 4em;
+    width: 3em;
 }
 
 table.table th.net {
     width: 8em;
-    text-align: center;
 }
 
 table.table th.tax {
     width: 5em;
-    text-align: center;
 }
 
 table.table th.gross {
     width: 8em;
-    text-align: center;
 }
 
 table.table th.affiliate {
@@ -127,29 +125,6 @@ table.table tr:hover td.actions .dropdown-menu > li > a {
 table.table tr td.actions .dropdown-menu > li > a:hover {
     color: #fff;
     background-color: #ddd;
-}
-
-div.dataTables_processing {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 250px;
-    height: 50px;
-    margin-left: -125px;
-    margin-top: -15px;
-    padding: 14px 0 2px 0;
-    border: 1px solid #e2b709;
-    border-radius: 5px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    text-align: center;
-    color: #999;
-    font-size: 115%;
-    background: #ffe57e;
-    -moz-box-shadow: 0px 5px 90px #888;
-    -webkit-box-shadow: 0px 5px 90px #888;
-    box-shadow: 0px 5px 90px #888;
-    z-index: 9999;
 }
 
 ul.pagination li.previous a:before {

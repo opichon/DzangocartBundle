@@ -4,15 +4,42 @@ namespace Dzangocart\Bundle\DzangocartBundle\Controller;
 
 use DateTime;
 use Dzangocart\Bundle\DzangocartBundle\Form\Type\OrdersFilterType;
+use Dzangocart\Bundle\DzangocartBundle\Propel\OrderManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
+use UAM\Bundle\DatatablesBundle\Controller\DatatablesEnabledControllerTrait;
 
 class OrderController extends AbstractDzangocartController
 {
+    use DatatablesEnabledControllerTrait {
+        indexAction as baseIndexAction;
+    }
+
     /**
+     * Lists all orders.
+     *
      * @Template("DzangocartBundle:Order:index.html.twig")
      */
     public function indexAction(Request $request)
+    {
+        return $this->baseIndexAction($request);
+    }
+
+    /**
+     * @Template("DzangocartBundle:Order:list.json.twig")
+     */
+    public function listAction(Request $request)
+    {
+        $manager = $this->getEntityManager();
+
+        $data = $manager->getEntities($request);
+
+        return $data;
+    }
+
+    /**
+     */
+    public function indexOldAction(Request $request)
     {
         $filters = $this->createForm(
             new OrdersFilterType(),
@@ -31,7 +58,7 @@ class OrderController extends AbstractDzangocartController
     /**
      * @Template("DzangocartBundle:Order:list.json.twig")
      */
-    public function listAction(Request $request)
+    public function listOldAction(Request $request)
     {
         $params = array(
             'limit' => $request->query->get('length'),
@@ -151,4 +178,12 @@ class OrderController extends AbstractDzangocartController
 //            'customers' => $customers
 //        );
 //    }
+
+    /**
+     * @inheritdoc
+     */
+    protected function getEntityManager()
+    {
+        return new OrderManager($this->get('dzangocart'));
+    }
 }

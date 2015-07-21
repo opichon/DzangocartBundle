@@ -1,0 +1,30 @@
+{% trans_default_domain "dzangocart" %}
+
+<template class="select">
+<input type="checkbox" value="{% verbatim %}{{id}}{% endverbatim %}">
+</template>
+
+<template class="gender">
+{% verbatim %}{{#gender}}{% endverbatim %}
+	{% trans %}gender.male{% endtrans %}
+{% verbatim %}{{^gender}}{% endverbatim %}
+	{% trans %}gender.female{% endtrans %}
+{% verbatim %}{{/gender}}{% endverbatim %}
+</template>
+
+<template class="orders test">
+{%verbatim %}{{#test}}<i class="fa fa-asterisk"></i>{{/test}}{% endverbatim %}
+</template>
+
+<template class="orders actions">
+<div class="btn-group">
+	<button type="button" class="dropdown-toggle" data-toggle="dropdown">
+		<i class="fa fa-cog"></i>
+	</button>
+	<ul class="dropdown-menu dropdown-menu-right navbar-right" role="menu">
+		<li>
+			<a href="{% verbatim %}{{urls.show}}{% endverbatim %}">{% trans %}orders.actions.show{% endtrans %}</a>
+		</li>
+	</ul>
+</div>
+</template>

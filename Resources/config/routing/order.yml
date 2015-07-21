@@ -10,7 +10,7 @@ dzangocart_order:
     requirements:
         id: \d+
 
-dzangocart_orders_list:
+dzangocart_order_list:
     pattern: /order/list
     defaults:
         _controller: DzangocartBundle:Order:list

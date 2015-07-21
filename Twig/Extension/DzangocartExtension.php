@@ -21,7 +21,17 @@ class DzangocartExtension extends Twig_Extension
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
+     */
+    public function getGlobals()
+    {
+        return array(
+            'dzangocart_config' => $this->getConfig(),
+        );
+    }
+
+    /**
+     * @inheritdoc
      */
     public function getFunctions()
     {
@@ -83,7 +93,7 @@ class DzangocartExtension extends Twig_Extension
         $options = array(),
         $checkout = false)
     {
-        $url = $this->dzangocart->getConfig('cart_url');
+        $url = $this->getConfig('cart_url');
         $url .= '/cart?';
 
         $params = array(
@@ -101,7 +111,7 @@ class DzangocartExtension extends Twig_Extension
             $params['checkout'] = true;
         }
 
-        if (!array_key_exists('test', $options) && $test = $this->dzangocart->getConfig('test_code')) {
+        if (!array_key_exists('test', $options) && $test = $this->getConfig('test_code')) {
             $options['test'] = $test;
         }
 
@@ -113,9 +123,9 @@ class DzangocartExtension extends Twig_Extension
     protected function setCustomerData($customer_data)
     {
         if (!empty($customer_data)) {
-            $data = $this->dzangocart->encode(
+            $data = $this->Client->encode(
                 $customer_data,
-                $this->dzangocart->getConfig('secret_key'),
+                $this->getConfig('secret_key'),
                 3600
             );
 
@@ -123,5 +133,16 @@ class DzangocartExtension extends Twig_Extension
         } else {
             setcookie('dzangocart', "", time() - 3600, '/');
         }
+    }
+
+    protected function getClient()
+    {
+        return $this->dzangocart;
+    }
+
+    protected function getConfig($option = null)
+    {
+        return $this->getClient()
+            ->getConfig($option);
     }
 }

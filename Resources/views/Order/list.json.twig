@@ -2,28 +2,33 @@
 
 {% spaceless %}
 {
-    "draw": {{ app.request.query.all.draw }},
-    "recordsTotal": {{ meta['count_total'] }},
-    "recordsFiltered": {{ meta['count_filtered'] }},
-    "data" : [
-        {% for order in list %}
-            {
-                "DT_RowId":    "{{ 'o_' ~ order.getOrderId }}",
-                "DT_RowClass": "{{ order.isTest ? 'test' : '' }}{% if not order.paid %} unpaid{% endif %}{% if order.credit %} credit{% endif %}",
-                "check": "",
-                "date":        "{{ order.getDate|localizeddate('medium', 'short', app.request.locale, null, datetime_format) }}",
-                "order_id":    "{{ order.id }}",
-                "customer":    "{{ order.CustomerFullName }}",
-                "currency":    "{{ order.getCurrency }}",
-                "amount_excl": "{{ order.getAmountExcl|currency(order.getCurrency, app.request.locale) }}",
-                "tax_amount":  "{{ order.getTaxAmount|currency(order.getCurrency, app.request.locale) }}",
-                "amount_incl": "{{ order.getAmountIncl|currency(order.getCurrency, app.request.locale) }}",
-                "amount_paid": "{{ order.getAmountPaid|currency(order.getCurrency, app.request.locale) }}",
-                "affiliate":   "{{ order.affiliate }}",
-                "test":        "{% if order.isTest %}<i class='fa fa-asterisk'></i>{% endif %}",
-                "actions":     "{%- include 'DzangocartBundle:Order:actions.html.twig' -%}"
-            }{% if not loop.last %},{% endif %}
-        {% endfor %}
-    ]
+	"draw": {{ app.request.query.all.draw }},
+	"recordsTotal": {{ meta['count_total'] }},
+	"recordsFiltered": {{ meta['count_filtered'] }},
+	"data" : [
+		{% for order in list %}
+			{
+				"DT_RowId":    "{{ 'o_' ~ order.getOrderId }}",
+				"DT_RowClass": "{{ order.isTest ? 'test' : '' }}{% if not order.paid %} unpaid{% endif %}{% if order.credit %} credit{% endif %}",
+				"date":        "{{ order.getDate|datetime(dzangocart_config.date_format, dzangocart_config.time_format) }}",
+				"order_id":    "{{ order.id }}",
+				"customer":    {
+					"id": 		"{{ order.customer.id }}",
+					"name":     "{{ order.customer.name }}",
+					"code": 	"{{ order.customer.code }}"
+				},
+				"currency":    "{{ order.getCurrency }}",
+				"amount_excl": "{{ order.getAmountExcl|currency(order.getCurrency, app.request.locale) }}",
+				"tax_amount":  "{{ order.getTaxAmount|currency(order.getCurrency, app.request.locale) }}",
+				"amount_incl": "{{ order.getAmountIncl|currency(order.getCurrency, app.request.locale) }}",
+				"amount_paid": "{{ order.getAmountPaid|currency(order.getCurrency, app.request.locale) }}",
+				"affiliate":   "{{ order.affiliate }}",
+				"test":        {{ order.isTest ? 1 : 0 }},
+				"urls": {
+					"show": "{{ path('dzangocart_order', { id: order.id }) }}"
+				}
+			}{% if not loop.last %},{% endif %}
+		{% endfor %}
+	]
 }
 {% endspaceless %}

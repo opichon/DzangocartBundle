@@ -1,17 +1,17 @@
 {% trans_default_domain "dzangocart" %}
 
-<table class="table table-condensed" id="orders">
+<table class="table table-condensed table-hover dataTable" id="orders">
 	<thead>
 		<tr>
 			<th class="check"><input type="checkbox" id="checkall" /></th>
 			<th class="datetime">{% trans %}orders.date{% endtrans %}</th>
 			<th class="order_id">{% trans %}orders.order_id{% endtrans %}</th>
 			<th class="customer">{% trans %}orders.customer{% endtrans %}</th>
-			<th class="currency">{% trans %}orders.currency{% endtrans %}</th>
-			<th class="center net">{% trans %}orders.net{% endtrans %}</th>
-			<th class="center tax">{% trans %}orders.tax{% endtrans %}</th>
-			<th class="center gross">{% trans %}orders.gross{% endtrans %}</th>
-			<th class="center paid">{% trans %}orders.paid{% endtrans %}</th>
+			<th class="ccy">{% trans %}orders.currency{% endtrans %}</th>
+			<th class="amount net">{% trans %}orders.net{% endtrans %}</th>
+			<th class="amount tax">{% trans %}orders.tax{% endtrans %}</th>
+			<th class="amount gross">{% trans %}orders.gross{% endtrans %}</th>
+			<th class="amount paid">{% trans %}orders.paid{% endtrans %}</th>
 			<th class="affiliate">{% trans %}orders.affiliate{% endtrans %}</th>
 			<th class="center demo">{% trans %}orders.test{% endtrans %}</th>
 			<th class="actions"><i class="fa fa-cog"></i></th>
@@ -19,8 +19,8 @@
         <tr class="filters">
             <th></th>
             <th></th>
-            <th class="filters_keyup">{{ form_widget(filters.order_id) }}</th>
-            <th class="customer">{{ form_widget(filters.customer) }}</th>
+            <th class="filters_keyup">{{ form_widget(filter.order_id) }}</th>
+            <th class="customer">{{ form_widget(filter.customer) }}</th>
             <th></th>
             <th></th>
             <th></th>
