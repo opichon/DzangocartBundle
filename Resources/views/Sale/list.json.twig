@@ -11,20 +11,25 @@
                 "DT_RowId": "{{ 'u_' ~ sale.id }}",
                 "DT_RowClass": "{{ sale.isTest ? 'test' : '' }}{% if not sale.paid %} unpaid{% endif %}",
                 "id": {{ sale.id() }},
-                "check": "",
-                "date": "{{ sale.date|localizeddate('medium', 'short', app.request.locale, null, 'dd.MM.yyyy HH:mm') }}",
+                "date": "{{ sale.date|datetime(dzangocart_config.date_format, dzangocart_config.time_format) }}",
                 "order_id": "{{ sale.orderId }}",
-                "customer": "{{ sale.customerFullName}} ",
+				"customer":    {
+					"id": 		"{{ sale.customer.id }}",
+					"name":     "{{ sale.customer.name }}",
+					"code": 	"{{ sale.customer.code }}"
+				},
                 "item": "{{ sale.name|raw }}",
-                "quantity": "{{ sale.quantity|integer(app.request.locale) }}",
+                "quantity": "{{ sale.quantity|integer }}",
                 "currency": "{{ sale.currency }}",
                 "amount_excl": "{{ sale.amountExcl|currency(sale.currency, app.request.locale) }}",
                 "tax_amount": "{{ sale.amountTax|currency(sale.currency, app.request.locale) }}",
                 "amount_incl": "{{ sale.amountIncl|currency(sale.currency, app.request.locale) }}",
                 "paid": "{{ sale.paid }}",
                 "affiliate": "{{ sale.affiliate }}",
-                "test": "{{ sale.test }}",
-                "actions": "{%- include 'DzangocartBundle:Sale:actions.html.twig' -%}"
+				"test":        {{ sale.isTest ? 1 : 0 }},
+				"urls": {
+					"order": "{{ path('dzangocart_order', { id: sale.getOrderId }) }}"
+				}
             }{% if not loop.last %},{% endif %}
         {% endfor %}
     ]

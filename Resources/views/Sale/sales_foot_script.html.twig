@@ -1,24 +1,99 @@
 {% javascripts
-	'bundles/dzangocart/vendor/datatables/media/js/jquery.dataTables.min.js'
-	'bundles/dzangocart/vendor/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js'
-	'bundles/dzangocart/vendor/typeahead.js/dist/typeahead.bundle.min.js'
-	'bundles/dzangocart/vendor/moment/min/moment-with-locales.min.js'
-	'bundles/dzangocart/vendor/bootstrap-daterangepicker/daterangepicker.min.js'
-	'bundles/dzangocart/js/ajax.js'
-	'bundles/dzangocart/js/sale/sales.js'
+	"@uamdatatables_bootstrap_mustache_js"
+	"bundles/dzangocart/vendor/typeahead.js/dist/typeahead.bundle.min.js"
+	"bundles/dzangocart/vendor/moment/min/moment-with-locales.min.js"
+	"bundles/dzangocart/vendor/bootstrap-daterangepicker/daterangepicker.min.js"
+	"bundles/dzangocart/js/ajax.js"
+	"bundles/dzangocart/js/sale/sales.js"
 %}
 	<script src="{{ asset_url }}"></script>
 {% endjavascripts %}
 <script>
 dzangocart.sales = {
-    datatables: {
-        ajax: {
-            url: "{{ path('dzangocart_sales_list') }}"
-        }
-    },
-    daterangepicker: {
-        format: "{{ config.date_format|upper }}",
-        ranges: {% include "DzangocartBundle::date_ranges.html.twig" %}
+	date_format: "{{ dzangocart_config.date_format }}",
+	daterangepicker: {
+		format: "{{ dzangocart_config.date_format|upper }}",
+		ranges: {% include "DzangocartBundle::date_ranges.html.twig" %}
+	},
+	uamdatatables: {
+		ajax: {
+            url: "{{ path('dzangocart_sale_list') }}"
+        },
+        columns: [
+			{
+				data: function( row, type, val, meta ) {
+					if ( "display" === type ) {
+						var template = $( "template.select" ).html();
+						return Mustache.render( template, row );
+					}
+
+					return "";
+				},
+				orderable: false,
+				visible: false
+			},
+            { data: "date" },
+            { data: "order_id" },
+            { data: "customer.name" },
+            { data: "item" },
+            {
+            	data: "quantity",
+            	className: "number"
+            },
+            { data: "currency" },
+			{
+				data: "amount_excl",
+				className: "number"
+			},
+			{
+				data: "tax_amount",
+				className: "number"
+			},
+			{
+				data: "amount_incl",
+				className: "number"
+			},
+            {
+            	data: function( row, type, val, meta ) {
+                    if ( "display" === type ) {
+						var template = $( "template.sale.paid" ).html();
+						return Mustache.render( template, row );
+                    }
+
+                    return "";
+                },
+                className: "center"
+            },
+            { data: "affiliate" },
+            {
+            	data: function( row, type, val, meta ) {
+					if ( "display" === type ) {
+						var template = $( "template.test" ).html();
+						return Mustache.render( template, row );
+					}
+
+					return "";
+				}
+            },
+			{
+				data: function( row, type, val, meta ) {
+					if ( "display" === type ) {
+						var template = $( "template.orders.actions" ).html();
+						return Mustache.render( template, row );
+					}
+
+					return "";
+				},
+				className: "actions",
+				orderable: false
+			}
+        ],
+		destroy: true,
+		locale: "{{ app.request.locale }}",
+		order: [ [ 1, 'desc' ] ],
+		orderCellsTop: true,
+		searching: false,
+		stateSave: true
     }
 };
 </script>

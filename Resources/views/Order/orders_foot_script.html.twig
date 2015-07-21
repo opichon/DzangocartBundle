@@ -56,7 +56,7 @@ dzangocart.orders = {
 			{
 				data: function( row, type, val, meta ) {
 					if ( "display" === type ) {
-						var template = $( "template.orders.test" ).html();
+						var template = $( "template.test" ).html();
 						return Mustache.render( template, row );
 					}
 

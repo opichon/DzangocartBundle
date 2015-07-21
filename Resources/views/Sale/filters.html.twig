@@ -3,14 +3,14 @@
 <div class="filters clearfix">
 	<div class="row">
 		<div class="col-sm-3">
-			{{ form_row(filters.period) }}
+			{{ form_row(filter.period) }}
 		</div>
 		<div class="col-sm-6">
 			<label class="control-label">{% trans %}sales.filters.test_orders.group_label{% endtrans %}</label>
-			{{ form_row(filters.test) }}
+			{{ form_row(filter.test) }}
 		</div>
 	</div>
-	{{ form_widget(filters.date_to) }}
-	{{ form_widget(filters.date_from) }}
-	{{ form_widget(filters.customer_id) }}
+	{{ form_widget(filter.date_to) }}
+	{{ form_widget(filter.date_from) }}
+	{{ form_widget(filter.customer_id) }}
 </div>

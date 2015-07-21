@@ -1,8 +1,7 @@
 !function( $ ) {
     $.fn.sales = function( method ) {
 
-        var settings,
-            table;
+        var settings;
 
         var methods = {
             init: function( options ) {
@@ -11,51 +10,6 @@
 
                 return this.each(function() {
                     var $this = $( this );
-
-                    $( ".filters_keyup input" ).keyup(function(event) {
-                        event.stopPropagation();
-                        table.api().draw();
-                    });
-
-                    $( ".filters select", $this ).change(function() {
-                        table.api().draw();
-                    });
-
-                    table = $( "table.table", this ).dataTable( $.extend( true, {}, settings.datatables, {
-                        initComplete: function( settings, json ) {
-                            $( this ).show();
-                        },
-                        ajax: {
-                            data: function( data ) {
-                                $( ".filters input, .filters select", $this ).each(function() {
-                                    data[$( this ).attr( "name" )] = $( this ).val()
-                                });
-
-                                $( ".filters :checkbox", $this ).each(function() {
-                                    data[$( this ).attr( "name" )] = $( this ).is( ":checked" ) ? 1 : 0
-                                });
-
-                            }
-                        },
-                        stateLoadParams: function( settings, data ) {
-                            $( ".filters input, .filters select", $this ).each(function() {
-                                $( this ).val( data[ $( this ).attr( "name" ) ] );
-                            });
-
-                            $( ".filters :checkbox", $this ).each(function() {
-                                $( this ).attr( "checked", data[ $( this ).attr( "name" ) ] );
-                            });
-                        },
-                        stateSaveParams: function( settings, data ) {
-                            $( ".filters input, .filters select", $this ).each(function() {
-                                data[ $( this ).attr( "name" ) ] = $( this ).val();
-                            });
-
-                            $( ".filters :checkbox", $this ).each(function() {
-                                data[ $( this ).attr( "name" ) ] = $( this ).is( ":checked" );
-                            });
-                        }
-                    } ) );
 
                     moment.lang( dzangocart.locale );
 
@@ -67,12 +21,12 @@
                             }
                         ),
                         function( start, end ) {
-                            $( ".filters .date_from", $this ).val( start.format( "YYYY-MM-DD" ) );
-                            $( ".filters .date_to", $this ).val( end.format( "YYYY-MM-DD" ) );
-                            table.api().draw();
+                            $( ".filters .date_from", $this ).attr( "value", start.format( "YYYY-MM-DD" ) ).change();
+                            $( ".filters .date_to", $this ).attr( "value", end.format( "YYYY-MM-DD" ) ).change();
                         }
-                    )
-                    .data( "daterangepicker" ).updateInputText();
+                    );
+
+                    $this.uamdatatables( settings.uamdatatables );
 
 //                    var widget = $( "[name='filters[customer]']" );
 //
@@ -121,72 +75,17 @@
     };
 
     $.fn.sales.defaults = {
-        datatables: {
-            autoWidth: false,
-            columns: [
-                { data: "check" },
-                { data: "date" },
-                { data: "order_id" },
-                { data: "customer" },
-                { data: "item" },
-                { data: "quantity" },
-                { data: "currency" },
-                { data: "amount_excl" },
-                { data: "tax_amount" },
-                { data: "amount_incl" },
-                { data: function( row, type, val, meta ) {
-                        if ( "display" === type ) {
-                            return row.paid == 1
-                                ? "<i class='fa fa-thumbs-o-up'></i>"
-                                : "<i class='fa fa-exclamation-triangle'></i>";
-                        }
-
-                        return "";
-                    }
-                },
-                { data: "affiliate" },
-                { data: function( row, type, val, meta ) {
-                        if ( "display" === type ) {
-                            return row.test
-                                ? "<i class='fa fa-asterisk'></i>"
-                                : "";
-                        }
-
-                        return "";
-                    }
-                },
-                { data: "actions" }
-            ],
-            columnDefs: [
-                { visible: false, targets: [ 0 ] },
-                { orderable: false, targets: [ 0, 5, 10, 13 ] },
-                { className: "number", targets: [ 5, 8, 9, 10 ] },
-                { className: "center", targets: [ 10, 12 ] },
-                { className: "actions", targets: [ 13 ] }
-            ],
-            language: {
-                url: "/bundles/dzangocart/datatables/" + dzangocart.locale + ".json"
-            },
-            orderable: true,
-            orderCellsTop: true,
-            paging: true,
-            processing: true,
-            searching: false,
-            serverSide: true,
-            stateSave: false,
-            stripeClasses: []
-        },
         daterangepicker: {
-            locale: { cancelLabel: 'Clear' },
+            locale: { cancelLabel: "Clear" },
             maxDate: moment(),
-            minDate: moment('2009-01-01'),
+            minDate: moment( "2009-01-01" ),
             startDate: moment()
         }
     };
 } ( window.jQuery );
 
 $( document ).ready(function() {
-    if ( typeof dzangocart != 'undefined' ) {
+    if ( typeof dzangocart != "undefined" ) {
         $( ".dzangocart.sales" ).sales( dzangocart.sales );
     }
 });

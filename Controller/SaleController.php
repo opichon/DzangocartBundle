@@ -4,120 +4,58 @@ namespace Dzangocart\Bundle\DzangocartBundle\Controller;
 
 use DateTime;
 use Dzangocart\Bundle\DzangocartBundle\Form\Type\SalesFilterType;
+use Dzangocart\Bundle\DzangocartBundle\Propel\SaleManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
+use UAM\Bundle\DatatablesBundle\Controller\DatatablesEnabledControllerTrait;
 
 class SaleController extends AbstractDzangocartController
 {
-    /**
-     * @Route("/", name="dzangocart_sales")
-     * @Template()
-     */
-    public function indexAction(Request $request)
-    {
-        $filters = $this->createForm(
-            new SalesFilterType(),
-            array(
-                'date_from' => (new DateTime())->modify('first day of this month'),
-                'date_to' => new DateTime(),
-            )
-        );
-
-        return array(
-            'filters' => $filters->createView(),
-            'config' => $this->getDzangocartConfig(),
-        );
+    use DatatablesEnabledControllerTrait {
+        indexAction as baseIndexAction;
     }
 
     /**
-     * @Route("/list", name="dzangocart_sales_list", requirements={"_format": "json"}, defaults={"_format": "json"})
-     * @Template()
+     * Lists all sales.
+     *
+     * @Template("DzangocartBundle:Sale:index.html.twig")
+     */
+    public function indexAction(Request $request)
+    {
+        return $this->baseIndexAction($request);
+    }
+
+    /**
+     * @Template("DzangocartBundle:Sale:list.json.twig")
      */
     public function listAction(Request $request)
     {
-        $params = array(
-            'limit' => $request->query->get('length'),
-            'offset' => $request->query->get('start'),
-        );
+        $manager = $this->getEntityManager();
 
-        $params = array_merge(
-            $params,
-            $this->getFilters($request)
-        );
-
-        $params['sort_by'] = $this->getSortOrder($request);
-
-        $data = $this->get('dzangocart')
-            ->getSales($params);
-
-        $data['datetime_format'] = $this->getDzangocartConfig('datetime_format');
+        $data = $manager->getEntities($request);
 
         return $data;
     }
 
-    protected function getFilters(Request $request)
+    /**
+     * @inheritdoc
+     */
+    protected function getEntityManager()
     {
-        $filters = array();
+        return new SaleManager($this->get('dzangocart'));
+    }
 
-        $search_values = $request->query->get('filters');
-
-        $search_columns = $this->getSearchColumns();
-
-        foreach ($search_values as $name => $value) {
-            if (array_key_exists($name, $search_columns)) {
-                $filters[$search_columns[$name]] = $value;
-            }
+    protected function getFilter(Request $request)
+    {
+        if ($filter_type = $this->getEntityManager()->getFilterType($request)) {
+            return $this->createForm(
+                $filter_type,
+                array(
+                    'date_from' => date_create(date('Y').'-01-01'),
+                    'date_to' => date_create(date('Y').'-12-31'),
+                )
+            );
         }
-
-        return $filters;
-    }
-
-    protected function getSearchColumns()
-    {
-        return array(
-            'date_from' => 'date_from',
-            'date_to' => 'date_to',
-            'test' => 'test',
-            'order_id' => 'order_id',
-            'customer_id' => 'customer',
-            'name' => 'name',
-        );
-    }
-
-    protected function getSortOrder(Request $request)
-    {
-        $sort = array();
-
-        $order = $request->query->get('order');
-
-        $columns = $this->getSortColumns();
-
-        foreach ($order as $setting) {
-            $index = $setting['column'];
-
-            if (isset($columns[$index])) {
-                $sort[] = $columns[$index];
-                $sort[] = $setting['dir'];
-            }
-        }
-
-        return implode(',', $sort);
-    }
-
-    protected function getSortColumns()
-    {
-        return array(
-            1 => 'date',
-            2 => 'order_id',
-            3 => 'customer',
-            4 => 'name',
-            6 => 'currency',
-            7 => 'amount_excl',
-            8 => 'tax_amount',
-            9 => 'amount_incl',
-            11 => 'affiliate',
-            12 => 'test',
-        );
     }
 }

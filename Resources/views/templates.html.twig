@@ -1,0 +1,17 @@
+{% block templates %}
+<template class="select">
+<input type="checkbox" value="{% verbatim %}{{id}}{% endverbatim %}">
+</template>
+
+<template class="gender">
+{% verbatim %}{{#gender}}{% endverbatim %}
+	{% trans %}gender.male{% endtrans %}
+{% verbatim %}{{^gender}}{% endverbatim %}
+	{% trans %}gender.female{% endtrans %}
+{% verbatim %}{{/gender}}{% endverbatim %}
+</template>
+
+<template class="orders test">
+{%verbatim %}{{#test}}<i class="fa fa-asterisk"></i>{{/test}}{% endverbatim %}
+</template>
+{% endblock %}

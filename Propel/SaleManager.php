@@ -2,12 +2,12 @@
 
 namespace Dzangocart\Bundle\DzangocartBundle\Propel;
 
-use Dzangocart\Bundle\DzangocartBundle\Filter\Type\OrderFilterType;
+use Dzangocart\Bundle\DzangocartBundle\Filter\Type\SaleFilterType;
 use Dzangocart\Client\DzangocartClient;
 use Symfony\Component\HttpFoundation\Request;
 use UAM\Bundle\DatatablesBundle\Propel\AbstractEntityManager;
 
-class OrderManager extends AbstractEntityManager
+class SaleManager extends AbstractEntityManager
 {
     protected $client;
 
@@ -37,7 +37,7 @@ class OrderManager extends AbstractEntityManager
         );
 
         return $this->getClient()
-            ->getOrders($params);
+            ->getSales($params);
     }
 
     /**
@@ -45,7 +45,7 @@ class OrderManager extends AbstractEntityManager
      */
     public function getFilterType(Request $request)
     {
-        return new OrderFilterType();
+        return new SaleFilterType();
     }
 
     /**
@@ -66,6 +66,7 @@ class OrderManager extends AbstractEntityManager
             'test' => 'test',
             'order_id' => 'order_id',
             'customer_id' => 'customer',
+            'name' => 'name',
         );
     }
 
@@ -78,12 +79,13 @@ class OrderManager extends AbstractEntityManager
             1 => 'date',
             2 => 'order_id',
             3 => 'customer',
-            4 => 'currency',
-            5 => 'amount_excl',
-            6 => 'tax_amount',
-            7 => 'amount_incl',
-            9 => 'affiliate',
-            10 => 'test',
+            4 => 'name',
+            6 => 'currency',
+            7 => 'amount_excl',
+            8 => 'tax_amount',
+            9 => 'amount_incl',
+            11 => 'affiliate',
+            12 => 'test',
         );
     }
 

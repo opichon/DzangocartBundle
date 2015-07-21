@@ -78,7 +78,7 @@
         daterangepicker: {
             locale: { cancelLabel: "Clear" },
             maxDate: moment(),
-            minDate: moment("2009-01-01"),
+            minDate: moment( "2009-01-01" ),
             startDate: moment()
         }
     };
