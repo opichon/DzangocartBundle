@@ -13,7 +13,7 @@
     "require": {
         "symfony/framework-bundle": "~2.0",
         "dzangocart/client": "~0.2@dev",
-        "goc/locale-bundle": "dev-master"
+        "uam/twig-i18n-extension": "*"
     },
     "autoload": {
         "psr-4": { "Dzangocart\\Bundle\\DzangocartBundle\\": "" }
