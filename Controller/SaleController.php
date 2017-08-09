@@ -67,8 +67,15 @@ class SaleController extends AbstractDzangocartController
         foreach ($search_values as $name => $value) {
             if (array_key_exists($name, $search_columns)) {
                 $filters[$search_columns[$name]] = $value;
+
+        /*
+        foreach ($date_fields = array('date_from', 'date_to') as $field) {
+            $value = @$_filters[$field];
+            if (!empty($value)) {
+                $filters[$field] = $value;
             }
         }
+        */
 
         return $filters;
     }
