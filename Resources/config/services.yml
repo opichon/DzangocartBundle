@@ -7,6 +7,6 @@ services:
 
     twig.extension.dzangocart:
         class: Dzangocart\Bundle\DzangocartBundle\Twig\Extension\DzangocartExtension
-        arguments: [@dzangocart]
+        arguments: ["@dzangocart"]
         tags:
             - { name: twig.extension }
