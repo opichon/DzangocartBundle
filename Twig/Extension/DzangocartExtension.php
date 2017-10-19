@@ -2,11 +2,12 @@
 
 namespace Dzangocart\Bundle\DzangocartBundle\Twig\Extension;
 
-use Twig_Extension;
-use Twig_Function_Method;
 use Dzangocart\Client\DzangocartClient;
+use Twig_Extension;
+use Twig_Extension_GlobalsInterface;
+use Twig_SimpleFunction;
 
-class DzangocartExtension extends Twig_Extension
+class DzangocartExtension extends Twig_Extension implements Twig_Extension_GlobalsInterface
 {
     protected $dzangocart;
 
@@ -36,8 +37,16 @@ class DzangocartExtension extends Twig_Extension
     public function getFunctions()
     {
         return array(
-            'dzangocart_link' => new Twig_Function_Method($this, 'dzangocartLink', array('is_safe' => array('html'))),
-            'dzangocart_url' => new Twig_Function_Method($this, 'dzangocartUrl', array('is_safe' => array('html'))),
+            new Twig_SimpleFunction(
+                'dzangocart_link',
+                array($this, 'dzangocartLink'),
+                array('is_safe' => array('html'))
+            ),
+            new Twig_SimpleFunction(
+                'dzangocart_url',
+                aray($this, 'dzangocartUrl'),
+                array('is_safe' => array('html'))
+            ),
         );
     }
 
