@@ -25,7 +25,7 @@ category:
 
     show:
         back:               Return to catalogue page
-        page_title:         Category: %name%
+        page_title:         "Category: %name%"
 
     error:
         not_found:          Category Not Found
@@ -47,7 +47,7 @@ customers:
     page_title:             Customers
     show:
         back:               Return to customers page
-        page_title:         Customer: %name%
+        page_title:         "Customer: %name%"
     ytdsale:                YTD Sales
 
 links:
@@ -60,7 +60,7 @@ order:
     amount_outstanding: Outstanding balance
     amount_paid:        Amount already paid
     amount_tax:         VAT
-    date:               Date: %date%
+    date:               "Date: %date%"
     items:
         amount_excl:    Gross amount
         amount_incl:    Net amount
@@ -68,8 +68,8 @@ order:
         price_excl:     Gross price
         price_incl:     Net price
         quantity:       Qty
-        rank:           '#'
-    page_title:         Order n˚ %order_id%
+        rank:           "#"
+    page_title:         "Order n˚ %order_id%"
     taxes:
         rate:           Rate
         tax:            Amount
@@ -92,7 +92,7 @@ orders:
             label:          Include test orders
     gross:              Gross
     net:                Net
-    order_id:           '#'
+    order_id:           "#"
     page_title:         Orders
     paid:               Paid
     tax:                Tax

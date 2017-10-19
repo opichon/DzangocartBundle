@@ -25,7 +25,7 @@ category:
 
     show:
         back:               Return to catalogue page
-        page_title:         Category: %name%
+        page_title:         "Category: %name%"
 
     error:
         not_found:          Category Not Found
@@ -47,7 +47,7 @@ customers:
     page_title:             Customers
     show:
         back:               Return to customers page
-        page_title:         Customer: %name%
+        page_title:         "Customer: %name%"
     ytdsale:                YTD Sales
 
 links:
@@ -60,7 +60,7 @@ order:
     amount_outstanding: Solde dû
     amount_paid:        Déjà réglé
     amount_tax:         TVA
-    date:               Date : %date%
+    date:               "Date : %date%"
     details:            Détails
     invoice:            Facture
     items:
@@ -70,7 +70,7 @@ order:
         price_excl:     Prix HT
         price_incl:     Prix TTC
         quantity:       Qté
-        rank:           '#'
+        rank:           "#"
     page_title:         Commande n˚ %order_id%
     taxes:
         rate:           Taux
