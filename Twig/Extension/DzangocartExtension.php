@@ -44,7 +44,7 @@ class DzangocartExtension extends Twig_Extension implements Twig_Extension_Globa
             ),
             new Twig_SimpleFunction(
                 'dzangocart_url',
-                aray($this, 'dzangocartUrl'),
+                array($this, 'dzangocartUrl'),
                 array('is_safe' => array('html'))
             ),
         );
